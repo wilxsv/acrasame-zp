@@ -1,0 +1,37 @@
+<%= form_for(@scr_area_trabajo) do |f| %>
+  <% if @scr_area_trabajo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@scr_area_trabajo.errors.count, "error") %> prohibited this scr_area_trabajo from being saved:</h2>
+
+      <ul>
+      <% @scr_area_trabajo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :aTrabajoNombre %><br>
+    <%= f.text_field :aTrabajoNombre %>
+  </div>
+  <div class="field">
+    <%= f.label :aTrabajoDescripcion %><br>
+    <%= f.text_area :aTrabajoDescripcion %>
+  </div>
+  <div class="field">
+    <%= f.label :area_trabajo_id %><br>
+    <%= f.number_field :area_trabajo_id %>
+  </div>
+  <div class="field">
+    <%= f.label :organizacion_id %><br>
+    <%= f.number_field :organizacion_id %>
+  </div>
+  <div class="field">
+    <%= f.label :cargo_id %><br>
+    <%= f.number_field :cargo_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

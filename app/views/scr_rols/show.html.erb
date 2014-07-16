@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @scr_rol.nombrerol %>
+</p>
+
+<p>
+  <strong>Detalle:</strong>
+  <%= @scr_rol.detallerol %>
+</p>
+
+<%= link_to ' Editar ', edit_scr_rol_path(@scr_rol) %> |
+<%= link_to ' Eliminar ', scr_rols_path %>

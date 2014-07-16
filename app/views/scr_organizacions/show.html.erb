@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @scr_organizacion.organizacionNombre %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @scr_organizacion.organizacionDescripcion %>
+</p>
+
+<%= link_to ' Editar ', edit_scr_organizacion_path(@scr_organizacion) %> |
+<%= link_to ' Regresar ', scr_organizacions_path %>

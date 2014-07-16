@@ -1,0 +1,97 @@
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand">ACRASAME - ZP</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+            <li>
+              <%= link_to "Inicio", home_index_path %>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Movimientos <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="themes">
+                <li><%= link_to "Nueva transaccion", transaccion_index_url %></li>
+                <li><%= link_to "Buscar", home_index_path %></li>
+                <li><%= link_to "Listar", transaccion_show_url %></li>
+                <li class="divider"></li>
+                <li>Cobros</li>
+                <li><%= link_to "Generar recibo", home_index_path %></li>
+                <li><%= link_to "Generar recibos de cobro mensual", home_index_path %></li>
+                <li><%= link_to "Registrar pago", home_index_path %></li>
+                <li class="divider"></li>
+                <li>Operativos</li>
+                <li><%= link_to "Control de cloro en la red", home_index_path %></li>
+                <li><%= link_to "Control de cloración del agua", home_index_path %></li>
+                <li><%= link_to "Control de horas de bombeo", home_index_path %></li>
+                <li class="divider"></li>
+                <li><%= link_to "libro diario", libro_index_url %></li>
+                <li><%= link_to "libro mayor", libro_mayor_path %></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">Informes <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="download">
+                <li>Libros contables</li>
+                <li><%= link_to "Libro diario", libro_index_url %></li>
+                <li><%= link_to "Libro mayor", libro_mayor_url %></li>
+                <li class="divider"></li>
+                <li>Operaciones realizadas</li>
+                <li><%= link_to "Recibos generados", home_index_path %></li>
+                <li><%= link_to "Recibos cancelados", home_index_path %></li>
+                <li><%= link_to "Recibos pendientes de pago", home_index_path %></li>
+                <li><%= link_to "Operaciones generales", home_index_path %></li>
+                <li><%= link_to "Resumen general", home_index_path %></li>
+                <li class="divider"></li>
+                <li>Estados financieros</li>
+                <li><%= link_to "Balance de comprobación", estado_index_url %></li>
+                <li><%= link_to "Balance general", estado_index_url %></li>
+                <li><%= link_to "Estado de resultados", estado_index_url %></li>
+                <li><%= link_to "Estado de flujos de efectivo", estado_index_url %></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Catalogo <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="themes">
+                <li><%= link_to "Proveedores",  proveedor_index_path %></li>
+                <li><%= link_to "Catalogo de cuentas",  cuenta_index_path %></li>
+                <li><%= link_to "Areas de trabajo",  area_index_path  %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Bloques de consumo",  bloque_index_path %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Localidades",  localidad_index_path  %></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Configuraciones <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="themes">
+                <li><%= link_to "Perfil",  persona_index_path  %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Ciclo contable", core_index_path %></li>
+                <li><%= link_to "Activo Fijo",  afijo_index_path  %></li>
+                <li><%= link_to "Inventario",  afijo_index_path  %></li>
+                <li><%= link_to "Cierre de ciclo contable",  core_index_path  %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Roles",  rol_index_path  %></li>
+                <li><%= link_to "Cargos",  cargo_index_path  %></li>
+                <li><%= link_to "Estados",  estado_index_path  %></li>
+                <li><%= link_to "Usuarias", persona_index_path %></li>
+                <li><%= link_to "Beneficiarias", persona_index_path %></li>
+                <li><%= link_to "Resumen de usuarios", resumen_index_url %></li>
+              </ul>
+            </li>
+            <li><a href="" target="_blank">Ayuda</a></li>
+            <li><a href="" target="_blank">Salir</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>

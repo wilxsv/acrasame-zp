@@ -1,0 +1,33 @@
+<h1>Listing scr_area_trabajos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Atrabajonombre</th>
+      <th>Atrabajodescripcion</th>
+      <th>Area trabajo</th>
+      <th>Organizacion</th>
+      <th>Cargo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scr_area_trabajos.each do |scr_area_trabajo| %>
+      <tr>
+        <td><%= scr_area_trabajo.aTrabajoNombre %></td>
+        <td><%= scr_area_trabajo.aTrabajoDescripcion %></td>
+        <td><%= scr_area_trabajo.area_trabajo_id %></td>
+        <td><%= scr_area_trabajo.organizacion_id %></td>
+        <td><%= scr_area_trabajo.cargo_id %></td>
+        <td><%= link_to 'Show', scr_area_trabajo %></td>
+        <td><%= link_to 'Edit', edit_scr_area_trabajo_path(scr_area_trabajo) %></td>
+        <td><%= link_to 'Destroy', scr_area_trabajo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Scr area trabajo', new_scr_area_trabajo_path %>

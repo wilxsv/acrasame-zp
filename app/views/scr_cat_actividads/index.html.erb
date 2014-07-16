@@ -1,0 +1,27 @@
+<h1>Listado de categorias para actividad</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scr_cat_actividads.each do |scr_cat_actividad| %>
+      <tr>
+        <td><%= scr_cat_actividad.cActividadNombre %></td>
+        <td><%= scr_cat_actividad.catActividadDescripcion %></td>
+        <td><%= link_to ' Ver ', scr_cat_actividad %></td>
+        <td><%= link_to ' Editar ', edit_scr_cat_actividad_path(scr_cat_actividad) %></td>
+        <td><%= link_to ' Eliminar ', scr_cat_actividad, method: :delete, data: { confirm: 'Confirma la operación ?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nueva categoria', new_scr_cat_actividad_path %>

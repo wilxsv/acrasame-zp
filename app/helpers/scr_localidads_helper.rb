@@ -1,0 +1,2 @@
+module ScrLocalidadsHelper
+end

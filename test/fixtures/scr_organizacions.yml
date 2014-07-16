@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  organizacionNombre: MyString
+  organizacionDescripcion: MyText
+  localidad_id: 1
+
+two:
+  organizacionNombre: MyString
+  organizacionDescripcion: MyText
+  localidad_id: 1

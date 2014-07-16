@@ -1,0 +1,2 @@
+class ScrCatOrganizacion < ActiveRecord::Base
+end

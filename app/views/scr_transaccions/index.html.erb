@@ -1,0 +1,40 @@
+<%= link_to 'New Scr transaccion', new_scr_transaccion_path, remote: true %>
+
+<h1>Listing scr_transaccions</h1>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Transaxsecuencia</th>
+      <th>Cuenta</th>
+      <th>Transaxmonto</th>
+      <th>Transaxdebehaber</th>
+      <th>Empleado</th>
+      <th>Transaxregistro</th>
+      <th>Transaxfecha</th>
+      <th>Pcontable</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scr_transaccions.each do |scr_transaccion| %>
+      <tr>
+        <td><%= scr_transaccion.transaxSecuencia %></td>
+        <td><%= scr_transaccion.cuenta_id %></td>
+        <td><%= scr_transaccion.transaxMonto %></td>
+        <td><%= scr_transaccion.transaxDebeHaber %></td>
+        <td><%= scr_transaccion.empleado_id %></td>
+        <td><%= scr_transaccion.transaxRegistro %></td>
+        <td><%= scr_transaccion.transaxFecha %></td>
+        <td><%= scr_transaccion.pcontable_id %></td>
+        <td><%= link_to 'Show', scr_transaccion %></td>
+        <td><%= link_to 'Edit', edit_scr_transaccion_path(scr_transaccion) %></td>
+        <td><%= link_to 'Destroy', scr_transaccion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

@@ -1,0 +1,2 @@
+module ScrAreaTrabajosHelper
+end

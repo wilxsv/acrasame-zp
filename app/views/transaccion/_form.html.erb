@@ -1,0 +1,39 @@
+<% if @scr_transaccion.errors.any? %>
+ <div id="error_explanation">
+  <h2><%= pluralize(@scr_transaccion.errors.count, "error") %> prohibited this scr_transaccion from being saved:</h2>
+   <ul>
+    <% @scr_transaccion.errors.full_messages.each do |message| %>
+     <li><%= message %></li>
+    <% end %>
+   </ul>
+ </div>
+<% end %>
+<div class="well bs-component">
+<%= form_for :transacx, :url => { :action => :index } do |f| %>
+ <fieldset>
+  <legend>Agregar transacción</legend>
+  <div class="form-group">
+    <%= f.label :cuenta, class: "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+     <%= f.select :cuenta, ScrCuentua.select('id, cat_cuenta_id, "cuentaCodigo", "cuentaNombre"').group('id, cat_cuenta_id, "cuentaCodigo", "cuentaNombre"').order(:cuentaCodigo, :cuentaCodigo).all.collect { |p| [ p.cuentaNombre, p.id ] }, include_blank: false %></div>
+  </div>
+  <div class="form-group">
+   <%= f.label :Monto, class: "col-lg-2 control-label" %>
+   <div class="col-lg-10"><%= f.text_field :transaxMonto %></div>    
+  </div>
+  <div class="form-group">
+   <%= f.label :fecha, class: "col-lg-2 control-label" %>
+   <div class="col-lg-10"><%= f.text_field :transaxFecha, id: "datepicker" %></div>
+  </div>
+  <div class="form-group">
+   <%= f.label :Debe, class: "col-lg-2 control-label" %>
+   <div class="col-lg-10"><%= f.check_box :transaxDebeHaber %></div>
+  </div>
+  <div class="form-group">
+    <div class="col-lg-10 col-lg-offset-2">
+     <%= f.submit "Enviar transacción", class: "btn btn-primary btn-sm" %>
+    </div>
+  </div>
+ </fieldset>
+<% end %>
+</div>

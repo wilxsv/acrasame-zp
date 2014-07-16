@@ -1,0 +1,34 @@
+<h1>Listado de cuentas</h1>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Codigo</th>
+      <th>Nombre</th>
+      <th>Debe</th>
+      <th>Haber</th>
+      <th>Total</th>
+      <th>Cuentadescripcion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scr_cuentuas.each do |scr_cuentua| %>
+      <tr>
+        <td><%= scr_cuentua.cuentaCodigo %></td>
+        <td><%= scr_cuentua.cuentaNombre %></td>
+        <td><%= scr_cuentua.cuentaDebe %></td>
+        <td><%= scr_cuentua.cuentaHaber %></td>
+        <td><%= scr_cuentua.cuentaDebe - scr_cuentua.cuentaHaber %></td>
+        <td><%= scr_cuentua.cuentaDescripcion %></td>
+        <td><%= link_to ' Ver ', scr_cuentua %></td>
+        <td><%= link_to ' Editar ', edit_scr_cuentua_path(scr_cuentua) %></td>
+        <td><%= link_to ' Eliminar ', scr_cuentua, method: :delete, data: { confirm: 'Confirma la operación ?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nueva cuenta', new_scr_cuentua_path %>

@@ -1,0 +1,25 @@
+<%= form_for(@scr_cat_actividad) do |f| %>
+  <% if @scr_cat_actividad.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@scr_cat_actividad.errors.count, "error") %> prohibited this scr_cat_actividad from being saved:</h2>
+
+      <ul>
+      <% @scr_cat_actividad.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Nombre %><br>
+    <%= f.text_field :cActividadNombre %>
+  </div>
+  <div class="field">
+    <%= f.label :Descripción %><br>
+    <%= f.text_area :catActividadDescripcion %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

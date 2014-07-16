@@ -1,0 +1,2 @@
+module ScrMarcaProducsHelper
+end

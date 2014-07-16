@@ -1,0 +1,29 @@
+<h1>Listado de cargos</h1>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Salario</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scr_cargos.each do |scr_cargo| %>
+      <tr>
+        <td><%= scr_cargo.cargoNombre %></td>
+        <td><%= scr_cargo.cargoDescripcion %></td>
+        <td><%= scr_cargo.cargoSalario %></td>
+        <td><%= link_to ' Ver ', scr_cargo %></td>
+        <td><%= link_to ' Editar ', edit_scr_cargo_path(scr_cargo) %></td>
+        <td><%= link_to ' Eliminar ', scr_cargo, method: :delete, data: { confirm: 'Confirma la operación?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo cargo', new_scr_cargo_path %>

@@ -1,0 +1,2 @@
+module LocalidadHelper
+end

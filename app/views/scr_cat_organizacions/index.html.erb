@@ -1,0 +1,27 @@
+<h1>Listing scr_cat_organizacions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Corgnombre</th>
+      <th>Corgdescripcion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scr_cat_organizacions.each do |scr_cat_organizacion| %>
+      <tr>
+        <td><%= scr_cat_organizacion.cOrgNombre %></td>
+        <td><%= scr_cat_organizacion.cOrgDescripcion %></td>
+        <td><%= link_to 'Show', scr_cat_organizacion %></td>
+        <td><%= link_to 'Edit', edit_scr_cat_organizacion_path(scr_cat_organizacion) %></td>
+        <td><%= link_to 'Destroy', scr_cat_organizacion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Scr cat organizacion', new_scr_cat_organizacion_path %>

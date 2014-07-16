@@ -1,0 +1,29 @@
+<%= form_for(@scr_organizacion) do |f| %>
+  <% if @scr_organizacion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@scr_organizacion.errors.count, "error") %> prohibited this scr_organizacion from being saved:</h2>
+
+      <ul>
+      <% @scr_organizacion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Nombre %><br>
+    <%= f.text_field :organizacionNombre %>
+  </div>
+  <div class="field">
+    <%= f.label :Descripcion %><br>
+    <%= f.text_area :organizacionDescripcion %>
+  </div>
+  <div class="field">
+    <%= f.label :Localidad %><br>
+    <%= f.select :localidad_id, ScrLocalidad.order(:localidad_nombre).all.collect { |p| [ p.localidad_nombre, p.id ] }, include_blank: true %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
