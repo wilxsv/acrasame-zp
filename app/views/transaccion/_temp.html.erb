@@ -1,4 +1,7 @@
-<table >
+<div class="module">
+ <div class="module-head"><h3>Transacción a procesar</h3></div>
+ <div class="module-body">
+<table class="table table-striped table-bordered table-condensed">
   <thead>
     <tr>
       <th>Cuenta</th>
@@ -7,7 +10,6 @@
       <th>Haber</th>
     </tr>
   </thead>
-
   <tbody>
    <% if session['html'] %>
     <%= session['html'].html_safe || "" %>
@@ -19,3 +21,5 @@
 <%= form_for :transacx, :url => { :action => :create } do |f| %>
   <%= f.submit "Finalizar transacción", class: "btn-success btn-sm" %>
 <% end %>
+ </div>
+</div>

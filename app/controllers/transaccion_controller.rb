@@ -3,7 +3,7 @@ class TransaccionController < ApplicationController
   # POST /transaccion
   def index
     @scr_transaccion = ScrTransaccion.new
-    @scr_transaccions = ScrTransaccion.all
+    @scr_transaccions = ScrTransaccion.all.order('"transaxSecuencia", "transaxFecha"')
     @tmp = Array.new
     
     if params.has_key?(:transacx) #&& params['transacx']['transaxMonto'].is_a?(Numeric)
@@ -48,7 +48,7 @@ class TransaccionController < ApplicationController
       end
     rescue
       session[:error] = "Se encontraron inconsistencias en su transacción"
-      redirect_to action: 'index', alert: "Watch it, Salimos de un error :D!"
+      redirect_to action: 'index', alert: "Watch it, Salimos de un error :D  !"
     end
   end
   
