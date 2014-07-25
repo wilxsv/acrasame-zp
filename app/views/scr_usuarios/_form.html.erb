@@ -1,0 +1,97 @@
+<%= form_for(@scr_usuario) do |f| %>
+  <% if @scr_usuario.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@scr_usuario.errors.count, "error") %> prohibited this scr_usuario from being saved:</h2>
+
+      <ul>
+      <% @scr_usuario.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :username %><br>
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.text_area :password %>
+  </div>
+  <div class="field">
+    <%= f.label :correousuario %><br>
+    <%= f.text_area :correousuario %>
+  </div>
+  <div class="field">
+    <%= f.label :detalleuuario %><br>
+    <%= f.text_area :detalleuuario %>
+  </div>
+  <div class="field">
+    <%= f.label :ultimavisitausuario %><br>
+    <%= f.datetime_select :ultimavisitausuario %>
+  </div>
+  <div class="field">
+    <%= f.label :ipusuario %><br>
+    <%= f.text_area :ipusuario %>
+  </div>
+  <div class="field">
+    <%= f.label :salt %><br>
+    <%= f.text_area :salt %>
+  </div>
+  <div class="field">
+    <%= f.label :nombreusuario %><br>
+    <%= f.text_field :nombreusuario %>
+  </div>
+  <div class="field">
+    <%= f.label :apellidousuario %><br>
+    <%= f.text_field :apellidousuario %>
+  </div>
+  <div class="field">
+    <%= f.label :telefonousuario %><br>
+    <%= f.number_field :telefonousuario %>
+  </div>
+  <div class="field">
+    <%= f.label :nacimientousuario %><br>
+    <%= f.date_select :nacimientousuario %>
+  </div>
+  <div class="field">
+    <%= f.label :latusuario %><br>
+    <%= f.text_field :latusuario %>
+  </div>
+  <div class="field">
+    <%= f.label :lonusuario %><br>
+    <%= f.text_field :lonusuario %>
+  </div>
+  <div class="field">
+    <%= f.label :direccionusuario %><br>
+    <%= f.text_area :direccionusuario %>
+  </div>
+  <div class="field">
+    <%= f.label :sexousuario %><br>
+    <%= f.text_field :sexousuario %>
+  </div>
+  <div class="field">
+    <%= f.label :registrousuario %><br>
+    <%= f.datetime_select :registrousuario %>
+  </div>
+  <div class="field">
+    <%= f.label :cuentausuario %><br>
+    <%= f.text_area :cuentausuario %>
+  </div>
+  <div class="field">
+    <%= f.label :estado_id %><br>
+    <%= f.number_field :estado_id %>
+  </div>
+  <div class="field">
+    <%= f.label :localidad_id %><br>
+    <%= f.number_field :localidad_id %>
+  </div>
+  <div class="field">
+    <%= f.label :imagenusuario %><br>
+    <%= f.text_area :imagenusuario %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

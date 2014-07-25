@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Registro contable :: Asociación Rural Zapote Platanares ::</title>
+    <script src="<%= javascript_url "jquery-ui" %>"></script>
+    <%= csrf_meta_tags %>
+    <%= yield :head %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag :bootstrap, cache: true %>
+    <%= stylesheet_link_tag :"bootswatch", cache: true %>
+    <link rel="stylesheet" href="<%= stylesheet_url "" %>" >
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="<%= javascript_url "html5shiv" %>"></script>
+      <script src="<%= javascript_url "respond.min" %>"></script>
+    <![endif]-->
+    <script src="<%= javascript_url "jquery-1.10.2.min" %>"></script>
+    <script src="<%= javascript_url "bootstrap.min" %>"></script>
+    <script src="<%= javascript_url "bootswatch" %>"></script>
+      
+       <%= stylesheet_link_tag :"redmond/jquery-ui.css" %>
+<script src="<%= javascript_url "jquery-ui" %>"></script>
+<script>
+ $(function() {
+ $.datepicker.regional['es'] = {
+ closeText: 'Cerrar',
+ prevText: '<Ant',
+ nextText: 'Sig>',
+ currentText: 'Hoy',
+ monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+ monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+ dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+ dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+ dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+ weekHeader: 'Sm',
+ dateFormat: 'dd/mm/yy',
+ firstDay: 1,
+ isRTL: false,
+ showMonthAfterYear: false,
+ yearSuffix: ''
+ };
+ $.datepicker.setDefaults($.datepicker.regional['es']);
+	 
+	 
+$( "#datepicker" ).datepicker({
+numberOfMonths: 3,
+showButtonPanel: true,
+language: 'es',
+maxDate: '+0d',
+dateFormat: 'yy-mm-dd',
+ showOn: "button",
+buttonImage: "../images/calendar.gif",
+buttonImageOnly: true
+});
+});
+</script>
+  </head>
+  <body>
+	<%= render :partial => '/layouts/shared/menu' %>
+    <div class="container">
+     <div class="page-header" id="banner">
+	  <br />
+	   <%= yield %>
+      <div class="row">
+      </div>
+     </div>
+    </div>
+	<%= render :partial => '/layouts/shared/footer' %>
+  </body>
+</html>

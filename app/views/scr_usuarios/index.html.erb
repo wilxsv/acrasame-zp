@@ -1,0 +1,69 @@
+<div class="module">
+ <div class="module-head">
+  <h3>Listing scr_usuarios</h3>
+ </div>
+ <div class="module-body">
+  
+<table class="table table-striped table-bordered table-condensed">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Correousuario</th>
+      <th>Detalleuuario</th>
+      <th>Ultimavisitausuario</th>
+      <th>Ipusuario</th>
+      <th>Salt</th>
+      <th>Nombreusuario</th>
+      <th>Apellidousuario</th>
+      <th>Telefonousuario</th>
+      <th>Nacimientousuario</th>
+      <th>Latusuario</th>
+      <th>Lonusuario</th>
+      <th>Direccionusuario</th>
+      <th>Sexousuario</th>
+      <th>Registrousuario</th>
+      <th>Cuentausuario</th>
+      <th>Estado</th>
+      <th>Localidad</th>
+      <th>Imagenusuario</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scr_usuarios.each do |scr_usuario| %>
+      <tr>
+        <td><%= scr_usuario.username %></td>
+        <td><%= scr_usuario.password %></td>
+        <td><%= scr_usuario.correousuario %></td>
+        <td><%= scr_usuario.detalleuuario %></td>
+        <td><%= scr_usuario.ultimavisitausuario %></td>
+        <td><%= scr_usuario.ipusuario %></td>
+        <td><%= scr_usuario.salt %></td>
+        <td><%= scr_usuario.nombreusuario %></td>
+        <td><%= scr_usuario.apellidousuario %></td>
+        <td><%= scr_usuario.telefonousuario %></td>
+        <td><%= scr_usuario.nacimientousuario %></td>
+        <td><%= scr_usuario.latusuario %></td>
+        <td><%= scr_usuario.lonusuario %></td>
+        <td><%= scr_usuario.direccionusuario %></td>
+        <td><%= scr_usuario.sexousuario %></td>
+        <td><%= scr_usuario.registrousuario %></td>
+        <td><%= scr_usuario.cuentausuario %></td>
+        <td><%= scr_usuario.estado_id %></td>
+        <td><%= scr_usuario.localidad_id %></td>
+        <td><%= scr_usuario.imagenusuario %></td>
+        <td><%= link_to 'Show', scr_usuario %></td>
+        <td><%= link_to 'Edit', edit_scr_usuario_path(scr_usuario) %></td>
+        <td><%= link_to 'Destroy', scr_usuario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo beneficiario', new_scr_usuario_path, class:"btn btn-inverse" %>
+ </div>
+</div>
