@@ -16,14 +16,6 @@
     <%= f.text_field :cuentaNombre %>
   </div>
   <div class="field">
-    <%= f.label :Debe %><br>
-    <%= f.text_field :cuentaDebe %>
-  </div>
-  <div class="field">
-    <%= f.label :Haber %><br>
-    <%= f.text_field :cuentaHaber %>
-  </div>
-  <div class="field">
     <%= f.label :Cuenta_de_orden_superior %><br>
     <%= f.select :cat_cuenta_id, ScrCuentua.order(:cuentaCodigo).all.collect { |p| [ p.cuentaNombre, p.id ] }, include_blank: true %>
   </div>
@@ -40,6 +32,6 @@
     <%= f.check_box :cuentaNegativa %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Crear cuenta", class:"btn btn-mini btn-info" %>
   </div>
 <% end %>

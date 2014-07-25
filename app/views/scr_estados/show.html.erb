@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Nombre:</strong>
+  <strong>Nombre del estado:</strong>
   <%= @scr_estado.nombreEstado %>
 </p>
 
-<%= link_to ' Editar ', edit_scr_estado_path(@scr_estado) %> |
-<%= link_to ' Regresar ', scr_estados_path %>
+<%= link_to ' Editar ', edit_scr_estado_path(@scr_estado), class:"btn btn-mini btn-info" %> |
+<%= link_to ' Regresar ', scr_estados_path, class:"btn btn-mini btn-inverse" %>

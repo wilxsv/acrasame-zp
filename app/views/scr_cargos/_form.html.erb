@@ -21,13 +21,13 @@
   </div>
   <div class="field">
     <%= f.label :Salario %><br>
-    <%= f.text_field :cargoSalario %>
+    <div class="input-append"><%= f.text_field :cargoSalario %><span class="add-on">$</span></div>
   </div>
   <div class="field">
     <%= f.label :Cargo %><br>
     <%= f.select :cargo_id, ScrCargo.order(:cargoNombre).all.collect { |p| [ p.cargoNombre, p.id ] }, include_blank: true %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Crear cargo", class:"btn btn-mini btn-info" %>
   </div>
 <% end %>

@@ -1,17 +1,16 @@
 default: &default
   adapter: postgresql
-  encoding: unicode
-  host: localhost
-  port: 5432
-  username: acrasame
-  password: 1234..
-  database: acrasame
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  database: acrasame_testing
+  username: wilx
+  password: 1234
+  encoding: UTF8
   pool: 5
 
 development:
   <<: *default
+  
 test:
   <<: *default
+  
 production:
   <<: *default

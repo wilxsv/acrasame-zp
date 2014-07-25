@@ -24,6 +24,6 @@
     <%= f.select :localidad_id, ScrLocalidad.order(:localidad_nombre).all.collect { |p| [ p.localidad_nombre, p.id ] }, include_blank: true %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Crear organizacion", class:"btn btn-primary" %>
   </div>
 <% end %>

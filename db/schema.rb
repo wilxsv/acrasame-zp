@@ -288,6 +288,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.datetime "transaxRegistro",            default: "('now'::text)::timestamp(0) without time zone", null: false
     t.date     "transaxFecha",                                                                         null: false
     t.integer  "pcontable_id",     limit: 8,                                                           null: false
+    t.boolean  "activa",                     default: true,                                            null: false
   end
 
   add_index "scr_transaccion", ["pcontable_id"], name: "FKI_det_contable", using: :btree

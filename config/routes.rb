@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :scr_transaccions, :scr_cuentuas, :scr_cat_actividads, :scr_area_trabajos, :scr_marca_producs, :scr_proveedors, :scr_estados
-  resources :scr_bancos, :scr_rols, :scr_cargos, :scr_localidads, :scr_organizacions, :scr_cat_organizacions, :transacx
+  resources :scr_bancos, :scr_rols, :scr_cargos, :scr_localidads, :scr_organizacions, :scr_cat_organizacions, :transacx, :scr_usuarios
   get 'resumen/index'
   get 'informe/index'
   get 'persona/index'
@@ -28,6 +28,11 @@ Rails.application.routes.draw do
   post 'transaccion/create'
   get 'core/index'
   get 'home/index'
+  get 'home/login'
+  post 'home/login'
+  get 'home/logout'
+  get 'home/profile'
+  root 'home#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

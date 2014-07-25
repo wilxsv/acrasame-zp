@@ -1,12 +1,3 @@
-<div class="bs-component">
- <div class="modal">
-  <div class="modal-dialog">
-   <div class="modal-content">
-    <div class="modal-header">
-     <button class="close" aria-hidden="true" data-dismiss="modal" type="button">×</button>
-     <h4 class="modal-title">Transacciones</h4>
-    </div>
-    <div class="modal-body">
      <table class="table table-striped table-hover">
       <thead><tr><th>Secuencia</th><th>Cuenta</th><th>Nombre</th><th>Debe</th><th>Haber</th><th>Fecha</th></tr></thead>
       <tbody>
@@ -31,25 +22,7 @@
       <tr><td></td><td></td><td></td><td><b><%= debe %></b></td><td><b><%= haber %></b></td><td></td></tr>
       </tbody>
      </table>
-    </div>
     <div class="modal-footer">
      <button class="btn btn-default" data-dismiss="modal" type="button">Cerrar</button>
      <button class="btn btn-primary" type="button" onclick="window.location.href='#top'">Regresar al inicio</button>
     </div>
-   </div>
-  </div>
-  <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">< ></div>
- </div>
-</div>
-<br>
-
-<!--
-/*
-*<transacx><fecha>2014-1-19</fecha><empleado>2</empleado>
-<nodo><cuenta>a</cuenta><monto>a</monto><debe>a</debe></nodo>
-* <nodo><cuenta>b</cuenta><monto>b</monto><debe>b</debe></nodo>
-* <nodo><cuenta>c</cuenta><monto>c</monto><debe>c</debe></nodo>
-* <nodo><cuenta>d</cuenta><monto>d</monto><debe>d</debe></nodo>
-*</transacx>
-*  select * from fcn_genera_transaccion();
-*/-->

@@ -37,9 +37,9 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-#gem 'pg'
-#ruby "1.9.3"
-#gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
-#gem 'rails_12factor'
-#gem 'turbolinks'
-#gem 'bootstrap-datepicker-rails'
+gem 'pg'
+gem 'rails_12factor'
+gem 'turbolinks'
+gem 'bootstrap-datepicker-rails'
+#ruby "2.1.1"
+gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'

@@ -1,4 +1,4 @@
-<%= form_for(@scr_rol) do |f| %>
+<%= form_for(@scr_rol, class:"form-horizontal row-fluid") do |f| %>
   <% if @scr_rol.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@scr_rol.errors.count, "error") %> prohibited this scr_rol from being saved:</h2>
@@ -20,6 +20,6 @@
     <%= f.text_area :detallerol %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Crear rol", class:"btn btn-primary" %>
   </div>
 <% end %>
