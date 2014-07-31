@@ -1,8 +1,7 @@
-<%= form_for(@scr_usuario) do |f| %>
+<%= form_for :scr_usuario, class:"form-horizontal row-fluid", multipart: true,  :url => { :action => :create } do |f| %>
   <% if @scr_usuario.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@scr_usuario.errors.count, "error") %> prohibited this scr_usuario from being saved:</h2>
-
       <ul>
       <% @scr_usuario.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,87 +10,52 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :username %><br>
-    <%= f.text_field :username %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.text_area :password %>
-  </div>
-  <div class="field">
-    <%= f.label :correousuario %><br>
-    <%= f.text_area :correousuario %>
-  </div>
-  <div class="field">
-    <%= f.label :detalleuuario %><br>
-    <%= f.text_area :detalleuuario %>
-  </div>
-  <div class="field">
-    <%= f.label :ultimavisitausuario %><br>
-    <%= f.datetime_select :ultimavisitausuario %>
-  </div>
-  <div class="field">
-    <%= f.label :ipusuario %><br>
-    <%= f.text_area :ipusuario %>
-  </div>
-  <div class="field">
-    <%= f.label :salt %><br>
-    <%= f.text_area :salt %>
-  </div>
-  <div class="field">
-    <%= f.label :nombreusuario %><br>
-    <%= f.text_field :nombreusuario %>
-  </div>
-  <div class="field">
-    <%= f.label :apellidousuario %><br>
-    <%= f.text_field :apellidousuario %>
-  </div>
-  <div class="field">
-    <%= f.label :telefonousuario %><br>
-    <%= f.number_field :telefonousuario %>
-  </div>
-  <div class="field">
-    <%= f.label :nacimientousuario %><br>
-    <%= f.date_select :nacimientousuario %>
-  </div>
-  <div class="field">
-    <%= f.label :latusuario %><br>
-    <%= f.text_field :latusuario %>
-  </div>
-  <div class="field">
-    <%= f.label :lonusuario %><br>
-    <%= f.text_field :lonusuario %>
-  </div>
-  <div class="field">
-    <%= f.label :direccionusuario %><br>
-    <%= f.text_area :direccionusuario %>
-  </div>
-  <div class="field">
-    <%= f.label :sexousuario %><br>
-    <%= f.text_field :sexousuario %>
-  </div>
-  <div class="field">
-    <%= f.label :registrousuario %><br>
-    <%= f.datetime_select :registrousuario %>
-  </div>
-  <div class="field">
-    <%= f.label :cuentausuario %><br>
-    <%= f.text_area :cuentausuario %>
-  </div>
-  <div class="field">
-    <%= f.label :estado_id %><br>
-    <%= f.number_field :estado_id %>
-  </div>
-  <div class="field">
-    <%= f.label :localidad_id %><br>
-    <%= f.number_field :localidad_id %>
-  </div>
-  <div class="field">
-    <%= f.label :imagenusuario %><br>
-    <%= f.text_area :imagenusuario %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+   <div class="control-group">
+    <div class="controls row-fluid">
+     <%= f.text_field :nombreusuario, placeholder:"Nombres" %> <%= f.text_field :apellidousuario, placeholder:"Apellidos" %> 
+    </div>
+   </div>
+   <div class="control-group">
+    <div class="controls row-fluid">
+     <%= f.telephone_field :telefonousuario, placeholder:"telefono" %> <%= f.text_field :correousuario, placeholder:"Correo_Electronico", type:"email" %>  
+    </div>
+   </div>
+   <div class="control-group">
+    <div class="controls row-fluid">
+     <%= f.text_field :nacimientousuario, placeholder:"Fecha de nacimiento", id: "datepicker" %> 
+    </div>
+   </div>
+   <div class="control-group">
+    <div class="controls row-fluid">
+     <%= f.text_field :username, placeholder:"Username" %> <%= f.text_field :password, type:"password", placeholder:"Password" %> 
+    </div>
+   </div>
+   <div class="control-group">
+    <div class="controls row-fluid">
+     Localidad: <%= f.select :localidad_id, ScrLocalidad.select('id, id, "localidad_nombre", "localidad_nombre"').order(:localidad_nombre).all.collect { |p| [ p.localidad_nombre, p.id ] }, include_blank: false %> <%= f.text_field :direccionusuario, placeholder:"Dirección" %> 
+    </div>
+   </div>
+   <div class="control-group">
+    <div class="controls row-fluid">
+     <div class="input-append"><span class="add-on">#</span><%= f.number_field :latusuario, placeholder:"Latitud" %> <span class="add-on">#</span> <%= f.number_field :lonusuario, placeholder:"Longitud" %></div>
+    </div>
+   </div>
+   <div class="control-group">
+    <div class="controls row-fluid">
+     <%= f.text_field :detalleuuario, placeholder:"Comentarios" %>
+    </div>
+   </div>
+   <div class="control-group">
+    <div class="controls row-fluid">
+     Estado: <%= f.select :estado_id, ScrEstado.select('id, id, "nombreEstado", "nombreEstado"').order(:nombreEstado).all.collect { |p| [ p.nombreEstado, p.id ] }, include_blank: false %>
+    </div>
+   </div>
+   <div class="control-group">
+    <div class="controls row-fluid">
+     <%= f.file_field :imagenusuario, placeholder:"Username" %> 
+    </div>
+   </div>
+   <div class="control-group">
+    <%= f.submit "Procesar información", class:"btn btn-mini btn-primary", data: { confirm: 'Confirma la operación ?' } %>
+   </div>
 <% end %>

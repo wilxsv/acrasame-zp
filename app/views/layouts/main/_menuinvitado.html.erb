@@ -1,0 +1,57 @@
+                    <div class="span3">
+                        <div class="sidebar">
+                            <ul class="widget widget-menu unstyled">
+                                <li class="active"><%= link_to '<i class="menu-icon icon-dashboard"></i>Menu invitado'.html_safe, home_index_path %></li>
+                                <li class="active"><%= link_to '<i class="menu-icon icon-dashboard"></i>Resumen general'.html_safe, home_index_path %></li>
+                                <li><%= link_to '<i class="menu-icon icon-bullhorn"></i> Generar cobro '.html_safe, home_index_path %></li>
+                                <li><%= link_to '<i class="menu-icon icon-bullhorn"></i>Registrar pago '.html_safe, home_index_path %></li>
+                                <li><%= link_to '<i class="menu-icon icon-tasks"></i>Ciclo contable <b class="label orange pull-right">19</b>'.html_safe, core_index_path %></li>
+                            </ul>
+                            <!--/.widget-nav-->
+                            
+                             <!--/.widget-nav-->
+                            <ul class="widget widget-menu unstyled">
+                                <li><a class="collapsed" data-toggle="collapse" href="#togglePages"><i class="menu-icon icon-cog">
+                                </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
+                                </i>Catalogos :: </a>
+                                    <ul id="togglePages" class="collapse unstyled">
+                                        <li><%= link_to '<i class="icon-inbox"></i>Bancos '.html_safe,  scr_bancos_url %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Cargos '.html_safe,  scr_cargos_url %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Cuentas '.html_safe, scr_cuentuas_url %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Estados '.html_safe,  scr_estados_url %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Localidades '.html_safe,  scr_cargos_url %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Organizaciones '.html_safe,  scr_organizacions_url %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Categoria de organizaciones '.html_safe,  scr_cat_organizacions_url %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Proveedores '.html_safe,  scr_proveedors_url %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Roles '.html_safe,  scr_rols_url %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Usuarios '.html_safe,  scr_usuarios_url %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Transacciones '.html_safe,  transaccion_index_url %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Categoria de actividades '.html_safe,  scr_cat_actividads_url %></li>
+                                        
+                                        <li><%= link_to '<i class="icon-inbox"></i>Proveedores'.html_safe, proveedor_index_path %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Cuentas '.html_safe, cuenta_index_path %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Localidades '.html_safe, scr_localidads_url %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Cargos '.html_safe, cargo_index_path %></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="widget widget-menu unstyled">
+                                <li><li><a class="collapsed" data-toggle="collapse" href="#config"><i class="menu-icon icon-cog">
+                                </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
+                                </i>Configuración :: </a>
+                                    <ul id="config" class="collapse unstyled">
+                                        <li><%= link_to '<i class="menu-icon icon-bar-chart"></i>Bloque de consumo'.html_safe, bloque_index_path %></li>
+                                        <li><%= link_to '<i class="menu-icon icon-book"></i>Activo fijo '.html_safe, afijo_index_path %></li>
+                                        <li><%= link_to '<i class="menu-icon icon-table"></i>Ciclo contable '.html_safe, core_index_path %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Roles '.html_safe, rol_index_path %></li>
+                                        <li><%= link_to '<i class="menu-icon icon-bold"></i>Estados '.html_safe, estado_index_path %></li>
+                                        <li><%= link_to '<i class="menu-icon icon-paste"></i>Beneficiarias '.html_safe, persona_index_path %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Resumen de usuarios '.html_safe, resumen_index_url %></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#"><i class="menu-icon icon-signout"></i>Logout </a></li>
+                            </ul>
+                        </div>
+                        <!--/.sidebar-->
+                    </div>
+                    <!--/.span3-->

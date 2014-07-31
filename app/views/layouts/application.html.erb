@@ -29,30 +29,35 @@
      <div class="row">
       <%= render :partial => '/layouts/main/menu' %>
   <% elsif session['rol'] == 'admin' %>
-   <%= render :partial => '/layouts/main/head' %>
+   <%= render :partial => '/layouts/main/heada' %>
    <div class="wrapper">
     <div class="container">
      <div class="row">
-      <%= render :partial => '/layouts/main/menu' %>
+      <%= render :partial => '/layouts/main/menua' %>
   <% elsif session['rol'] == 'report' %>
-   <%= render :partial => '/layouts/main/head' %>
+   <%= render :partial => '/layouts/main/headb' %>
    <div class="wrapper">
     <div class="container">
      <div class="row">
-      <%= render :partial => '/layouts/main/menu' %>
+      <%= render :partial => '/layouts/main/menub' %>
   <% elsif session['rol'] == 'read' %>
-   <%= render :partial => '/layouts/main/head' %>
+   <%= render :partial => '/layouts/main/headc' %>
    <div class="wrapper">
     <div class="container">
      <div class="row">
-      <%= render :partial => '/layouts/main/menu' %>
-  <% elsif session['rol'] == 'conta' %>
+      <%= render :partial => '/layouts/main/menuc' %>
+  <% elsif session['rol'] == 'contad' %>
+   <%= render :partial => '/layouts/main/headd' %>
+   <div class="wrapper">
+    <div class="container">
+     <div class="row">
+      <%= render :partial => '/layouts/main/menud' %>
   <% else %>
-   <%= render :partial => '/layouts/main/head' %>
+   <%= render :partial => '/layouts/main/headinvitado' %>
    <div class="wrapper">
     <div class="container">
      <div class="row">
-      <%= render :partial => '/layouts/main/menu' %>
+      <%= render :partial => '/layouts/main/menuinvitado' %>
   <% end %>
       <div class="span9">
        <div class="content">

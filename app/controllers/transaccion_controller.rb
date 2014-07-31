@@ -2,6 +2,8 @@ class TransaccionController < ApplicationController
 
   # POST /transaccion
   def index
+    session[:roles] = " admin "
+    acceso
     @scr_transaccion = ScrTransaccion.new
     @scr_transaccions = ScrTransaccion.all.order('"transaxSecuencia", "transaxFecha"')
     @tmp = Array.new
@@ -73,4 +75,17 @@ class TransaccionController < ApplicationController
       session[:haber] += monto.to_f
     end
   end
+  
+#  def acceso
+    #s.index 'World
+#    if session[:roles] != nil and session[:roles].match(session[:rol]) 
+#      session[:roles] = ""
+      #entro
+#    else
+ #     session[:error] = "Intentas entrar en un lugar que no existe"
+ #     redirect_to core_index_url and return
+ #   end
+ # end
+ 
+ require 'lib/acceso'
 end
