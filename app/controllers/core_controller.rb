@@ -25,7 +25,7 @@ class CoreController < ApplicationController
   end
   
   def logout
-    session[:user_nick] = false
+    session[:user_id] = false
     session[:user_nombre] = false
     session[:user_mail] =  false
     session[:rol] = false
