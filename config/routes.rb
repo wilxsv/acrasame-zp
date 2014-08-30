@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
+
+  resources :scr_det_facturas
+
+  resources :scr_cobros
+
+  resources :scr_cat_cobros
+
+  resources :scr_lecturas
+
   resources :scr_transaccions, :scr_cuentuas, :scr_cat_actividads, :scr_area_trabajos, :scr_marca_producs, :scr_proveedors, :scr_estados
   resources :scr_bancos, :scr_rols, :scr_cargos, :scr_localidads, :scr_organizacions, :scr_cat_organizacions, :transacx, :scr_usuarios
+  resources :scr_empleados
   get 'resumen/index'
   get 'informe/index'
   get 'persona/index'
@@ -21,11 +31,14 @@ Rails.application.routes.draw do
   get 'pago/index'
   get 'control/index'
   get 'recibo/index'
+  get 'recibo/lectura'
+  post 'recibo/lectura'
   get 'cobro/index'
   get 'transaccion/index'
   get 'transaccion/show'
   post 'transaccion/index'
   post 'transaccion/create'
+  post 'scr_usuarios/rol'
   get 'core/index'
   get 'core/login'
   get 'core/autenticate'

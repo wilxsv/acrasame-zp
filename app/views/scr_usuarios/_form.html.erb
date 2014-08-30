@@ -47,7 +47,7 @@
    </div>
    <div class="control-group">
     <div class="controls row-fluid">
-     Estado: <%= f.select :estado_id, ScrEstado.select('id, id, "nombreEstado", "nombreEstado"').order(:nombreEstado).all.collect { |p| [ p.nombreEstado, p.id ] }, include_blank: false %>
+     Cuenta [Medidor y numero de cuenta]: <%= f.text_area :cuentausuario %>
     </div>
    </div>
    <div class="control-group">

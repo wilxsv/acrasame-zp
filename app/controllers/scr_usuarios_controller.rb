@@ -92,6 +92,14 @@ class ScrUsuariosController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def rol
+    @rol = ScrUsuarioRol.new()
+    @rol.usuario_id	= params[:scr_usuario][:usuario_id]
+    @rol.rol_id		= params[:scr_usuario][:estado_id]
+    @rol.save
+    redirect_to  scr_usuarios_url
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

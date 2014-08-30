@@ -60,6 +60,13 @@ ActiveRecord::Schema.define(version: 0) do
 
   add_index "scr_cat_actividad", ["cActividadNombre"], name: "UN_cat_actividad", unique: true, using: :btree
 
+  create_table "scr_cat_cobro", force: true do |t|
+    t.string "cCobroNombre",      limit: 150, null: false
+    t.text   "cCobroDescripcion"
+  end
+
+  add_index "scr_cat_cobro", ["cCobroNombre"], name: "UN_cat_cobro", unique: true, using: :btree
+
   create_table "scr_cat_cooperante", force: true do |t|
     t.string "catCoopNombre",  limit: 100, null: false
     t.text   "catCoopDescrip"
@@ -108,6 +115,27 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "banco_id",             limit: 8
   end
 
+  create_table "scr_cobro", force: true do |t|
+    t.string  "cobroNombre",      limit: 150,                 null: false
+    t.string  "cobroCodigo",      limit: 10,                  null: false
+    t.text    "cobroDescripcion"
+    t.date    "cobroInicio",                                  null: false
+    t.date    "cobroFin",                                     null: false
+    t.float   "cobroValor",                   default: 0.0,   null: false
+    t.boolean "cobroPermanente",              default: false, null: false
+    t.integer "cat_cobro_id",     limit: 8,                   null: false
+  end
+
+  add_index "scr_cobro", ["cobroCodigo"], name: "unique_nombre_cobrocodigo", unique: true, using: :btree
+  add_index "scr_cobro", ["cobroNombre"], name: "unique_nombre_cobronombre", unique: true, using: :btree
+
+  create_table "scr_consumo", force: true do |t|
+    t.datetime "registro",             default: "now()", null: false
+    t.integer  "cantidad",   limit: 8, default: 0,       null: false
+    t.integer  "cobro_id",   limit: 8,                   null: false
+    t.integer  "factura_id", limit: 8,                   null: false
+  end
+
   create_table "scr_cooperante", force: true do |t|
     t.string  "cooperanteNombre",      limit: 100, null: false
     t.text    "cooperanteDescripcion"
@@ -142,13 +170,36 @@ ActiveRecord::Schema.define(version: 0) do
   add_index "scr_det_contable", ["organizacion_id"], name: "FKI_organizacion", using: :btree
 
   create_table "scr_det_factura", force: true do |t|
-    t.integer  "det_factur_numero",  limit: 8, null: false
-    t.text     "det_factur_cliente",           null: false
-    t.datetime "det_factur_fecha",             null: false
+    t.integer  "det_factur_numero", limit: 8,                 null: false
+    t.datetime "det_factur_fecha",                            null: false
+    t.integer  "socio_id",          limit: 8,                 null: false
+    t.boolean  "cancelada",                   default: false, null: false
+    t.datetime "fecha_cancelada"
+    t.float    "total",                       default: 0.0,   null: false
+    t.date     "limite_pago",                                 null: false
   end
 
-# Could not dump table "scr_empleado" because of following StandardError
-#   Unknown type 'dominio_email' for column 'empleadoEmail'
+  add_index "scr_det_factura", ["det_factur_numero"], name: "unique_comprobante", unique: true, using: :btree
+
+  create_table "scr_empleado", force: true do |t|
+    t.string   "empleadoNombre",       limit: 150,                   null: false
+    t.string   "empleadoApellido",     limit: 150,                   null: false
+    t.integer  "empleadoTelefono",     limit: 8,                     null: false
+    t.integer  "empleadoCelular",      limit: 8
+    t.text     "empleadoDireccion",                                  null: false
+    t.integer  "empleadoDui",          limit: 8,                     null: false
+    t.integer  "empleadoIsss",         limit: 8,                     null: false
+    t.datetime "empleadoRegistro",                 default: "now()", null: false
+    t.date     "empleadoFechaIngreso",                               null: false
+    t.integer  "cargo_id",             limit: 8,                     null: false
+    t.integer  "empleadoNit",          limit: 8,                     null: false
+    t.integer  "localidad_id",         limit: 8,                     null: false
+    t.string   "empleadoEmail",        limit: 150
+  end
+
+  add_index "scr_empleado", ["empleadoDui"], name: "unique_dui_empleado", unique: true, using: :btree
+  add_index "scr_empleado", ["empleadoIsss"], name: "unique_isss_empleado", unique: true, using: :btree
+  add_index "scr_empleado", ["empleadoNit"], name: "UN_empleado_nit", unique: true, using: :btree
 
   create_table "scr_empleado_actividad", id: false, force: true do |t|
     t.integer "empleado_id",  limit: 8, null: false
@@ -170,6 +221,14 @@ ActiveRecord::Schema.define(version: 0) do
     t.string   "his_rep_leg_direccion",      limit: 200, null: false
     t.datetime "his_rep_leg_fecha_registro",             null: false
     t.integer  "representante_legal_id",     limit: 8,   null: false
+  end
+
+  create_table "scr_lectura", force: true do |t|
+    t.string   "valorLectura",    limit: 150, null: false
+    t.date     "fechaLectura",                null: false
+    t.datetime "registroLectura",             null: false
+    t.integer  "socio_id",        limit: 8,   null: false
+    t.integer  "tecnico_id",      limit: 8,   null: false
   end
 
   create_table "scr_linea_estrategica", force: true do |t|
@@ -264,6 +323,16 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "cooperante_id",   limit: 8,   null: false
   end
 
+  create_table "scr_recibo", force: true do |t|
+    t.integer  "recibonumero",   limit: 8, null: false
+    t.integer  "recibocuenta",   limit: 8, null: false
+    t.text     "recibosocio",              null: false
+    t.text     "recibolecturax",           null: false
+    t.text     "recibolecturay",           null: false
+    t.datetime "recibofecha",              null: false
+    t.integer  "usuario_id",     limit: 8, null: false
+  end
+
 # Could not dump table "scr_representante_legal" because of following StandardError
 #   Unknown type 'dominio_email' for column 'rLegalemail'
 
@@ -300,12 +369,39 @@ ActiveRecord::Schema.define(version: 0) do
 
   add_index "scr_u_medida_produc", ["uMedidaProducNombre"], name: "UN_uMedidaNombre", unique: true, using: :btree
 
-# Could not dump table "scr_usuario" because of following StandardError
-#   Unknown type 'dominio_email' for column 'correousuario'
+  create_table "scr_usuario", force: true do |t|
+    t.string   "username",            limit: 50,                                                                                   null: false
+    t.text     "password",                                                                                                         null: false
+    t.text     "detalleuuario"
+    t.datetime "ultimavisitausuario",                                                                                              null: false
+    t.text     "salt",                                                                                                             null: false
+    t.string   "nombreusuario",       limit: 150,                                                                                  null: false
+    t.string   "apellidousuario",     limit: 150,                                                                                  null: false
+    t.integer  "telefonousuario",     limit: 8,                                                                                    null: false
+    t.date     "nacimientousuario"
+    t.float    "latusuario",                                                                                                       null: false
+    t.float    "lonusuario",                                                                                                       null: false
+    t.text     "direccionusuario"
+    t.decimal  "sexousuario",                     precision: 1, scale: 0, default: 0,                                              null: false
+    t.datetime "registrousuario",                                                                                                  null: false
+    t.integer  "estado_id",           limit: 8,                                                                                    null: false
+    t.integer  "localidad_id",        limit: 8,                                                                                    null: false
+    t.text     "imagenusuario"
+    t.string   "correousuario",       limit: 150,                                                                                  null: false
+    t.text     "cuentausuario",                                           default: "<cuentas><contador>0000</contador></cuentas>", null: false
+    t.string   "ipusuario",           limit: 150,                                                                                  null: false
+    t.text     "contador",                                                default: "x",                                            null: false
+  end
+
+  add_index "scr_usuario", ["estado_id"], name: "fki_PK_estado", using: :btree
+  add_index "scr_usuario", ["localidad_id"], name: "fki_localidad", using: :btree
+  add_index "scr_usuario", ["username"], name: "unique_login", unique: true, using: :btree
 
   create_table "scr_usuario_rol", id: false, force: true do |t|
     t.integer "usuario_id", limit: 8, null: false
     t.integer "rol_id",     limit: 8, null: false
   end
+
+  add_index "scr_usuario_rol", ["rol_id", "usuario_id"], name: "unique_permiso", unique: true, using: :btree
 
 end
