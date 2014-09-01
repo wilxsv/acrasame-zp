@@ -51,8 +51,8 @@
     </div>
    </div>
    <div class="control-group">
-    <div class="controls row-fluid">
-     <%= f.file_field :imagenusuario, placeholder:"Username" %> 
+    <div class="controls row-fluid">Estado: 
+     <%= f.select :estado_id, ScrEstado.order(:nombreEstado).all.collect { |p| [ p.nombreEstado, p.id ] }, include_blank: false %>
     </div>
    </div>
    <div class="control-group">
