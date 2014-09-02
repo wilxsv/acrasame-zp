@@ -47,12 +47,9 @@
    </div>
    <div class="control-group">
     <div class="controls row-fluid">
-     Cuenta [Medidor y numero de cuenta]: <%= f.text_area :cuentausuario %>
-    </div>
-   </div>
-   <div class="control-group">
-    <div class="controls row-fluid">Estado: 
-     <%= f.select :estado_id, ScrEstado.order(:nombreEstado).all.collect { |p| [ p.nombreEstado, p.id ] }, include_blank: false %>
+     Imagen: <%= f.file_field :imagenusuario, placeholder:"Username" %> <br />
+     Estado: <%= f.select :estado_id, ScrEstado.order(:nombreEstado).all.collect { |p| [ p.nombreEstado, p.id ] }, include_blank: false %><br/>
+     Código de contador<div class="input-append"><span class="add-on">#</span><%= f.number_field :contador, placeholder:"Código de Contador" %></div>
     </div>
    </div>
    <div class="control-group">

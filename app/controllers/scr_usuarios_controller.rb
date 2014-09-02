@@ -52,11 +52,11 @@ class ScrUsuariosController < ApplicationController
     @scr_usuario.registrousuario= time.strftime("%Y-%m-%d %H:%M:%S")
     @scr_usuario.estado_id = params[:scr_usuario][:estado_id]
     @scr_usuario.localidad_id	= params[:scr_usuario][:localidad_id]
-    uploaded_io = params[:scr_usuario][:imagenusuario]
-    File.open(Rails.root.join('public', 'DzIBijcxalAbR85K6PSOxMNrsqfVl7B1', uploaded_io.original_filename), 'wb') do |file|
-      file.write(uploaded_io.read)
-    end
-    @scr_usuario.imagenusuario = uploaded_io.original_filename
+#    uploaded_io = params[:scr_usuario][:imagenusuario]
+#    File.open(Rails.root.join('public', 'DzIBijcxalAbR85K6PSOxMNrsqfVl7B1', uploaded_io.original_filename), 'wb') do |file|
+#      file.write(uploaded_io.read)
+#    end
+#    @scr_usuario.imagenusuario = uploaded_io.original_filename
 
     respond_to do |format|
       if @scr_usuario.save
