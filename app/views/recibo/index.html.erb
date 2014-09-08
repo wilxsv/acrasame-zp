@@ -1,2 +1,16 @@
-<h1>Recibo#index</h1>
-<p>Find me in app/views/recibo/index.html.erb</p>
+<% if @info != nil %>
+ <div class="alert alert-error">
+  <strong>Noticia!</strong> <%= @info %>
+ </div>
+ <% @info = nil %>
+<% end %>
+<% if @tmp != nil %>
+ <div class="alert alert-error">
+  <strong>Noticia!</strong> <%= @tmp %>
+ </div>
+ <% @tmp = nil %>
+<% end %>
+
+<%= link_to 'Imprimir recibos del mes', recibo_imprimir_url, class:"btn btn-inverse" %> || 
+
+<%= link_to 'Regresar', scr_det_facturas_path, class:"btn btn-inverse" %>

@@ -43,3 +43,5 @@ gem 'turbolinks'
 gem 'bootstrap-datepicker-rails'
 #ruby "2.1.1"
 gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
+
+gem 'prawn'
