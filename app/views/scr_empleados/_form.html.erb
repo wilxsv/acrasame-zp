@@ -1,0 +1,43 @@
+<%= form_for(@scr_empleado) do |f| %>
+  <% if @scr_empleado.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@scr_empleado.errors.count, "error") %> prohibited this scr_empleado from being saved:</h2>
+
+      <ul>
+      <% @scr_empleado.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    Nombre: <%= f.text_field :empleadoNombre %> Apellido: <%= f.text_field :empleadoApellido %>
+  </div>
+  <div class="control-group">
+    Telefono: <%= f.number_field :empleadoTelefono %> | Celular: <%= f.number_field :empleadoCelular %>
+  </div>
+  <div class="control-group">
+    Dirección: <%= f.text_field :empleadoDireccion %>
+  </div>
+  <div class="control-group">
+    Dui: <%= f.number_field :empleadoDui %> | ISSS: <%= f.number_field :empleadoIsss %> |NIT: <%= f.number_field :empleadoNit %>
+  </div>
+  <div class="control-group">
+    Fecha Ingreso: <%= f.text_field :empleadoFechaIngreso, placeholder:"Fecha de nacimiento", id: "datepicker" %>
+  </div>
+  <div class="control-group">
+    Cargo: <%= f.select :cargo_id, ScrCargo.select('id, id, "cargoNombre", "cargoNombre"').order(:cargoNombre).all.collect { |p| [ p.cargoNombre, p.id ] }, include_blank: false %> 
+  </div>
+   <div class="control-group">
+    <div class="controls row-fluid">
+     Localidad: <%= f.select :localidad_id, ScrLocalidad.select('id, id, "localidad_nombre", "localidad_nombre"').order(:localidad_nombre).all.collect { |p| [ p.localidad_nombre, p.id ] }, include_blank: false %>
+    </div>
+   </div>
+  <div class="control-group">
+    Correo: <%= f.text_field :empleadoEmail %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Procesar información", class:"btn btn-mini btn-primary", data: { confirm: 'Confirma la operación ?' } %>
+  </div>
+<% end %>

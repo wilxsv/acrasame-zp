@@ -1,0 +1,32 @@
+<%= form_for(@scr_cobro) do |f| %>
+  <% if @scr_cobro.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@scr_cobro.errors.count, "error") %> prohibited this scr_cobro from being saved:</h2>
+
+      <ul>
+      <% @scr_cobro.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    Nombre: <%= f.text_field :cobroNombre %> | Codigo: <%= f.text_field :cobroCodigo, size:"10" %>
+  </div>
+  <div class="control-group">
+    Descripcion: <%= f.text_field :cobroDescripcion %>
+  </div>
+  <div class="control-group">
+    Rango inicio: <%= f.text_field :cobroInicio, value:"0.0", size:"10" %> fin: <%= f.text_field :cobroFin, value:"0.0", size:"10" %>
+  </div>
+  <div class="control-group">
+    Valor monetario: <%= f.text_field :cobroValor, size:"10" %> es permanente? <%= f.text_field :cobroPermanente, type:"radio", value:"1" %>Si <%= f.text_field :cobroPermanente, type:"radio", value:"0", checked:"true"%>No
+  </div>
+  <div class="control-group">
+    Categoria: <%= f.select :cat_cobro_id, ScrCatCobro.order(:cCobroNombre).all.collect { |p| [ p.cCobroNombre, p.id ] }, include_blank: false %><br/>
+  </div>
+  <div class="actions">
+    <%= f.submit "Enviar", class:"btn btn-mini btn-primary", data: { confirm: 'Confirma la operación ?' } %>
+  </div>
+<% end %>

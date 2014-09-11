@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Registro:</strong>
+  <%= @scr_consumo.registro %>
+</p>
+
+<p>
+  <strong>Cantidad:</strong>
+  <%= @scr_consumo.cantidad %>
+</p>
+
+<p>
+  <strong>Cobro:</strong>
+  <%= @scr_consumo.cobro_id %>
+</p>
+
+<p>
+  <strong>Factura:</strong>
+  <%= @scr_consumo.factura_id %>
+</p>
+
+<%= link_to 'Edit', edit_scr_consumo_path(@scr_consumo) %> |
+<%= link_to 'Back', scr_consumos_path %>

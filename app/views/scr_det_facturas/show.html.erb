@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+<% notice = nil %>
+<p>
+  <strong>Socio:</strong>
+  <% c = ScrUsuario.find(@scr_det_factura.socio_id) %>
+  <%= c.nombreusuario %> <%= c.apellidousuario %>
+</p>
+<p>
+  <strong>Cuenta:</strong> <%= c.id %> | <strong>Medidor:</strong> <%= c.contador %>
+</p>
+<p>
+  <strong>Fecha cancelada:</strong>
+  <%= @scr_det_factura.fecha_cancelada %>
+</p>
+
+<p>
+  <strong>Total:</strong>
+  <%= @scr_det_factura.total %>
+</p>
+<table>
+ <thead>
+  <tr>
+   <td>Codigo</td>
+   <td>Concepto</td>
+   <td>Valor</td>
+  </tr>
+ </thead>
+ <tbody>
+  <% @consumo = ScrConsumo.where("factura_id = '"+@scr_det_factura.id.to_s+"'").order(id: :desc) %>
+  <% for data in @consumo %>
+   <tr>
+    <% k = ScrCobro.find(data.cobro_id) %>
+    <td><%= k.cobroCodigo %></td>
+    <td><%= k.cobroNombre %></td>
+    <td>
+     <% if (k.cat_cobro_id > 1)  %>
+      <% l = data.cantidad * k.cobroValor %>
+      <%= l %>
+     <% else %>
+      <%= k.cobroValor %>
+     <% end %>
+    </td>
+   </tr>
+   <tr>
+  <% end %>
+ </thead>
+</table>
+<p>
+  <strong>Limite pago:</strong>
+  <%= @scr_det_factura.limite_pago %>
+</p>
+
+<p>
+<%= form_for :transacx, :url => { :action => :cargo } do |f| %>
+  <div class="field">
+   Cantidad: <%= f.number_field :cantidad %> Concepto: <%= f.select :cobro_id, ScrCobro.select('id, id, "cobroNombre", "cobroNombre"').order(:cobroNombre).all.collect { |p| [ p.cobroNombre, p.id ] }, include_blank: false %>
+  </div>
+  <%= f.number_field :factura_id, type:"hidden", value:@scr_det_factura.id %>
+  <div class="actions">
+    <%= f.submit "Agregar cargo", class:"btn btn-mini btn-primary" %>
+  </div>
+<% end %>
+</p>
+
+<%= link_to 'Regresar', scr_det_facturas_path, class:"btn btn-inverse" %>
