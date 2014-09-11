@@ -11,6 +11,11 @@ class HomeController < ApplicationController
   end
   
   def logout
+    session[:user_id] = nil
+    session[:user_nombre] = nil
+    session[:user_mail] =  nil
+    session[:rol] = nil
+    redirect_to action: 'index'
   end
   
   def profile

@@ -3,4 +3,8 @@
   <strong>Advertencia!</strong> <%= session['error'] %>
  </div>
  <% session['error'] = nil %>
-<% end %>
+<% end %><br>
+id: <%= session[:user_id] %><br>
+nombre: <%= session[:user_nombre] %><br>
+mail: <%= session[:user_mail] %><br>
+rol: <%= session[:rol] %>

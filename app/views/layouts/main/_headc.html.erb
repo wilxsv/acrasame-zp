@@ -17,58 +17,14 @@
       </form>
       <ul class="nav pull-right">
        <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Movimientos<b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Operaciones<b class="caret"></b></a>
         <ul class="dropdown-menu">
-         <li><%= link_to "Nueva transaccion", transaccion_index_url %></li>
-         <li><%= link_to "Buscar", home_index_path %></li>
-         <li><%= link_to "Listar", transaccion_show_url %></li>
+         <li><%= link_to "Registrar Lectura de consumo",  new_scr_lectura_url %></li>
          <li class="divider"></li>
-         <li class="nav-header">Cobros</li>
-         <li><%= link_to "Generar recibo", home_index_path %></li>
-         <li><%= link_to "Generar recibos de cobro mensual", home_index_path %></li>
-         <li><%= link_to "Registrar pago", home_index_path %></li>
-         <li class="divider"></li>
-         <li class="nav-header">Operativos</li>
-         <li><%= link_to "Control de cloro en la red", home_index_path %></li>
-         <li><%= link_to "Control de cloración del agua", home_index_path %></li>
-         <li><%= link_to "Control de horas de bombeo", home_index_path %></li>
-         <li class="divider"></li>
-         <li><%= link_to "libro diario", libro_index_url %></li>
-         <li><%= link_to "libro mayor", libro_mayor_path %></li>
+         <li><%= link_to "Listado de lecturas",  scr_lecturas_url  %></li>
         </ul>
        </li>
-       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Informes<b class="caret"></b></a>
-        <ul class="dropdown-menu">
-         <li class="nav-header">Libros contables</li>
-         <li><%= link_to "Libro diario", libro_index_url %></li>
-         <li><%= link_to "Libro mayor", libro_mayor_url %></li>
-         <li class="divider"></li>
-         <li class="nav-header">Operaciones realizadas</li>
-         <li><%= link_to "Recibos generados", home_index_path %></li>
-         <li><%= link_to "Recibos cancelados", home_index_path %></li>
-         <li><%= link_to "Recibos pendientes de pago", home_index_path %></li>
-         <li><%= link_to "Operaciones generales", home_index_path %></li>
-         <li><%= link_to "Resumen general", home_index_path %></li>
-         <li class="divider"></li>
-         <li class="nav-header">Estados financieros</li>
-         <li><%= link_to "Balance de comprobación", estado_index_url %></li>
-         <li><%= link_to "Balance general", estado_index_url %></li>
-         <li><%= link_to "Estado de resultados", estado_index_url %></li>
-         <li><%= link_to "Estado de flujos de efectivo", estado_index_url %></li>
-        </ul>
-       </li>
-       <li><%= link_to "Inicio", home_index_path %></li>
-       <li class="nav-user dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= image_tag("user.png", class:"nav-avatar") %><b class="caret"></b></a>
-        <ul class="dropdown-menu">
-         <li><a href="#">Your Profile</a></li>
-         <li><a href="#">Edit Profile</a></li>
-         <li><a href="#">Account Settings</a></li>
-         <li class="divider"></li>
-         <li><a href="#">Logout</a></li>
-        </ul>
-       </li>
+       <%= render :partial => '/layouts/main/user' %>
       </ul>
      </div>
      <!-- /.nav-collapse -->

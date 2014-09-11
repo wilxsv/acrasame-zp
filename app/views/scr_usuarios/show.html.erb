@@ -2,7 +2,7 @@
  <div class="module-head"><h3>Asignar rol</h3></div>
  <div class="module-body">
   <%= form_for :scr_usuario, class:"form-horizontal row-fluid", multipart: true,  :url => { :action => :rol } do |f|  %>
-   Rol: <%= f.select :estado_id, ScrRol.select('id, id, "nombrerol", "nombrerol"').order(:nombrerol).all.collect { |p| [ p.nombrerol, p.id ] }, include_blank: false %>
+   Rol: <%= f.select :estado_id, ScrRol.select('id, id, "nombrerol", "nombrerol"').order(:id).all.collect { |p| [ p.nombrerol, p.id ] }, include_blank: false %>
    <%= f.text_field :usuario_id, type:"hidden", value:@scr_usuario.id %> 
    <%= f.submit "Finalizar transacción", class: "btn-success btn-mini" %>
   <% end %>
@@ -15,12 +15,6 @@
   <strong>Username:</strong>
   <%= @scr_usuario.username %>
 </p>
-
-<p>
-  <strong>Password:</strong>
-  <%= @scr_usuario.password %>
-</p>
-
 <p>
   <strong>Correousuario:</strong>
   <%= @scr_usuario.correousuario %>
@@ -30,22 +24,6 @@
   <strong>Detalleuuario:</strong>
   <%= @scr_usuario.detalleuuario %>
 </p>
-
-<p>
-  <strong>Ultimavisitausuario:</strong>
-  <%= @scr_usuario.ultimavisitausuario %>
-</p>
-
-<p>
-  <strong>Ipusuario:</strong>
-  <%= @scr_usuario.ipusuario %>
-</p>
-
-<p>
-  <strong>Salt:</strong>
-  <%= @scr_usuario.salt %>
-</p>
-
 <p>
   <strong>Nombreusuario:</strong>
   <%= @scr_usuario.nombreusuario %>
@@ -60,55 +38,9 @@
   <strong>Telefonousuario:</strong>
   <%= @scr_usuario.telefonousuario %>
 </p>
-
-<p>
-  <strong>Nacimientousuario:</strong>
-  <%= @scr_usuario.nacimientousuario %>
-</p>
-
-<p>
-  <strong>Latusuario:</strong>
-  <%= @scr_usuario.latusuario %>
-</p>
-
-<p>
-  <strong>Lonusuario:</strong>
-  <%= @scr_usuario.lonusuario %>
-</p>
-
 <p>
   <strong>Direccionusuario:</strong>
   <%= @scr_usuario.direccionusuario %>
-</p>
-
-<p>
-  <strong>Sexousuario:</strong>
-  <%= @scr_usuario.sexousuario %>
-</p>
-
-<p>
-  <strong>Registrousuario:</strong>
-  <%= @scr_usuario.registrousuario %>
-</p>
-
-<p>
-  <strong>Cuentausuario:</strong>
-  <%= @scr_usuario.cuentausuario %>
-</p>
-
-<p>
-  <strong>Estado:</strong>
-  <%= @scr_usuario.estado_id %>
-</p>
-
-<p>
-  <strong>Localidad:</strong>
-  <%= @scr_usuario.localidad_id %>
-</p>
-
-<p>
-  <strong>Imagenusuario:</strong>
-  <%= @scr_usuario.imagenusuario %>
 </p>
 
 <%= link_to ' Editar ', edit_scr_usuario_path(@scr_usuario), class:"btn btn-inverse" %> |

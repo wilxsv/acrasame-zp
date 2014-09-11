@@ -25,10 +25,11 @@ class CoreController < ApplicationController
   end
   
   def logout
-    session[:user_id] = false
-    session[:user_nombre] = false
-    session[:user_mail] =  false
-    session[:rol] = false
+    session[:user_id] = nil
+    session[:user_nombre] = nil
+    session[:user_mail] =  nil
+    session[:rol] = nil
+    redirect_to action: 'index'
   end
   
   private
@@ -41,8 +42,9 @@ class CoreController < ApplicationController
           session[:user_id] = u.id
           session[:user_nombre] = u.nombreusuario+"  "+u.apellidousuario
           session[:user_mail] = u.correousuario
-          c = ScrEstado.find(u.estado_id)
-          session[:rol] = c.nombreEstado
+          c = ScrUsuarioRol.where(usuario_id: u.id).take
+          c = ScrRol.find(c.rol_id)
+          session[:rol] = c.nombrerol
           return true
         else 
           return false
