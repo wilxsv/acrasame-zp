@@ -56,8 +56,8 @@ class ScrOrganizacionsController < ApplicationController
   def destroy
     @scr_organizacion.destroy
     respond_to do |format|
-      format.html { redirect_to scr_organizacions_url, notice: 'Organización fue eliminada.' }
-      format.json { head :no_content }
+      format.html { redirect_to scr_organizacions_url, notice: "Organización fue eliminada." }
+            format.json { head :no_content }
     end
   end
 
