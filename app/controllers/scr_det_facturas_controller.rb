@@ -14,7 +14,7 @@ class ScrDetFacturasController < ApplicationController
 
   def pagar
   require "prawn"
-  Prawn::Document.generate("hello.pdf") do
+  Prawn::Document.generate("public/files/last.pdf") do
    text "Hello World!"
   end
     begin

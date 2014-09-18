@@ -1,8 +1,8 @@
 default: &default
   adapter: postgresql
-  database: 
-  username: 
-  password: 
+  database: acrasame_testing
+  username: wilx
+  password: 1234
   encoding: UTF8
   pool: 5
 

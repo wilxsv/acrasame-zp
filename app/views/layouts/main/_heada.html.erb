@@ -16,27 +16,7 @@
        <button class="btn" type="button"><i class="icon-search"></i></button>
       </form>
       <ul class="nav pull-right">
-       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Movimientos<b class="caret"></b></a>
-        <ul class="dropdown-menu">
-         <li><%= link_to "Nueva transaccion", transaccion_index_url %></li>
-         <li><%= link_to "Buscar", home_index_path %></li>
-         <li><%= link_to "Listar", transaccion_show_url %></li>
-         <li class="divider"></li>
-         <li class="nav-header">Cobros</li>
-         <li><%= link_to "Generar recibo", home_index_path %></li>
-         <li><%= link_to "Generar recibos de cobro mensual", home_index_path %></li>
-         <li><%= link_to "Registrar pago", home_index_path %></li>
-         <li class="divider"></li>
-         <li class="nav-header">Operativos</li>
-         <li><%= link_to "Control de cloro en la red", home_index_path %></li>
-         <li><%= link_to "Control de cloración del agua", home_index_path %></li>
-         <li><%= link_to "Control de horas de bombeo", home_index_path %></li>
-         <li class="divider"></li>
-         <li><%= link_to "libro diario", libro_index_url %></li>
-         <li><%= link_to "libro mayor", libro_mayor_path %></li>
-        </ul>
-       </li>
+       <%= render :partial => '/layouts/main/operativos' %>
        <%= render :partial => '/layouts/main/estadosfinancieros' %>
        <%= render :partial => '/layouts/main/user' %>
       </ul>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :scr_usuario_rols
+
   resources :scr_lecturas
 
   resources :scr_consumos
