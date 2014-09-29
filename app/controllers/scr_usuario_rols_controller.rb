@@ -1,6 +1,6 @@
 class ScrUsuarioRolsController < ApplicationController
   before_action :set_scr_usuario_rol, only: [:show, :edit, :update, :destroy]
-  before_action :acceso, only: [:show, :new, :create, :index, :edit, :update, :destroy]
+ # before_action :acceso, only: [:show, :new, :create, :index, :edit, :update, :destroy]
   
   include AccesoHelpers
 

@@ -3,7 +3,7 @@ class TransaccionController < ApplicationController
 
   # POST /transaccion
   def index
-    session[:roles] = " root "
+    session[:roles] = " root Contabilidad "
     acceso
     @scr_transaccion = ScrTransaccion.new
     @scr_transaccions = ScrTransaccion.all.order('"transaxSecuencia", "transaxFecha"')
