@@ -38,7 +38,7 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 gem 'pg'
-gem 'rails_12factor'
+#gem 'rails_12factor'
 gem 'turbolinks'
 gem 'bootstrap-datepicker-rails'
 #ruby "2.1.1"
