@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @scr_cargo.cargoNombre %>
+</p>
+
+<p>
+  <strong>Descripción:</strong>
+  <%= @scr_cargo.cargoDescripcion %>
+</p>
+
+<p>
+  <strong>Salario:</strong>
+  <%= @scr_cargo.cargoSalario %>
+</p>
+
+<%= link_to ' Editar ', edit_scr_cargo_path(@scr_cargo), class:"btn btn-mini btn-info" %> |
+<%= link_to ' Regresar ', scr_cargos_path, class:"btn btn-mini btn-info" %>

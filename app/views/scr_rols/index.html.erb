@@ -1,0 +1,26 @@
+<h1>Listado de roles</h1>
+
+<table class="table table-striped table-bordered table-condensed">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Detalle</th>
+      <th colspan="3">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @scr_rols.each do |scr_rol| %>
+      <tr>
+        <td><%= scr_rol.nombrerol %></td>
+        <td><%= scr_rol.detallerol %></td>
+        <td><%= link_to ' Ver ', scr_rol, class:"btn btn-mini btn-info" %></td>
+        <td><%= link_to ' Editar ', edit_scr_rol_path(scr_rol), class:"btn btn-mini btn-info" %></td>
+        <td><%= link_to ' Eliminar ', scr_rol, method: :delete, data: { confirm: 'Confirma la operación?' }, class:"btn btn-mini btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo rol', new_scr_rol_path, class:"btn btn-mini btn-inverse" %>

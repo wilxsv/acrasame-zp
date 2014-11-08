@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  organizacion_id: 1
+  representante_legal_id: 1
+  periodoInicio: 2014-10-09
+  periodoFin: 2014-10-09
+
+two:
+  organizacion_id: 1
+  representante_legal_id: 1
+  periodoInicio: 2014-10-09
+  periodoFin: 2014-10-09

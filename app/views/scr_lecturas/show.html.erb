@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Valorlectura:</strong>
+  <%= @scr_lectura.valorLectura %>
+</p>
+
+<p>
+  <strong>Fechalectura:</strong>
+  <%= @scr_lectura.fechaLectura %>
+</p>
+
+<p>
+  <strong>Registrolectura:</strong>
+  <%= @scr_lectura.registroLectura %>
+</p>
+
+<%= link_to 'Editar', edit_scr_lectura_path(@scr_lectura) %> |
+<%= link_to 'Back', scr_lecturas_path %>

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre de organización :</strong>
+  <%= @scr_cat_organizacion.cOrgNombre %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @scr_cat_organizacion.cOrgDescripcion %>
+</p>
+
+<%= link_to 'Edit', edit_scr_cat_organizacion_path(@scr_cat_organizacion), class:"btn btn-mini btn-info" %> |
+<%= link_to 'Back', scr_cat_organizacions_path, class:"btn btn-mini btn-inverse" %>

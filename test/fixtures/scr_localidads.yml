@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  localidad_nombre: MyString
+  localidad_descripcion: MyText
+  localidad_id: 1
+  localidad_lat: 1.5
+  localidad_lon: 1.5
+
+two:
+  localidad_nombre: MyString
+  localidad_descripcion: MyText
+  localidad_id: 1
+  localidad_lat: 1.5
+  localidad_lon: 1.5

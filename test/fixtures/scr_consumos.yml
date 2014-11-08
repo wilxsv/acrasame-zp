@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  registro: 2014-09-09 16:25:15
+  cantidad: 1
+  cobro_id: 1
+  factura_id: 1
+
+two:
+  registro: 2014-09-09 16:25:15
+  cantidad: 1
+  cobro_id: 1
+  factura_id: 1

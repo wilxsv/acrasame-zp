@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @scr_localidad.localidad_nombre %>
+</p>
+
+<p>
+  <strong>Descripción:</strong>
+  <%= @scr_localidad.localidad_descripcion %>
+</p>
+
+<p>
+  <strong>Localidad:</strong>
+  <%= @scr_localidad.localidad_id %>
+</p>
+
+<p>
+  <strong>Latitud:</strong>
+  <%= @scr_localidad.localidad_lat %>
+</p>
+
+<p>
+  <strong>Longitud:</strong>
+  <%= @scr_localidad.localidad_lon %>
+</p>
+
+<%= link_to ' Editar ', edit_scr_localidad_path(@scr_localidad), class:"btn btn-mini btn-info" %> |
+<%= link_to ' Regresar ', scr_localidads_path, class:"btn btn-mini btn-inverse" %>

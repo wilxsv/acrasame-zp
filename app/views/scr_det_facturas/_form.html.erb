@@ -1,0 +1,25 @@
+<%= form_for(@scr_det_factura) do |f| %>
+  <% if @scr_det_factura.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@scr_det_factura.errors.count, "error") %> prohibited this scr_det_factura from being saved:</h2>
+
+      <ul>
+      <% @scr_det_factura.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="control-group">
+    Socio: <%= f.select :socio_id, ScrUsuario.order(:nombreusuario).all.collect { |p| [ p.nombreusuario+"  ".html_safe+p.apellidousuario, p.id ] }, include_blank: false %>
+  </div>
+  <div class="control-group">
+    Total: <%= f.text_field :total, placeholder:"000" %><span class="add-on">$</span>
+  </div>
+  <div class="control-group">
+    Fecha limite: <%= f.text_field :limite_pago, id: "datepicker" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "enviar", class:"btn btn-inverse"%>
+  </div>
+<% end %>

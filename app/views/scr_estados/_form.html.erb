@@ -1,0 +1,21 @@
+<%= form_for(@scr_estado) do |f| %>
+  <% if @scr_estado.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@scr_estado.errors.count, "error") %> prohibited this scr_estado from being saved:</h2>
+
+      <ul>
+      <% @scr_estado.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Nombre %><br>
+    <%= f.text_field :nombreEstado %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Crear estado", class:"btn btn-primary" %>
+  </div>
+<% end %>

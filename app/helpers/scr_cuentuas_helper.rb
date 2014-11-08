@@ -1,0 +1,2 @@
+module ScrCuentuasHelper
+end

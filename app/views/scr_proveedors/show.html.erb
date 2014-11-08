@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Proveedornombre:</strong>
+  <%= @scr_proveedor.proveedorNombre %>
+</p>
+
+<p>
+  <strong>Proveedordescripcion:</strong>
+  <%= @scr_proveedor.proveedorDescripcion %>
+</p>
+
+<%= link_to 'Edit', edit_scr_proveedor_path(@scr_proveedor) %> |
+<%= link_to 'Back', scr_proveedors_path %>

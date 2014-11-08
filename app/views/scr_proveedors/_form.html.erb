@@ -1,0 +1,25 @@
+<%= form_for(@scr_proveedor) do |f| %>
+  <% if @scr_proveedor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@scr_proveedor.errors.count, "error") %> prohibited this scr_proveedor from being saved:</h2>
+
+      <ul>
+      <% @scr_proveedor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :proveedorNombre %><br>
+    <%= f.text_field :proveedorNombre %>
+  </div>
+  <div class="field">
+    <%= f.label :proveedorDescripcion %><br>
+    <%= f.text_area :proveedorDescripcion %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,32 @@
+<%= form_for(@scr_area_trabajo) do |f| %>
+  <% if @scr_area_trabajo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@scr_area_trabajo.errors.count, "error") %> prohibited this scr_area_trabajo from being saved:</h2>
+
+      <ul>
+      <% @scr_area_trabajo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    Nombre: <%= f.text_field :aTrabajoNombre %>
+  </div>
+  <div class="control-group">
+    Descripcion: <%= f.text_area :aTrabajoDescripcion %>
+  </div>
+  <div class="control-group">
+    Pertenece al area: <%= f.number_field :area_trabajo_id %>
+  </div>
+  <div class="control-group">
+    Organizacion :<%= f.number_field :organizacion_id %>
+  </div>
+  <div class="control-group">
+    Asignada a: <%= f.number_field :cargo_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Enviar", class:"btn btn-mini btn-primary", data: { confirm: 'Confirma la operación ?' } %>
+  </div>
+<% end %>

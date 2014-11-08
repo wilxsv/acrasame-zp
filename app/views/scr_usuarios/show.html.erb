@@ -1,0 +1,47 @@
+<div class="module">
+ <div class="module-head"><h3>Asignar rol</h3></div>
+ <div class="module-body">
+  <%= form_for :scr_usuario, class:"form-horizontal row-fluid", multipart: true,  :url => { :action => :rol } do |f|  %>
+   Rol: <%= f.select :estado_id, ScrRol.select('id, id, "nombrerol", "nombrerol"').order(:id).all.collect { |p| [ p.nombrerol, p.id ] }, include_blank: false %>
+   <%= f.text_field :usuario_id, type:"hidden", value:@scr_usuario.id %> 
+   <%= f.submit "Finalizar transacción", class: "btn-success btn-mini" %>
+  <% end %>
+ </div>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @scr_usuario.username %>
+</p>
+<p>
+  <strong>Correousuario:</strong>
+  <%= @scr_usuario.correousuario %>
+</p>
+
+<p>
+  <strong>Detalleuuario:</strong>
+  <%= @scr_usuario.detalleuuario %>
+</p>
+<p>
+  <strong>Nombreusuario:</strong>
+  <%= @scr_usuario.nombreusuario %>
+</p>
+
+<p>
+  <strong>Apellidousuario:</strong>
+  <%= @scr_usuario.apellidousuario %>
+</p>
+
+<p>
+  <strong>Telefonousuario:</strong>
+  <%= @scr_usuario.telefonousuario %>
+</p>
+<p>
+  <strong>Direccionusuario:</strong>
+  <%= @scr_usuario.direccionusuario %>
+</p>
+
+<%= link_to ' Editar ', edit_scr_usuario_path(@scr_usuario), class:"btn btn-inverse" %> |
+<%= link_to ' Regresar ', scr_usuarios_path, class:"btn btn-inverse" %>

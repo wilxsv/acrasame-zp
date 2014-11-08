@@ -1,0 +1,62 @@
+<h1>Balance de comprobación</h1>
+<div class="bs-component">
+ <div class="modal">
+  <div class="modal-dialog">
+   <div class="modal-content">
+    <!-- <div class="modal-header">
+     <button class="close" aria-hidden="true" data-dismiss="modal" type="button">×</button>
+     <h4 class="modal-title">Balances de Comprobación del periodo <%= Date.parse(DateTime.current().to_s).strftime("%Y-%d-%m") %></h4>
+    </div>-->
+    <div class="modal-body">     
+     <table class="table table-striped table-hover">
+      <thead><tr><th>Cuenta</th><th>Nombre</th><th>Debe</th><th>Haber</th><th>Saldo debe</th><th>Saldo haber</th></tr></thead>
+      <tbody>
+       <% sactivos = 0 %>
+       <% spasivos = 0 %>
+       <% debe = 0 %>
+       <% haber = 0 %>
+       <% @activos.each do |c| %>
+        <tr>
+         <td><%= c.cuentaCodigo %></td>
+         <td><%= c.cuentaNombre %></td>
+         <td><%= c.cuentaDebe %></td>
+         <td><%= c.cuentaHaber %></td>
+        <% suma = c.cuentaDebe - c.cuentaHaber %>
+        <% sactivos += suma %>
+        <% if suma >= 0 %>
+         <td><b><%= suma %></b></td><td><b>0</b></td></tr>
+        <% else %>
+         <td><b>0</b></td><td><b><%= suma.abs %></b></td></tr>
+        <% end %>
+        <% debe += c.cuentaDebe %>
+        <% haber += c.cuentaHaber %>
+       <% end %>
+       <tr><tdcolspan="6"></td></tr>
+       <% @pasivos.each do |c| %>
+        <tr>
+         <td><%= c.cuentaCodigo %></td>
+         <td><%= c.cuentaNombre %></td>
+         <td><%= c.cuentaDebe %></td>
+         <td><%= c.cuentaHaber %></td>
+        <% suma = c.cuentaHaber - c.cuentaDebe %>
+        <% spasivos += suma %>
+        <% if suma >= 0 %>
+         <td><b>0</b></td><td><b><%= suma %></b></td></tr>
+        <% else %>
+         <td><b><%= suma.abs %></b></td><td><b>0</b></td></tr>
+        <% end %>
+        <% debe += c.cuentaDebe %>
+        <% haber += c.cuentaHaber %>
+       <% end %>
+       <tr><td colspan="2">Sumatoria</td><td><%= debe %></td><td><%= haber %></td><td><%= sactivos %></td><td><%= spasivos.abs %></td></tr>
+      </tbody>
+     </table>
+    </div>
+    <div class="modal-footer">
+     <button class="btn btn-primary" type="button" onclick="window.location.href='#top'">Regresar al inicio</button>
+    </div>
+   </div>
+  </div>
+  <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">< ></div>
+ </div>
+</div>

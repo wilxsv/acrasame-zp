@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fecha: 2014-11-07
+  bombeo_inicio: 2014-11-07 16:05:32
+  bombeo_fin: 2014-11-07 16:05:32
+  voltaje: 1.5
+  amperaje: 1.5
+  presion: 1.5
+  lectura: 1.5
+  produccion: 1.5
+  empleado_id: 1
+
+two:
+  fecha: 2014-11-07
+  bombeo_inicio: 2014-11-07 16:05:32
+  bombeo_fin: 2014-11-07 16:05:32
+  voltaje: 1.5
+  amperaje: 1.5
+  presion: 1.5
+  lectura: 1.5
+  produccion: 1.5
+  empleado_id: 1

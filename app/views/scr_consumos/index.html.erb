@@ -1,0 +1,31 @@
+<h1>Listing scr_consumos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Registro</th>
+      <th>Cantidad</th>
+      <th>Cobro</th>
+      <th>Factura</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scr_consumos.each do |scr_consumo| %>
+      <tr>
+        <td><%= scr_consumo.registro %></td>
+        <td><%= scr_consumo.cantidad %></td>
+        <td><%= scr_consumo.cobro_id %></td>
+        <td><%= scr_consumo.factura_id %></td>
+        <td><%= link_to 'Show', scr_consumo %></td>
+        <td><%= link_to 'Edit', edit_scr_consumo_path(scr_consumo) %></td>
+        <td><%= link_to 'Destroy', scr_consumo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Scr consumo', new_scr_consumo_path %>

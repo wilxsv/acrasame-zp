@@ -1,0 +1,71 @@
+<p id="notice"><%= notice %></p>
+<% notice = nil %>
+<div class="module">
+ <div class="module-head">
+  <h3>
+   Ingresar pago  <%= image_tag "codigo-barras.png", {class:"nav-avatar"} %>
+   <%= form_for :transacx, :url => { :action => :pagar } do |f| %>
+    <%= f.number_field :id %>
+    <%= f.submit "Enviar pago", class:"btn btn-inverse",  data: { confirm: 'Confirma la operación ?' } %>
+   <% end %>
+  </h3>
+ </div>
+</div>
+<div class="module">
+ <div class="module-head">
+  <h3>
+   Resumen de cobros por consumo 
+   <%= link_to 'Generar recibos', recibo_index_url, data: { confirm: 'Recuerde que las lecturas del mes a facturar deben estar registradas' }, class:"btn btn-inverse" %>
+  </h3>
+ </div>
+ <div class="module-body table">
+  <table cellpadding="0" cellspacing="0" border="0" class="datatable-2 table table-bordered table-striped	 display" width="100%">
+   <thead>
+    <tr>
+      <th>#</th>
+      <th>Socio</th>
+      <th>Total</th>
+      <th>Fecha cancelada</th>
+      <th>Limite pago</th>
+      <th>Detalle</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scr_det_facturas.each do |scr_det_factura| %>
+      <tr>
+        <td><%= scr_det_factura.det_factur_numero %></td>
+        <td>
+         <% c = ScrUsuario.find(scr_det_factura.socio_id) %>
+        <%= c.nombreusuario %> <%= c.apellidousuario %>
+        </td>
+        <td><%= scr_det_factura.total %></td>
+        <td><%= scr_det_factura.fecha_cancelada %></td>
+        <td><%= scr_det_factura.limite_pago %></td>
+        <td>
+         <% if scr_det_factura.fecha_cancelada? %>
+         <% else %>
+          <%= form_for :transacx, class:"form-horizontal row-fluid", :url => { :action => :pagar } do |f| %>
+           <%= link_to 'Ver', scr_det_factura, class:"btn btn-mini" %>
+           <%= f.number_field :id , type:"hidden", value:scr_det_factura.id %>
+           <%= f.submit "Pagar", class:"btn btn-mini btn-primary", data: { confirm: 'Confirma la operación ?' } %>
+          <% end %>
+         <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th>#</th>
+      <th>Socio</th>
+      <th>Total</th>
+      <th>Fecha cancelada</th>
+      <th>Limite pago</th>
+      <th>Detalle</th>
+    </tr>
+  </tfoot>
+</table>
+<%= render :partial => '/layouts/main/tablas' %>
+<br>
+<%= link_to 'Nueva factura', new_scr_det_factura_path, class:"btn btn-inverse" %>

@@ -1,0 +1,20 @@
+<% if session['dat'] != nil %>
+ <div class="alert alert-error">
+  <strong>Advertencia!</strong> <%= session['dat'] %>
+ </div><% end %>
+<% if session['error'] != nil %>
+ <div class="alert alert-error">
+  <strong>Advertencia!</strong> <%= session['error'] %>
+ </div>
+ <% session['error'] = nil %>
+<% end %>
+<div class="span4">
+ <%= render partial: "form" %>
+</div>
+<div class="span4">
+ <%= render partial: "temp" %>
+</div>
+<div class="span8">
+ <%= render partial: "show" %>
+</div>
+<%= render :partial => '/layouts/main/tablas' %>

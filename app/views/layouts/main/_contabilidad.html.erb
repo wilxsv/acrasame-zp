@@ -1,0 +1,108 @@
+                            <!--/.widget-nav-->
+                            <ul class="widget widget-menu unstyled">
+                                <li><li><a class="collapsed" data-toggle="collapse" href="#contabilidad"><i class="menu-icon icon-cog">
+                                </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
+                                </i>Contabilidad :: </a>
+                                    <ul id="contabilidad" class="collapse unstyled">
+                                     <li><%= link_to "Transacciones",  transaccion_index_path  %></li>
+                                     
+                                     <li><%= link_to "Libro diario", libro_mayor_url %></li>
+                                     <li><%= link_to "Libro mayor", libro_mayor_url %></li>
+                                     <li><%= link_to "Recibos generados", scr_det_facturas_url %></li>
+                                     <li><%= link_to "Balance de comprobación", informe_balance_url %></li>
+                                     <li><%= link_to "Balance general",  informe_general_url %></li>
+
+                                     <li><%= link_to "Resumen general", informe_balance_url %></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <!--/.widget-nav-->
+                            <ul class="widget widget-menu unstyled">
+                                <li><li><a class="collapsed" data-toggle="collapse" href="#catalogos"><i class="menu-icon icon-cog">
+                                </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
+                                </i>Catalogos contables :: </a>
+                                    <ul id="catalogos" class="collapse unstyled">
+                                     <li><%= link_to '<i class="icon-inbox"></i>Catalogo de cuentas '.html_safe, scr_cuentuas_url %></li>
+                                     <li><%= link_to '<i class="icon-inbox"></i>Bancos '.html_safe,  scr_bancos_url %></li>
+                                    
+                                     <li><%= link_to "Libro diario", libro_index_url %></li>
+                                     <li><%= link_to "Libro mayor", libro_mayor_url %></li>
+                                     <li><%= link_to "Recibos", home_index_path %></li>
+                                     <li><%= link_to "Resumen general", home_index_path %></li>
+                                     <li><%= link_to "Balance de comprobación", estado_index_url %></li>
+                                     <li><%= link_to "Balance general", estado_index_url %></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <!--/.widget-nav-->
+                            <ul class="widget widget-menu unstyled">
+                                <li><li><a class="collapsed" data-toggle="collapse" href="#configuracion"><i class="menu-icon icon-cog">
+                                </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
+                                </i>Configuracion de parametros :: </a>
+                                    <ul id="configuracion" class="collapse unstyled">
+                                     <li><%= link_to '<i class="icon-inbox"></i>Conficuraciones generales '.html_safe,  core_configure_url %></li>
+                                     <li><%= link_to '<i class="icon-inbox"></i>Categoria de representante legal '.html_safe, scr_cat_rep_legals_url %></li>
+                                     <li><%= link_to '<i class="icon-inbox"></i>Representantes Legales '.html_safe,  scr_representante_legals_url %></li>
+                                     <li><%= link_to '<i class="icon-inbox"></i>Periodo de representantes '.html_safe,  scr_periodo_representantes_url %></li>
+                                     <li><%= link_to '<i class="icon-inbox"></i>Periodo/año fiscal'.html_safe, scr_det_contables_url %></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+
+<!--                         
+                            <ul class="widget widget-menu unstyled">
+                                <li><li><a class="collapsed" data-toggle="collapse" href="#conta"><i class="menu-icon icon-cog">
+                                </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
+                                </i>Contabilidad :: </a>
+                                    <ul id="conta" class="collapse unstyled"><li><%= link_to '<i class="icon-inbox"></i>Bancos '.html_safe,  scr_bancos_url %></li>
+                                    
+                                     <li><%= link_to "Generar recibos mensuales", recibo_index_url %></li>
+                                     <li><%= link_to "Imprimir recibos mensuales", recibo_imprimir_url %></li>
+                                     <li><%= link_to "Imprimir recibos mensuales", recibo_imprimir_url %></li>
+                            </ul>
+                            <ul class="widget widget-menu unstyled">
+                                <li><li><a class="collapsed" data-toggle="collapse" href="#admin"><i class="menu-icon icon-cog">
+                                </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
+                                </i>Catalogos :: </a>
+                                    <ul id="admin" class="collapse unstyled">
+                                     <li><%= link_to "Libro diario", libro_index_url %></li>
+                                     <li><%= link_to "Libro mayor", libro_mayor_url %></li>
+                                     <li><%= link_to "Recibos generados", home_index_path %></li>
+                                     <li><%= link_to "Recibos cancelados", home_index_path %></li>
+                                     <li><%= link_to "Recibos pendientes de pago", home_index_path %></li>
+                                     <li><%= link_to "Operaciones generales", home_index_path %></li>
+                                     <li><%= link_to "Resumen general", home_index_path %></li>
+                                     <li><%= link_to "Balance de comprobación", estado_index_url %></li>
+                                     <li><%= link_to "Balance general", estado_index_url %></li>
+                                     
+                                        <li><%= link_to '<i class="icon-inbox"></i>Bancos '.html_safe,  scr_bancos_url %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Cargos '.html_safe,  scr_cargos_url %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Cuentas '.html_safe, scr_cuentuas_url %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Estados '.html_safe,  scr_estados_url %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Localidades '.html_safe,  scr_cargos_url %></li>
+                                        
+                                        <li><%= link_to '<i class="icon-inbox"></i>Categoria de organizaciones '.html_safe,  scr_cat_organizacions_url %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Proveedores '.html_safe,  scr_proveedors_url %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Roles '.html_safe,  scr_rols_url %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Usuarios '.html_safe,  scr_usuarios_url %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Transacciones '.html_safe,  transaccion_index_url %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Categoria de actividades '.html_safe,  scr_cat_actividads_url %></li>
+                                        
+                                        <li><%= link_to '<i class="icon-inbox"></i>Proveedores'.html_safe, proveedor_index_path %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Cuentas '.html_safe, cuenta_index_path %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Localidades '.html_safe, scr_localidads_url %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Cargos '.html_safe, cargo_index_path %></li>
+                                        
+                                        <li><%= link_to '<i class="menu-icon icon-bar-chart"></i>Bloque de consumo'.html_safe, bloque_index_path %></li>
+                                        <li><%= link_to '<i class="menu-icon icon-book"></i>Activo fijo '.html_safe, afijo_index_path %></li>
+                                        <li><%= link_to '<i class="menu-icon icon-table"></i>Ciclo contable '.html_safe, core_index_path %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Roles '.html_safe, rol_index_path %></li>
+                                        <li><%= link_to '<i class="menu-icon icon-bold"></i>Estados '.html_safe, estado_index_path %></li>
+                                        <li><%= link_to '<i class="menu-icon icon-paste"></i>Beneficiarias '.html_safe, persona_index_path %></li>
+                                        <li><%= link_to '<i class="icon-inbox"></i>Resumen de usuarios '.html_safe, resumen_index_url %></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+-->

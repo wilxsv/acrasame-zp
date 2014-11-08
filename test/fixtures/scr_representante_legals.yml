@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rLegalNombre: MyString
+  rLegalApellido: MyString
+  rLegalTelefono: 1
+  rLegalCelular: 1
+  rLegalDireccion: MyText
+  rLegalRegistro: 2014-10-09 10:40:17
+  cat_rep_legal_id: 1
+  rLegalemail: MyString
+
+two:
+  rLegalNombre: MyString
+  rLegalApellido: MyString
+  rLegalTelefono: 1
+  rLegalCelular: 1
+  rLegalDireccion: MyText
+  rLegalRegistro: 2014-10-09 10:40:17
+  cat_rep_legal_id: 1
+  rLegalemail: MyString

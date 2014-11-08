@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  aTrabajoNombre: MyString
+  aTrabajoDescripcion: MyText
+  area_trabajo_id: 1
+  organizacion_id: 1
+  cargo_id: 1
+
+two:
+  aTrabajoNombre: MyString
+  aTrabajoDescripcion: MyText
+  area_trabajo_id: 1
+  organizacion_id: 1
+  cargo_id: 1

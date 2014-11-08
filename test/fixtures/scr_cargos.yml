@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cargoNombre: MyString
+  cargoDescripcion: MyText
+  cargoSalario: 1.5
+  cargo_id: 1
+
+two:
+  cargoNombre: MyString
+  cargoDescripcion: MyText
+  cargoSalario: 1.5
+  cargo_id: 1

@@ -1,0 +1,47 @@
+<div class="module">
+ <div class="module-head"><h3>Categoria de cobros</h3></div>
+ <div class="module-body table">
+  <table cellpadding="0" cellspacing="0" border="0" class="datatable-2 table table-bordered table-striped	 display" width="100%">
+   <thead>
+    <tr>
+    <tr>
+      <th>Nombre</th>
+      <th>Codigo</th>
+      <th>Inicio de rango</th>
+      <th>Fin de rango</th>
+      <th>Valor de cobro</th>
+      <th>Constante</th>
+      <th colspan="3">Operaciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scr_cobros.each do |scr_cobro| %>
+      <tr>
+        <td><%= scr_cobro.cobroNombre %></td>
+        <td><%= scr_cobro.cobroCodigo %></td>
+        <td><%= scr_cobro.cobroInicio %></td>
+        <td><%= scr_cobro.cobroFin %></td>
+        <td><%= scr_cobro.cobroValor %></td>
+        <td><%= scr_cobro.cobroPermanente %></td>
+        <td><%= link_to 'Ver', scr_cobro %></td>
+        <td><%= link_to 'Editar', edit_scr_cobro_path(scr_cobro) %></td>
+        <td><%= link_to 'Eliminar', scr_cobro, method: :delete, data: { confirm: 'Confirma la operacion?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th>Nombre</th>
+      <th>Codigo</th>
+      <th>Inicio de rango</th>
+      <th>Fin de rango</th>
+      <th>Valor de cobro</th>
+      <th>Constante</th>
+      <th colspan="3">Operaciones</th>
+    </tr>
+  </tfoot>
+</table>
+<%= render :partial => '/layouts/main/tablas' %>
+<br>
+<%= link_to 'Nuevo cobro', new_scr_cobro_path, class:"btn btn-inverse" %>

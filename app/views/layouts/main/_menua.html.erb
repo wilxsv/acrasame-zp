@@ -1,0 +1,14 @@
+                    <div class="span3">
+                        <div class="sidebar">
+                            <!--/.widget-nav-->
+                            <%= render :partial => '/layouts/main/adminmenu' %>
+                            <%= render :partial => '/layouts/main/estadosmenu' %>
+                            <%= render :partial => '/layouts/main/staffmenu' %>
+                             <!--/.widget-nav-->
+                            <ul class="widget widget-menu unstyled">
+                                <li><%= link_to '<i class="menu-icon icon-signout"></i>Salir'.html_safe, home_logout_path %></li>
+                            </ul>
+                        </div>
+                        <!--/.sidebar-->
+                    </div>
+                    <!--/.span3-->

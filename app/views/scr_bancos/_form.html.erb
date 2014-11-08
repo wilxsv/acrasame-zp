@@ -1,0 +1,21 @@
+<%= form_for(@scr_banco) do |f| %>
+  <% if @scr_banco.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@scr_banco.errors.count, "error") %> prohibited this scr_banco from being saved:</h2>
+
+      <ul>
+      <% @scr_banco.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Nombre %><br>
+    <%= f.text_field :banco_nombre %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Crear banco", class:"btn btn-primary" %>
+  </div>
+<% end %>

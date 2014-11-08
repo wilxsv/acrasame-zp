@@ -1,0 +1,30 @@
+<div class="module module-login span4 ">
+ <%= form_for :transacx, class:"form-vertical", :url => { :action => :autenticate } do |f| %>
+  <div class="module-head">
+   <h3>Autenticación :: </h3>
+  </div>
+  <div class="module-body">
+   <div class="control-group">
+    <div class="controls row-fluid">
+     <%= f.text_field :user, class:"span12", id:"inputEmail", placeholder:"Correo electronico" %>
+    </div>
+   </div>
+   <div class="control-group">
+    <div class="controls row-fluid">
+     <%= f.text_field :passwd, type:"password", class:"span12", id:"inputPassword", placeholder:"Password" %>
+	</div>
+   </div>
+  </div>
+  <div class="module-foot">
+   <div class="control-group">
+    <div class="controls clearfix">
+     <%= f.submit "login", class:"btn btn-primary pull-right" %>
+     <label class="checkbox">
+      <input type="checkbox"> Recordarme
+     </label>
+    </div>
+   </div>
+  </div>
+ <form class="form-vertical">
+ <% end %>
+</div>

@@ -1,0 +1,1 @@
+json.extract! @scr_empleado, :id, :empleadoNombre, :empleadoApellido, :empleadoTelefono, :empleadoCelular, :empleadoDireccion, :empleadoDui, :empleadoIsss, :empleadoRegistro, :empleadoFechaIngreso, :cargo_id, :empleadoNit, :localidad_id, :empleadoEmail, :created_at, :updated_at

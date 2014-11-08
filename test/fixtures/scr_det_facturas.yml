@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  det_factur_numero: 1
+  det_factur_fecha: 2014-08-28 16:53:33
+  socio_id: 1
+  cancelada: false
+  fecha_cancelada: 2014-08-28 16:53:33
+  total: 1.5
+  limite_pago: 2014-08-28
+
+two:
+  det_factur_numero: 1
+  det_factur_fecha: 2014-08-28 16:53:33
+  socio_id: 1
+  cancelada: false
+  fecha_cancelada: 2014-08-28 16:53:33
+  total: 1.5
+  limite_pago: 2014-08-28
