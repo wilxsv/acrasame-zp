@@ -1,1 +1,0 @@
-json.extract! @scr_usuario, :id, :username, :password, :correousuario, :detalleuuario, :ultimavisitausuario, :ipusuario, :salt, :nombreusuario, :apellidousuario, :telefonousuario, :nacimientousuario, :latusuario, :lonusuario, :direccionusuario, :sexousuario, :registrousuario, :cuentausuario, :estado_id, :localidad_id, :imagenusuario, :created_at, :updated_at

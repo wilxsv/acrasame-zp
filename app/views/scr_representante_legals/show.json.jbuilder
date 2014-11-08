@@ -1,1 +1,0 @@
-json.extract! @scr_representante_legal, :id, :rLegalNombre, :rLegalApellido, :rLegalTelefono, :rLegalCelular, :rLegalDireccion, :rLegalRegistro, :cat_rep_legal_id, :rLegalemail, :created_at, :updated_at

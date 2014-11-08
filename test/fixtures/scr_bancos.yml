@@ -1,7 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  banco_nombre: MyString
-
-two:
-  banco_nombre: MyString

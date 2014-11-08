@@ -1,9 +1,0 @@
-<% if session['error'] != nil %>
- <%= session['error'].html_safe %>
- <% session['error'] = nil %>
-<% end %>
-<%= render 'organizacion' %>
-<br />
-<%= render 'cobros' %>
-<br />
-<%= render 'pagos' %>

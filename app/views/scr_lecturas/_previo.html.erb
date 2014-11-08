@@ -1,5 +1,0 @@
-<%= form_for :transacx, class:"form-horizontal row-fluid", :url => { :action => :set } do |f| %>
- <p>
-  Fecha: <%= f.text_field :mes, id: "datepicker" %> Técnico: <%= f.select :tecnico, ScrEmpleado.order(:empleadoNombre).all.collect { |p| [ p.empleadoNombre+"  ".html_safe+p.empleadoApellido, p.id ] }, include_blank: false %> <%= f.submit "Fijar datos", class:"btn btn-mini btn-primary" %>
- </p>
-<% end %>
