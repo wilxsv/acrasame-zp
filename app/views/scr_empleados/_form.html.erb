@@ -34,6 +34,11 @@
      Localidad: <%= f.select :localidad_id, ScrLocalidad.select('id, id, "localidad_nombre", "localidad_nombre"').order(:localidad_nombre).all.collect { |p| [ p.localidad_nombre, p.id ] }, include_blank: false %>
     </div>
    </div>
+   <div class="control-group">
+    <div class="controls row-fluid">
+     Usuario: <%= f.select :usuario_id, ScrUsuario.order(:nombreusuario).all.collect { |p| [ p.nombreusuario+"  ".html_safe+p.apellidousuario, p.id ] }, include_blank: false %>
+    </div>
+   </div>
   <div class="control-group">
     Correo: <%= f.text_field :empleadoEmail %>
   </div>

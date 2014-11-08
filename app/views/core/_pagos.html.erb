@@ -1,0 +1,27 @@
+<div class="module">
+ <div class="module-head">
+  <h3>Cuentas donde se aplicara el cobro automatico en el pago de recibos</h3>
+ </div>
+ <div class="module-body">
+  <%= form_for :transacx, class:"form-horizontal row-fluid", :url => { :action => :pago } do |f| %>
+   <div class="control-group">
+    <%= f.label :cuenta_debe %> (Ej. Cuentas por cobrar)
+    <div class="controls">
+     <div class="input-append">
+      <%= f.select :pdebe, ScrCuentua.select('id, cat_cuenta_id, "cuentaCodigo", "cuentaNombre"').group('id, cat_cuenta_id, "cuentaCodigo", "cuentaNombre"').order(:cuentaCodigo, :cuentaCodigo).all.collect { |p| [ p.cuentaNombre, p.id ] }, include_blank: false %>
+     </div>
+    </div>
+   </div>
+   <div class="control-group">
+    <%= f.label :cuenta_haber %> (Ej. Bancos)
+    <div class="controls">
+     <div class="input-append">
+      <%= f.select :phaber, ScrCuentua.select('id, cat_cuenta_id, "cuentaCodigo", "cuentaNombre"').group('id, cat_cuenta_id, "cuentaCodigo", "cuentaNombre"').order(:cuentaCodigo, :cuentaCodigo).all.collect { |p| [ p.cuentaNombre, p.id ] }, include_blank: false %>
+     </div>
+    </div>
+   </div>
+   <%= f.submit "Automatizar pagos", class:"btn btn-mini btn-primary", data: { confirm: 'Confirma la operación ?' } %>
+  <% end %>
+ </div>
+</div>
+<br />

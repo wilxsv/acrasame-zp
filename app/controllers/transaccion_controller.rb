@@ -1,5 +1,6 @@
 class TransaccionController < ApplicationController
   include AccesoHelpers
+  require 'date'
 
   # POST /transaccion
   def index
@@ -31,7 +32,8 @@ class TransaccionController < ApplicationController
   def create
     begin
       if session[:dato] != nil and 
-        data = "<transacx><fecha>"+session[:fecha]+"</fecha><empleado>2</empleado>".to_s
+        empleado_con = 2
+        data = "<transacx><fecha>"+session[:fecha]+"</fecha><empleado>"+empleado_con.to_s+"</empleado><comentario>"+params['transacx']['comentario']+"</comentario>".to_s
         data += session[:dato].join(" ")+"</transacx>"
         @tm = session[:dato].join(" ") #data.sub(/ \["/, '')  
         @tmp = ScrTransaccion.connection.select_all("SELECT fcn_genera_transaccion as d FROM fcn_genera_transaccion('"+data+"');")

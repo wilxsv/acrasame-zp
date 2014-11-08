@@ -11,27 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :aTrabajoNombre %><br>
-    <%= f.text_field :aTrabajoNombre %>
+  <div class="control-group">
+    Nombre: <%= f.text_field :aTrabajoNombre %>
   </div>
-  <div class="field">
-    <%= f.label :aTrabajoDescripcion %><br>
-    <%= f.text_area :aTrabajoDescripcion %>
+  <div class="control-group">
+    Descripcion: <%= f.text_area :aTrabajoDescripcion %>
   </div>
-  <div class="field">
-    <%= f.label :area_trabajo_id %><br>
-    <%= f.number_field :area_trabajo_id %>
+  <div class="control-group">
+    Pertenece al area: <%= f.number_field :area_trabajo_id %>
   </div>
-  <div class="field">
-    <%= f.label :organizacion_id %><br>
-    <%= f.number_field :organizacion_id %>
+  <div class="control-group">
+    Organizacion :<%= f.number_field :organizacion_id %>
   </div>
-  <div class="field">
-    <%= f.label :cargo_id %><br>
-    <%= f.number_field :cargo_id %>
+  <div class="control-group">
+    Asignada a: <%= f.number_field :cargo_id %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Enviar", class:"btn btn-mini btn-primary", data: { confirm: 'Confirma la operación ?' } %>
   </div>
 <% end %>

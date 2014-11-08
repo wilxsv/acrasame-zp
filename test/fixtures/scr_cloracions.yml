@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fecha: 2014-11-07
+  hora: 2014-11-07 16:05:06
+  gramos: 1.5
+  localidad_id: 1
+  empleado_id: 1
+  observacion: MyText
+
+two:
+  fecha: 2014-11-07
+  hora: 2014-11-07 16:05:06
+  gramos: 1.5
+  localidad_id: 1
+  empleado_id: 1
+  observacion: MyText

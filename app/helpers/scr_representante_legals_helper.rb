@@ -1,0 +1,2 @@
+module ScrRepresentanteLegalsHelper
+end

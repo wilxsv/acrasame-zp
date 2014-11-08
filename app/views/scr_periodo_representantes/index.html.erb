@@ -1,0 +1,46 @@
+<div class="module">
+ <div class="module-head"><h3>Categoria de Representate legal</h3></div>
+ <div class="module-body table">
+  <table cellpadding="0" cellspacing="0" border="0" class="datatable-2 table table-bordered table-striped	 display" width="100%">
+  <thead>
+    <tr>
+      <th>Organizacion</th>
+      <th>Representante legal</th>
+      <th>Inicio</th>
+      <th>Fin</th>
+      <th colspan="3">Operaciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @scr_periodo_representantes.each do |scr_periodo_representante| %>
+      <tr>
+        <td>
+         <% c = ScrOrganizacion.find(scr_periodo_representante.organizacion_id) %>
+         <%= c.organizacionNombre %>
+        </td>
+        <td>
+         <% c = ScrRepresentanteLegal.find(scr_periodo_representante.representante_legal_id) %>
+         <%= c.rLegalNombre+"  "+c.rLegalApellido %>
+        </td>
+        <td><%= scr_periodo_representante.periodoInicio %></td>
+        <td><%= scr_periodo_representante.periodoFin %></td>
+        <td><%= link_to 'Ver', scr_periodo_representante %></td>
+        <td><%= link_to 'Editar', edit_scr_periodo_representante_path(scr_periodo_representante) %></td>
+        <td><%= link_to 'Eliminar', scr_periodo_representante, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th>Organizacion</th>
+      <th>Representante legal</th>
+      <th>Inicio</th>
+      <th>Fin</th>
+      <th colspan="3">Operaciones</th>
+    </tr>
+  </tfoot>
+</table>
+
+<%= render :partial => '/layouts/main/tablas' %>
+<br>
+<%= link_to 'Agregar periordo de Representante Legal', new_scr_periodo_representante_path, class:"btn btn-inverse" %>

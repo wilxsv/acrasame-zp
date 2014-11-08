@@ -6,14 +6,13 @@
                                     <ul id="contabilidad" class="collapse unstyled">
                                      <li><%= link_to "Transacciones",  transaccion_index_path  %></li>
                                      
+                                     <li><%= link_to "Libro diario", libro_mayor_url %></li>
                                      <li><%= link_to "Libro mayor", libro_mayor_url %></li>
-                                     <li><%= link_to "Recibos generados", home_index_path %></li>
-                                     <li><%= link_to "Recibos cancelados", home_index_path %></li>
-                                     <li><%= link_to "Recibos pendientes de pago", home_index_path %></li>
-                                     <li><%= link_to "Operaciones generales", home_index_path %></li>
-                                     <li><%= link_to "Resumen general", home_index_path %></li>
-                                     <li><%= link_to "Balance de comprobación", estado_index_url %></li>
-                                     <li><%= link_to "Balance general", estado_index_url %></li>
+                                     <li><%= link_to "Recibos generados", scr_det_facturas_url %></li>
+                                     <li><%= link_to "Balance de comprobación", informe_balance_url %></li>
+                                     <li><%= link_to "Balance general",  informe_general_url %></li>
+
+                                     <li><%= link_to "Resumen general", informe_balance_url %></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -28,13 +27,24 @@
                                     
                                      <li><%= link_to "Libro diario", libro_index_url %></li>
                                      <li><%= link_to "Libro mayor", libro_mayor_url %></li>
-                                     <li><%= link_to "Recibos generados", home_index_path %></li>
-                                     <li><%= link_to "Recibos cancelados", home_index_path %></li>
-                                     <li><%= link_to "Recibos pendientes de pago", home_index_path %></li>
-                                     <li><%= link_to "Operaciones generales", home_index_path %></li>
+                                     <li><%= link_to "Recibos", home_index_path %></li>
                                      <li><%= link_to "Resumen general", home_index_path %></li>
                                      <li><%= link_to "Balance de comprobación", estado_index_url %></li>
                                      <li><%= link_to "Balance general", estado_index_url %></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <!--/.widget-nav-->
+                            <ul class="widget widget-menu unstyled">
+                                <li><li><a class="collapsed" data-toggle="collapse" href="#configuracion"><i class="menu-icon icon-cog">
+                                </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
+                                </i>Configuracion de parametros :: </a>
+                                    <ul id="configuracion" class="collapse unstyled">
+                                     <li><%= link_to '<i class="icon-inbox"></i>Conficuraciones generales '.html_safe,  core_configure_url %></li>
+                                     <li><%= link_to '<i class="icon-inbox"></i>Categoria de representante legal '.html_safe, scr_cat_rep_legals_url %></li>
+                                     <li><%= link_to '<i class="icon-inbox"></i>Representantes Legales '.html_safe,  scr_representante_legals_url %></li>
+                                     <li><%= link_to '<i class="icon-inbox"></i>Periodo de representantes '.html_safe,  scr_periodo_representantes_url %></li>
+                                     <li><%= link_to '<i class="icon-inbox"></i>Periodo/año fiscal'.html_safe, scr_det_contables_url %></li>
                                     </ul>
                                 </li>
                             </ul>

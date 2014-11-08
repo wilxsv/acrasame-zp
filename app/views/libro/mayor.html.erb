@@ -1,16 +1,17 @@
-<div class="bs-component">
- <div class="modal">
-  <div class="modal-dialog">
-   <div class="modal-content">
-    <div class="modal-header">
-     <button class="close" aria-hidden="true" data-dismiss="modal" type="button">×</button>
-     <h4 class="modal-title">Transacciones</h4>
-    </div>
-    <div class="modal-body">
-     
-     <table class="table table-striped table-hover">
-      <thead><tr><th>Cuenta</th><th>Nombre</th><th>Debe</th><th>Haber</th></tr></thead>
-      <tbody>
+<div class="module">
+ <div class="module-head"><h3>Categoria de Representate legal</h3></div>
+ <div class="module-body table">
+  <table cellpadding="0" cellspacing="0" border="0" class="datatable-2 table table-bordered table-striped	 display" width="100%">
+  <thead>
+    <tr>
+      <th>Cuenta</th>
+      <th>Nombre</th>
+      <th>Debe</th>
+      <th>Haber</th>
+      <th>Saldo</th>
+    </tr>
+  </thead>
+  <tbody>
        <% session[:haber] = 0 %>
        <% session[:debe] = 0 %>
        <% @ScrCuentua.each do |c| %>
@@ -19,26 +20,39 @@
          <td><%= c.cuentaNombre %></td>
          <td><%= c.cuentaDebe %></td>
          <td><%= c.cuentaHaber %></td>
+         <% if c.cuentaDebe - c.cuentaHaber < 0 %>
+          <td>(<%= c.cuentaHaber - c.cuentaDebe %>)</td>
+         <% else %>
+          <td><%= c.cuentaDebe - c.cuentaHaber %></td>
+         <% end %>
         </tr>
         <% session[:haber] += c.cuentaHaber %>
         <% session[:debe] += c.cuentaDebe %>
        <% end %>
-       <tr>
+     </tbody>
+  <tfoot>
+    <tr>
+      <th>Cuenta</th>
+      <th>Nombre</th>
+      <th>Debe</th>
+      <th>Haber</th>
+      <th>Saldo</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>[<%= session[:haber] %>]</th>
+      <th><%= session[:haber] %>]</th>
+      <th></th>
+    </tr>
+  </tfoot>
+</table>
+
+<%= render :partial => '/layouts/main/tablas' %>
+<!--       <tr>
         <td></td>
         <td></td>
         <td><b><%= session[:debe] %></b></td>
         <td><b><%= session[:haber] %></b></td>
        </tr>
-      </tbody>
-     </table>
-    </div>
-    <div class="modal-footer">
-     <button class="btn btn-default" data-dismiss="modal" type="button">Cerrar</button>
-     <button class="btn btn-primary" type="button" onclick="window.location.href='#top'">Regresar al inicio</button>
-    </div>
-   </div>
-  </div>
-  <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">< ></div>
- </div>
-</div>
-<br>
+--> 

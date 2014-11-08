@@ -1,6 +1,7 @@
 class ScrLecturasController < ApplicationController
   include AccesoHelpers
   before_action :set_scr_lectura, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token, :only => :create
 
   # GET /scr_lecturas
   # GET /scr_lecturas.json
@@ -8,6 +9,12 @@ class ScrLecturasController < ApplicationController
     session[:roles] = " root Tecnico "
     acceso
     @scr_lecturas = ScrLectura.all.order(fechaLectura: :desc)
+    #@users = ScrUsuario.joins('JOIN scr_usuario_rol ON scr_usuario.id = scr_usuario_rol.usuario_id LEFT JOIN scr_lectura ON scr_usuario.id = scr_lectura.socio_id').where("date_part('month',scr_lectura.\"fechaLectura\") = '"+session[:mes].to_s+"")
+    @users = ScrUsuario.joins('JOIN scr_usuario_rol ON scr_usuario.id = scr_usuario_rol.usuario_id').where("scr_usuario_rol.rol_id = 1")
+    @scr_lectura = ScrLectura.new
+    #Client.joins('LEFT OUTER JOIN addresses ON addresses.client_id = clients.id')
+    #select * from scr_usuario as u join scr_usuario_rol as rr on u.id = rr.usuario_id join scr_rol as r on rr.rol_id = r.id 
+    #select * from a left join b on a.id = b.a_id where b.id isnull
   end
 
   # GET /scr_lecturas/1
@@ -41,8 +48,8 @@ class ScrLecturasController < ApplicationController
 
     respond_to do |format|
       if @scr_lectura.save
-        format.html { redirect_to @scr_lectura, notice: 'Scr lectura was successfully created.' }
-        format.json { render :show, status: :created, location: @scr_lectura }
+        format.html { redirect_to scr_lecturas_url, notice: 'Scr lectura was successfully created.' }
+        format.json { render :index, status: :created, location: @scr_lectura }
       else
         format.html { render :new }
         format.json { render json: @scr_lectura.errors, status: :unprocessable_entity }
@@ -76,6 +83,22 @@ class ScrLecturasController < ApplicationController
       format.html { redirect_to scr_lecturas_url, notice: 'Scr lectura was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+  
+  def set
+    if params.has_key?(:transacx)
+     mes = params['transacx']['mes']
+     tecnico = params['transacx']['tecnico']
+     begin
+       Date.parse(mes)
+       session[:mes] = mes
+       session[:tecnico] = tecnico
+     rescue ArgumentError
+       session[:mes] = nil
+       session[:tecnico] = nil
+     end
+    end
+    redirect_to scr_lecturas_url
   end
 
   private

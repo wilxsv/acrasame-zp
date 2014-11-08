@@ -1,0 +1,38 @@
+<%= form_for(@scr_det_contable) do |f| %>
+  <% if @scr_det_contable.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@scr_det_contable.errors.count, "error") %> prohibited this scr_det_contable from being saved:</h2>
+
+      <ul>
+      <% @scr_det_contable.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    Inicio de periodo: <%= f.date_select :dConIniPeriodo %>
+  </div>
+  <div class="control-group">
+    Fin de periodo: <%= f.date_select :dConFinPeriodo %>
+  </div>
+  <div class="control-group">
+    Habilitado: <%= f.check_box :dConActivo %>
+  </div>
+  <div class="control-group">
+    Simbolo de moneda: <%= f.text_field :dConSimboloMoneda %>
+  </div>
+  <div class="control-group">
+    Numero de pagos por mes: <%= f.number_field :dConPagoXMes %>
+  </div>
+  <div class="control-group">
+    Organizacion: <%= f.number_field :organizacion_id %>
+  </div>
+  <div class="control-group">
+    Director / Responsable: <%= f.select :empleado_id, ScrEmpleado.order(:empleadoNombre).all.collect { |p| [ p.empleadoNombre+"  ".html_safe+p.empleadoApellido, p.id ] }, include_blank: false %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Enviar", class:"btn btn-mini btn-primary", data: { confirm: 'Confirma la operación ?' } %>
+  </div>
+<% end %>

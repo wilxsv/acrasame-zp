@@ -1,29 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Atrabajonombre:</strong>
-  <%= @scr_area_trabajo.aTrabajoNombre %>
+  <strong>Nombre:</strong><%= @scr_area_trabajo.aTrabajoNombre %>
 </p>
 
 <p>
-  <strong>Atrabajodescripcion:</strong>
-  <%= @scr_area_trabajo.aTrabajoDescripcion %>
+  <strong>Descripcion:</strong><%= @scr_area_trabajo.aTrabajoDescripcion %>
 </p>
 
-<p>
-  <strong>Area trabajo:</strong>
-  <%= @scr_area_trabajo.area_trabajo_id %>
-</p>
-
-<p>
-  <strong>Organizacion:</strong>
-  <%= @scr_area_trabajo.organizacion_id %>
-</p>
-
-<p>
-  <strong>Cargo:</strong>
-  <%= @scr_area_trabajo.cargo_id %>
-</p>
-
-<%= link_to 'Edit', edit_scr_area_trabajo_path(@scr_area_trabajo) %> |
-<%= link_to 'Back', scr_area_trabajos_path %>
+<%= link_to 'Editar', edit_scr_area_trabajo_path(@scr_area_trabajo) %> |
+<%= link_to 'Regresar', scr_area_trabajos_path %>

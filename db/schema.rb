@@ -44,6 +44,18 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "banco_nombre", limit: 100, null: false
   end
 
+  create_table "scr_bombeo", force: true do |t|
+    t.date     "fecha",                                 null: false
+    t.datetime "bombeo_inicio",                         null: false
+    t.datetime "bombeo_fin",                            null: false
+    t.float    "voltaje",                 default: 0.0, null: false
+    t.float    "amperaje",                default: 0.0, null: false
+    t.float    "presion",                 default: 0.0, null: false
+    t.float    "lectura",                 default: 0.0, null: false
+    t.float    "produccion",              default: 0.0, null: false
+    t.integer  "empleado_id",   limit: 8,               null: false
+  end
+
   create_table "scr_cargo", force: true do |t|
     t.string  "cargoNombre",      limit: 150,               null: false
     t.text    "cargoDescripcion"
@@ -115,12 +127,21 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "banco_id",             limit: 8
   end
 
+  create_table "scr_cloracion", force: true do |t|
+    t.date    "fecha",                                      null: false
+    t.time    "hora",                                       null: false
+    t.float   "gramos",                                     null: false
+    t.integer "localidad_id", limit: 8,                     null: false
+    t.integer "empleado_id",  limit: 8,                     null: false
+    t.text    "observacion",            default: "ninguna", null: false
+  end
+
   create_table "scr_cobro", force: true do |t|
     t.string  "cobroNombre",      limit: 150,                 null: false
     t.string  "cobroCodigo",      limit: 10,                  null: false
     t.text    "cobroDescripcion"
-    t.date    "cobroInicio",                                  null: false
-    t.date    "cobroFin",                                     null: false
+    t.float   "cobroInicio",                                  null: false
+    t.float   "cobroFin",                                     null: false
     t.float   "cobroValor",                   default: 0.0,   null: false
     t.boolean "cobroPermanente",              default: false, null: false
     t.integer "cat_cobro_id",     limit: 8,                   null: false
@@ -131,10 +152,12 @@ ActiveRecord::Schema.define(version: 0) do
 
   create_table "scr_consumo", force: true do |t|
     t.datetime "registro",             default: "now()", null: false
-    t.integer  "cantidad",   limit: 8, default: 0,       null: false
+    t.float    "cantidad",             default: 0.0,     null: false
     t.integer  "cobro_id",   limit: 8,                   null: false
     t.integer  "factura_id", limit: 8,                   null: false
   end
+
+  add_index "scr_consumo", ["cobro_id", "factura_id"], name: "unique_cobro_xfactura", unique: true, using: :btree
 
   create_table "scr_cooperante", force: true do |t|
     t.string  "cooperanteNombre",      limit: 100, null: false
@@ -170,16 +193,17 @@ ActiveRecord::Schema.define(version: 0) do
   add_index "scr_det_contable", ["organizacion_id"], name: "FKI_organizacion", using: :btree
 
   create_table "scr_det_factura", force: true do |t|
-    t.integer  "det_factur_numero", limit: 8,                 null: false
-    t.datetime "det_factur_fecha",                            null: false
-    t.integer  "socio_id",          limit: 8,                 null: false
-    t.boolean  "cancelada",                   default: false, null: false
+    t.integer  "det_factur_numero", limit: 8, default: "nextval('scr_factura_id_seq'::regclass)", null: false
+    t.datetime "det_factur_fecha",            default: "now()",                                   null: false
+    t.integer  "socio_id",          limit: 8,                                                     null: false
+    t.boolean  "cancelada",                   default: false,                                     null: false
     t.datetime "fecha_cancelada"
-    t.float    "total",                       default: 0.0,   null: false
-    t.date     "limite_pago",                                 null: false
+    t.float    "total",                       default: 0.0,                                       null: false
+    t.date     "limite_pago",                                                                     null: false
   end
 
   add_index "scr_det_factura", ["det_factur_numero"], name: "unique_comprobante", unique: true, using: :btree
+  add_index "scr_det_factura", ["socio_id", "limite_pago"], name: "unique_factura_mes", unique: true, using: :btree
 
   create_table "scr_empleado", force: true do |t|
     t.string   "empleadoNombre",       limit: 150,                   null: false
@@ -192,12 +216,14 @@ ActiveRecord::Schema.define(version: 0) do
     t.datetime "empleadoRegistro",                 default: "now()", null: false
     t.date     "empleadoFechaIngreso",                               null: false
     t.integer  "cargo_id",             limit: 8,                     null: false
+    t.text     "empleadoEmail",                                      null: false
     t.integer  "empleadoNit",          limit: 8,                     null: false
     t.integer  "localidad_id",         limit: 8,                     null: false
-    t.string   "empleadoEmail",        limit: 150
+    t.integer  "usuario_id",           limit: 8,   default: 1,       null: false
   end
 
   add_index "scr_empleado", ["empleadoDui"], name: "unique_dui_empleado", unique: true, using: :btree
+  add_index "scr_empleado", ["empleadoEmail"], name: "UN_empleado_email", unique: true, using: :btree
   add_index "scr_empleado", ["empleadoIsss"], name: "unique_isss_empleado", unique: true, using: :btree
   add_index "scr_empleado", ["empleadoNit"], name: "UN_empleado_nit", unique: true, using: :btree
 
@@ -333,8 +359,18 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer  "usuario_id",     limit: 8, null: false
   end
 
-# Could not dump table "scr_representante_legal" because of following StandardError
-#   Unknown type 'dominio_email' for column 'rLegalemail'
+  create_table "scr_representante_legal", force: true do |t|
+    t.string   "rLegalNombre",     limit: 150,                   null: false
+    t.string   "rLegalApellido",   limit: 150,                   null: false
+    t.integer  "rLegalTelefono",   limit: 8,                     null: false
+    t.integer  "rLegalCelular",    limit: 8
+    t.text     "rLegalDireccion",                                null: false
+    t.datetime "rLegalRegistro",               default: "now()", null: false
+    t.integer  "cat_rep_legal_id", limit: 8,                     null: false
+    t.text     "rLegalemail",                                    null: false
+  end
+
+  add_index "scr_representante_legal", ["rLegalemail"], name: "UN_rep_leg_email", unique: true, using: :btree
 
   create_table "scr_rol", force: true do |t|
     t.string "nombrerol",  limit: 75, null: false
@@ -358,6 +394,8 @@ ActiveRecord::Schema.define(version: 0) do
     t.date     "transaxFecha",                                                                         null: false
     t.integer  "pcontable_id",     limit: 8,                                                           null: false
     t.boolean  "activa",                     default: true,                                            null: false
+    t.text     "comentario",                 default: "Sin detalle"
+    t.text     "transaxImg"
   end
 
   add_index "scr_transaccion", ["pcontable_id"], name: "FKI_det_contable", using: :btree
@@ -370,27 +408,27 @@ ActiveRecord::Schema.define(version: 0) do
   add_index "scr_u_medida_produc", ["uMedidaProducNombre"], name: "UN_uMedidaNombre", unique: true, using: :btree
 
   create_table "scr_usuario", force: true do |t|
-    t.string   "username",            limit: 50,                                                                                   null: false
-    t.text     "password",                                                                                                         null: false
+    t.string   "username",            limit: 50,                                                                           null: false
+    t.text     "password",                                                                                                 null: false
     t.text     "detalleuuario"
-    t.datetime "ultimavisitausuario",                                                                                              null: false
-    t.text     "salt",                                                                                                             null: false
-    t.string   "nombreusuario",       limit: 150,                                                                                  null: false
-    t.string   "apellidousuario",     limit: 150,                                                                                  null: false
-    t.integer  "telefonousuario",     limit: 8,                                                                                    null: false
+    t.datetime "ultimavisitausuario",                                                                                      null: false
+    t.text     "ipusuario",                                               default: "127.0.0.1",                            null: false
+    t.text     "salt",                                                                                                     null: false
+    t.string   "nombreusuario",       limit: 150,                                                                          null: false
+    t.string   "apellidousuario",     limit: 150,                                                                          null: false
+    t.integer  "telefonousuario",     limit: 8,                                                                            null: false
     t.date     "nacimientousuario"
-    t.float    "latusuario",                                                                                                       null: false
-    t.float    "lonusuario",                                                                                                       null: false
+    t.float    "latusuario",                                                                                               null: false
+    t.float    "lonusuario",                                                                                               null: false
     t.text     "direccionusuario"
-    t.decimal  "sexousuario",                     precision: 1, scale: 0, default: 0,                                              null: false
-    t.datetime "registrousuario",                                                                                                  null: false
-    t.integer  "estado_id",           limit: 8,                                                                                    null: false
-    t.integer  "localidad_id",        limit: 8,                                                                                    null: false
+    t.decimal  "sexousuario",                     precision: 1, scale: 0, default: 0,                                      null: false
+    t.datetime "registrousuario",                                                                                          null: false
+    t.text     "cuentausuario",                                           default: "<cuentas><anda>0000</anda></cuentas>", null: false
+    t.integer  "estado_id",           limit: 8,                                                                            null: false
+    t.integer  "localidad_id",        limit: 8,                                                                            null: false
     t.text     "imagenusuario"
-    t.string   "correousuario",       limit: 150,                                                                                  null: false
-    t.text     "cuentausuario",                                           default: "<cuentas><contador>0000</contador></cuentas>", null: false
-    t.string   "ipusuario",           limit: 150,                                                                                  null: false
-    t.text     "contador",                                                default: "x",                                            null: false
+    t.text     "contador",                                                default: "x",                                    null: false
+    t.text     "correousuario",                                           default: "@",                                    null: false
   end
 
   add_index "scr_usuario", ["estado_id"], name: "fki_PK_estado", using: :btree

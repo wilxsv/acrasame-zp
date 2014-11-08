@@ -1,0 +1,45 @@
+<%= form_for(@scr_representante_legal) do |f| %>
+  <% if @scr_representante_legal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@scr_representante_legal.errors.count, "error") %> prohibited this scr_representante_legal from being saved:</h2>
+
+      <ul>
+      <% @scr_representante_legal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :Nombre %><br>
+    <%= f.text_field :rLegalNombre %>
+  </div>
+  <div class="control-group">
+    <%= f.label :Apellido %><br>
+    <%= f.text_field :rLegalApellido %>
+  </div>
+  <div class="control-group">
+    <%= f.label :Telefono %><br>
+    <%= f.number_field :rLegalTelefono %>
+  </div>
+  <div class="control-group">
+    <%= f.label :Telefono_movil %><br>
+    <%= f.number_field :rLegalCelular %>
+  </div>
+  <div class="control-group">
+    <%= f.label :Direccion %><br>
+    <%= f.text_area :rLegalDireccion %>
+  </div>
+  <div class="control-group">
+    <%= f.label :Categoria %><br>
+    <%= f.select :cat_rep_legal_id, ScrCatRepLegal.select('id, id, "catRLegalNombre", "catRLegalNombre"').order(:catRLegalNombre).all.collect { |p| [ p.catRLegalNombre, p.id ] }, include_blank: false %>
+  </div>
+  <div class="control-group">
+    <%= f.label :Correo %><br>
+    <%= f.text_field :rLegalemail %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Enviar", class:"btn btn-mini btn-primary", data: { confirm: 'Confirma la operación ?' } %>
+  </div>
+<% end %>

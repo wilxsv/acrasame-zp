@@ -3,7 +3,7 @@ class ReciboController < ApplicationController
     begin
       @info = nil
       @tmp = nil
-      ScrDetFactura.find_by_sql("SELECT * FROM fcn_det_factura()")
+      @tmp = ScrTransaccion.connection.select_all("SELECT fcn_det_factura AS d FROM fcn_det_factura();")
       @info = "Los recibos se generaron correctamente!"
     rescue
       @tmp = "Los recibos ya fueron generados"

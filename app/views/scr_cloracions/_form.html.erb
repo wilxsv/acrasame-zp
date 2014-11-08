@@ -1,0 +1,35 @@
+<%= form_for(@scr_cloracion) do |f| %>
+  <% if @scr_cloracion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@scr_cloracion.errors.count, "error") %> prohibited this scr_cloracion from being saved:</h2>
+
+      <ul>
+      <% @scr_cloracion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    Fecha: <%= f.text_field :fecha, placeholder:Time.now.strftime("%Y-%d-%m"), id: "datepicker" %>
+  </div>
+  <div class="field">
+    Hora: <%= f.time_select :hora %>
+  </div>
+  <div class="field">
+    Gramos de cloro: <%= f.text_field :gramos %>
+  </div>
+  <div class="field">
+    Localidad: <%= f.select :localidad_id, ScrLocalidad.order(:localidad_nombre).all.collect { |p| [ p.localidad_nombre, p.id ] }, include_blank: false %>
+  </div>
+  <div class="field">
+    Tecnico: <%= f.select :empleado_id, ScrEmpleado.order(:empleadoNombre).all.collect { |p| [ p.empleadoNombre+"  ".html_safe+p.empleadoApellido, p.id ] }, include_blank: false %>
+  </div>
+  <div class="field">
+    Observación: <%= f.text_area :observacion %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Enviar", class:"btn btn-mini btn-primary", data: { confirm: 'Confirma la operación ?' } %>
+  </div>
+<% end %>

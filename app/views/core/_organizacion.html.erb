@@ -1,0 +1,19 @@
+<div class="module">
+ <div class="module-head">
+  <h3>Organización</h3>
+ </div>
+ <div class="module-body">
+  <%= form_for :transacx, class:"form-horizontal row-fluid", :url => { :action => :configure } do |f| %>
+   <div class="control-group">
+    <%= f.label :Nombre %>
+    <div class="controls">
+     <div class="input-append">
+      <%= f.text_field :nombre, placeholder:"0.0" %><span class="add-on">$</span>
+     </div>
+    </div>
+   </div>
+   <%= f.submit "Cambiar", class:"btn btn-mini btn-primary", data: { confirm: 'Confirma la operación ?' } %>
+  <% end %>
+ </div>
+</div>
+<br />

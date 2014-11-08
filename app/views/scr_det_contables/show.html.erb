@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Inicio de periodo:</strong>
+  <%= @scr_det_contable.dConIniPeriodo %>
+</p>
+
+<p>
+  <strong>Fin de periodo:</strong>
+  <%= @scr_det_contable.dConFinPeriodo %>
+</p>
+
+<p>
+  <strong>Habilitado:</strong>
+  <%= @scr_det_contable.dConActivo %>
+</p>
+
+<p>
+  <strong>Simbolo de moneda:</strong>
+  <%= @scr_det_contable.dConSimboloMoneda %>
+</p>
+
+<p>
+  <strong>Pagos por mes:</strong>
+  <%= @scr_det_contable.dConPagoXMes %>
+</p>
+
+<%= link_to 'Editar', edit_scr_det_contable_path(@scr_det_contable) %> |
+<%= link_to 'Regresar', scr_det_contables_path %>
