@@ -13,10 +13,6 @@ class ScrDetFacturasController < ApplicationController
   end
 
   def pagar
-  require "prawn"
-  Prawn::Document.generate("public/files/last.pdf") do
-   text "Hello World!"
-  end
     begin
       ScrDetFactura.find_by_sql("SELECT * FROM fcn_pago_factura( "+params['transacx']['id'].to_s+" );")
       respond_to do |format|

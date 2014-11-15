@@ -1,0 +1,6 @@
+<%= form_for :transacx, class:"form-horizontal row-fluid", :url => { :action => :imprimir } do |f| %>
+ <p>
+  Mes a imprimir: <%= f.text_field :mes, id: "datepicker" %> <br />
+  <%= f.submit "Imprimir mes seleccionado", class:"btn btn-mini btn-primary" %>
+ </p>
+<% end %>

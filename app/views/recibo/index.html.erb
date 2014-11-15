@@ -1,16 +1,42 @@
-<% if @info != nil %>
- <div class="alert alert-success">
-  <strong>Noticia!</strong> <%= @info %>
- </div>
- <% @info = nil %>
+<% if session['error'] != nil %>
+ <%= session['error'].html_safe %>
+ <% session['error'] = nil %>
 <% end %>
-<% if @tmp != nil %>
- <div class="alert alert-error">
-  <strong>Noticia!</strong> <%= @tmp %>
+<div class="module">
+ <div class="module-head">
+  <h3>
+   Generación e impresión de recibos del mes actual
+  </h3>  
  </div>
- <% @tmp = nil %>
-<% end %>
+ <div class="module-body">
+  <%= form_for :transacx, class:"form-horizontal row-fluid", :url => { :action => :genera } do |f| %>
+   <div class="control-group">
+    <%= f.submit "Generar recibos", class:"btn btn-mini btn-primary", data: { confirm: '¿Ya estan registradas todas las lecturas?' } %>
+   </div>
+  <% end %>
+  <%= form_for :transacx, class:"form-horizontal row-fluid", :url => { :action => :imprimir } do |f| %>
+   <div class="control-group">
+    <%= f.submit "Imprimir recibos",class:"btn btn-inverse" %>
+   </div>
+  <% end %>
+ </div>
+</div>
+<div class="module">
+ <div class="module-head">
+  <h3>Imprimir recibo especifico</h3>
+ </div>
+ <div class="module-body">
+  <%= render 'operacion' %>
+ </div>
+</div>
 
-<%= link_to 'Imprimir recibos del mes', recibo_imprimir_url, class:"btn btn-inverse" %> || 
+<div class="module">
+ <div class="module-head">
+  <h3>Impresiones mensuales</h3>
+ </div>
+ <div class="module-body">
+  <%= render 'detalle' %>
+ </div>
+</div>
 
 <%= link_to 'Regresar', scr_det_facturas_path, class:"btn btn-inverse" %>

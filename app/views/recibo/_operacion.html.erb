@@ -1,0 +1,6 @@
+<%= form_for :transacx, class:"form-horizontal row-fluid", :url => { :action => :imprimir } do |f| %>
+ <div class="control-group">
+  Correlarivo: <%= f.number_field :id, placeholder:"#### - ## - ###" %><br />
+  <%= f.submit "Imprimir recibo", class:"btn btn-mini btn-primary" %>
+ </div>
+<% end %>
