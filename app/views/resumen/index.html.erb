@@ -1,2 +1,44 @@
-<h1>Resumen#index</h1>
-<p>Find me in app/views/resumen/index.html.erb</p>
+                        <div class="module">
+                            <div class="module-body">
+                                <div class="profile-head media">
+                                    <a href="#" class="media-avatar pull-left">
+                                        <%= image_tag("logo.png") %>
+                                    </a>
+                                    <div class="media-body">
+                                        <h4>
+                                            Asociacion Rural Zapote Platanares <small>Activa</small>
+                                        </h4>
+                                        <p class="profile-brief">
+                                            Informe general resumida sobre las operaciones y actividades
+                                        </p>
+                                        <div class="profile-details muted">
+                                            <a href="#" class="btn"><i class="icon-plus shaded"></i>Enviar notificación </a>
+                                            <a href="#" class="btn"><i class="icon-envelope-alt shaded"></i>Enviar mensaje </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="profile-tab nav nav-tabs">
+                                    <li class="active"><a href="#contable" data-toggle="tab">Contables</a></li>
+                                    <li><a href="#financiero" data-toggle="tab">Financiero</a></li>
+                                    <li><a href="#socias" data-toggle="tab">Socias y socios</a></li>
+                                    <li><a href="#operativo" data-toggle="tab">Operativos</a></li>
+                                    <li><a href="#mapas" data-toggle="tab">Mapas y ubicaciones</a></li>
+                                </ul>
+                                <div class="profile-tab-content tab-content">
+                                    <div class="tab-pane fade active in" id="contable">
+                                      <%= render 'contable' %>
+                                    </div>
+                                    <div class="tab-pane fade" id="financiero">
+                                      <%= render 'financiero' %>
+                                    </div>
+                                    <div class="tab-pane fade" id="socias">
+                                      <%= render 'socias' %>
+                                    </div>
+                                    <div class="tab-pane fade" id="mapas">
+                                      <%= render 'mapas' %>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/.module-body-->
+                        </div>
+                        <!--/.module-->
