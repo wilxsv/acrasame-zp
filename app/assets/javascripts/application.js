@@ -18,8 +18,3 @@
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.es.js
-//= require bootstrap-datetimepicker
-
-//= require bootstrap-datetimepicker/core
-//= require bootstrap-datetimepicker/pickers
-//= require bootstrap-datetimepicker/locales/bootstrap-datetimepicker.es.js

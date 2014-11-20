@@ -1,216 +1,109 @@
+<div class="module">
+ <div class="module-head">
+  <h3>Año Fiscal</h3>
+ </div>
+ <div class="module-body">
+  <% @periodo.each do |data| %>
+   <p>Inicio: <b>[<%= data.dConIniPeriodo %>]</b>
+   Fin: <b>[<%= data.dConFinPeriodo %>]</b>
+   Moneda: <b>[<%= data.dConSimboloMoneda %>]</b></p>
+  <% end %>
+ </div>
+</div>
 
-                                        <div class="module-option clearfix">
-                                            <form>
-                                            <div class="input-append pull-left">
-                                                <input type="text" class="span3" placeholder="Filter by name...">
-                                                <button type="submit" class="btn">
-                                                    <i class="icon-search"></i>
-                                                </button>
-                                            </div>
-                                            </form>
-                                            <div class="btn-group pull-right" data-toggle="buttons-radio">
-                                                <button type="button" class="btn">
-                                                    All</button>
-                                                <button type="button" class="btn">
-                                                    Male</button>
-                                                <button type="button" class="btn">
-                                                    Female</button>
-                                            </div>
-                                        </div>
-                                        <div class="module-body">
-                                            <div class="row-fluid">
-                                                <div class="span6">
-                                                    <div class="media user">
-                                                        <a class="media-avatar pull-left" href="#">
-                                                            <%= image_tag("logo.png") %>
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h3 class="media-title">
-                                                                John Donga
-                                                            </h3>
-                                                            <p>
-                                                                <small class="muted">Pakistan</small></p>
-                                                            <div class="media-option btn-group shaded-icon">
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-envelope"></i>
-                                                                </button>
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-share-alt"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="span6">
-                                                    <div class="media user">
-                                                        <a class="media-avatar pull-left" href="#">
-                                                            <%= image_tag("logo.png") %>
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h3 class="media-title">
-                                                                Donga John</h3>
-                                                            <p>
-                                                                <small class="muted">Pakistan</small></p>
-                                                            <div class="media-option btn-group shaded-icon">
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-envelope"></i>
-                                                                </button>
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-share-alt"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--/.row-fluid-->
-                                            <br />
-                                            <div class="row-fluid">
-                                                <div class="span6">
-                                                    <div class="media user">
-                                                        <a class="media-avatar pull-left" href="#">
-                                                            <%= image_tag("logo.png") %>
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h3 class="media-title">
-                                                                John Donga</h3>
-                                                            <p>
-                                                                <small class="muted">Pakistan</small></p>
-                                                            <div class="media-option btn-group shaded-icon">
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-envelope"></i>
-                                                                </button>
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-share-alt"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="span6">
-                                                    <div class="media user">
-                                                        <a class="media-avatar pull-left" href="#">
-                                                            <%= image_tag("logo.png") %>
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h3 class="media-title">
-                                                                Donga John</h3>
-                                                            <p>
-                                                                <small class="muted">Pakistan</small></p>
-                                                            <div class="media-option btn-group shaded-icon">
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-envelope"></i>
-                                                                </button>
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-share-alt"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--/.row-fluid-->
-                                            <br />
-                                            <div class="row-fluid">
-                                                <div class="span6">
-                                                    <div class="media user">
-                                                        <a class="media-avatar pull-left" href="#">
-                                                            <%= image_tag("logo.png") %>
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h3 class="media-title">
-                                                                John Donga</h3>
-                                                            <p>
-                                                                <small class="muted">Pakistan</small></p>
-                                                            <div class="media-option btn-group shaded-icon">
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-envelope"></i>
-                                                                </button>
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-share-alt"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="span6">
-                                                    <div class="media user">
-                                                        <a class="media-avatar pull-left" href="#">
-                                                            <%= image_tag("logo.png") %>
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h3 class="media-title">
-                                                                Donga John</h3>
-                                                            <p>
-                                                                <small class="muted">Pakistan</small></p>
-                                                            <div class="media-option btn-group shaded-icon">
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-envelope"></i>
-                                                                </button>
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-share-alt"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--/.row-fluid-->
-                                            <br />
-                                            <div class="row-fluid">
-                                                <div class="span6">
-                                                    <div class="media user">
-                                                        <a class="media-avatar pull-left" href="#">
-                                                            <%= image_tag("logo.png") %>
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h3 class="media-title">
-                                                                John Donga</h3>
-                                                            <p>
-                                                                <small class="muted">Pakistan</small></p>
-                                                            <div class="media-option btn-group shaded-icon">
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-envelope"></i>
-                                                                </button>
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-share-alt"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="span6">
-                                                    <div class="media user">
-                                                        <a class="media-avatar pull-left" href="#">
-                                                            <%= image_tag("logo.png") %>
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h3 class="media-title">
-                                                                Donga John</h3>
-                                                            <p>
-                                                                <small class="muted">Pakistan</small></p>
-                                                            <div class="media-option btn-group shaded-icon">
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-envelope"></i>
-                                                                </button>
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-share-alt"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--/.row-fluid-->
-                                            <br />
-                                            <div class="pagination pagination-centered">
-                                                <ul>
-                                                    <li><a href="#"><i class="icon-double-angle-left"></i></a></li>
-                                                    <li><a href="#">1</a></li>
-                                                    <li><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#"><i class="icon-double-angle-right"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
+<div class="module">
+ <div class="module-head">
+  <h3>Representantes legales</h3>
+ </div>
+ <div class="module-body">
+ </div>
+</div>
+
+<div class="module">
+ <div class="module-head">
+  <h3>Grupos - Rubros - Cuentas</h3>
+ </div>
+ <div class="module-body">
+  <table cellpadding="0" cellspacing="0" border="0" class="datatable-2 table table-bordered table-striped	 display" width="100%">
+   <thead>
+    <tr>
+      <th>Cuenta</th>
+      <th>Nombre</th>
+      <th>Saldo</th>
+    </tr>
+  </thead>
+  <tbody>
+   <!-- inicio de secuencias -->
+   <% saldo = 0 %>
+   <% cuenta = "" %>
+   <% id = 0 %>
+   <% saldo_a = 0 %>
+   <% saldo_p= 0 %>
+   <% saldo_c = 0 %>
+   <% @ScrTodo.each do |t| %>
+    <% if id != t.cuentaCodigo && t.cuentaCodigo < 4 %>
+     <% if id != 0 %>
+      <td></td>
+      <td><b>TOTAL DE <%= cuenta %></b></td>
+      <% if saldo >= 0 %>
+       <td><b><%= saldo %></b></td>
+      <% else %>
+       <td><b>(<%= saldo.abs %>)</b></td>
+      <% end %>
+     <% end %>
+     <% id = t.cuentaCodigo %>
+     <% saldo = 0 %>
+     <% cuenta = t.cuentaNombre %>
+    <% else %>
+     <% saldo = saldo + t.cuentaDebe - t.cuentaHaber %>
+    <% end %>
+    <tr>
+     <% number = t.cuentaCodigo.to_s %>
+     <% number = number.initial %>
+     <% case number.to_i
+         when 1
+          saldo_a += t.cuentaDebe - t.cuentaHaber
+         when 2
+          saldo_p += t.cuentaDebe - t.cuentaHaber
+         when 3
+          saldo_c += t.cuentaDebe - t.cuentaHaber
+         else
+        end
+     %>
+     <% if number.to_i > 3 %>
+     <% elsif t.cuentaCodigo < 4 %>
+      <td><b><%= t.cuentaCodigo %></b></td>
+      <td><b><%= t.cuentaNombre %></b></td>
+      <td></td>
+     <% elsif t.cuentaCodigo < 100 %>
+      <td><b><%= t.cuentaCodigo %></b></td>
+      <td><b><%= t.cuentaNombre %></b></td>
+      <% if t.cuentaDebe - t.cuentaHaber >= 0 %>
+       <td><b><%= t.cuentaDebe - t.cuentaHaber %></b></td>
+      <% else %>
+       <td><b>(<%= t.cuentaHaber - t.cuentaDebe %>)</b></td>
+      <% end %>
+     <% else %>
+      <td><%= t.cuentaCodigo %></td>
+      <td><%= t.cuentaNombre %></td>
+      <% if t.cuentaDebe - t.cuentaHaber >= 0 %>
+       <td><%= t.cuentaDebe - t.cuentaHaber %></td>
+      <% else %>
+       <td>(<%= t.cuentaHaber - t.cuentaDebe %>)</td>
+      <% end %>
+     <% end %>
+    </tr>
+   <% end %>
+   <!-- fin secuencias -->
+  </tbody>
+  <tfoot>
+    <tr>
+      <th>Cuenta</th>
+      <th>Nombre</th>
+      <th>Saldo</th>
+    </tr>
+   </tr>
+  </tfoot>
+  </table>
+ </div>
+</div>

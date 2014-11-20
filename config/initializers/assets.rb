@@ -12,3 +12,4 @@ Rails.application.config.assets.precompile += %w( "respond.min" )
 Rails.application.config.assets.precompile += %w( bootswatch.css )
 Rails.application.config.assets.precompile += %w( redmond/jquery-ui.css )
 Rails.application.config.assets.precompile += %w( jquery-ui )
+

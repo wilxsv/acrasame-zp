@@ -1,0 +1,38 @@
+<div class="module">
+ <div class="module-head">
+  <h3>Grupos - Rubros - Cuentas</h3>
+ </div>
+ <div class="module-body">
+  <table cellpadding="0" cellspacing="0" border="0" class="datatable-2 table table-bordered table-striped	 display" width="100%">
+   <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Telefono</th>
+      <th>Localidad</th>
+      <th>Consumo</th>
+    </tr>
+  </thead>
+  <tbody>
+   <!-- inicio de secuencias -->
+   <% @consumo.each do |t| %>
+      <td><a href="https://www.google.com/maps?q=loc:<%= t.latusuario %>,<%= t.lonusuario %>" target="_black" ><%= t.nombreusuario+" "+t.apellidousuario %></a></td>
+      <td><%= t.telefonousuario %></td>
+      <% c = ScrLocalidad.find(t.localidad_id) %>
+      <td><b><%= c.localidad_nombre %></b></td>
+      <td><%= t.total %></td>
+    </tr>
+   <% end %>
+   <!-- fin secuencias -->
+  </tbody>
+  <tfoot>
+    <tr>
+      <th>Nombre</th>
+      <th>Telefono</th>
+      <th>Localidad</th>
+      <th>Consumo</th>
+    </tr>
+   </tr>
+  </tfoot>
+  </table>
+ </div>
+</div>

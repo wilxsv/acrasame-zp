@@ -1,3 +1,4 @@
+
                         <div class="module">
                             <div class="module-body">
                                 <div class="profile-head media">
@@ -6,7 +7,7 @@
                                     </a>
                                     <div class="media-body">
                                         <h4>
-                                            Asociacion Rural Zapote Platanares <small>Activa</small>
+                                            Asociacion Rural Zapote Platanares <small>Resumen de actividades</small>
                                         </h4>
                                         <p class="profile-brief">
                                             Informe general resumida sobre las operaciones y actividades
@@ -34,6 +35,9 @@
                                     <div class="tab-pane fade" id="socias">
                                       <%= render 'socias' %>
                                     </div>
+                                    <div class="tab-pane fade" id="operativo">
+                                      <%= render 'operativo' %>
+                                    </div>
                                     <div class="tab-pane fade" id="mapas">
                                       <%= render 'mapas' %>
                                     </div>
@@ -42,3 +46,18 @@
                             <!--/.module-body-->
                         </div>
                         <!--/.module-->
+
+<% content_for :head do %>
+ <style type="text/css">
+  #chartModal { display:block; }
+  
+    
+		#map { width: auto; height: 360px; margin: 8px auto; }
+    }
+ </style>
+ <script src="<%= javascript_url "main/flot/jquery.flot.js" %>" type="text/javascript"></script>
+ <script src="<%= javascript_url "main/flot/jquery.flot.pie.js" %>" type="text/javascript"></script>
+ <script src="<%= javascript_url "main/flot/jquery.flot.resize.js" %>" type="text/javascript"></script>
+ <script src="<%= javascript_url "main/flot/jquery.flot.time.js" %>" type="text/javascript"></script>
+<% end %>
+<%= render :partial => '/layouts/main/tablas' %>
