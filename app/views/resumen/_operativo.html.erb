@@ -1,6 +1,6 @@
 <div class="module">
  <div class="module-head">
-  <h3>Energia - Producción - Tiempo de produccion</h3>
+  <h3>Potencia electrica - Tiempo de bombeo - Producción</h3>
  </div>
  <div class="module-body">
   <div class="chart">
@@ -21,45 +21,38 @@
   </div>
  </div>
 </div>
+Jimmi Melvin Rodriguez Salazar
+  <% @bombeo.each do |data| %>
+   <p> <%= data.semana %> </p>
+  <% end %>
 <script type="text/javascript">
+ $(function () {
+  var d1 = [];
+  <% @bombeo.each do |data| %>
+   d1.push([(new Date("<%= data.semana %>")).getTime(), <%= data.potencia %>]);
+  <% end %>
+  
+  var d2 = [];
+  <% @bombeo.each do |data| %>
+   d2.push([(new Date("<%= data.semana %>")).getTime(), <%= TimeDifference.between(Time.parse(data.inicio), Time.parse(data.fin)).in_minutes %>]);
+  <% end %>
+  
+  var d3 = [];
+  <% @bombeo.each do |data| %>
+   d3.push([(new Date("<%= data.semana %>")).getTime(), <%= data.produccion %>]);
+  <% end %>
 
-	$(function () {
-
-		var d1 = [];
-		for (var i = 0; i < Math.PI * 2; i += 0.25) {
-			d1.push([i, Math.sin(i)]);
-		}
-
-		var d2 = [];
-		for (var i = 0; i < Math.PI * 2; i += 0.25) {
-			d2.push([i, Math.cos(i)]);
-		}
-
-		var d3 = [];
-		for (var i = 0; i < Math.PI * 2; i += 0.1) {
-			d3.push([i, Math.tan(i)]);
-		}
-
-		$.plot("#bombeo", [
-			{ label: "sin(x)", data: d1 },
-			{ label: "cos(x)", data: d2 },
-			{ label: "tan(x)", data: d3 }
+  $.plot("#bombeo", [
+			{ label: "Potencia Electrica (voltaje * corriente)", data: d1 },
+			{ label: "Tiempo de bombeo", data: d2 },
+			{ label: "Producción", data: d3 }
 		], {
 			series: {
 				lines: { show: true },
 				points: { show: true }
 			},
 			xaxis: {
-				ticks: [
-					0, [ Math.PI/2, "\u03c0/2" ], [ Math.PI, "\u03c0" ],
-					[ Math.PI * 3/2, "3\u03c0/2" ], [ Math.PI * 2, "2\u03c0" ]
-				]
-			},
-			yaxis: {
-				ticks: 10,
-				min: -2,
-				max: 2,
-				tickDecimals: 3
+				mode: "time", timeformat: "%d/%m/%y", minTickSize: [1, "day"]
 			},
 			grid: {
 				backgroundColor: { colors: [ "#fff", "#eee" ] },
@@ -69,7 +62,8 @@
 					bottom: 2,
 					left: 2
 				}
-			}
+			},
+			tooltip: true
 		});
 
 		// Add the Flot version string to the footer
@@ -77,4 +71,36 @@
 		$("#footer").prepend("Flot " + $.plot.version + " &ndash; ");
 	});
 
-	</script>
+</script>
+<script>
+var DataSet1 = [ 
+  <% @cloracion.each do |data| %>
+   [(new Date("<%= data.semana %>")).getTime(), <%= data.total %>],
+  <% end %>               
+];
+var datasets ={
+    "DataSet1" :{
+      label : "Numero de pastillas de cloro",
+      data: DataSet1
+    },
+  };
+var firstTime =true;
+function plotByChoice(doAll)
+{    
+ data = [];
+    if (doAll != null)
+    {
+		$.each(datasets, function(key, val) {
+            data.push(val);
+        });
+    }        
+    $.plot($("#placeholder"),
+          data,
+           { 
+               xaxis:  {
+                      mode: "time", timeformat: "%d/%m/%y", minTickSize: [1, "day"]
+                },
+           });
+}
+plotByChoice(this); 
+</script>

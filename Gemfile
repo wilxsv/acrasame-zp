@@ -45,3 +45,4 @@ gem 'bootstrap-datepicker-rails'
 #gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
 
 gem 'prawn'
+gem 'time_difference', '~> 0.3.2'

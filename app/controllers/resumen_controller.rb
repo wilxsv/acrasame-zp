@@ -15,6 +15,9 @@ class ResumenController < ApplicationController
     @socias = ScrUsuario.all()
     @consumo = ScrUsuario.joins('INNER JOIN scr_det_factura ON scr_det_factura.socio_id = scr_usuario.id').group('scr_usuario.id').select('nombreusuario, apellidousuario, telefonousuario, localidad_id, latusuario, lonusuario, SUM(scr_det_factura.total) AS total')
     #operativos
+    @bombeo = ScrBombeo.where("fecha > now() - interval '3 months'").select("to_char(fecha, 'YYYY/MM/DD') AS \"semana\", SUM(voltaje*amperaje) AS potencia, SUM(bombeo_fin) AS fin,SUM(bombeo_inicio) AS inicio, SUM(produccion) AS produccion").group('1').order('1')
+    @cloracion = ScrCloracion.where("fecha > now() - interval '3 months'").select("to_char(fecha, 'YYYY/MM/DD') AS \"semana\", SUM(gramos) AS total").group('1').order('1')
+    
     #mapas
   end
 end
