@@ -46,3 +46,7 @@ gem 'bootstrap-datepicker-rails'
 
 gem 'prawn'
 gem 'time_difference', '~> 0.3.2'
+
+gem 'execjs'
+gem 'therubyracer'
+
