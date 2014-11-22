@@ -5,4 +5,5 @@ class SeguridadController < ApplicationController
         flash[:error] = "Debe estar registrado para acceder a esta sección"
         redirect_to home_index_path # halts request cycle
       end
+    end
 end
