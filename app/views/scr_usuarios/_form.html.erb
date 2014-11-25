@@ -37,7 +37,7 @@
    </div>
    <div class="control-group">
     <div class="controls row-fluid">
-     <div class="input-append"><span class="add-on">#</span><%= f.number_field :latusuario, placeholder:"Latitud" %> <span class="add-on">#</span> <%= f.number_field :lonusuario, placeholder:"Longitud" %></div>
+     <div class="input-append"><span class="add-on">#</span><%= f.number_field :latusuario, placeholder:"Latitud", :step => 'any' %> <span class="add-on">#</span> <%= f.number_field :lonusuario, placeholder:"Longitud", :step => 'any' %></div>
     </div>
    </div>
    <div class="control-group">
