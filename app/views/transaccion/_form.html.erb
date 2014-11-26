@@ -15,7 +15,8 @@
    <div class="control-group">
     <%= f.label :cuenta, class: "control-label" %>
     <div class="controls">
-     <%= f.select :cuenta, ScrCuentua.select('id, cat_cuenta_id, "cuentaCodigo", "cuentaNombre"').group('id, cat_cuenta_id, "cuentaCodigo", "cuentaNombre"').order(:cuentaCodigo, :cuentaCodigo).all.collect { |p| [ p.cuentaNombre, p.id ] }, include_blank: false %>
+     <!--<%= f.select :cuenta_id, ScrCuentua.select('id, cat_cuenta_id, "cuentaCodigo", "cuentaNombre"').group('id, cat_cuenta_id, "cuentaCodigo", "cuentaNombre"').order(:cuentaCodigo, :cuentaCodigo).all.collect { |p| [ p.cuentaNombre, p.id ] }, include_blank: false %>-->
+     <%= f.select :cuenta, ScrCuentua.order('CAST("cuentaCodigo" AS TEXT)').all.collect { |p| [ p.cuentaCodigo.to_s+"-"+p.cuentaNombre, p.id ] }, include_blank: false %>
     </div>
    </div>
    <div class="control-group">

@@ -4,7 +4,7 @@ class ScrCuentuasController < ApplicationController
   # GET /scr_cuentuas
   # GET /scr_cuentuas.json
   def index
-    @scr_cuentuas = ScrCuentua.all
+    @scr_cuentuas = ScrCuentua.all.order('CAST("cuentaCodigo" AS TEXT)')
   end
 
   # GET /scr_cuentuas/1

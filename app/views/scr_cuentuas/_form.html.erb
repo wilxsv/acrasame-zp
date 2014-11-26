@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :Cuenta_de_orden_superior %><br>
-    <%= f.select :cat_cuenta_id, ScrCuentua.order(:cuentaCodigo).all.collect { |p| [ p.cuentaNombre, p.id ] }, include_blank: true %>
+    <%= f.select :cat_cuenta_id, ScrCuentua.order('CAST("cuentaCodigo" AS TEXT)').all.collect { |p| [ p.cuentaCodigo.to_s+"-"+p.cuentaNombre, p.id ] }, include_blank: true %>
   </div>
   <div class="field">
     <%= f.label :Es_Activo? %><br>
