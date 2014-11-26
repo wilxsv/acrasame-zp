@@ -32,7 +32,7 @@ class TransaccionController < ApplicationController
   def create
     begin
       if session[:dato] != nil and 
-        empleado_con = 2
+        empleado_con = 1
         data = "<transacx><fecha>"+session[:fecha]+"</fecha><empleado>"+empleado_con.to_s+"</empleado><comentario>"+params['transacx']['comentario']+"</comentario>".to_s
         data += session[:dato].join(" ")+"</transacx>"
         @tm = session[:dato].join(" ") #data.sub(/ \["/, '')  
