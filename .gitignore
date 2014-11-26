@@ -4,4 +4,3 @@ tmp/sessions/*
 tmp/sockets/*
 tmp/cache/assets/development/*
 tmp/cache/assets/production/*
-public/assets/*
