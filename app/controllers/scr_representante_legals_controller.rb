@@ -1,9 +1,12 @@
 class ScrRepresentanteLegalsController < ApplicationController
+  include AccesoHelpers
   before_action :set_scr_representante_legal, only: [:show, :edit, :update, :destroy]
 
   # GET /scr_representante_legals
   # GET /scr_representante_legals.json
   def index
+    session[:roles] = "administrador"
+    acceso
     @scr_representante_legals = ScrRepresentanteLegal.all
   end
 

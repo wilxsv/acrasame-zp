@@ -1,9 +1,12 @@
 class ScrMarcaProducsController < ApplicationController
+  include AccesoHelpers
   before_action :set_scr_marca_produc, only: [:show, :edit, :update, :destroy]
 
   # GET /scr_marca_producs
   # GET /scr_marca_producs.json
   def index
+    session[:roles] = "root"
+    acceso
     @scr_marca_producs = ScrMarcaProduc.all
   end
 

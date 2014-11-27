@@ -31,25 +31,25 @@
   <%= render :partial => '/layouts/main/js' %>
  </head>
  <body>
-  <% if session['rol'] == 'Directiva' %>
+  <% if session['rol'] == 'directiva' %>
    <%= render :partial => '/layouts/main/head' %>
    <div class="wrapper">
     <div class="container">
      <div class="row">
       <%= render :partial => '/layouts/main/menu' %>
-  <% elsif session['rol'] == 'Administracion' %>
+  <% elsif session['rol'] == 'administrador' %>
    <%= render :partial => '/layouts/main/heada' %>
    <div class="wrapper">
     <div class="container">
      <div class="row">
       <%= render :partial => '/layouts/main/menua' %>
-  <% elsif session['rol'] == 'Contabilidad' %>
+  <% elsif session['rol'] == 'contador' %>
    <%= render :partial => '/layouts/main/headb' %>
    <div class="wrapper">
     <div class="container">
      <div class="row">
       <%= render :partial => '/layouts/main/menub' %>
-  <% elsif session['rol'] == 'Tecnico' %>
+  <% elsif session['rol'] == 'tecnico' %>
    <%= render :partial => '/layouts/main/headc' %>
    <div class="wrapper">
     <div class="container">

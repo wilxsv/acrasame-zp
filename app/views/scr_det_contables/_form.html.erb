@@ -27,7 +27,7 @@
     Numero de pagos por mes: <%= f.number_field :dConPagoXMes %>
   </div>
   <div class="control-group">
-    Organizacion: <%= f.number_field :organizacion_id %>
+    Organizacion: <%= f.select :organizacion_id, ScrOrganizacion.order(:organizacionNombre).all.collect { |p| [ p.organizacionNombre, p.id ] }, include_blank: false %>
   </div>
   <div class="control-group">
     Director / Responsable: <%= f.select :empleado_id, ScrEmpleado.order(:empleadoNombre).all.collect { |p| [ p.empleadoNombre+"  ".html_safe+p.empleadoApellido, p.id ] }, include_blank: false %>

@@ -6,7 +6,7 @@ class ScrLecturasController < ApplicationController
   # GET /scr_lecturas
   # GET /scr_lecturas.json
   def index
-    session[:roles] = " root Tecnico "
+    session[:roles] = "tecnico"
     acceso
     @scr_lecturas = ScrLectura.all.order(fechaLectura: :desc)
     #@users = ScrUsuario.joins('JOIN scr_usuario_rol ON scr_usuario.id = scr_usuario_rol.usuario_id LEFT JOIN scr_lectura ON scr_usuario.id = scr_lectura.socio_id').where("date_part('month',scr_lectura.\"fechaLectura\") = '"+session[:mes].to_s+"")

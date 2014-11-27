@@ -1,9 +1,12 @@
 class ScrTransaccionsController < ApplicationController
+  include AccesoHelpers
   before_action :set_scr_transaccion, only: [:show, :edit, :update, :destroy]
 
   # GET /scr_transaccions
   # GET /scr_transaccions.json
   def index
+    session[:roles] = "root"
+    acceso
     @scr_transaccions = ScrTransaccion.all
   end
 

@@ -1,9 +1,12 @@
 class ScrOrganizacionsController < ApplicationController
+  include AccesoHelpers
   before_action :set_scr_organizacion, only: [:show, :edit, :update, :destroy]
 
   # GET /scr_organizacions
   # GET /scr_organizacions.json
   def index
+    session[:roles] = "root"
+    acceso
     @scr_organizacions = ScrOrganizacion.all
   end
 

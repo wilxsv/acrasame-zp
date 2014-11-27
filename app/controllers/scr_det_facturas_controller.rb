@@ -1,9 +1,12 @@
 class ScrDetFacturasController < ApplicationController
+  include AccesoHelpers
   before_action :set_scr_det_factura, only: [:show, :edit, :update, :destroy]
 
   # GET /scr_det_facturas
   # GET /scr_det_facturas.json
   def index
+    session[:roles] = "contador"
+    acceso
     @scr_det_facturas = ScrDetFactura.all.order(id: :asc)
   end
 

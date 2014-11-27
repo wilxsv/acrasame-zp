@@ -1,9 +1,12 @@
 class ScrBombeosController < ApplicationController
+  include AccesoHelpers
   before_action :set_scr_bombeo, only: [:show, :edit, :update, :destroy]
 
   # GET /scr_bombeos
   # GET /scr_bombeos.json
   def index
+    session[:roles] = "tecnico"
+    acceso
     @scr_bombeos = ScrBombeo.all
   end
 

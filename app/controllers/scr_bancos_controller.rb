@@ -1,9 +1,13 @@
 class ScrBancosController < ApplicationController
+  include AccesoHelpers
+  
   before_action :set_scr_banco, only: [:show, :edit, :update, :destroy]
 
   # GET /scr_bancos
   # GET /scr_bancos.json
   def index
+    session[:roles] = "root"
+    acceso
     @scr_bancos = ScrBanco.all
   end
 

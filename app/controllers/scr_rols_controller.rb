@@ -1,9 +1,12 @@
 class ScrRolsController < ApplicationController
+  include AccesoHelpers
   before_action :set_scr_rol, only: [:show, :edit, :update, :destroy]
 
   # GET /scr_rols
   # GET /scr_rols.json
   def index
+    session[:roles] = "root"
+    acceso
     @scr_rols = ScrRol.all
   end
 

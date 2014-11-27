@@ -1,4 +1,6 @@
 class ReciboController < ApplicationController
+  include AccesoHelpers
+  
   @@contador = ""
   @@cuenta = ""
   @@socio = 0
@@ -12,9 +14,13 @@ class ReciboController < ApplicationController
   X_2 = 0
   Y_2 = 0
   def index
+    session[:roles] = "contador administrador"
+    acceso
   end
   
   def lectura
+    session[:roles] = "contador"
+    acceso
     send_data(generate_pdf(2,3), :filename => "output.pdf", :type => "application/pdf") 
   end
   
@@ -34,6 +40,8 @@ def    unico()
 	end
  end 
   def imprimir
+    session[:roles] = "contador"
+    acceso
     if params.has_key?(:transacx)
       mes = params['transacx']['mes']
       id  = params['transacx']['id'].to_i
@@ -54,6 +62,8 @@ def    unico()
   end
   
   def genera
+    session[:roles] = "contador"
+    acceso
     begin
       @info = nil
       @tmp = nil

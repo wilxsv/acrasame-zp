@@ -1,9 +1,12 @@
 class ScrLocalidadsController < ApplicationController
+  include AccesoHelpers
   before_action :set_scr_localidad, only: [:show, :edit, :update, :destroy]
 
   # GET /scr_localidads
   # GET /scr_localidads.json
   def index
+    session[:roles] = "administrador"
+    acceso
     @scr_localidads = ScrLocalidad.all
   end
 

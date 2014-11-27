@@ -1,9 +1,12 @@
 class ScrCatActividadsController < ApplicationController
+  include AccesoHelpers
   before_action :set_scr_cat_actividad, only: [:show, :edit, :update, :destroy]
 
   # GET /scr_cat_actividads
   # GET /scr_cat_actividads.json
   def index
+    session[:roles] = "root"
+    acceso
     @scr_cat_actividads = ScrCatActividad.all
   end
 

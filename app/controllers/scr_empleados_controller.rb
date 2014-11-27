@@ -1,9 +1,12 @@
 class ScrEmpleadosController < ApplicationController
+  include AccesoHelpers
   before_action :set_scr_empleado, only: [:show, :edit, :update, :destroy]
 
   # GET /scr_empleados
   # GET /scr_empleados.json
   def index
+    session[:roles] = "administrador"
+    acceso
     @scr_empleados = ScrEmpleado.all
   end
 
@@ -69,6 +72,6 @@ class ScrEmpleadosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def scr_empleado_params
-      params.require(:scr_empleado).permit(:empleadoNombre, :empleadoApellido, :empleadoTelefono, :empleadoCelular, :empleadoDireccion, :empleadoDui, :empleadoIsss, :empleadoRegistro, :empleadoFechaIngreso, :cargo_id, :empleadoNit, :localidad_id, :empleadoEmail)
+      params.require(:scr_empleado).permit(:empleadoNombre, :empleadoApellido, :empleadoTelefono, :empleadoCelular, :empleadoDireccion, :empleadoDui, :empleadoIsss, :empleadoRegistro, :empleadoFechaIngreso, :cargo_id, :empleadoNit, :localidad_id, :empleadoEmail, :usuario_id)
     end
 end

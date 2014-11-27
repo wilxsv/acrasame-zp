@@ -1,5 +1,9 @@
 class ResumenController < ApplicationController
+  include AccesoHelpers
+  
   def index
+    session[:roles] = "root contador administrador directiva"
+    acceso
     #general
     @periodo = ScrDetContable.where('"dConActivo" = TRUE')
     @ScrTodo = ScrCuentua.where('"cuentaDebe" > ? OR "cuentaHaber" > ? OR "cuentaCodigo" < ?',0, 0, 4).order('CAST("cuentaCodigo" AS TEXT)')

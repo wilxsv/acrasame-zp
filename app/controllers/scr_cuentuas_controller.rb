@@ -1,9 +1,12 @@
 class ScrCuentuasController < ApplicationController
+  include AccesoHelpers
   before_action :set_scr_cuentua, only: [:show, :edit, :update, :destroy]
 
   # GET /scr_cuentuas
   # GET /scr_cuentuas.json
   def index
+    session[:roles] = "root contador administrador"
+    acceso
     @scr_cuentuas = ScrCuentua.all.order('CAST("cuentaCodigo" AS TEXT)')
   end
 

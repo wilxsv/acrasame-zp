@@ -1,9 +1,12 @@
 class ScrPeriodoRepresentantesController < ApplicationController
+  include AccesoHelpers
   before_action :set_scr_periodo_representante, only: [:show, :edit, :update, :destroy]
 
   # GET /scr_periodo_representantes
   # GET /scr_periodo_representantes.json
   def index
+    session[:roles] = "administrador"
+    acceso
     @scr_periodo_representantes = ScrPeriodoRepresentante.all
   end
 

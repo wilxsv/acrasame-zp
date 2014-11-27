@@ -4,7 +4,7 @@ class TransaccionController < ApplicationController
 
   # POST /transaccion
   def index
-    session[:roles] = " root Contabilidad "
+    session[:roles] = "contador"
     acceso
     @scr_transaccion = ScrTransaccion.new
     @scr_transaccions = ScrTransaccion.all.order('"transaxSecuencia", "transaxFecha"')
@@ -31,8 +31,8 @@ class TransaccionController < ApplicationController
   
   def create
     begin
-      if session[:dato] != nil and 
-        empleado_con = 1
+      if session[:dato] != nil
+        empleado_con = session[:empleado_id]
         data = "<transacx><fecha>"+session[:fecha]+"</fecha><empleado>"+empleado_con.to_s+"</empleado><comentario>"+params['transacx']['comentario']+"</comentario>".to_s
         data += session[:dato].join(" ")+"</transacx>"
         @tm = session[:dato].join(" ") #data.sub(/ \["/, '')  
@@ -41,18 +41,19 @@ class TransaccionController < ApplicationController
           session[:dato] = nil
           session[:fecha] = nil
           session[:html] = nil
-          session[:error] = nil
+          session[:error] = '<div class="alert alert-success"><button class="close" data-dismiss="alert" type="button">×</button><strong>Exito! </strong> Transaccion aplicada</div>'
           redirect_to action: 'index'
         else
           session[:dato]
-          session[:error] = "Se encontraron inconsistencias en su transacción"
+          session[:error] = '<div class="alert alert-error"><button class="close" data-dismiss="alert" type="button">×</button><strong>Error! </strong> Se encontraron inconsistencias en su transacción .</div>'
           redirect_to action: 'index'
         end
       else
+          session[:error] = '<div class="alert alert-error"><button class="close" data-dismiss="alert" type="button">×</button><strong>Error! </strong> Se encontraron inconsistencias en su transacción ..</div>'
         redirect_to action: 'index', alert: "Watch it, mister!"
       end
     rescue
-      session[:error] = "Se encontraron inconsistencias en su transacción"
+      session[:error] = '<div class="alert alert-error"><button class="close" data-dismiss="alert" type="button">×</button><strong>Error! </strong> Se encontraron inconsistencias en su transacción ...</div>'
       redirect_to action: 'index', alert: "Watch it, Salimos de un error :D  !"
     end
   end

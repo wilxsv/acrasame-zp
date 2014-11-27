@@ -1,2 +1,8 @@
-class SeguridadController < ApplicationController    
+class SeguridadController < ApplicationController
+  include AccesoHelpers
+  
+  def index
+    session[:roles] = "root"
+    acceso
+  end
 end

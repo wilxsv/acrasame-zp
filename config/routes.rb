@@ -6,10 +6,10 @@ Rails.application.routes.draw do
 
   resources :scr_det_contables
 
-  resources :scr_transaccions, :scr_cuentuas, :scr_cat_actividads, :scr_area_trabajos, :scr_marca_producs, :scr_proveedors, :scr_estados
-  resources :scr_bancos, :scr_rols, :scr_cargos, :scr_localidads, :scr_organizacions, :scr_cat_organizacions, :transacx, :scr_usuarios
-  resources :scr_empleados, :scr_periodo_representantes, :scr_representante_legals, :scr_cat_rep_legals, :scr_usuario_rols, :scr_lecturas
-  resources :scr_consumos, :scr_det_facturas, :scr_cobros, :scr_cat_cobros
+  resources :scr_cuentuas, :scr_estados, :scr_cat_actividads #:scr_transaccions, :scr_area_trabajos, :scr_marca_producs
+  resources :scr_rols, :scr_cargos, :scr_localidads, :scr_organizacions, :scr_usuarios, :scr_bancos, :scr_cat_organizacions#, :transacx
+  resources :scr_empleados, :scr_periodo_representantes, :scr_representante_legals, :scr_usuario_rols, :scr_lecturas
+  resources :scr_consumos, :scr_det_facturas, :scr_cobros, :scr_cat_cobros, :scr_cat_rep_legals, :scr_proveedors
   post 'scr_det_facturas/pagar'
   post 'scr_det_facturas/cargo'
   get 'resumen/index'
@@ -19,30 +19,18 @@ Rails.application.routes.draw do
   post 'scr_lecturas/set'
   get 'informe/general'
   post 'informe/general'
-  get 'persona/index'
-  get 'usuario/index'
-  get 'estado/index'
-  get 'cargo/index'
-  get 'rol/index'
-  get 'afijo/index'
-  get 'bloque/index'
-  get 'area/index'
-  get 'cuenta/index'
-  get 'proveedor/index'
-  get 'localidad/index'
+#  get 'persona/index'  get 'usuario/index'    get 'cargo/index'  get 'rol/index'  get 'afijo/index'  get 'bloque/index'
+#  get 'area/index' get 'cuenta/index'    get 'localidad/index' get 'recibo/lectura'   get 'pago/index'  get 'control/index'  post 'recibo/lectura'  get 'cobro/index'
   get 'libro/index'
+  get 'proveedor/index'
+  get 'estado/index'
   post 'libro/index'
   post 'libro/mayor'
   get 'libro/mayor'
-  get 'pago/index'
-  get 'control/index'
   get 'recibo/index'
-#  get 'recibo/lectura'
   get 'recibo/imprimir'
   post 'recibo/imprimir'
   post 'recibo/genera'
-#  post 'recibo/lectura'
-  get 'cobro/index'
   get 'transaccion/index'
   get 'transaccion/show'
   post 'transaccion/index'
@@ -52,6 +40,7 @@ Rails.application.routes.draw do
   get 'core/login'
   get 'core/configure'
   post 'core/pago'
+  post 'core/correlativo'
   post 'core/configure'
   get 'core/autenticate'
   post 'core/autenticate'

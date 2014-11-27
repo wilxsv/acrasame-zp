@@ -1,9 +1,12 @@
 class ScrCloracionsController < ApplicationController
+  include AccesoHelpers
   before_action :set_scr_cloracion, only: [:show, :edit, :update, :destroy]
 
   # GET /scr_cloracions
   # GET /scr_cloracions.json
   def index
+    session[:roles] = "tecnico"
+    acceso
     @scr_cloracions = ScrCloracion.all
   end
 

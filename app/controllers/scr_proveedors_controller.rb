@@ -1,9 +1,12 @@
 class ScrProveedorsController < ApplicationController
+  include AccesoHelpers
   before_action :set_scr_proveedor, only: [:show, :edit, :update, :destroy]
 
   # GET /scr_proveedors
   # GET /scr_proveedors.json
   def index
+    session[:roles] = "root"
+    acceso
     @scr_proveedors = ScrProveedor.all
   end
 

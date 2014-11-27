@@ -1,9 +1,12 @@
 class ScrConsumosController < ApplicationController
+  include AccesoHelpers
   before_action :set_scr_consumo, only: [:show, :edit, :update, :destroy]
 
   # GET /scr_consumos
   # GET /scr_consumos.json
   def index
+    session[:roles] = "root contador administrador"
+    acceso
     @scr_consumos = ScrConsumo.all
   end
 

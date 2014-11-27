@@ -1,9 +1,12 @@
 class ScrCatCobrosController < ApplicationController
+  include AccesoHelpers
   before_action :set_scr_cat_cobro, only: [:show, :edit, :update, :destroy]
 
   # GET /scr_cat_cobros
   # GET /scr_cat_cobros.json
   def index
+    session[:roles] = "root administrador"
+    acceso
     @scr_cat_cobros = ScrCatCobro.all
   end
 

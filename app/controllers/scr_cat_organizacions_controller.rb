@@ -1,4 +1,5 @@
 class ScrCatOrganizacionsController < ApplicationController
+  include AccesoHelpers
   skip_before_action :require_login, only: [:index, :create, :show, :edit, :update, :destroy ]
 #  force_ssl
 
@@ -7,6 +8,8 @@ class ScrCatOrganizacionsController < ApplicationController
   # GET /scr_cat_organizacions
   # GET /scr_cat_organizacions.json
   def index
+    session[:roles] = "root"
+    acceso
     @scr_cat_organizacions = ScrCatOrganizacion.all
   end
 

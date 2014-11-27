@@ -1,9 +1,12 @@
 class ScrEstadosController < ApplicationController
+  include AccesoHelpers
   before_action :set_scr_estado, only: [:show, :edit, :update, :destroy]
 
   # GET /scr_estados
   # GET /scr_estados.json
   def index
+    session[:roles] = "root"
+    acceso
     @scr_estados = ScrEstado.all
   end
 

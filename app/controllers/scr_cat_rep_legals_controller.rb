@@ -1,9 +1,12 @@
 class ScrCatRepLegalsController < ApplicationController
+  include AccesoHelpers
   before_action :set_scr_cat_rep_legal, only: [:show, :edit, :update, :destroy]
 
   # GET /scr_cat_rep_legals
   # GET /scr_cat_rep_legals.json
   def index
+    session[:roles] = "root"
+    acceso
     @scr_cat_rep_legals = ScrCatRepLegal.all
   end
 

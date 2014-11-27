@@ -1,9 +1,13 @@
 class ScrAreaTrabajosController < ApplicationController
+  include AccesoHelpers
+  
   before_action :set_scr_area_trabajo, only: [:show, :edit, :update, :destroy]
 
   # GET /scr_area_trabajos
   # GET /scr_area_trabajos.json
   def index
+    session[:roles] = "root"
+    acceso
     @scr_area_trabajos = ScrAreaTrabajo.all
   end
 

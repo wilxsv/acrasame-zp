@@ -3,9 +3,7 @@
   <strong>Advertencia!</strong> <%= session['dat'] %>
  </div><% end %>
 <% if session['error'] != nil %>
- <div class="alert alert-error">
-  <strong>Advertencia!</strong> <%= session['error'] %>
- </div>
+ <%= session['error'].html_safe %>
  <% session['error'] = nil %>
 <% end %>
 <div class="span4">

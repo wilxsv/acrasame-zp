@@ -1,9 +1,12 @@
 class ScrCargosController < ApplicationController
+  include AccesoHelpers
   before_action :set_scr_cargo, only: [:show, :edit, :update, :destroy]
 
   # GET /scr_cargos
   # GET /scr_cargos.json
   def index
+    session[:roles] = "root administrador"
+    acceso
     @scr_cargos = ScrCargo.all
   end
 

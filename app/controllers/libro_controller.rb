@@ -1,5 +1,9 @@
 class LibroController < ApplicationController
+  include AccesoHelpers
+  
   def index
+    session[:roles] = "root contador administrador"
+    acceso
     @scr_transaccions = ScrTransaccion.last(0)
       @lo = 0
     if params.has_key?(:transacx) 
@@ -16,6 +20,8 @@ class LibroController < ApplicationController
   end
   
   def mayor
+    session[:roles] = "root contador administrador"
+    acceso
     @ScrCuentua = ScrCuentua.where('"cuentaDebe" > ? OR "cuentaHaber" > ? ', 0, 0).order('"cuentaCodigo"')
   end
 end

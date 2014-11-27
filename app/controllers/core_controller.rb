@@ -1,4 +1,6 @@
 class CoreController < ApplicationController
+  include AccesoHelpers
+
   def index
   end
 
@@ -28,14 +30,15 @@ class CoreController < ApplicationController
     session[:user_id] = nil
     session[:user_nombre] = nil
     session[:user_mail] =  nil
+    session[:empleado_id] = nil
     session[:rol] = nil
     redirect_to action: 'index'
   end
   
   def configure
+    session[:roles] = "contador administrador"
+    acceso
     if params.has_key?(:transacx)
-      session[:error] = "Se encontraron inconsistencias en su transacción"
-      
       if params['transacx']['cdebe'] != nil and params['transacx']['chaber'] != nil
         #Se define el procedimiento para cobros
         begin
@@ -73,9 +76,9 @@ END;
 $BODY$
   LANGUAGE plpgsql VOLATILE
   COST 100;")
-          session[:error] = '<div class="alert alert-success"><strong>Exito! </strong> Procedimiento ejecutado sin errores</div>'
+          session[:error] = '<div class="alert alert-success"><button class="close" data-dismiss="alert" type="button">×</button><strong>Exito! </strong> Procedimiento ejecutado sin errores</div>'
         rescue
-          session[:error] = '<div class="alert alert-error"><strong>Error! </strong> Procedimiento ejecutado con errores</div>'
+          session[:error] = '<div class="alert alert-error"><button class="close" data-dismiss="alert" type="button">×</button><strong>Error! </strong> Procedimiento ejecutado con errores</div>'
         end
       elsif params['transacx']['nombre'] != nil and params['transacx']['nombre'] != nil
         #Se actualiza el nombre de la organizacion
@@ -87,9 +90,9 @@ $BODY$
         #Se define el procedimiento para cobros
         begin
           @tmp = ScrTransaccion.connection.select_all("")
-          session[:error] = '<div class="alert alert-success"><strong>Exito! </strong> Procedimiento ejecutado sin errores</div>'
+          session[:error] = '<div class="alert alert-success"><button class="close" data-dismiss="alert" type="button">×</button><strong>Exito! </strong> Procedimiento ejecutado sin errores</div>'
         rescue
-          session[:error] = '<div class="alert alert-error"><strong>Error! </strong> Procedimiento ejecutado con errores</div>'
+          session[:error] = '<div class="alert alert-error"><button class="close" data-dismiss="alert" type="button">×</button><strong>Error! </strong> Procedimiento ejecutado con errores</div>'
         end
       else
         session[:error] = "no mando nada"
@@ -98,6 +101,8 @@ $BODY$
   end
   
   def pago
+    session[:roles] = "contador"
+    acceso
     if params.has_key?(:transacx)
       session[:error] = "Se encontraron inconsistencias en su transacción"
       
@@ -138,14 +143,35 @@ END;
 $BODY$
   LANGUAGE plpgsql VOLATILE
   COST 100;")
-          session[:error] = '<div class="alert alert-success"><strong>Exito! </strong> Procedimiento ejecutado sin errores</div>'
+          session[:error] = '<div class="alert alert-success"><button class="close" data-dismiss="alert" type="button">×</button><strong>Exito! </strong> Procedimiento ejecutado sin errores</div>'
           redirect_to action: 'configure'
         rescue
-          session[:error] = '<div class="alert alert-error"><strong>Error! </strong> Procedimiento ejecutado con errores</div>'
+          session[:error] = '<div class="alert alert-error"><button class="close" data-dismiss="alert" type="button">×</button><strong>Error! </strong> Procedimiento ejecutado con errores</div>'
           redirect_to action: 'configure'
         end
       else
-        session[:error] = '<div class="alert alert-error"><strong>Error! </strong> No envio datos</div>'
+        session[:error] = '<div class="alert alert-error"><button class="close" data-dismiss="alert" type="button">×</button><strong>Error! </strong> No envio datos</div>'
+        redirect_to action: 'configure'
+      end
+    end
+  end
+  
+  def correlativo
+    session[:roles] = "administrador"
+    acceso
+    if params.has_key?(:transacx)
+      if params['transacx']['secuencia'] != nil
+        #Se define el procedimiento para cobros
+        begin
+          @tmp = ScrTransaccion.connection.select_all("ALTER SEQUENCE scr_det_factura_id_seq RESTART WITH "+params['transacx']['secuencia']+";")
+          session[:error] = '<div class="alert alert-success"><button class="close" data-dismiss="alert" type="button">×</button><strong>Exito! </strong> Secuencia registrada</div>'
+          redirect_to action: 'configure'
+        rescue
+          session[:error] = '<div class="alert alert-error"><button class="close" data-dismiss="alert" type="button">×</button><strong>Error! </strong> Secuencia no registrada</div>'
+          redirect_to action: 'configure'
+        end
+      else
+        session[:error] = '<div class="alert alert-error"><button class="close" data-dismiss="alert" type="button">×</button><strong>Error! </strong> No envio datos</div>'
         redirect_to action: 'configure'
       end
     end
@@ -164,6 +190,11 @@ $BODY$
           c = ScrUsuarioRol.where(usuario_id: u.id).take
           c = ScrRol.find(c.rol_id)
           session[:rol] = c.nombrerol
+          session[:empleado_id] = nil
+          @c = ScrEmpleado.where("usuario_id = ?", session[:user_id])
+          @c.each do |g|
+            session[:empleado_id] = g.id
+          end
           return true
         else 
           return false

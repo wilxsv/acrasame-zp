@@ -1,9 +1,12 @@
 class ScrCobrosController < ApplicationController
+  include AccesoHelpers
   before_action :set_scr_cobro, only: [:show, :edit, :update, :destroy]
 
   # GET /scr_cobros
   # GET /scr_cobros.json
   def index
+    session[:roles] = "root contador administrador"
+    acceso
     @scr_cobros = ScrCobro.all
   end
 

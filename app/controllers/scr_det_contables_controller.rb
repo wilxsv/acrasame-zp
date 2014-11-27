@@ -1,9 +1,12 @@
 class ScrDetContablesController < ApplicationController
+  include AccesoHelpers
   before_action :set_scr_det_contable, only: [:show, :edit, :update, :destroy]
 
   # GET /scr_det_contables
   # GET /scr_det_contables.json
   def index
+    session[:roles] = "root contador administrador"
+    acceso
     @scr_det_contables = ScrDetContable.all
   end
 

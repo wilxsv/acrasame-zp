@@ -1,10 +1,13 @@
 class ScrUsuariosController < ApplicationController
+  include AccesoHelpers
   before_action :set_scr_usuario, only: [:show, :edit, :update, :destroy]
   require 'digest'
 
   # GET /scr_usuarios
   # GET /scr_usuarios.json
   def index
+    session[:roles] = "root"
+    acceso
     @scr_usuarios = ScrUsuario.all
   end
 
