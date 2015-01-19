@@ -16,6 +16,7 @@
   <% end %>
   <%= form_for :transacx, class:"form-horizontal row-fluid", :url => { :action => :imprimir } do |f| %>
    <div class="control-group">
+    <%= f.text_field :actual, type:"hidden", value:"vBHWMHC4MVtGnpSyJIsGypANFcKZZnruK/nsCFyDEyk=" %>
     <%= f.submit "Imprimir recibos",class:"btn btn-inverse" %>
    </div>
   <% end %>

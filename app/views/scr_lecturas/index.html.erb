@@ -8,6 +8,7 @@
   <table cellpadding="0" cellspacing="0" border="0" class="datatable-2 table table-bordered table-striped	 display" width="100%">
    <thead>
     <tr>
+      <td>Localidad</td>
       <th>Medidor</th>
       <th>Persona socia Fecha: [<%= session['mes'] %>]</th>
       <th>Lectura</th>
@@ -24,6 +25,7 @@
     <% if mes == nil %>
      <tr>
       <td></td>
+      <td></td>
       <td>Debe seleccionar una fecha del mes.</td>
       <td></td>
       <td></td>
@@ -37,6 +39,10 @@
       <% end %>
       <% if posee == 0 %>
        <tr>
+        <td>
+         <% c = ScrLocalidad.find(user.localidad_id) %>
+         <%= c.localidad_nombre %>
+        </td>
         <td><%= user.contador %></td>
         <td><%= user.nombreusuario+'  '+user.apellidousuario %></td>
         <%= form_for(@scr_lectura) do |f| %>
@@ -45,7 +51,7 @@
           <%= f.text_field :socio_id, type:"hidden", value:user.id %>
           <%= f.text_field :tecnico_id, type:"hidden", value:session['tecnico'] %>
           <%= f.text_field :fechaLectura, type:"hidden", value:session['mes'] %>
-          <%= f.text_field :valorLectura, placeholder:"000", size: "5" %><span class="add-on">#</span>
+          <%= f.text_field :valorLectura, placeholder:"000", size: "5" %>
          </td>
          <td><%= f.submit "Enviar", class:"btn btn-mini btn-primary", data: { confirm: 'Confirma la operación ?' } %></td>
         <% end %>
@@ -57,6 +63,7 @@
    </tbody>
    <tfoot>
     <tr>
+      <td>Localidad</td>
       <th>Medidor</th>
       <th>Persona socia</th>
       <th>Lectura</th>
@@ -77,6 +84,7 @@
       <th>Fecha de lectura</th>
       <th>Socio</th>
       <th>Consumo cm<sup>3</sup></th>
+      <th>Operacion</th>
     </tr>
   </thead>
 
@@ -89,8 +97,8 @@
          <%= c.nombreusuario %> <%= c.apellidousuario %></td>
         <td><%= scr_lectura.valorLectura %></td>
         <!--<td><%= link_to 'Ver', scr_lectura %></td>
-        <td><%= link_to 'Editar', edit_scr_lectura_path(scr_lectura) %></td>
-        <td><%= link_to 'Eliminar', scr_lectura, method: :delete, data: { confirm: 'Confirmar operacion?' } %></td>-->
+        <td><%= link_to 'Editar', edit_scr_lectura_path(scr_lectura) %></td>-->
+        <td><%= link_to 'Eliminar', scr_lectura, method: :delete, data: { confirm: 'Confirmar operacion?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -99,6 +107,7 @@
       <th>Socio</th>
       <th>Consumo</th>
       <th>Fecha de lectura</th>
+      <th>Operacion</th>
     </tr>
   </tfoot>
 </table>

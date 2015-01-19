@@ -20,13 +20,13 @@ class ScrLecturasController < ApplicationController
   # GET /scr_lecturas/1
   # GET /scr_lecturas/1.json
   def show
-    session[:roles] = " root Tecnico "
+    session[:roles] = " root tecnico "
     acceso
   end
 
   # GET /scr_lecturas/new
   def new
-    session[:roles] = " root Tecnico "
+    session[:roles] = " root tecnico "
     acceso
     @scr_lectura = ScrLectura.new
     @scr_empleados = ScrEmpleado.all.order('"empleadoNombre", "empleadoApellido"')
@@ -35,32 +35,38 @@ class ScrLecturasController < ApplicationController
 
   # GET /scr_lecturas/1/edit
   def edit
-    session[:roles] = " root Tecnico "
+    session[:roles] = " root tecnico "
     acceso
   end
 
   # POST /scr_lecturas
   # POST /scr_lecturas.json
   def create
-    session[:roles] = " root Tecnico "
+    session[:roles] = " root tecnico "
     acceso
     @scr_lectura = ScrLectura.new(scr_lectura_params)
-
-    respond_to do |format|
-      if @scr_lectura.save
-        format.html { redirect_to scr_lecturas_url, notice: 'Scr lectura was successfully created.' }
-        format.json { render :index, status: :created, location: @scr_lectura }
-      else
-        format.html { render :new }
-        format.json { render json: @scr_lectura.errors, status: :unprocessable_entity }
-      end
+    
+    if @scr_lectura.save
+		redirect_to scr_lecturas_path
+    else
+		redirect_to scr_lecturas_new
     end
+    
+    #respond_to do |format|
+    #  if @scr_lectura.save
+    #    format.html { redirect_to scr_lecturas_path, notice: 'Scr lectura was successfully created.' }
+    #    format.json { render :index, status: :created, location: @scr_lectura }
+    #  else
+    #    format.html { render :new }
+    #    format.json { render json: @scr_lectura.errors, status: :unprocessable_entity }
+    #  end
+    #end
   end
 
   # PATCH/PUT /scr_lecturas/1
   # PATCH/PUT /scr_lecturas/1.json
   def update
-    session[:roles] = " root Tecnico "
+    session[:roles] = " root tecnico "
     acceso
     respond_to do |format|
       if @scr_lectura.update(scr_lectura_params)
@@ -76,7 +82,7 @@ class ScrLecturasController < ApplicationController
   # DELETE /scr_lecturas/1
   # DELETE /scr_lecturas/1.json
   def destroy
-    session[:roles] = " root Tecnico "
+    session[:roles] = " root tecnico "
     acceso
     @scr_lectura.destroy
     respond_to do |format|

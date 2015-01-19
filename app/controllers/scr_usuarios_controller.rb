@@ -42,7 +42,6 @@ class ScrUsuariosController < ApplicationController
     @scr_usuario.password		= Digest::SHA512.hexdigest(@scr_usuario.salt+params[:scr_usuario][:password])
     @scr_usuario.correousuario	= params[:scr_usuario][:correousuario]
     @scr_usuario.detalleuuario	= params[:scr_usuario][:detalleuuario]
-    @scr_usuario.ultimavisitausuario = time.strftime("%Y-%m-%d %H:%M:%S")
     @scr_usuario.ipusuario		= request.remote_ip
     @scr_usuario.nombreusuario	= params[:scr_usuario][:nombreusuario]
     @scr_usuario.apellidousuario= params[:scr_usuario][:apellidousuario]
@@ -50,9 +49,7 @@ class ScrUsuariosController < ApplicationController
     @scr_usuario.nacimientousuario = params[:scr_usuario][:nacimientousuario]
     @scr_usuario.latusuario		= params[:scr_usuario][:latusuario]
     @scr_usuario.lonusuario		= params[:scr_usuario][:lonusuario]
-    @scr_usuario.lonusuario		= params[:scr_usuario][:lonusuario]
     @scr_usuario.sexousuario	= 3
-    @scr_usuario.registrousuario= time.strftime("%Y-%m-%d %H:%M:%S")
     @scr_usuario.estado_id = params[:scr_usuario][:estado_id]
     @scr_usuario.localidad_id	= params[:scr_usuario][:localidad_id]
 #    uploaded_io = params[:scr_usuario][:imagenusuario]
@@ -102,6 +99,49 @@ class ScrUsuariosController < ApplicationController
     @rol.rol_id		= params[:scr_usuario][:estado_id]
     @rol.save
     redirect_to  scr_usuarios_url
+  end
+  
+  #Agregando usuarios  
+  def agregausuarios
+    @path = Rails.root.to_s+'/public/users.yml'
+    @config=YAML.load_file(@path)
+    @db = ""
+    item = 0
+    @config.each do |company,details|
+		#puts company
+		#puts "-------"
+		
+		##############################################################
+    time = Time.new
+
+    @scr_usuario = ScrUsuario.new()
+    @scr_usuario.username		= "Socio "+item.to_s
+    @scr_usuario.salt			= Random.new_seed.to_s
+    @scr_usuario.password		= Digest::SHA512.hexdigest("Socio "+item.to_s)
+    @scr_usuario.correousuario	= "Socio"+item.to_s+"@mail.net"
+    @scr_usuario.detalleuuario	= "Ingresado de bd de sistema heredado -- ["+details["dir"]+"] -- "+"2015-01-10 22:30:42.64937-06"
+    #@scr_usuario.ultimavisitausuario = "2015-01-10 22:30:42.64937-06"
+    @scr_usuario.ipusuario		= request.remote_ip
+    @scr_usuario.nombreusuario	= details["nom"]
+    @scr_usuario.apellidousuario= details["ape"]
+    @scr_usuario.telefonousuario= item
+    @scr_usuario.nacimientousuario = "2015-01-10"
+    @scr_usuario.latusuario		= details["lat"]
+    @scr_usuario.lonusuario		= details["lon"]
+    @scr_usuario.sexousuario	= 3
+    #@scr_usuario.registrousuario= "2015-01-10 22:30:42.64937-06"
+    @scr_usuario.estado_id = 2
+    @scr_usuario.localidad_id	= details["loc"]
+    
+    if @scr_usuario.save
+        @db += "<p>item: " + item.to_s + "</p>"
+      else
+        @db += "<p>NO: " + item.to_s + "</p>"
+      end
+      item = item + 1
+		##############################################################
+		
+	end
   end
 
   private

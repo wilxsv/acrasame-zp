@@ -6,10 +6,29 @@
   <%= form_for :transacx, class:"form-horizontal row-fluid", :url => { :action => :correlativo } do |f| %>
    <div class="control-group">
     <div class="controls">
+     <div class="input-append">Iniciar secuencia en: <span class="add-on">#</span><%= f.number_field :secuencia, placeholder:"Correlativo de recibos" %></div>
+    </div>
+   </div>
+   <%= f.submit "Asignar secuencia", class:"btn btn-mini btn-primary", data: { confirm: 'Confirma la operación ?' } %>
+  <% end %>
+ </div>
+</div>
+<br />
+<div class="module">
+ <div class="module-head">
+  <h3>Ajustar reimpresion</h3>
+ </div>
+ <div class="module-body">
+  <%= form_for :transacx, class:"form-horizontal row-fluid", :url => { :action => :correlativo } do |f| %>
+   <div class="control-group">
+    <div class="controls">Iniciar secuencia en:
+     <div class="input-append"><span class="add-on">#</span><%= f.number_field :secuencia, placeholder:"Correlativo de recibos" %></div>
+    </div>
+    <div class="controls">Numero de recibo para iniciar secuencia:
      <div class="input-append"><span class="add-on">#</span><%= f.number_field :secuencia, placeholder:"Correlativo de recibos" %></div>
     </div>
    </div>
-   <%= f.submit "Agignar secuencia", class:"btn btn-mini btn-primary", data: { confirm: 'Confirma la operación ?' } %>
+   <%= f.submit "Asignar secuencia", class:"btn btn-mini btn-primary", data: { confirm: 'Confirma la operación ?' } %>
   <% end %>
  </div>
 </div>
