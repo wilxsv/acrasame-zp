@@ -41,7 +41,6 @@ class ReciboController < ApplicationController
         send_data(comprobante(id), :filename => "single invoice.pdf", :type => "application/pdf")
       elsif actual != nil
         session[:error] = '<div class="alert alert-success"><strong>Error! </strong> Archivo generado</div>'
-        
         send_data(comprobante(0), :filename => "single invoice.pdf", :type => "application/pdf")
       end
     else
@@ -79,10 +78,10 @@ class ReciboController < ApplicationController
     Prawn::Document.new(:page_size => "LEGAL", :margin => [0,0,0,0], :page_layout => :portrait) do #
       i = 1
       letra = 10
-      if ident = 0
-		query = '"limite_pago" >= now()'
-      else
+      if ident > 0
 		query = '"id" = ' + ident.to_s
+      else
+		query = '"limite_pago" >= now()'
       end
       ScrDetFactura.where(query).each do |fac|
         id = fac.id
@@ -93,6 +92,7 @@ class ReciboController < ApplicationController
           user = ScrUsuario.find(tmp.socio_id)
           @@contador = user.contador
           @@nombre = user.nombreusuario+" "+user.apellidousuario
+          @@nombre = @@nombre.upcase
           loc = ScrLocalidad.find(user.localidad_id)
           @@direccion = loc.localidad_nombre
         rescue
@@ -109,6 +109,8 @@ class ReciboController < ApplicationController
             @@lectura_f = dato.valorLectura
             @@fecha = dato.fechaLectura
           end
+            @@lectura_f = 15
+            @@fecha = "2015-05-01"
         rescue
           session[:error] = '<div class="alert alert-error"><strong>Error! </strong> Datos no enviados</div>'
           @@lectura_i = ""
@@ -117,32 +119,32 @@ class ReciboController < ApplicationController
         end
         ###################################
         if i % 2 == 0 then
-			s_y = 150.mm
+			s_y = 141.mm
 		else
 			s_y = 0.mm	
 			start_new_page	
 		end
 		##	Imprime	#########################################
-			text_box @@nombre, :size => 14, :at=>[0.mm,330.mm-s_y]#nombre
-			text_box @@direccion, :size => letra, :at=>[0.mm,325.mm-s_y]#direccion
-			text_box id.to_s, :size => letra, :at=>[77.mm,330.mm-s_y]#documento
-			text_box @@cuenta.to_s, :size => letra, :at=>[77.mm,320.mm-s_y]#contador
-			text_box @@contador, :size => letra, :at=>[50.mm,320.mm-s_y]#cuenta
-			text_box @@lectura_f.to_s, :size => letra, :at=>[0.mm,310.mm-s_y]#consumo_f
-			text_box @@lectura_i.to_s, :size => letra, :at=>[14.mm,310.mm-s_y]#consumo_i
+			text_box @@nombre, :size => letra, :at=>[9.mm,328.mm-s_y]#nombre
+			text_box @@direccion, :size => letra, :at=>[9.mm,323.mm-s_y]#direccion
+			text_box id.to_s, :size => letra, :at=>[77.mm,325.mm-s_y]#documento
+			text_box @@cuenta.to_s, :size => letra, :at=>[77.mm,316.mm-s_y]#contador
+			text_box @@contador, :size => letra, :at=>[50.mm,316.mm-s_y]#cuenta
+			text_box @@lectura_f.to_s, :size => letra, :at=>[9.mm,306.mm-s_y]#consumo_f
+			text_box @@lectura_i.to_s, :size => letra, :at=>[30.mm,306.mm-s_y]#consumo_i
 			k = @@lectura_f.to_f - @@lectura_i.to_f
-			text_box k.to_s, :size => letra, :at=>[30.mm,310.mm-s_y]
-			text_box @@fecha.to_s, :size => letra, :at=>[80.mm,310.mm-s_y]
-			s_x = 110.mm
-			text_box @@nombre, :size => 14, :at=>[s_x+0.mm,330.mm-s_y]
-			text_box @@direccion, :size => letra, :at=>[s_x+0.mm,325.mm-s_y]
-			text_box id.to_s, :size => letra, :at=>[s_x+77.mm,330.mm-s_y]
-			text_box @@contador, :size => letra, :at=>[s_x+50.mm,320.mm-s_y]
-			text_box @@cuenta.to_s, :size => letra, :at=>[s_x+77.mm,320.mm-s_y]
-			text_box @@lectura_f.to_s, :size => letra, :at=>[s_x+0.mm,310.mm-s_y]#consumo_f
-			text_box @@lectura_i.to_s, :size => letra, :at=>[s_x+50.mm,310.mm-s_y]#consumo_i
-			text_box k.to_s, :size => letra, :at=>[s_x+30.mm,310.mm-s_y]
-			text_box @@fecha.to_s, :size => letra, :at=>[s_x+80.mm,310.mm-s_y]
+			text_box k.to_s, :size => letra, :at=>[45.mm,306.mm-s_y]
+			text_box @@fecha.to_s, :size => letra, :at=>[75.mm,306.mm-s_y]
+			s_x = 96.mm
+			text_box @@nombre, :size => letra, :at=>[s_x+9.mm,328.mm-s_y]
+			text_box @@direccion, :size => letra, :at=>[s_x+9.mm,323.mm-s_y]
+			text_box id.to_s, :size => letra, :at=>[s_x+77.mm,325.mm-s_y]
+			text_box @@contador, :size => letra, :at=>[s_x+50.mm,318.mm-s_y]
+			text_box @@cuenta.to_s, :size => letra, :at=>[s_x+77.mm,318.mm-s_y]
+			text_box @@lectura_f.to_s, :size => letra, :at=>[s_x+9.mm,306.mm-s_y]#consumo_f
+			text_box @@lectura_i.to_s, :size => letra, :at=>[s_x+30.mm,306.mm-s_y]#consumo_i
+			text_box k.to_s, :size => letra, :at=>[s_x+45.mm,30.mm-s_y]
+			text_box @@fecha.to_s, :size => letra, :at=>[s_x+75.mm,306.mm-s_y]
 			line = 1
 			tmp = ScrConsumo.where("factura_id = "+id.to_s)
 			tmp.each do |dato|
@@ -150,9 +152,9 @@ class ReciboController < ApplicationController
 				total = dato.cantidad * valor.cobroValor
 				total = total.round(2)
 				if line == 1
-					text_box valor.cobroCodigo.to_s, :size => letra, :at=>[0.mm,300.mm-s_y]
-					text_box valor.cobroNombre.to_s, :size => letra, :at=>[13.mm,300.mm-s_y]
-					text_box total.to_s, :size => letra, :at=>[80.mm,300.mm]
+					text_box valor.cobroCodigo.to_s, :size => letra, :at=>[9.mm,296.mm-s_y]
+					text_box valor.cobroNombre.to_s, :size => letra, :at=>[23.mm,296.mm-s_y]
+					text_box total.to_s, :size => letra, :at=>[80.mm,296.mm]
 				elsif line == 2
 					text_box valor.cobroCodigo.to_s, :size => letra, :at=>[0.mm,395.mm-s_y]
 					text_box valor.cobroNombre.to_s, :size => letra, :at=>[13.mm,395.mm-s_y]
@@ -178,9 +180,10 @@ class ReciboController < ApplicationController
 				total = dato.cantidad * valor.cobroValor
 				total = total.round(2)
 				if line == 1
-					text_box valor.cobroCodigo.to_s, :size => letra, :at=>[s_x+0.mm,300.mm-s_y]
-					text_box valor.cobroNombre.to_s, :size => letra, :at=>[s_x+13.mm,300.mm-s_y]
-					text_box total.to_s, :size => letra, :at=>[s_x+80.mm,295.mm-s_y]
+					text_box valor.cobroCodigo.to_s, :size => letra, :at=>[s_x+9.mm,296.mm-s_y]
+					text_box valor.cobroNombre.to_s, :size => letra, :at=>[s_x+23.mm,296.mm-s_y]
+#					text_box total.to_s, :size => letra, :at=>[s_x+80.mm,296.mm-s_y]
+					text_box total.to_s, :size => letra, :at=>[s_x+80.mm,296.mm-s_y]
 				elsif line == 2
 					text_box valor.cobroCodigo.to_s, :size => letra, :at=>[s_x+0.mm,395.mm-s_y]
 					text_box valor.cobroNombre.to_s, :size => letra, :at=>[s_x+13.mm,395.mm-s_y]
@@ -202,14 +205,14 @@ class ReciboController < ApplicationController
 			end
 			valor = ScrDetFactura.find(id)
 			total = valor.total
-			text_box total.to_s, :size => letra, :at=>[80.mm,270.mm-s_y]
-			text_box total.to_s, :size => letra, :at=>[s_x+80.mm,270.mm-s_y]
+			text_box "$ "+total.to_s, :size => letra, :at=>[80.mm,267.mm-s_y]
+			text_box "$ "+total.to_s, :size => letra, :at=>[s_x+80.mm,267.mm-s_y]
 			total = total + 1
-			text_box total.to_s, :size => letra, :at=>[40.mm,270.mm-s_y]
-			text_box total.to_s, :size => letra, :at=>[s_x+40.mm,270.mm-s_y]
+			text_box "$ "+total.to_s, :size => letra, :at=>[40.mm,267.mm-s_y]
+			text_box "$ "+total.to_s, :size => letra, :at=>[s_x+40.mm,267.mm-s_y]
 			fecha = valor.limite_pago
-			text_box fecha.to_s, :size => letra, :at=>[80.mm,265.mm-s_y]
-			text_box fecha.to_s, :size => letra, :at=>[s_x+80.mm,265.mm-s_y]
+			text_box fecha.to_s, :size => letra, :at=>[75.mm,258.mm-s_y]
+			text_box fecha.to_s, :size => letra, :at=>[s_x+75.mm,258.mm-s_y]
 		##	Imprime	#########################################
 		i = i + 1
       end

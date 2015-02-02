@@ -1,0 +1,826 @@
+I, [2015-02-23T09:59:49.330504 #3266]  INFO -- : Started GET "/" for 10.0.2.2 at 2015-02-23 09:59:49 -0600
+I, [2015-02-23T09:59:49.560020 #3266]  INFO -- : Processing by HomeController#index as HTML
+I, [2015-02-23T09:59:49.588480 #3266]  INFO -- :   Rendered home/index.html.erb within layouts/application (2.7ms)
+I, [2015-02-23T09:59:49.600068 #3266]  INFO -- :   Rendered layouts/main/_js.html.erb (0.8ms)
+I, [2015-02-23T09:59:49.603041 #3266]  INFO -- :   Rendered layouts/main/_headinvitado.html.erb (2.1ms)
+I, [2015-02-23T09:59:49.604681 #3266]  INFO -- :   Rendered layouts/main/_menuinvitado.html.erb (0.8ms)
+I, [2015-02-23T09:59:49.606014 #3266]  INFO -- :   Rendered layouts/main/_footer.html.erb (0.6ms)
+I, [2015-02-23T09:59:49.606969 #3266]  INFO -- : Completed 200 OK in 47ms (Views: 27.1ms | ActiveRecord: 0.0ms)
+I, [2015-02-23T09:59:49.934579 #3266]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.woff?v=3.0.1" for 10.0.2.2 at 2015-02-23 09:59:49 -0600
+F, [2015-02-23T09:59:49.939868 #3266] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.woff"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-02-23T09:59:49.958499 #3266]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.ttf?v=3.0.1" for 10.0.2.2 at 2015-02-23 09:59:49 -0600
+F, [2015-02-23T09:59:49.960987 #3266] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.ttf"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-02-23T09:59:51.709055 #3266]  INFO -- : Started GET "/core/login" for 10.0.2.2 at 2015-02-23 09:59:51 -0600
+I, [2015-02-23T09:59:51.715143 #3266]  INFO -- : Processing by CoreController#login as HTML
+I, [2015-02-23T09:59:51.729445 #3266]  INFO -- :   Rendered core/login.html.erb within layouts/application (9.8ms)
+I, [2015-02-23T09:59:51.733414 #3266]  INFO -- :   Rendered layouts/main/_js.html.erb (0.5ms)
+I, [2015-02-23T09:59:51.735405 #3266]  INFO -- :   Rendered layouts/main/_headinvitado.html.erb (1.4ms)
+I, [2015-02-23T09:59:51.736795 #3266]  INFO -- :   Rendered layouts/main/_menuinvitado.html.erb (0.5ms)
+I, [2015-02-23T09:59:51.738200 #3266]  INFO -- :   Rendered layouts/main/_footer.html.erb (0.5ms)
+I, [2015-02-23T09:59:51.738601 #3266]  INFO -- : Completed 200 OK in 23ms (Views: 22.1ms | ActiveRecord: 0.0ms)
+I, [2015-02-23T10:03:48.854464 #3266]  INFO -- : Started POST "/core/autenticate" for 10.0.2.2 at 2015-02-23 10:03:48 -0600
+I, [2015-02-23T10:03:48.856593 #3266]  INFO -- : Processing by CoreController#autenticate as HTML
+I, [2015-02-23T10:03:48.856714 #3266]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"S258F1xVvDDc2f/y3CRbWAG1Jo7tU0xJbGYoL7PpBSI=", "transacx"=>{"user"=>"contabilidad@mail.com", "passwd"=>"passwd"}, "commit"=>"login"}
+I, [2015-02-23T10:03:48.908859 #3266]  INFO -- : Redirected to http://127.0.0.1/core/login?alert=Watch+it%2C+mister%21+password+malo
+I, [2015-02-23T10:03:48.909072 #3266]  INFO -- : Completed 302 Found in 52ms (ActiveRecord: 22.6ms)
+I, [2015-02-23T10:03:48.918390 #3266]  INFO -- : Started GET "/core/login?alert=Watch+it%2C+mister%21+password+malo" for 10.0.2.2 at 2015-02-23 10:03:48 -0600
+I, [2015-02-23T10:03:48.920444 #3266]  INFO -- : Processing by CoreController#login as HTML
+I, [2015-02-23T10:03:48.920534 #3266]  INFO -- :   Parameters: {"alert"=>"Watch it, mister! password malo"}
+I, [2015-02-23T10:03:48.925093 #3266]  INFO -- :   Rendered core/login.html.erb within layouts/application (2.4ms)
+I, [2015-02-23T10:03:48.928038 #3266]  INFO -- :   Rendered layouts/main/_js.html.erb (0.0ms)
+I, [2015-02-23T10:03:48.929002 #3266]  INFO -- :   Rendered layouts/main/_headinvitado.html.erb (0.8ms)
+I, [2015-02-23T10:03:48.929542 #3266]  INFO -- :   Rendered layouts/main/_menuinvitado.html.erb (0.3ms)
+I, [2015-02-23T10:03:48.930388 #3266]  INFO -- :   Rendered layouts/main/_footer.html.erb (0.1ms)
+I, [2015-02-23T10:03:48.930759 #3266]  INFO -- : Completed 200 OK in 10ms (Views: 9.4ms | ActiveRecord: 0.0ms)
+I, [2015-02-23T10:03:49.166988 #3266]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.woff?v=3.0.1" for 10.0.2.2 at 2015-02-23 10:03:49 -0600
+F, [2015-02-23T10:03:49.170235 #3266] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.woff"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-02-23T10:03:49.176706 #3266]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.ttf?v=3.0.1" for 10.0.2.2 at 2015-02-23 10:03:49 -0600
+F, [2015-02-23T10:03:49.181797 #3266] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.ttf"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-02-23T10:04:06.823088 #3266]  INFO -- : Started POST "/core/autenticate" for 10.0.2.2 at 2015-02-23 10:04:06 -0600
+I, [2015-02-23T10:04:06.825676 #3266]  INFO -- : Processing by CoreController#autenticate as HTML
+I, [2015-02-23T10:04:06.825807 #3266]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"S258F1xVvDDc2f/y3CRbWAG1Jo7tU0xJbGYoL7PpBSI=", "transacx"=>{"user"=>"contabilidad@mail.com", "passwd"=>"contabilidad"}, "commit"=>"login"}
+I, [2015-02-23T10:04:06.863215 #3266]  INFO -- : Redirected to http://127.0.0.1/core/index?alert=Watch+it%2C+mister%21+datos+buenos
+I, [2015-02-23T10:04:06.863409 #3266]  INFO -- : Completed 302 Found in 37ms (ActiveRecord: 13.0ms)
+I, [2015-02-23T10:04:06.870682 #3266]  INFO -- : Started GET "/core/index?alert=Watch+it%2C+mister%21+datos+buenos" for 10.0.2.2 at 2015-02-23 10:04:06 -0600
+I, [2015-02-23T10:04:06.873472 #3266]  INFO -- : Processing by CoreController#index as HTML
+I, [2015-02-23T10:04:06.873708 #3266]  INFO -- :   Parameters: {"alert"=>"Watch it, mister! datos buenos"}
+I, [2015-02-23T10:04:06.876288 #3266]  INFO -- :   Rendered core/index.html.erb within layouts/application (0.6ms)
+I, [2015-02-23T10:04:06.878391 #3266]  INFO -- :   Rendered layouts/main/_js.html.erb (0.1ms)
+I, [2015-02-23T10:04:06.882054 #3266]  INFO -- :   Rendered layouts/main/_operativos.html.erb (0.9ms)
+I, [2015-02-23T10:04:06.884457 #3266]  INFO -- :   Rendered layouts/main/_estadosfinancieros.html.erb (1.4ms)
+I, [2015-02-23T10:04:06.886759 #3266]  INFO -- :   Rendered layouts/main/_user.html.erb (1.5ms)
+I, [2015-02-23T10:04:06.886952 #3266]  INFO -- :   Rendered layouts/main/_headb.html.erb (7.5ms)
+I, [2015-02-23T10:04:06.891192 #3266]  INFO -- :   Rendered layouts/main/_cobrosmenu.html.erb (1.8ms)
+I, [2015-02-23T10:04:07.050918 #3266]  INFO -- :   Rendered layouts/main/_contabilidad.html.erb (158.7ms)
+I, [2015-02-23T10:04:07.051361 #3266]  INFO -- :   Rendered layouts/main/_menub.html.erb (163.4ms)
+I, [2015-02-23T10:04:07.052088 #3266]  INFO -- :   Rendered layouts/main/_footer.html.erb (0.3ms)
+I, [2015-02-23T10:04:07.052406 #3266]  INFO -- : Completed 200 OK in 178ms (Views: 177.6ms | ActiveRecord: 0.0ms)
+I, [2015-02-23T10:04:07.224756 #3266]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.woff?v=3.0.1" for 10.0.2.2 at 2015-02-23 10:04:07 -0600
+F, [2015-02-23T10:04:07.227948 #3266] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.woff"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-02-23T10:04:07.233991 #3266]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.ttf?v=3.0.1" for 10.0.2.2 at 2015-02-23 10:04:07 -0600
+F, [2015-02-23T10:04:07.236657 #3266] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.ttf"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-02-23T10:04:11.467321 #3266]  INFO -- : Started GET "/scr_det_facturas" for 10.0.2.2 at 2015-02-23 10:04:11 -0600
+I, [2015-02-23T10:04:11.472985 #3266]  INFO -- : Processing by ScrDetFacturasController#index as HTML
+I, [2015-02-23T10:04:12.869708 #3266]  INFO -- :   Rendered layouts/main/_tablas.html.erb (0.8ms)
+I, [2015-02-23T10:04:12.870037 #3266]  INFO -- :   Rendered scr_det_facturas/index.html.erb within layouts/application (1394.4ms)
+I, [2015-02-23T10:04:12.872564 #3266]  INFO -- :   Rendered layouts/main/_js.html.erb (0.1ms)
+I, [2015-02-23T10:04:12.873355 #3266]  INFO -- :   Rendered layouts/main/_operativos.html.erb (0.4ms)
+I, [2015-02-23T10:04:12.873864 #3266]  INFO -- :   Rendered layouts/main/_estadosfinancieros.html.erb (0.3ms)
+I, [2015-02-23T10:04:12.874668 #3266]  INFO -- :   Rendered layouts/main/_user.html.erb (0.6ms)
+I, [2015-02-23T10:04:12.874778 #3266]  INFO -- :   Rendered layouts/main/_headb.html.erb (2.0ms)
+I, [2015-02-23T10:04:12.875511 #3266]  INFO -- :   Rendered layouts/main/_cobrosmenu.html.erb (0.3ms)
+I, [2015-02-23T10:04:12.876998 #3266]  INFO -- :   Rendered layouts/main/_contabilidad.html.erb (1.3ms)
+I, [2015-02-23T10:04:12.877222 #3266]  INFO -- :   Rendered layouts/main/_menub.html.erb (2.2ms)
+I, [2015-02-23T10:04:12.882158 #3266]  INFO -- :   Rendered layouts/main/_footer.html.erb (0.2ms)
+I, [2015-02-23T10:04:12.882390 #3266]  INFO -- : Completed 200 OK in 1409ms (Views: 934.9ms | ActiveRecord: 473.4ms)
+I, [2015-02-23T10:04:13.449738 #3266]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.woff?v=3.0.1" for 10.0.2.2 at 2015-02-23 10:04:13 -0600
+F, [2015-02-23T10:04:13.452719 #3266] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.woff"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-02-23T10:04:13.946704 #3266]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.ttf?v=3.0.1" for 10.0.2.2 at 2015-02-23 10:04:13 -0600
+F, [2015-02-23T10:04:13.948257 #3266] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.ttf"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-02-23T10:11:34.984573 #3266]  INFO -- : Started GET "/recibo/index" for 10.0.2.2 at 2015-02-23 10:11:34 -0600
+I, [2015-02-23T10:11:34.988353 #3266]  INFO -- : Processing by ReciboController#index as HTML
+I, [2015-02-23T10:11:34.994147 #3266]  INFO -- :   Rendered recibo/_operacion.html.erb (0.6ms)
+I, [2015-02-23T10:11:34.995706 #3266]  INFO -- :   Rendered recibo/_detalle.html.erb (0.8ms)
+I, [2015-02-23T10:11:34.995905 #3266]  INFO -- :   Rendered recibo/index.html.erb within layouts/application (4.8ms)
+I, [2015-02-23T10:11:34.997417 #3266]  INFO -- :   Rendered layouts/main/_js.html.erb (0.0ms)
+I, [2015-02-23T10:11:35.000055 #3266]  INFO -- :   Rendered layouts/main/_operativos.html.erb (0.8ms)
+I, [2015-02-23T10:11:35.002831 #3266]  INFO -- :   Rendered layouts/main/_estadosfinancieros.html.erb (1.8ms)
+I, [2015-02-23T10:11:35.005392 #3266]  INFO -- :   Rendered layouts/main/_user.html.erb (1.5ms)
+I, [2015-02-23T10:11:35.005710 #3266]  INFO -- :   Rendered layouts/main/_headb.html.erb (7.7ms)
+I, [2015-02-23T10:11:35.009883 #3266]  INFO -- :   Rendered layouts/main/_cobrosmenu.html.erb (0.7ms)
+I, [2015-02-23T10:11:35.013272 #3266]  INFO -- :   Rendered layouts/main/_contabilidad.html.erb (2.4ms)
+I, [2015-02-23T10:11:35.013658 #3266]  INFO -- :   Rendered layouts/main/_menub.html.erb (6.4ms)
+I, [2015-02-23T10:11:35.014182 #3266]  INFO -- :   Rendered layouts/main/_footer.html.erb (0.2ms)
+I, [2015-02-23T10:11:35.014389 #3266]  INFO -- : Completed 200 OK in 26ms (Views: 25.4ms | ActiveRecord: 0.0ms)
+I, [2015-02-23T10:11:35.026544 #3266]  INFO -- : Started GET "/recibo/index" for 10.0.2.2 at 2015-02-23 10:11:35 -0600
+I, [2015-02-23T10:11:35.027889 #3266]  INFO -- : Processing by ReciboController#index as HTML
+I, [2015-02-23T10:11:35.032524 #3266]  INFO -- :   Rendered recibo/_operacion.html.erb (0.9ms)
+I, [2015-02-23T10:11:35.034894 #3266]  INFO -- :   Rendered recibo/_detalle.html.erb (1.7ms)
+I, [2015-02-23T10:11:35.035102 #3266]  INFO -- :   Rendered recibo/index.html.erb within layouts/application (5.9ms)
+I, [2015-02-23T10:11:35.036601 #3266]  INFO -- :   Rendered layouts/main/_js.html.erb (0.1ms)
+I, [2015-02-23T10:11:35.037342 #3266]  INFO -- :   Rendered layouts/main/_operativos.html.erb (0.3ms)
+I, [2015-02-23T10:11:35.038249 #3266]  INFO -- :   Rendered layouts/main/_estadosfinancieros.html.erb (0.7ms)
+I, [2015-02-23T10:11:35.038809 #3266]  INFO -- :   Rendered layouts/main/_user.html.erb (0.4ms)
+I, [2015-02-23T10:11:35.039007 #3266]  INFO -- :   Rendered layouts/main/_headb.html.erb (2.2ms)
+I, [2015-02-23T10:11:35.039658 #3266]  INFO -- :   Rendered layouts/main/_cobrosmenu.html.erb (0.3ms)
+I, [2015-02-23T10:11:35.041218 #3266]  INFO -- :   Rendered layouts/main/_contabilidad.html.erb (1.4ms)
+I, [2015-02-23T10:11:35.041540 #3266]  INFO -- :   Rendered layouts/main/_menub.html.erb (2.3ms)
+I, [2015-02-23T10:11:35.042088 #3266]  INFO -- :   Rendered layouts/main/_footer.html.erb (0.1ms)
+I, [2015-02-23T10:11:35.042291 #3266]  INFO -- : Completed 200 OK in 14ms (Views: 13.8ms | ActiveRecord: 0.0ms)
+I, [2015-02-23T10:11:35.234923 #3266]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.woff?v=3.0.1" for 10.0.2.2 at 2015-02-23 10:11:35 -0600
+F, [2015-02-23T10:11:35.237039 #3266] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.woff"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-02-23T10:11:35.243226 #3266]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.ttf?v=3.0.1" for 10.0.2.2 at 2015-02-23 10:11:35 -0600
+F, [2015-02-23T10:11:35.245725 #3266] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.ttf"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-02-23T10:11:36.277392 #3266]  INFO -- : Started POST "/recibo/imprimir" for 10.0.2.2 at 2015-02-23 10:11:36 -0600
+I, [2015-02-23T10:11:36.278945 #3266]  INFO -- : Processing by ReciboController#imprimir as HTML
+I, [2015-02-23T10:11:36.279028 #3266]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"S258F1xVvDDc2f/y3CRbWAG1Jo7tU0xJbGYoL7PpBSI=", "transacx"=>{"actual"=>"vBHWMHC4MVtGnpSyJIsGypANFcKZZnruK/nsCFyDEyk="}, "commit"=>"Imprimir recibos"}
+I, [2015-02-23T10:11:46.298842 #3266]  INFO -- :   Rendered text template (0.0ms)
+I, [2015-02-23T10:11:46.299003 #3266]  INFO -- : Sent data single invoice.pdf (0.5ms)
+I, [2015-02-23T10:11:46.299234 #3266]  INFO -- : Completed 200 OK in 10020ms (Views: 0.4ms | ActiveRecord: 2820.8ms)
+I, [2015-02-23T10:13:27.580465 #3266]  INFO -- : Started POST "/recibo/imprimir" for 10.0.2.2 at 2015-02-23 10:13:27 -0600
+I, [2015-02-23T10:13:27.582596 #3266]  INFO -- : Processing by ReciboController#imprimir as HTML
+I, [2015-02-23T10:13:27.582690 #3266]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"S258F1xVvDDc2f/y3CRbWAG1Jo7tU0xJbGYoL7PpBSI=", "transacx"=>{"actual"=>"vBHWMHC4MVtGnpSyJIsGypANFcKZZnruK/nsCFyDEyk="}, "commit"=>"Imprimir recibos"}
+I, [2015-02-23T10:13:37.210833 #3266]  INFO -- :   Rendered text template (0.0ms)
+I, [2015-02-23T10:13:37.211022 #3266]  INFO -- : Sent data single invoice.pdf (0.4ms)
+I, [2015-02-23T10:13:37.211149 #3266]  INFO -- : Completed 200 OK in 9628ms (Views: 0.3ms | ActiveRecord: 2710.1ms)
+I, [2015-02-23T10:14:35.267311 #3266]  INFO -- : Started POST "/recibo/imprimir" for 10.0.2.2 at 2015-02-23 10:14:35 -0600
+I, [2015-02-23T10:14:35.269544 #3266]  INFO -- : Processing by ReciboController#imprimir as HTML
+I, [2015-02-23T10:14:35.269701 #3266]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"S258F1xVvDDc2f/y3CRbWAG1Jo7tU0xJbGYoL7PpBSI=", "transacx"=>{"id"=>""}, "commit"=>"Imprimir recibo"}
+I, [2015-02-23T10:14:45.077302 #3266]  INFO -- :   Rendered text template (0.0ms)
+I, [2015-02-23T10:14:45.077503 #3266]  INFO -- : Sent data single invoice.pdf (0.7ms)
+I, [2015-02-23T10:14:45.077662 #3266]  INFO -- : Completed 200 OK in 9808ms (Views: 0.6ms | ActiveRecord: 2755.0ms)
+I, [2015-02-23T10:15:09.018730 #3266]  INFO -- : Started POST "/recibo/imprimir" for 10.0.2.2 at 2015-02-23 10:15:09 -0600
+I, [2015-02-23T10:15:09.022175 #3266]  INFO -- : Processing by ReciboController#imprimir as HTML
+I, [2015-02-23T10:15:09.022321 #3266]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"S258F1xVvDDc2f/y3CRbWAG1Jo7tU0xJbGYoL7PpBSI=", "transacx"=>{"id"=>"26"}, "commit"=>"Imprimir recibo"}
+I, [2015-02-23T10:15:18.914738 #3266]  INFO -- :   Rendered text template (0.0ms)
+I, [2015-02-23T10:15:18.914898 #3266]  INFO -- : Sent data single invoice.pdf (0.4ms)
+I, [2015-02-23T10:15:18.915038 #3266]  INFO -- : Completed 200 OK in 9893ms (Views: 0.3ms | ActiveRecord: 2791.3ms)
+I, [2015-02-23T10:24:41.181959 #3266]  INFO -- : Started POST "/recibo/imprimir" for 10.0.2.2 at 2015-02-23 10:24:41 -0600
+I, [2015-02-23T10:24:41.184258 #3266]  INFO -- : Processing by ReciboController#imprimir as HTML
+I, [2015-02-23T10:24:41.184351 #3266]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"S258F1xVvDDc2f/y3CRbWAG1Jo7tU0xJbGYoL7PpBSI=", "transacx"=>{"id"=>"3970"}, "commit"=>"Imprimir recibo"}
+I, [2015-02-23T10:24:51.044660 #3266]  INFO -- :   Rendered text template (0.0ms)
+I, [2015-02-23T10:24:51.044985 #3266]  INFO -- : Sent data single invoice.pdf (0.6ms)
+I, [2015-02-23T10:24:51.045144 #3266]  INFO -- : Completed 200 OK in 9861ms (Views: 0.5ms | ActiveRecord: 2776.8ms)
+I, [2015-02-23T10:25:32.897502 #3266]  INFO -- : Started POST "/recibo/imprimir" for 10.0.2.2 at 2015-02-23 10:25:32 -0600
+I, [2015-02-23T10:25:32.899534 #3266]  INFO -- : Processing by ReciboController#imprimir as HTML
+I, [2015-02-23T10:25:32.899626 #3266]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"S258F1xVvDDc2f/y3CRbWAG1Jo7tU0xJbGYoL7PpBSI=", "transacx"=>{"id"=>"3970"}, "commit"=>"Imprimir recibo"}
+I, [2015-02-23T10:25:42.691562 #3266]  INFO -- :   Rendered text template (0.0ms)
+I, [2015-02-23T10:25:42.691758 #3266]  INFO -- : Sent data single invoice.pdf (0.5ms)
+I, [2015-02-23T10:25:42.691889 #3266]  INFO -- : Completed 200 OK in 9792ms (Views: 0.4ms | ActiveRecord: 2766.2ms)
+I, [2015-02-23T14:40:47.384633 #2612]  INFO -- : Started GET "/" for 10.0.2.2 at 2015-02-23 14:40:47 -0600
+I, [2015-02-23T14:40:48.019707 #2612]  INFO -- : Processing by HomeController#index as HTML
+I, [2015-02-23T14:40:48.067332 #2612]  INFO -- :   Rendered home/index.html.erb within layouts/application (3.1ms)
+I, [2015-02-23T14:40:48.089626 #2612]  INFO -- :   Rendered layouts/main/_js.html.erb (0.7ms)
+I, [2015-02-23T14:40:48.095729 #2612]  INFO -- :   Rendered layouts/main/_headinvitado.html.erb (3.7ms)
+I, [2015-02-23T14:40:48.099329 #2612]  INFO -- :   Rendered layouts/main/_menuinvitado.html.erb (0.9ms)
+I, [2015-02-23T14:40:48.101832 #2612]  INFO -- :   Rendered layouts/main/_footer.html.erb (0.8ms)
+I, [2015-02-23T14:40:48.102891 #2612]  INFO -- : Completed 200 OK in 83ms (Views: 64.3ms | ActiveRecord: 0.0ms)
+I, [2015-02-23T14:40:48.542335 #2612]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.woff?v=3.0.1" for 10.0.2.2 at 2015-02-23 14:40:48 -0600
+F, [2015-02-23T14:40:48.546248 #2612] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.woff"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-02-23T14:40:48.566488 #2612]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.ttf?v=3.0.1" for 10.0.2.2 at 2015-02-23 14:40:48 -0600
+F, [2015-02-23T14:40:48.568303 #2612] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.ttf"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-02-23T14:41:16.612580 #2612]  INFO -- : Started GET "/core/login" for 10.0.2.2 at 2015-02-23 14:41:16 -0600
+I, [2015-02-23T14:41:16.619369 #2612]  INFO -- : Processing by CoreController#login as HTML
+I, [2015-02-23T14:41:16.640613 #2612]  INFO -- :   Rendered core/login.html.erb within layouts/application (7.3ms)
+I, [2015-02-23T14:41:16.645453 #2612]  INFO -- :   Rendered layouts/main/_js.html.erb (1.4ms)
+I, [2015-02-23T14:41:16.647429 #2612]  INFO -- :   Rendered layouts/main/_headinvitado.html.erb (0.9ms)
+I, [2015-02-23T14:41:16.649370 #2612]  INFO -- :   Rendered layouts/main/_menuinvitado.html.erb (0.7ms)
+I, [2015-02-23T14:41:16.650936 #2612]  INFO -- :   Rendered layouts/main/_footer.html.erb (0.5ms)
+I, [2015-02-23T14:41:16.651160 #2612]  INFO -- : Completed 200 OK in 32ms (Views: 30.0ms | ActiveRecord: 0.0ms)
+I, [2015-02-23T14:41:43.711014 #2612]  INFO -- : Started POST "/core/autenticate" for 10.0.2.2 at 2015-02-23 14:41:43 -0600
+I, [2015-02-23T14:41:43.713274 #2612]  INFO -- : Processing by CoreController#autenticate as HTML
+I, [2015-02-23T14:41:43.713409 #2612]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"FvTVDQmkNpTQWfN1LKQdQ3bAXNsvtqa924yl4wT1rC8=", "transacx"=>{"user"=>"contabilidad@mail.com", "passwd"=>"contabilidad"}, "commit"=>"login"}
+I, [2015-02-23T14:41:44.139849 #2612]  INFO -- : Redirected to http://127.0.0.1/core/index?alert=Watch+it%2C+mister%21+datos+buenos
+I, [2015-02-23T14:41:44.140064 #2612]  INFO -- : Completed 302 Found in 427ms (ActiveRecord: 335.0ms)
+I, [2015-02-23T14:41:44.147465 #2612]  INFO -- : Started GET "/core/index?alert=Watch+it%2C+mister%21+datos+buenos" for 10.0.2.2 at 2015-02-23 14:41:44 -0600
+I, [2015-02-23T14:41:44.149494 #2612]  INFO -- : Processing by CoreController#index as HTML
+I, [2015-02-23T14:41:44.149652 #2612]  INFO -- :   Parameters: {"alert"=>"Watch it, mister! datos buenos"}
+I, [2015-02-23T14:41:44.158809 #2612]  INFO -- :   Rendered core/index.html.erb within layouts/application (0.8ms)
+I, [2015-02-23T14:41:44.160921 #2612]  INFO -- :   Rendered layouts/main/_js.html.erb (0.1ms)
+I, [2015-02-23T14:41:44.169264 #2612]  INFO -- :   Rendered layouts/main/_operativos.html.erb (1.1ms)
+I, [2015-02-23T14:41:44.180049 #2612]  INFO -- :   Rendered layouts/main/_estadosfinancieros.html.erb (2.3ms)
+I, [2015-02-23T14:41:44.183693 #2612]  INFO -- :   Rendered layouts/main/_user.html.erb (1.9ms)
+I, [2015-02-23T14:41:44.183942 #2612]  INFO -- :   Rendered layouts/main/_headb.html.erb (21.3ms)
+I, [2015-02-23T14:41:44.190608 #2612]  INFO -- :   Rendered layouts/main/_cobrosmenu.html.erb (1.5ms)
+I, [2015-02-23T14:41:44.354325 #2612]  INFO -- :   Rendered layouts/main/_contabilidad.html.erb (153.8ms)
+I, [2015-02-23T14:41:44.354698 #2612]  INFO -- :   Rendered layouts/main/_menub.html.erb (168.7ms)
+I, [2015-02-23T14:41:44.355541 #2612]  INFO -- :   Rendered layouts/main/_footer.html.erb (0.4ms)
+I, [2015-02-23T14:41:44.355811 #2612]  INFO -- : Completed 200 OK in 206ms (Views: 205.3ms | ActiveRecord: 0.0ms)
+I, [2015-02-23T14:41:44.517007 #2612]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.woff?v=3.0.1" for 10.0.2.2 at 2015-02-23 14:41:44 -0600
+F, [2015-02-23T14:41:44.520403 #2612] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.woff"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-02-23T14:41:44.540667 #2612]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.ttf?v=3.0.1" for 10.0.2.2 at 2015-02-23 14:41:44 -0600
+F, [2015-02-23T14:41:44.544164 #2612] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.ttf"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-02-23T14:41:51.278520 #2612]  INFO -- : Started GET "/recibo/imprimir" for 10.0.2.2 at 2015-02-23 14:41:51 -0600
+I, [2015-02-23T14:41:51.283121 #2612]  INFO -- : Processing by ReciboController#imprimir as HTML
+I, [2015-02-23T14:41:51.284017 #2612]  INFO -- : Redirected to http://127.0.0.1/recibo/index
+I, [2015-02-23T14:41:51.284167 #2612]  INFO -- : Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+I, [2015-02-23T14:41:51.290982 #2612]  INFO -- : Started GET "/recibo/index" for 10.0.2.2 at 2015-02-23 14:41:51 -0600
+I, [2015-02-23T14:41:51.292884 #2612]  INFO -- : Processing by ReciboController#index as HTML
+I, [2015-02-23T14:41:51.311530 #2612]  INFO -- :   Rendered recibo/_operacion.html.erb (1.5ms)
+I, [2015-02-23T14:41:51.314993 #2612]  INFO -- :   Rendered recibo/_detalle.html.erb (1.3ms)
+I, [2015-02-23T14:41:51.315275 #2612]  INFO -- :   Rendered recibo/index.html.erb within layouts/application (9.3ms)
+I, [2015-02-23T14:41:51.317063 #2612]  INFO -- :   Rendered layouts/main/_js.html.erb (0.1ms)
+I, [2015-02-23T14:41:51.318160 #2612]  INFO -- :   Rendered layouts/main/_operativos.html.erb (0.4ms)
+I, [2015-02-23T14:41:51.319083 #2612]  INFO -- :   Rendered layouts/main/_estadosfinancieros.html.erb (0.8ms)
+I, [2015-02-23T14:41:51.320077 #2612]  INFO -- :   Rendered layouts/main/_user.html.erb (0.7ms)
+I, [2015-02-23T14:41:51.320354 #2612]  INFO -- :   Rendered layouts/main/_headb.html.erb (3.1ms)
+I, [2015-02-23T14:41:51.321341 #2612]  INFO -- :   Rendered layouts/main/_cobrosmenu.html.erb (0.6ms)
+I, [2015-02-23T14:41:51.323796 #2612]  INFO -- :   Rendered layouts/main/_contabilidad.html.erb (2.3ms)
+I, [2015-02-23T14:41:51.324067 #2612]  INFO -- :   Rendered layouts/main/_menub.html.erb (3.4ms)
+I, [2015-02-23T14:41:51.324784 #2612]  INFO -- :   Rendered layouts/main/_footer.html.erb (0.3ms)
+I, [2015-02-23T14:41:51.325113 #2612]  INFO -- : Completed 200 OK in 32ms (Views: 31.4ms | ActiveRecord: 0.0ms)
+I, [2015-02-23T14:41:51.466623 #2612]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.woff?v=3.0.1" for 10.0.2.2 at 2015-02-23 14:41:51 -0600
+F, [2015-02-23T14:41:51.469793 #2612] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.woff"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-02-23T14:41:51.475585 #2612]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.ttf?v=3.0.1" for 10.0.2.2 at 2015-02-23 14:41:51 -0600
+F, [2015-02-23T14:41:51.479897 #2612] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.ttf"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-02-23T14:41:57.606709 #2612]  INFO -- : Started POST "/recibo/imprimir" for 10.0.2.2 at 2015-02-23 14:41:57 -0600
+I, [2015-02-23T14:41:57.609919 #2612]  INFO -- : Processing by ReciboController#imprimir as HTML
+I, [2015-02-23T14:41:57.610031 #2612]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"FvTVDQmkNpTQWfN1LKQdQ3bAXNsvtqa924yl4wT1rC8=", "transacx"=>{"actual"=>"vBHWMHC4MVtGnpSyJIsGypANFcKZZnruK/nsCFyDEyk="}, "commit"=>"Imprimir recibos"}
+I, [2015-02-23T14:42:08.365379 #2612]  INFO -- :   Rendered text template (0.0ms)
+I, [2015-02-23T14:42:08.365629 #2612]  INFO -- : Sent data single invoice.pdf (0.6ms)
+I, [2015-02-23T14:42:08.365776 #2612]  INFO -- : Completed 200 OK in 10756ms (Views: 0.5ms | ActiveRecord: 2942.8ms)
+I, [2015-02-23T14:46:45.503942 #2612]  INFO -- : Started GET "/home/logout" for 10.0.2.2 at 2015-02-23 14:46:45 -0600
+I, [2015-02-23T14:46:45.511479 #2612]  INFO -- : Processing by HomeController#logout as HTML
+I, [2015-02-23T14:46:45.513558 #2612]  INFO -- : Redirected to http://127.0.0.1/home/index
+I, [2015-02-23T14:46:45.513909 #2612]  INFO -- : Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+I, [2015-02-23T14:46:45.522861 #2612]  INFO -- : Started GET "/home/index" for 10.0.2.2 at 2015-02-23 14:46:45 -0600
+I, [2015-02-23T14:46:45.524446 #2612]  INFO -- : Processing by HomeController#index as HTML
+I, [2015-02-23T14:46:45.525445 #2612]  INFO -- :   Rendered home/index.html.erb within layouts/application (0.1ms)
+I, [2015-02-23T14:46:45.527344 #2612]  INFO -- :   Rendered layouts/main/_js.html.erb (0.1ms)
+I, [2015-02-23T14:46:45.527926 #2612]  INFO -- :   Rendered layouts/main/_headinvitado.html.erb (0.4ms)
+I, [2015-02-23T14:46:45.528335 #2612]  INFO -- :   Rendered layouts/main/_menuinvitado.html.erb (0.2ms)
+I, [2015-02-23T14:46:45.528626 #2612]  INFO -- :   Rendered layouts/main/_footer.html.erb (0.1ms)
+I, [2015-02-23T14:46:45.528820 #2612]  INFO -- : Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms)
+I, [2015-02-23T14:46:45.652375 #2612]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.woff?v=3.0.1" for 10.0.2.2 at 2015-02-23 14:46:45 -0600
+F, [2015-02-23T14:46:45.654269 #2612] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.woff"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-02-23T14:46:45.660565 #2612]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.ttf?v=3.0.1" for 10.0.2.2 at 2015-02-23 14:46:45 -0600
+F, [2015-02-23T14:46:45.663124 #2612] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.ttf"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-03-03T12:25:25.264204 #2610]  INFO -- : Started GET "/" for 10.0.2.2 at 2015-03-03 12:25:25 -0600
+I, [2015-03-03T12:25:25.931754 #2610]  INFO -- : Processing by HomeController#index as HTML
+I, [2015-03-03T12:25:25.988505 #2610]  INFO -- :   Rendered home/index.html.erb within layouts/application (2.3ms)
+I, [2015-03-03T12:25:26.005792 #2610]  INFO -- :   Rendered layouts/main/_js.html.erb (0.7ms)
+I, [2015-03-03T12:25:26.010038 #2610]  INFO -- :   Rendered layouts/main/_headinvitado.html.erb (1.9ms)
+I, [2015-03-03T12:25:26.013246 #2610]  INFO -- :   Rendered layouts/main/_menuinvitado.html.erb (1.7ms)
+I, [2015-03-03T12:25:26.016014 #2610]  INFO -- :   Rendered layouts/main/_footer.html.erb (1.2ms)
+I, [2015-03-03T12:25:26.017036 #2610]  INFO -- : Completed 200 OK in 85ms (Views: 63.8ms | ActiveRecord: 0.0ms)
+I, [2015-03-03T12:25:26.404637 #2610]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.woff?v=3.0.1" for 10.0.2.2 at 2015-03-03 12:25:26 -0600
+F, [2015-03-03T12:25:26.408792 #2610] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.woff"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-03-03T12:25:26.424257 #2610]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.ttf?v=3.0.1" for 10.0.2.2 at 2015-03-03 12:25:26 -0600
+F, [2015-03-03T12:25:26.425851 #2610] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.ttf"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-03-03T12:25:30.426798 #2610]  INFO -- : Started GET "/core/login" for 10.0.2.2 at 2015-03-03 12:25:30 -0600
+I, [2015-03-03T12:25:30.432229 #2610]  INFO -- : Processing by CoreController#login as HTML
+I, [2015-03-03T12:25:30.498691 #2610]  INFO -- :   Rendered core/login.html.erb within layouts/application (7.5ms)
+I, [2015-03-03T12:25:30.502876 #2610]  INFO -- :   Rendered layouts/main/_js.html.erb (0.7ms)
+I, [2015-03-03T12:25:30.504409 #2610]  INFO -- :   Rendered layouts/main/_headinvitado.html.erb (0.8ms)
+I, [2015-03-03T12:25:30.506202 #2610]  INFO -- :   Rendered layouts/main/_menuinvitado.html.erb (0.7ms)
+I, [2015-03-03T12:25:30.508112 #2610]  INFO -- :   Rendered layouts/main/_footer.html.erb (0.7ms)
+I, [2015-03-03T12:25:30.508369 #2610]  INFO -- : Completed 200 OK in 76ms (Views: 74.9ms | ActiveRecord: 0.0ms)
+I, [2015-03-03T12:25:44.997026 #2610]  INFO -- : Started POST "/core/autenticate" for 10.0.2.2 at 2015-03-03 12:25:44 -0600
+I, [2015-03-03T12:25:44.999128 #2610]  INFO -- : Processing by CoreController#autenticate as HTML
+I, [2015-03-03T12:25:44.999240 #2610]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"1iNY+0YTJ+UCINfzOpzoHbS3ZAg9OWcndpwo9O8li50=", "transacx"=>{"user"=>"contabilidad@mail.com", "passwd"=>"passwd"}, "commit"=>"login"}
+I, [2015-03-03T12:25:45.324211 #2610]  INFO -- : Redirected to http://127.0.0.1/core/login?alert=Watch+it%2C+mister%21+password+malo
+I, [2015-03-03T12:25:45.324563 #2610]  INFO -- : Completed 302 Found in 325ms (ActiveRecord: 261.3ms)
+I, [2015-03-03T12:25:45.333557 #2610]  INFO -- : Started GET "/core/login?alert=Watch+it%2C+mister%21+password+malo" for 10.0.2.2 at 2015-03-03 12:25:45 -0600
+I, [2015-03-03T12:25:45.336476 #2610]  INFO -- : Processing by CoreController#login as HTML
+I, [2015-03-03T12:25:45.336583 #2610]  INFO -- :   Parameters: {"alert"=>"Watch it, mister! password malo"}
+I, [2015-03-03T12:25:45.343692 #2610]  INFO -- :   Rendered core/login.html.erb within layouts/application (4.9ms)
+I, [2015-03-03T12:25:45.347011 #2610]  INFO -- :   Rendered layouts/main/_js.html.erb (0.1ms)
+I, [2015-03-03T12:25:45.348260 #2610]  INFO -- :   Rendered layouts/main/_headinvitado.html.erb (0.8ms)
+I, [2015-03-03T12:25:45.348728 #2610]  INFO -- :   Rendered layouts/main/_menuinvitado.html.erb (0.2ms)
+I, [2015-03-03T12:25:45.349488 #2610]  INFO -- :   Rendered layouts/main/_footer.html.erb (0.3ms)
+I, [2015-03-03T12:25:45.349915 #2610]  INFO -- : Completed 200 OK in 13ms (Views: 12.3ms | ActiveRecord: 0.0ms)
+I, [2015-03-03T12:25:45.561772 #2610]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.woff?v=3.0.1" for 10.0.2.2 at 2015-03-03 12:25:45 -0600
+F, [2015-03-03T12:25:45.564093 #2610] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.woff"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-03-03T12:25:45.571658 #2610]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.ttf?v=3.0.1" for 10.0.2.2 at 2015-03-03 12:25:45 -0600
+F, [2015-03-03T12:25:45.574397 #2610] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.ttf"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-03-03T12:25:55.138011 #2610]  INFO -- : Started POST "/core/autenticate" for 10.0.2.2 at 2015-03-03 12:25:55 -0600
+I, [2015-03-03T12:25:55.140931 #2610]  INFO -- : Processing by CoreController#autenticate as HTML
+I, [2015-03-03T12:25:55.141050 #2610]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"1iNY+0YTJ+UCINfzOpzoHbS3ZAg9OWcndpwo9O8li50=", "transacx"=>{"user"=>"contabilidad@mail.com", "passwd"=>"contabilidad"}, "commit"=>"login"}
+I, [2015-03-03T12:25:55.372627 #2610]  INFO -- : Redirected to http://127.0.0.1/core/index?alert=Watch+it%2C+mister%21+datos+buenos
+I, [2015-03-03T12:25:55.372896 #2610]  INFO -- : Completed 302 Found in 232ms (ActiveRecord: 191.5ms)
+I, [2015-03-03T12:25:55.379887 #2610]  INFO -- : Started GET "/core/index?alert=Watch+it%2C+mister%21+datos+buenos" for 10.0.2.2 at 2015-03-03 12:25:55 -0600
+I, [2015-03-03T12:25:55.382058 #2610]  INFO -- : Processing by CoreController#index as HTML
+I, [2015-03-03T12:25:55.382178 #2610]  INFO -- :   Parameters: {"alert"=>"Watch it, mister! datos buenos"}
+I, [2015-03-03T12:25:55.400210 #2610]  INFO -- :   Rendered core/index.html.erb within layouts/application (0.8ms)
+I, [2015-03-03T12:25:55.402173 #2610]  INFO -- :   Rendered layouts/main/_js.html.erb (0.0ms)
+I, [2015-03-03T12:25:55.410725 #2610]  INFO -- :   Rendered layouts/main/_operativos.html.erb (1.1ms)
+I, [2015-03-03T12:25:55.421715 #2610]  INFO -- :   Rendered layouts/main/_estadosfinancieros.html.erb (1.9ms)
+I, [2015-03-03T12:25:55.425006 #2610]  INFO -- :   Rendered layouts/main/_user.html.erb (1.6ms)
+I, [2015-03-03T12:25:55.425175 #2610]  INFO -- :   Rendered layouts/main/_headb.html.erb (21.0ms)
+I, [2015-03-03T12:25:55.584369 #2610]  INFO -- :   Rendered layouts/main/_cobrosmenu.html.erb (155.4ms)
+I, [2015-03-03T12:25:55.603771 #2610]  INFO -- :   Rendered layouts/main/_contabilidad.html.erb (3.9ms)
+I, [2015-03-03T12:25:55.604106 #2610]  INFO -- :   Rendered layouts/main/_menub.html.erb (177.4ms)
+I, [2015-03-03T12:25:55.604703 #2610]  INFO -- :   Rendered layouts/main/_footer.html.erb (0.2ms)
+I, [2015-03-03T12:25:55.604925 #2610]  INFO -- : Completed 200 OK in 223ms (Views: 221.8ms | ActiveRecord: 0.0ms)
+I, [2015-03-03T12:25:55.780771 #2610]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.woff?v=3.0.1" for 10.0.2.2 at 2015-03-03 12:25:55 -0600
+F, [2015-03-03T12:25:55.785061 #2610] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.woff"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-03-03T12:25:55.796514 #2610]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.ttf?v=3.0.1" for 10.0.2.2 at 2015-03-03 12:25:55 -0600
+F, [2015-03-03T12:25:55.799166 #2610] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.ttf"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
