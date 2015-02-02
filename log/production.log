@@ -824,3 +824,149 @@ ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/
   passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
 
 
+I, [2015-03-03T12:28:50.677365 #2610]  INFO -- : Started GET "/scr_det_facturas" for 10.0.2.2 at 2015-03-03 12:28:50 -0600
+I, [2015-03-03T12:28:50.689560 #2610]  INFO -- : Processing by ScrDetFacturasController#index as HTML
+I, [2015-03-03T12:28:52.132401 #2610]  INFO -- :   Rendered layouts/main/_tablas.html.erb (0.6ms)
+I, [2015-03-03T12:28:52.132696 #2610]  INFO -- :   Rendered scr_det_facturas/index.html.erb within layouts/application (1422.4ms)
+I, [2015-03-03T12:28:52.134432 #2610]  INFO -- :   Rendered layouts/main/_js.html.erb (0.0ms)
+I, [2015-03-03T12:28:52.135126 #2610]  INFO -- :   Rendered layouts/main/_operativos.html.erb (0.3ms)
+I, [2015-03-03T12:28:52.135814 #2610]  INFO -- :   Rendered layouts/main/_estadosfinancieros.html.erb (0.5ms)
+I, [2015-03-03T12:28:52.136373 #2610]  INFO -- :   Rendered layouts/main/_user.html.erb (0.4ms)
+I, [2015-03-03T12:28:52.136585 #2610]  INFO -- :   Rendered layouts/main/_headb.html.erb (2.0ms)
+I, [2015-03-03T12:28:52.137260 #2610]  INFO -- :   Rendered layouts/main/_cobrosmenu.html.erb (0.3ms)
+I, [2015-03-03T12:28:52.138838 #2610]  INFO -- :   Rendered layouts/main/_contabilidad.html.erb (1.4ms)
+I, [2015-03-03T12:28:52.139168 #2610]  INFO -- :   Rendered layouts/main/_menub.html.erb (2.3ms)
+I, [2015-03-03T12:28:52.144083 #2610]  INFO -- :   Rendered layouts/main/_footer.html.erb (0.1ms)
+I, [2015-03-03T12:28:52.144326 #2610]  INFO -- : Completed 200 OK in 1455ms (Views: 923.9ms | ActiveRecord: 528.6ms)
+I, [2015-03-03T12:28:52.994777 #2610]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.woff?v=3.0.1" for 10.0.2.2 at 2015-03-03 12:28:52 -0600
+F, [2015-03-03T12:28:52.997202 #2610] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.woff"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-03-03T12:28:53.044415 #2610]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.ttf?v=3.0.1" for 10.0.2.2 at 2015-03-03 12:28:53 -0600
+F, [2015-03-03T12:28:53.046800 #2610] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.ttf"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-03-03T12:29:13.483791 #2610]  INFO -- : Started GET "/recibo/index" for 10.0.2.2 at 2015-03-03 12:29:13 -0600
+I, [2015-03-03T12:29:13.487768 #2610]  INFO -- : Processing by ReciboController#index as HTML
+I, [2015-03-03T12:29:13.520548 #2610]  INFO -- :   Rendered recibo/_operacion.html.erb (1.6ms)
+I, [2015-03-03T12:29:13.522963 #2610]  INFO -- :   Rendered recibo/_detalle.html.erb (1.0ms)
+I, [2015-03-03T12:29:13.523194 #2610]  INFO -- :   Rendered recibo/index.html.erb within layouts/application (7.7ms)
+I, [2015-03-03T12:29:13.524669 #2610]  INFO -- :   Rendered layouts/main/_js.html.erb (0.0ms)
+I, [2015-03-03T12:29:13.527693 #2610]  INFO -- :   Rendered layouts/main/_operativos.html.erb (0.7ms)
+I, [2015-03-03T12:29:13.529689 #2610]  INFO -- :   Rendered layouts/main/_estadosfinancieros.html.erb (1.0ms)
+I, [2015-03-03T12:29:13.531998 #2610]  INFO -- :   Rendered layouts/main/_user.html.erb (1.3ms)
+I, [2015-03-03T12:29:13.532183 #2610]  INFO -- :   Rendered layouts/main/_headb.html.erb (6.5ms)
+I, [2015-03-03T12:29:13.535185 #2610]  INFO -- :   Rendered layouts/main/_cobrosmenu.html.erb (0.8ms)
+I, [2015-03-03T12:29:13.538448 #2610]  INFO -- :   Rendered layouts/main/_contabilidad.html.erb (2.4ms)
+I, [2015-03-03T12:29:13.538778 #2610]  INFO -- :   Rendered layouts/main/_menub.html.erb (5.6ms)
+I, [2015-03-03T12:29:13.540130 #2610]  INFO -- :   Rendered layouts/main/_footer.html.erb (0.2ms)
+I, [2015-03-03T12:29:13.540344 #2610]  INFO -- : Completed 200 OK in 52ms (Views: 51.8ms | ActiveRecord: 0.0ms)
+I, [2015-03-03T12:29:13.552655 #2610]  INFO -- : Started GET "/recibo/index" for 10.0.2.2 at 2015-03-03 12:29:13 -0600
+I, [2015-03-03T12:29:13.554053 #2610]  INFO -- : Processing by ReciboController#index as HTML
+I, [2015-03-03T12:29:13.558627 #2610]  INFO -- :   Rendered recibo/_operacion.html.erb (0.9ms)
+I, [2015-03-03T12:29:13.560306 #2610]  INFO -- :   Rendered recibo/_detalle.html.erb (1.0ms)
+I, [2015-03-03T12:29:13.560540 #2610]  INFO -- :   Rendered recibo/index.html.erb within layouts/application (5.2ms)
+I, [2015-03-03T12:29:13.562231 #2610]  INFO -- :   Rendered layouts/main/_js.html.erb (0.1ms)
+I, [2015-03-03T12:29:13.562861 #2610]  INFO -- :   Rendered layouts/main/_operativos.html.erb (0.2ms)
+I, [2015-03-03T12:29:13.563609 #2610]  INFO -- :   Rendered layouts/main/_estadosfinancieros.html.erb (0.6ms)
+I, [2015-03-03T12:29:13.564303 #2610]  INFO -- :   Rendered layouts/main/_user.html.erb (0.4ms)
+I, [2015-03-03T12:29:13.564471 #2610]  INFO -- :   Rendered layouts/main/_headb.html.erb (2.0ms)
+I, [2015-03-03T12:29:13.565265 #2610]  INFO -- :   Rendered layouts/main/_cobrosmenu.html.erb (0.4ms)
+I, [2015-03-03T12:29:13.566900 #2610]  INFO -- :   Rendered layouts/main/_contabilidad.html.erb (1.4ms)
+I, [2015-03-03T12:29:13.567238 #2610]  INFO -- :   Rendered layouts/main/_menub.html.erb (2.4ms)
+I, [2015-03-03T12:29:13.567667 #2610]  INFO -- :   Rendered layouts/main/_footer.html.erb (0.1ms)
+I, [2015-03-03T12:29:13.567855 #2610]  INFO -- : Completed 200 OK in 14ms (Views: 13.2ms | ActiveRecord: 0.0ms)
+I, [2015-03-03T12:29:13.708796 #2610]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.woff?v=3.0.1" for 10.0.2.2 at 2015-03-03 12:29:13 -0600
+F, [2015-03-03T12:29:13.710661 #2610] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.woff"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-03-03T12:29:13.718564 #2610]  INFO -- : Started GET "/assets/main/icons/font/fontawesome-webfont3294.ttf?v=3.0.1" for 10.0.2.2 at 2015-03-03 12:29:13 -0600
+F, [2015-03-03T12:29:13.720657 #2610] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/main/icons/font/fontawesome-webfont3294.ttf"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  passenger (4.0.59) lib/phusion_passenger/rack/thread_handler_extension.rb:74:in `process_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:141:in `accept_and_process_next_request'
+  passenger (4.0.59) lib/phusion_passenger/request_handler/thread_handler.rb:109:in `main_loop'
+  passenger (4.0.59) lib/phusion_passenger/request_handler.rb:455:in `block (3 levels) in start_threads'
+
+
+I, [2015-03-03T12:29:19.729320 #2610]  INFO -- : Started POST "/recibo/imprimir" for 10.0.2.2 at 2015-03-03 12:29:19 -0600
+I, [2015-03-03T12:29:19.732537 #2610]  INFO -- : Processing by ReciboController#imprimir as HTML
+I, [2015-03-03T12:29:19.732731 #2610]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"1iNY+0YTJ+UCINfzOpzoHbS3ZAg9OWcndpwo9O8li50=", "transacx"=>{"id"=>"3968"}, "commit"=>"Imprimir recibo"}
+I, [2015-03-03T12:29:19.941862 #2610]  INFO -- :   Rendered text template (0.0ms)
+I, [2015-03-03T12:29:19.942017 #2610]  INFO -- : Sent data single invoice.pdf (0.5ms)
+I, [2015-03-03T12:29:19.942163 #2610]  INFO -- : Completed 200 OK in 209ms (Views: 0.4ms | ActiveRecord: 87.5ms)
