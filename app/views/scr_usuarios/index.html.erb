@@ -17,7 +17,7 @@
         <td><%= scr_usuario.nombreusuario %></td>
         <td><%= scr_usuario.apellidousuario %></td>
         <td><%= scr_usuario.telefonousuario %></td>
-        <td><%= scr_usuario.registrousuario %></td>
+        <td><%= scr_usuario.registrousuario.to_s[0..9] %></td>
         <td><%= link_to 'Ver', scr_usuario, class:"btn btn-mini btn-info" %></td>
         <td><%= link_to 'Editar', edit_scr_usuario_path(scr_usuario), class:"btn btn-mini btn-info" %></td>
         <td><%= link_to 'Eliminar', scr_usuario, method: :delete, data: { confirm: 'Confirmar operacion?' }, class:"btn btn-mini btn-danger" %></td>

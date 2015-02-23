@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   resources :scr_bombeos
+  
+  get 'scr_lecturas/registro'
+  #get 'scr_usuarios/agregausuarios'
 
   resources :scr_cloracions
 
@@ -13,6 +16,7 @@ Rails.application.routes.draw do
   post 'scr_det_facturas/pagar'
   post 'scr_det_facturas/cargo'
   get 'resumen/index'
+  get 'informe/prefacturacion'
   get 'informe/index'
   get 'informe/balance'
   post 'informe/balance'

@@ -103,7 +103,7 @@ class ScrUsuariosController < ApplicationController
   
   #Agregando usuarios  
   def agregausuarios
-    @path = Rails.root.to_s+'/public/users.yml'
+    @path = Rails.root.to_s+'/public/last.yml'
     @config=YAML.load_file(@path)
     @db = ""
     item = 0
@@ -122,13 +122,19 @@ class ScrUsuariosController < ApplicationController
     @scr_usuario.detalleuuario	= "Ingresado de bd de sistema heredado -- ["+details["dir"]+"] -- "+"2015-01-10 22:30:42.64937-06"
     #@scr_usuario.ultimavisitausuario = "2015-01-10 22:30:42.64937-06"
     @scr_usuario.ipusuario		= request.remote_ip
+    @scr_usuario.id	= details["id"]
     @scr_usuario.nombreusuario	= details["nom"]
     @scr_usuario.apellidousuario= details["ape"]
     @scr_usuario.telefonousuario= item
     @scr_usuario.nacimientousuario = "2015-01-10"
     @scr_usuario.latusuario		= details["lat"]
     @scr_usuario.lonusuario		= details["lon"]
+    @scr_usuario.contador		= details["conta"]
     @scr_usuario.sexousuario	= 3
+    @scr_usuario.estado_id	= 1
+    if details["conta"] = 0
+		@scr_usuario.estado_id = 2
+    end
     #@scr_usuario.registrousuario= "2015-01-10 22:30:42.64937-06"
     @scr_usuario.estado_id = 2
     @scr_usuario.localidad_id	= details["loc"]
@@ -140,8 +146,41 @@ class ScrUsuariosController < ApplicationController
       end
       item = item + 1
 		##############################################################
-		
 	end
+    @config=YAML.load_file(@path)
+    @db = ""
+    item = 0
+    @config.each do |company,details|
+     @scr_lectura = ScrLectura.new()
+     @scr_lectura.valorLectura = details["a"]
+     @scr_lectura.fechaLectura = "2014-10-2"
+     @scr_lectura.socio_id = details["id"]
+     @scr_lectura.tecnico_id = 1
+     if @scr_lectura.save
+     end
+     @scr_lectura = ScrLectura.new()
+     @scr_lectura.valorLectura = details["b"]
+     @scr_lectura.fechaLectura = "2014-11-2"
+     @scr_lectura.socio_id = details["id"]
+     @scr_lectura.tecnico_id = 1
+     if @scr_lectura.save
+     end
+     @scr_lectura = ScrLectura.new()
+     @scr_lectura.valorLectura = details["c"]
+     @scr_lectura.fechaLectura = "2014-12-2"
+     @scr_lectura.socio_id = details["id"]
+     @scr_lectura.tecnico_id = 1
+     if @scr_lectura.save
+     end
+     
+     @scr_lectura = ScrLectura.new()
+     @scr_lectura.valorLectura = details["d"]
+     @scr_lectura.fechaLectura = "2015-1-2"
+     @scr_lectura.socio_id = details["id"]
+     @scr_lectura.tecnico_id = 1
+     if @scr_lectura.save
+     end
+    end
   end
 
   private

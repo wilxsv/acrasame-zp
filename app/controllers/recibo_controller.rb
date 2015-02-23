@@ -24,13 +24,67 @@ class ReciboController < ApplicationController
     session[:roles] = "contador"
     acceso
     send_data(generate_pdf(2,3), :filename => "output.pdf", :type => "application/pdf") 
+  end  
+
+  def imprimir
+    session[:roles] = "contador"
+    acceso
+    if params.has_key?(:transacx)
+      mes = params['transacx']['mes']
+      id  = params['transacx']['id'].to_i
+      actual  = params['transacx']['actual'].to_i
+      if mes != nil
+        session[:error] = '<div class="alert alert-error"><strong>Error! </strong> Opcion no habilitada</div>'
+        redirect_to action: 'index'
+      elsif id >= 1 
+        session[:error] = '<div class="alert alert-success"><strong>Error! </strong> Opcion no habilitada</div>'
+        send_data(comprobante(id), :filename => "single invoice.pdf", :type => "application/pdf")
+      elsif actual != nil
+        session[:error] = '<div class="alert alert-success"><strong>Error! </strong> Archivo generado</div>'
+        
+        send_data(comprobante(0), :filename => "single invoice.pdf", :type => "application/pdf")
+      end
+    else
+      session[:error] = '<div class="alert alert-error"><strong>Error! </strong> Datos no enviados</div>'
+      redirect_to action: 'index'
+    end
   end
   
-  def meses
+  def genera
+    session[:roles] = "contador"
+    acceso
+    begin
+      @info = nil
+      @tmp = nil
+      @tmp = ScrTransaccion.find_by_sql("SELECT fcn_det_factura AS d FROM fcn_det_factura();")
+      session[:error] = '<div class="alert alert-success"><strong>Exito! </strong> Los recibos se generaron correctamente!</div>'
+      redirect_to action: 'index'
+    rescue ActiveRecord::RecordNotFound
+      session[:error] = '<div class="alert alert-error"><strong>Error! </strong> Recibos ya fueron generados</div>'
+      redirect_to action: 'index'
+    rescue ActiveRecord::ActiveRecordError
+      session[:error] = '<div class="alert alert-error"><strong>Error! </strong> Recibos ya fueron generados</div>'
+      redirect_to action: 'index'
+    rescue # StandardError
+      session[:error] = '<div class="alert alert-error"><strong>Error! </strong> Recibos ya fueron generados</div>'
+      redirect_to action: 'index'
+    rescue Exception
+      session[:error] = '<div class="alert alert-error"><strong>Error! </strong> Recibos ya fueron generados</div>'
+      redirect_to action: 'index'
+    end
+  end
+  
+  def comprobante(ident)
     require "prawn/measurement_extensions"
-    Prawn::Document.new(:page_size => "A4", :margin => [0,0,0,0], :page_layout => :portrait) do
+    Prawn::Document.new(:page_size => "LEGAL", :margin => [0,0,0,0], :page_layout => :portrait) do #
       i = 1
-      ScrDetFactura.where('"limite_pago" >= ? ', 'now()').each do |fac|
+      letra = 10
+      if ident = 0
+		query = '"limite_pago" >= now()'
+      else
+		query = '"id" = ' + ident.to_s
+      end
+      ScrDetFactura.where(query).each do |fac|
         id = fac.id
         ###################################Set factura
         begin
@@ -63,234 +117,106 @@ class ReciboController < ApplicationController
         end
         ###################################
         if i % 2 == 0 then
-        
-      text_box @@nombre, :size => 8, :at=>[20.mm,110.mm]#nombre
-      text_box @@direccion, :size => 8, :at=>[20.mm,105.mm]#direccion
-      text_box id.to_s, :size => 8, :at=>[77.mm,105.mm]#documento
-      text_box @@contador, :size => 8, :at=>[53.mm,105.mm]#contador
-      text_box @@cuenta.to_s, :size => 8, :at=>[74.mm,95.mm]#cuenta
-      text_box @@lectura_f.to_s, :size => 8, :at=>[20.mm,85.mm]#consumo_f
-      text_box @@lectura_i.to_s, :size => 8, :at=>[32.mm,85.mm]#consumo_i
-      k = @@lectura_f.to_f - @@lectura_i.to_f
-      text_box k.to_s, :size => 8, :at=>[55.mm,85.mm]
-      text_box @@fecha.to_s, :size => 8, :at=>[83.mm,85.mm]
-      text_box @@nombre, :size => 8, :at=>[110.mm,110.mm]
-      text_box @@direccion, :size => 8, :at=>[110.mm,105.mm]
-      #text_box id.to_s, :size => 8, :at=>[170.mm,235.mm]
-      text_box @@contador, :size => 8, :at=>[148.mm,105.mm]
-      #text_box @@cuenta.to_s, :size => 8, :at=>[74.mm,238.mm]
-      text_box @@lectura_f.to_s, :size => 8, :at=>[105.mm,85.mm]#consumo_f
-      text_box @@lectura_i.to_s, :size => 8, :at=>[132.mm,85.mm]#consumo_i
-      text_box k.to_s, :size => 8, :at=>[148.mm,85.mm]
-      text_box @@fecha.to_s, :size => 8, :at=>[179.mm,85.mm]
-      line = 1
-      tmp = ScrConsumo.where("factura_id = "+id.to_s)
-      tmp.each do |dato|
-        valor = ScrCobro.find(dato.cobro_id)
-        total = dato.cantidad * valor.cobroValor
-        total = total.round(2)
-        if line == 1
-          text_box valor.cobroCodigo.to_s, :size => 8, :at=>[13.mm,85.mm]
-          text_box valor.cobroNombre.to_s, :size => 8, :at=>[27.mm,85.mm]
-          text_box total.to_s, :size => 8, :at=>[82.mm,218.mm]
-        elsif line == 2
-          text_box valor.cobroCodigo.to_s, :size => 8, :at=>[13.mm,75.mm]
-          text_box valor.cobroNombre.to_s, :size => 8, :at=>[27.mm,75.mm]
-          text_box total.to_s, :size => 8, :at=>[82.mm,208.mm]
-        end
-        line = line + 1
-      end
-      valor = ScrDetFactura.find(id)
-      total = valor.total
-      text_box total.to_s, :size => 8, :at=>[92.mm,47.mm]
-      text_box total.to_s, :size => 8, :at=>[185.mm,47.mm]
-      total = total + 1
-      text_box total.to_s, :size => 8, :at=>[55.mm,47.mm]
-      text_box total.to_s, :size => 8, :at=>[150.mm,47.mm]
-      fecha = valor.limite_pago
-      text_box fecha.to_s, :size => 8, :at=>[83.mm,39.mm]
-      text_box fecha.to_s, :size => 8, :at=>[176.mm,39.mm]
-      ############################################
-		  start_new_page
-		else  
-      text_box @@nombre, :size => 8, :at=>[20.mm,250.mm]#nombre
-      text_box @@direccion, :size => 8, :at=>[20.mm,245.mm]#direccion
-      text_box id.to_s, :size => 8, :at=>[77.mm,235.mm]#documento
-      text_box @@contador, :size => 8, :at=>[53.mm,235.mm]#contador
-      text_box @@cuenta.to_s, :size => 8, :at=>[74.mm,248.mm]#cuenta
-      text_box @@lectura_f.to_s, :size => 8, :at=>[20.mm,233.mm]#consumo_f
-      text_box @@lectura_i.to_s, :size => 8, :at=>[32.mm,233.mm]#consumo_i
-      k = @@lectura_f.to_f - @@lectura_i.to_f
-      text_box k.to_s, :size => 8, :at=>[55.mm,230.mm]
-      text_box @@fecha.to_s, :size => 8, :at=>[83.mm,230.mm]
-      text_box @@nombre, :size => 8, :at=>[110.mm,250.mm]
-      text_box @@direccion, :size => 8, :at=>[110.mm,245.mm]
-      #text_box id.to_s, :size => 8, :at=>[170.mm,235.mm]
-      text_box @@contador, :size => 8, :at=>[148.mm,235.mm]
-      #text_box @@cuenta.to_s, :size => 8, :at=>[74.mm,238.mm]
-      text_box @@lectura_f.to_s, :size => 8, :at=>[105.mm,233.mm]#consumo_f
-      text_box @@lectura_i.to_s, :size => 8, :at=>[132.mm,233.mm]#consumo_i
-      text_box k.to_s, :size => 8, :at=>[148.mm,230.mm]
-      text_box @@fecha.to_s, :size => 8, :at=>[179.mm,230.mm]
-      line = 1
-      tmp = ScrConsumo.where("factura_id = "+id.to_s)
-      tmp.each do |dato|
-        valor = ScrCobro.find(dato.cobro_id)
-        total = dato.cantidad * valor.cobroValor
-        total = total.round(2)
-        if line == 1
-          text_box valor.cobroCodigo.to_s, :size => 8, :at=>[13.mm,218.mm]
-          text_box valor.cobroNombre.to_s, :size => 8, :at=>[27.mm,218.mm]
-          text_box total.to_s, :size => 8, :at=>[82.mm,218.mm]
-        elsif line == 2
-          text_box valor.cobroCodigo.to_s, :size => 8, :at=>[13.mm,208.mm]
-          text_box valor.cobroNombre.to_s, :size => 8, :at=>[27.mm,208.mm]
-          text_box total.to_s, :size => 8, :at=>[82.mm,208.mm]
-        end
-        line = line + 1
-      end
-      valor = ScrDetFactura.find(id)
-      total = valor.total
-      text_box total.to_s, :size => 8, :at=>[92.mm,191.mm]
-      text_box total.to_s, :size => 8, :at=>[185.mm,191.mm]
-      total = total + 1
-      text_box total.to_s, :size => 8, :at=>[55.mm,191.mm]
-      text_box total.to_s, :size => 8, :at=>[150.mm,191.mm]
-      fecha = valor.limite_pago
-      text_box fecha.to_s, :size => 8, :at=>[83.mm,183.mm]
-      text_box fecha.to_s, :size => 8, :at=>[176.mm,183.mm]
-      ############################################
+			s_y = 150.mm
+		else
+			s_y = 0.mm	
+			start_new_page	
 		end
+		##	Imprime	#########################################
+			text_box @@nombre, :size => 14, :at=>[0.mm,330.mm-s_y]#nombre
+			text_box @@direccion, :size => letra, :at=>[0.mm,325.mm-s_y]#direccion
+			text_box id.to_s, :size => letra, :at=>[77.mm,330.mm-s_y]#documento
+			text_box @@cuenta.to_s, :size => letra, :at=>[77.mm,320.mm-s_y]#contador
+			text_box @@contador, :size => letra, :at=>[50.mm,320.mm-s_y]#cuenta
+			text_box @@lectura_f.to_s, :size => letra, :at=>[0.mm,310.mm-s_y]#consumo_f
+			text_box @@lectura_i.to_s, :size => letra, :at=>[14.mm,310.mm-s_y]#consumo_i
+			k = @@lectura_f.to_f - @@lectura_i.to_f
+			text_box k.to_s, :size => letra, :at=>[30.mm,310.mm-s_y]
+			text_box @@fecha.to_s, :size => letra, :at=>[80.mm,310.mm-s_y]
+			s_x = 110.mm
+			text_box @@nombre, :size => 14, :at=>[s_x+0.mm,330.mm-s_y]
+			text_box @@direccion, :size => letra, :at=>[s_x+0.mm,325.mm-s_y]
+			text_box id.to_s, :size => letra, :at=>[s_x+77.mm,330.mm-s_y]
+			text_box @@contador, :size => letra, :at=>[s_x+50.mm,320.mm-s_y]
+			text_box @@cuenta.to_s, :size => letra, :at=>[s_x+77.mm,320.mm-s_y]
+			text_box @@lectura_f.to_s, :size => letra, :at=>[s_x+0.mm,310.mm-s_y]#consumo_f
+			text_box @@lectura_i.to_s, :size => letra, :at=>[s_x+50.mm,310.mm-s_y]#consumo_i
+			text_box k.to_s, :size => letra, :at=>[s_x+30.mm,310.mm-s_y]
+			text_box @@fecha.to_s, :size => letra, :at=>[s_x+80.mm,310.mm-s_y]
+			line = 1
+			tmp = ScrConsumo.where("factura_id = "+id.to_s)
+			tmp.each do |dato|
+				valor = ScrCobro.find(dato.cobro_id)
+				total = dato.cantidad * valor.cobroValor
+				total = total.round(2)
+				if line == 1
+					text_box valor.cobroCodigo.to_s, :size => letra, :at=>[0.mm,300.mm-s_y]
+					text_box valor.cobroNombre.to_s, :size => letra, :at=>[13.mm,300.mm-s_y]
+					text_box total.to_s, :size => letra, :at=>[80.mm,300.mm]
+				elsif line == 2
+					text_box valor.cobroCodigo.to_s, :size => letra, :at=>[0.mm,395.mm-s_y]
+					text_box valor.cobroNombre.to_s, :size => letra, :at=>[13.mm,395.mm-s_y]
+					text_box total.to_s, :size => letra, :at=>[80.mm,395.mm-s_y]
+				elsif line == 3
+					text_box valor.cobroCodigo.to_s, :size => letra, :at=>[0.mm,480.mm-s_y]
+					text_box valor.cobroNombre.to_s, :size => letra, :at=>[13.mm,480.mm-s_y]
+					text_box total.to_s, :size => letra, :at=>[80.mm,480.mm-s_y]
+				elsif line == 4
+					text_box valor.cobroCodigo.to_s, :size => letra, :at=>[0.mm,570.mm-s_y]
+					text_box valor.cobroNombre.to_s, :size => letra, :at=>[13.mm,570.mm-s_y]
+					text_box total.to_s, :size => letra, :at=>[80.mm,570.mm-s_y]
+				elsif line == 5
+					text_box valor.cobroCodigo.to_s, :size => letra, :at=>[0.mm,660.mm-s_y]
+					text_box valor.cobroNombre.to_s, :size => letra, :at=>[13.mm,660.mm-s_y]
+					text_box total.to_s, :size => letra, :at=>[80.mm,660.mm-s_y]
+				end
+				line = line + 1
+			end
+			line = 1
+			tmp.each do |dato|
+				valor = ScrCobro.find(dato.cobro_id)
+				total = dato.cantidad * valor.cobroValor
+				total = total.round(2)
+				if line == 1
+					text_box valor.cobroCodigo.to_s, :size => letra, :at=>[s_x+0.mm,300.mm-s_y]
+					text_box valor.cobroNombre.to_s, :size => letra, :at=>[s_x+13.mm,300.mm-s_y]
+					text_box total.to_s, :size => letra, :at=>[s_x+80.mm,295.mm-s_y]
+				elsif line == 2
+					text_box valor.cobroCodigo.to_s, :size => letra, :at=>[s_x+0.mm,395.mm-s_y]
+					text_box valor.cobroNombre.to_s, :size => letra, :at=>[s_x+13.mm,395.mm-s_y]
+					text_box total.to_s, :size => letra, :at=>[s_x+80.mm,395.mm-s_y]
+				elsif line == 3
+					text_box valor.cobroCodigo.to_s, :size => letra, :at=>[s_x+0.mm,480.mm-s_y]
+					text_box valor.cobroNombre.to_s, :size => letra, :at=>[s_x+13.mm,480.mm-s_y]
+					text_box total.to_s, :size => letra, :at=>[s_x+80.mm,480.mm-s_y]
+				elsif line == 4
+					text_box valor.cobroCodigo.to_s, :size => letra, :at=>[s_x+0.mm,570.mm-s_y]
+					text_box valor.cobroNombre.to_s, :size => letra, :at=>[s_x+13.mm,570.mm-s_y]
+					text_box total.to_s, :size => letra, :at=>[s_x+80.mm,570.mm-s_y]
+				elsif line == 5
+					text_box valor.cobroCodigo.to_s, :size => letra, :at=>[s_x+0.mm,660.mm-s_y]
+					text_box valor.cobroNombre.to_s, :size => letra, :at=>[s_x+13.mm,660.mm-s_y]
+					text_box total.to_s, :size => letra, :at=>[s_x+80.mm,660.mm-s_y]
+				end
+				line = line + 1
+			end
+			valor = ScrDetFactura.find(id)
+			total = valor.total
+			text_box total.to_s, :size => letra, :at=>[80.mm,270.mm-s_y]
+			text_box total.to_s, :size => letra, :at=>[s_x+80.mm,270.mm-s_y]
+			total = total + 1
+			text_box total.to_s, :size => letra, :at=>[40.mm,270.mm-s_y]
+			text_box total.to_s, :size => letra, :at=>[s_x+40.mm,270.mm-s_y]
+			fecha = valor.limite_pago
+			text_box fecha.to_s, :size => letra, :at=>[80.mm,265.mm-s_y]
+			text_box fecha.to_s, :size => letra, :at=>[s_x+80.mm,265.mm-s_y]
+		##	Imprime	#########################################
 		i = i + 1
       end
     end.render
   end
   
-
-def    unico()
-    require "prawn"
-    Prawn::Document.generate("public/files/last.pdf") do
-    font_size 16
-    text "We are still on the initial page for this example. Now I'll ask"+"Prawn to gently start a new page. Please follow me to the next page."
-    start_new_page
-    text "See. We've left the previous page behind."
-    text_box "This is a text box, you can control where it will flow by"+"specifying the :height and :width options",
-		:at=>[100,250],
-		:height=>100,
-		:width=>100
-	end
- end 
-  def imprimir
-    session[:roles] = "contador"
-    acceso
-    if params.has_key?(:transacx)
-      mes = params['transacx']['mes']
-      id  = params['transacx']['id'].to_i
-      actual  = params['transacx']['actual'].to_i
-      if mes != nil
-        session[:error] = '<div class="alert alert-error"><strong>Error! </strong> Opcion no habilitada</div>'
-        redirect_to action: 'index'
-      elsif id >= 1 
-        session[:error] = '<div class="alert alert-success"><strong>Error! </strong> Opcion no habilitada</div>'
-        send_data(genera_unico(id), :filename => "single invoice.pdf", :type => "application/pdf")
-      elsif actual != nil
-        session[:error] = '<div class="alert alert-success"><strong>Error! </strong> Archivo generado</div>'
-        send_data(meses, :filename => "single invoice.pdf", :type => "application/pdf")
-      end
-    else
-      session[:error] = '<div class="alert alert-error"><strong>Error! </strong> Datos no enviados</div>'
-      redirect_to action: 'index'
-    end
-  end
-  
-  def genera
-    session[:roles] = "contador"
-    acceso
-    begin
-      @info = nil
-      @tmp = nil
-      @tmp = ScrTransaccion.find_by_sql("SELECT fcn_det_factura AS d FROM fcn_det_factura();")
-      session[:error] = '<div class="alert alert-success"><strong>Exito! </strong> Los recibos se generaron correctamente!</div>'
-      redirect_to action: 'index'
-    rescue ActiveRecord::RecordNotFound
-      session[:error] = '<div class="alert alert-error"><strong>Error! </strong> Recibos ya fueron generados</div>'
-      redirect_to action: 'index'
-    rescue ActiveRecord::ActiveRecordError
-      session[:error] = '<div class="alert alert-error"><strong>Error! </strong> Recibos ya fueron generados</div>'
-      redirect_to action: 'index'
-    rescue # StandardError
-      session[:error] = '<div class="alert alert-error"><strong>Error! </strong> Recibos ya fueron generados</div>'
-      redirect_to action: 'index'
-    rescue Exception
-      session[:error] = '<div class="alert alert-error"><strong>Error! </strong> Recibos ya fueron generados</div>'
-      redirect_to action: 'index'
-    end
-  end
-  
-  def comprobante
-    require "prawn"
-    Prawn::Document.generate("public/files/last.pdf") do
-    font_size 16
-    text "We are still on the initial page for this example. Now I'll ask"+"Prawn to gently start a new page. Please follow me to the next page."
-    start_new_page
-    text "See. We've left the previous page behind."
-    text_box "This is a text box, you can control where it will flow by"+"specifying the :height and :width options",
-		:at=>[100,250],
-		:height=>100,
-		:width=>100
-	encrypt_document
-    end
-  end
-  
 #  private 
-  def generate_pdf(id, cuadrante)
-    Prawn::Document.new do
-        text "Hello ["+id.to_s+"] Stackoverflow ["+cuadrante.to_s+"]"
-    end.render 
-  end
-  def genera_unico(id)
-    require "prawn/measurement_extensions"
-    set_factura(id)
-    set_lectura()    
-    # :background => "#{Rails.root.to_s}/public/images/bg_pdf.png",
-    Prawn::Document.new(:page_size => "A4", :margin => [0,0,0,0], :page_layout => :portrait) do
-      text_box @@contador, :size => 30, :at=>[13.mm,254.mm]
-      text_box @@cuenta.to_s, :at=>[74.mm,248.mm]
-      text_box @@cuenta.to_s, :at=>[74.mm,238.mm]
-      text_box @@lectura_f.to_s, :at=>[13.mm,230.mm]
-      text_box @@lectura_i.to_s, :at=>[32.mm,230.mm]
-      k = @@lectura_f.to_f - @@lectura_i.to_f
-      text_box k.to_s, :at=>[51.mm,230.mm]
-      text_box @@fecha.to_s, :at=>[81.mm,230.mm]
-      #SELECT SUM(c.cantidad * k."cobroValor") INTO mor FROM scr_consumo AS c, scr_cobro AS k 
-      #WHERE c.factura_id = r.id  AND c.cobro_id = k.id GROUP BY factura_id;
-      line = 1
-      tmp = ScrConsumo.where("factura_id = "+id.to_s)
-      tmp.each do |dato|
-        valor = ScrCobro.find(dato.cobro_id)
-        total = dato.cantidad * valor.cobroValor
-        total = total.round(2)
-        if line == 1
-          text_box valor.cobroCodigo.to_s, :at=>[13.mm,218.mm]
-          text_box valor.cobroNombre.to_s, :at=>[27.mm,218.mm]
-          text_box total.to_s, :at=>[82.mm,218.mm]
-        elsif line == 2
-          text_box valor.cobroCodigo.to_s, :at=>[13.mm,208.mm]
-          text_box valor.cobroNombre.to_s, :at=>[27.mm,208.mm]
-          text_box total.to_s, :at=>[82.mm,208.mm]
-        end
-        line = line + 1
-      end
-      valor = ScrDetFactura.find(id)
-      total = valor.total
-      text_box total.to_s, :at=>[82.mm,191.mm]
-      total = total + 1
-      text_box total.to_s, :at=>[44.mm,191.mm]
-      fecha = valor.limite_pago
-      text_box fecha.to_s, :at=>[80.mm,183.mm]
-      #text "Hello ["+@@cuenta.to_s+"] Stackoverflow ["+@@contador+"]"+"Cuenta: ["+@@lectura_i.to_s+"] - ["+@@lectura_f.to_s+" ["+@@fecha.to_s+"]"
-    end.render
-  end
   def set_factura(id)
     begin
       tmp = ScrDetFactura.find(id)
