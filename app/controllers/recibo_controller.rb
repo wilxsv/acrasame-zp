@@ -120,7 +120,7 @@ class ReciboController < ApplicationController
         end
         ###################################
         if i % 2 == 0 then
-			s_y = 139.mm
+			s_y = 141.mm
 		else
 			s_y = 0.mm	
 			start_new_page	
