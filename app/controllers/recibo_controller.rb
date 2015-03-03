@@ -1,3 +1,4 @@
+
 class ReciboController < ApplicationController
   include AccesoHelpers
   
