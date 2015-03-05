@@ -1,4 +1,3 @@
-
 class ReciboController < ApplicationController
   include AccesoHelpers
   
@@ -109,10 +108,8 @@ class ReciboController < ApplicationController
           tmp = ScrLectura.where("(date_part('month', now())-date_part('month',\"fechaLectura\")) = 0 AND socio_id = "+@@cuenta.to_s)
           tmp.each do |dato|
             @@lectura_f = dato.valorLectura
-            @@fecha = "01 02 2015"#dato.fechaLectura
+            @@fecha = dato.fechaLectura
           end
-            @@lectura_f = 15
-            @@fecha = "01 10 2015"
         rescue
           session[:error] = '<div class="alert alert-error"><strong>Error! </strong> Datos no enviados</div>'
           @@lectura_i = ""
@@ -122,9 +119,11 @@ class ReciboController < ApplicationController
         ###################################
         if i % 2 == 0 then
 			s_y = 141.mm
+		elsif i == 1
+			s_y = 0.mm
 		else
-			s_y = 0.mm	
-			start_new_page	
+			s_y = 0.mm
+			start_new_page
 		end
 		##	Imprime	#########################################
 			text_box @@nombre, :size => letra, :at=>[9.mm,328.mm-s_y+y_axis]#nombre
@@ -156,7 +155,7 @@ class ReciboController < ApplicationController
 				if line == 1
 					text_box valor.cobroCodigo.to_s, :size => letra, :at=>[9.mm,296.mm-s_y+y_axis]
 					text_box valor.cobroNombre.to_s, :size => letra, :at=>[23.mm,296.mm-s_y+y_axis]
-					text_box total.to_s, :size => letra, :at=>[80.mm,296.mm+y_axis]
+					text_box total.to_s, :size => letra, :at=>[80.mm,296.mm-s_y+y_axis]
 				elsif line == 2
 #						text_box valor.cobroCodigo.to_s, :size => letra, :at=>[0.mm,395.mm-s_y+y_axis]
 #					text_box valor.cobroNombre.to_s, :size => letra, :at=>[13.mm,395.mm-s_y+y_axis]
@@ -184,7 +183,6 @@ class ReciboController < ApplicationController
 				if line == 1
 					text_box valor.cobroCodigo.to_s, :size => letra, :at=>[s_x+9.mm,296.mm-s_y+y_axis]
 					text_box valor.cobroNombre.to_s, :size => letra, :at=>[s_x+23.mm,296.mm-s_y+y_axis]
-					text_box total.to_s, :size => letra, :at=>[s_x+80.mm,296.mm-s_y+y_axis]
 					text_box total.to_s, :size => letra, :at=>[s_x+80.mm,296.mm-s_y+y_axis]
 				elsif line == 2
 #					text_box valor.cobroCodigo.to_s, :size => letra, :at=>[s_x+0.mm,395.mm-s_y+y_axis]
@@ -216,6 +214,10 @@ class ReciboController < ApplicationController
 			text_box fecha.to_s, :size => letra, :at=>[75.mm,258.mm-s_y+y_axis]
 			text_box fecha.to_s, :size => letra, :at=>[s_x+75.mm,258.mm-s_y+y_axis]
 		##	Imprime	#########################################
+        if i % 2 == 0 then
+		else
+	#		start_new_page	
+		end
 		i = i + 1
       end
     end.render
