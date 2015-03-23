@@ -1,6 +1,6 @@
 <div class="module">
  <div class="module-head">
-  <h3>Secuencia de recibos para impresión</h3>
+  <h3>Secuencia de recibos para impresión [Inicio de nuevo paquete]</h3>
  </div>
  <div class="module-body">
   <%= form_for :transacx, class:"form-horizontal row-fluid", :url => { :action => :correlativo } do |f| %>
@@ -16,19 +16,23 @@
 <br />
 <div class="module">
  <div class="module-head">
-  <h3>Ajustar reimpresion</h3>
+  <h3>Ajustar reimpresion [Modificacion en recibos por imprimir]</h3>
  </div>
  <div class="module-body">
+  <div>
+   <p>Esta operacion se realizara unicamente en casos que ya se realizaron las facturaciones y ubieron problemas mecanicos en la impresion de las facturas.<br/>
+   Esta operacion incrementa las facturas a imprimir en un valor constante, iniciando desde una factura determinada.</p>
+  </div>
   <%= form_for :transacx, class:"form-horizontal row-fluid", :url => { :action => :correlativo } do |f| %>
    <div class="control-group">
-    <div class="controls">Iniciar secuencia en:
-     <div class="input-append"><span class="add-on">#</span><%= f.number_field :secuencia, placeholder:"Correlativo de recibos" %></div>
+    <div class="controls">Recibo inicial desde donde se inciaran los incrementos:
+     <div class="input-append"><span class="add-on">#</span><%= f.number_field :iniciasec, placeholder:"Numero de secuencia desde donde se iniciara el incremento" %></div>
     </div>
-    <div class="controls">Numero de recibo para iniciar secuencia:
-     <div class="input-append"><span class="add-on">#</span><%= f.number_field :secuencia, placeholder:"Correlativo de recibos" %></div>
+    <div class="controls">Cantidad a incrementar en los recibos:
+     <div class="input-append"><span class="add-on">#</span><%= f.number_field :cantidadsec, placeholder:"Cantidad a incrementar en la secuencia" %></div>
     </div>
    </div>
-   <%= f.submit "Asignar secuencia", class:"btn btn-mini btn-primary", data: { confirm: 'Confirma la operación ?' } %>
+   <%= f.submit "Asignar secuencia", class:"btn btn-mini btn-primary", data: { confirm: 'Recuerde que todas las facturas mayores a la detallada se incrementaran con la cantidad que ingreso ?' } %>
   <% end %>
  </div>
 </div>

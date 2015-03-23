@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   resources :scr_empleados, :scr_periodo_representantes, :scr_representante_legals, :scr_usuario_rols, :scr_lecturas
   resources :scr_consumos, :scr_det_facturas, :scr_cobros, :scr_cat_cobros, :scr_cat_rep_legals, :scr_proveedors
   post 'scr_det_facturas/pagar'
+  post 'scr_det_facturas/imprimir'
+  post 'scr_det_facturas/facturacion'
   post 'scr_det_facturas/cargo'
   get 'resumen/index'
   get 'informe/prefacturacion'

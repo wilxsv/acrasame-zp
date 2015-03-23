@@ -5,18 +5,18 @@
  <div class="module-body">
   <%= form_for :transacx, class:"form-horizontal row-fluid", :url => { :action => :configure } do |f| %>
    <div class="control-group">
-    <%= f.label :cuenta_debe %> (Ej. Ventas, Socios)
+    <%= f.label :cuenta_debe %>
     <div class="controls">
      <div class="input-append">
-      <%= f.select :cdebe, ScrCuentua.select('id, cat_cuenta_id, "cuentaCodigo", "cuentaNombre"').group('id, cat_cuenta_id, "cuentaCodigo", "cuentaNombre"').order(:cuentaCodigo, :cuentaCodigo).all.collect { |p| [ p.cuentaNombre, p.id ] }, include_blank: false %>
+      <%= f.select :cdebe, ScrCuentua.order('CAST("cuentaCodigo" AS TEXT)').all.collect { |p| [ p.cuentaCodigo.to_s+"-"+p.cuentaNombre, p.id ] }, include_blank: false %>
      </div>
     </div>
    </div>
    <div class="control-group">
-    <%= f.label :cuenta_haber %> (Ej. Cuentas por cobrar)
+    <%= f.label :cuenta_haber %>
     <div class="controls">
      <div class="input-append">
-      <%= f.select :chaber, ScrCuentua.select('id, cat_cuenta_id, "cuentaCodigo", "cuentaNombre"').group('id, cat_cuenta_id, "cuentaCodigo", "cuentaNombre"').order(:cuentaCodigo, :cuentaCodigo).all.collect { |p| [ p.cuentaNombre, p.id ] }, include_blank: false %>
+      <%= f.select :chaber, ScrCuentua.order('CAST("cuentaCodigo" AS TEXT)').all.collect { |p| [ p.cuentaCodigo.to_s+"-"+p.cuentaNombre, p.id ] }, include_blank: false %>
      </div>
     </div>
    </div>

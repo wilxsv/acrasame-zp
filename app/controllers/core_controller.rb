@@ -86,7 +86,16 @@ $BODY$
         org = ScrOrganizacion.find_by(id: '1')
         org.organizacionNombre = params['transacx']['nombre']
         org.save
-      elsif params['transacx']['pdebe'] != nil and params['transacx']['phaber'] != nil
+      elsif params['transacx']['secuencia'] != nil
+        #Se define el procedimiento para iniciar secuencia de facturas
+        begin
+          @tmp = ScrTransaccion.connection.select_all("SELECT setval('scr_det_factura_id_seq',"+params['transacx']['secuencia']+",'t');")
+          session[:error] = '<div class="alert alert-success"><button class="close" data-dismiss="alert" type="button">×</button><strong>Exito! </strong> Procedimiento ejecutado sin errores</div>'
+        rescue
+          session[:error] = '<div class="alert alert-error"><button class="close" data-dismiss="alert" type="button">×</button><strong>Error! </strong> Procedimiento ejecutado con errores</div>'
+        end
+        redirect_to action: 'index'
+      elsif params['transacx']['iniciasec'] != nil and params['transacx']['cantidadsec'] != nil
         #Se define el procedimiento para cobros
         begin
           @tmp = ScrTransaccion.connection.select_all("")
@@ -105,8 +114,7 @@ $BODY$
     acceso
     if params.has_key?(:transacx)
       session[:error] = "Se encontraron inconsistencias en su transacción"
-      
-      if params['transacx']['pdebe'] != nil and params['transacx']['phaber'] != nil
+            if params['transacx']['pdebe'] != nil and params['transacx']['phaber'] != nil
         #Se define el procedimiento para cobros
         begin
           @tmp = ScrTransaccion.connection.select_all("CREATE OR REPLACE FUNCTION fcn_agrega_transacx_pago(double precision, text)
@@ -161,18 +169,32 @@ $BODY$
     acceso
     if params.has_key?(:transacx)
       if params['transacx']['secuencia'] != nil
-        #Se define el procedimiento para cobros
+        #Se define el procedimiento para iniciar secuencia de facturas
         begin
           @tmp = ScrTransaccion.connection.select_all("ALTER SEQUENCE scr_det_factura_id_seq RESTART WITH "+params['transacx']['secuencia']+";")
           session[:error] = '<div class="alert alert-success"><button class="close" data-dismiss="alert" type="button">×</button><strong>Exito! </strong> Secuencia registrada</div>'
-          redirect_to action: 'configure'
+          #redirect_to action: 'configure'
         rescue
           session[:error] = '<div class="alert alert-error"><button class="close" data-dismiss="alert" type="button">×</button><strong>Error! </strong> Secuencia no registrada</div>'
-          redirect_to action: 'configure'
+          #redirect_to action: 'configure'
         end
+      elsif params['transacx']['iniciasec'] != nil and params['transacx']['cantidadsec'] != nil
+        if params['transacx']['cantidadsec'].to_i > 0 and params['transacx']['iniciasec'].to_i > 0
+         @query = "UPDATE scr_det_factura SET id=id+"+params['transacx']['cantidadsec']+", det_factur_numero=det_factur_numero+"+params['transacx']['cantidadsec']+" WHERE id >= '"+params['transacx']['iniciasec']+"'"
+        else
+         @query = "Select * from all"
+        end
+        #Se define el procedimiento para mofificar facturas ya generadas pero no impresas
+        begin
+          @tmp = ScrTransaccion.connection.select_all(@query)
+          session[:error] = '<div class="alert alert-success"><button class="close" data-dismiss="alert" type="button">×</button><strong>Exito! </strong> Facturas modificadas</div>'
+        rescue
+          session[:error] = '<div class="alert alert-error"><button class="close" data-dismiss="alert" type="button">×</button><strong>Error! </strong> Error en los datos registrados, no deben ser negativos y la factura debe existir</div>'
+        end
+        
       else
         session[:error] = '<div class="alert alert-error"><button class="close" data-dismiss="alert" type="button">×</button><strong>Error! </strong> No envio datos</div>'
-        redirect_to action: 'configure'
+        #redirect_to action: 'configure'
       end
     end
   end

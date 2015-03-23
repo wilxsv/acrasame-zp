@@ -2,13 +2,34 @@
 <% notice = nil %>
 <div class="module">
  <div class="module-head">
-  <h3>
-   Ingresar pago  <%= image_tag "codigo-barras.png", {class:"nav-avatar"} %>
-   <%= form_for :transacx, :url => { :action => :pagar } do |f| %>
+  <h3>Opciones</h3>
+ </div>
+ <div class="module-body">
+  <div class="row-fluid">
+   <div class="span4">
+    <%= image_tag "codigo-barras.png", {class:"nav-avatar"} %> Ingresar pago 
+    <%= form_for :transacx, :url => { :action => :pagar } do |f| %>
     <%= f.number_field :id %>
     <%= f.submit "Enviar pago", class:"btn btn-inverse",  data: { confirm: 'Confirma la operación ?' } %>
-   <% end %>
-  </h3>
+    <% end %>
+   </div>
+   <div class="span4">
+    <%= form_for :transacx, class:"form-horizontal row-fluid", :url => { :action => :facturacion } do |f| %>
+     <div class="control-group">
+      <%= f.text_field :actual, type:"hidden", value:"vBHWMHC4MVtGnpSyJIsGypANFcKZZnruK/nsCFyDEyk=" %>
+      <%= f.submit "Informe pre facturación",class:"btn btn-inverse" %>
+     </div>
+    <% end %>
+   </div>
+   <div class="span4">
+    <%= form_for :transacx, class:"form-horizontal row-fluid", :url => { :action => :imprimir } do |f| %>
+     <div class="control-group">
+      <%= f.text_field :actual, type:"hidden", value:"vBHWMHC4MVtGnpSyJIsGypANFcKZZnruK/nsCFyDEyk=" %>
+      <%= f.submit "Informe de lecturas de consumo",class:"btn btn-inverse" %>
+     </div>
+    <% end %>
+   </div>
+  </div>
  </div>
 </div>
 <div class="module">
