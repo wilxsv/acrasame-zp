@@ -94,7 +94,14 @@ $BODY$
         rescue
           session[:error] = '<div class="alert alert-error"><button class="close" data-dismiss="alert" type="button">×</button><strong>Error! </strong> Procedimiento ejecutado con errores</div>'
         end
-        redirect_to action: 'index'
+      elsif params['transacx']['cierre'] != nil
+        #Se define el procedimiento para el cierre contable
+        begin
+          @tmp = ScrTransaccion.connection.select_all("r")
+          session[:error] = '<div class="alert alert-success"><button class="close" data-dismiss="alert" type="button">×</button><strong>Exito! </strong> Cierre contable finalizado</div>'
+        rescue
+          session[:error] = '<div class="alert alert-error"><button class="close" data-dismiss="alert" type="button">×</button><strong>Error! </strong> Procedimiento ejecutado con errores</div>'
+        end
       elsif params['transacx']['iniciasec'] != nil and params['transacx']['cantidadsec'] != nil
         #Se define el procedimiento para cobros
         begin

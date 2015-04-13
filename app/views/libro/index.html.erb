@@ -14,6 +14,12 @@
     </div>
    </fieldset>
   <% end %>
+  
+         	<%= form_for :transacx, class:"form-horizontal row-fluid", :url => {  :controller=>"transaccion", :action => :pdf } do |f| %>
+         		<%= f.text_field :id, type:"hidden", value:0 %>
+         		<%= f.text_field :query, type:"hidden", value:"null" %>
+         		<%= f.submit "Imprimir", class:"btn btn-inverse btn-sm" %>
+         	<% end %>
  </div>
 </div>
 <div class="col-lg-4">

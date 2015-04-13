@@ -1,19 +1,34 @@
 <div class="module">
  <div class="module-head">
-  <h3>Organización</h3>
+  <h3>Configuraciones generales de la organización</h3>
  </div>
  <div class="module-body">
-  <%= form_for :transacx, class:"form-horizontal row-fluid", :url => { :action => :configure } do |f| %>
-   <div class="control-group">
-    <%= f.label :Nombre %>
-    <div class="controls">
-     <div class="input-append">
-      <%= f.text_field :nombre, placeholder:"0.0" %><span class="add-on">$</span>
+  <div class="row-fluid">
+   <div class="span6">
+    <%= form_for :transacx, class:"form-horizontal row-fluid", :url => { :action => :configure } do |f| %>
+     <div class="control-group">
+      <%= f.label :Nombre %>
+      <div class="controls">
+       <div class="input-append">
+        <%= f.text_field :nombre, placeholder:"Nombre de la institución ..." %><span class="add-on">Cambiar por</span>
+       </div>
+      </div>
      </div>
-    </div>
+     <%= f.submit "Cambiar", class:"btn btn-mini btn-primary", data: { confirm: 'Confirma la operación ?' } %>
+    <% end %>
    </div>
-   <%= f.submit "Cambiar", class:"btn btn-mini btn-primary", data: { confirm: 'Confirma la operación ?' } %>
-  <% end %>
+   <div class="span6">
+    <%= form_for :transacx, class:"form-horizontal row-fluid", :url => { :action => :configure } do |f| %>
+     <div class="control-group">
+      <div class="controls">Cierre de periodo contable.
+       <div class="input-append"><span class="add-on">Realice esta operación unicamente si esta seguro</span></div>
+       <%= f.text_field :cierre, type:"hidden", value:"vBHWMHC4MVtGnpSyJIsGypANFcKZZnruK/nsCFyDEyk=" %>
+      </div>
+     </div>
+     <%= f.submit "Finalizar periodo contable", class:"btn btn-mini btn-primary", data: { confirm: 'Recuerde que no podra hacer mas operaciones en este periodo' } %>
+    <% end %>
+   </div>
+  </div>
  </div>
 </div>
 <br />

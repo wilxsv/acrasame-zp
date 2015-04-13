@@ -1,0 +1,41 @@
+<div class="col-lg-8">
+ <div class="well bs-component">
+  <%= form_for :transacx, :url => { :action => :index } do |f| %>
+   <fieldset>
+    <legend>Mostrar libro diario. </legend>
+    <div class="form-group">
+     <%= f.label :fecha, class: "col-lg-2 control-label" %>
+     <div class="col-lg-10"><%= f.text_field :transaxFecha, id: "datepicker" %></div>
+    </div>
+    <div class="form-group">
+     <div class="col-lg-10 col-lg-offset-2">
+      <%= f.submit "Mostrar libro diario", class: "btn btn-primary btn-sm" %>
+     </div>
+    </div>
+   </fieldset>
+  <% end %>
+  
+         	<%= form_for :transacx, class:"form-horizontal row-fluid", :url => {  :controller=>"transaccion", :action => :pdf } do |f| %>
+         		<%= f.text_field :id, type:"hidden", value:0 %>
+         		<%= f.text_field :query, type:"hidden", value:"null" %>
+         		<%= f.submit "Imprimir", class:"btn btn-inverse btn-sm" %>
+         	<% end %>
+ </div>
+</div>
+<div class="col-lg-4">
+ <div class="well bs-component">
+  <%= form_for :libro, :url => { :action => :mayor } do |f| %>
+   <fieldset>
+    <legend>Mostrar libro mayor. </legend>
+    <div class="form-group">
+     <div class="col-lg-10 col-lg-offset-2">
+      <%= f.submit "Mostrar libro mayor", class: "btn btn-primary btn-sm" %>
+     </div>
+    </div>
+   </fieldset>
+  <% end %>
+ </div>
+</div>
+<div class="col-lg-12">
+ <%= render partial: "transaccion/show" %>
+</div>

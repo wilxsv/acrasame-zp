@@ -1,6 +1,7 @@
 class TransaccionController < ApplicationController
   include AccesoHelpers
   require 'date'
+  @@QUERY
 
   # POST /transaccion
   def index
@@ -60,6 +61,70 @@ class TransaccionController < ApplicationController
   
   def show
     @scr_transaccions = ScrTransaccion.all.order('"transaxSecuencia", "transaxFecha"')
+  end
+  def pdf
+  	id = params['transacx']['id']
+  	query = params['transacx']['query']
+  	if id.to_i > 0 && query == "null"
+  	  query = ScrTransaccion.partida(id)
+  	  head = [" <b>#</b> ", "<b>Cuenta</b>", "<b>Descripcion</b>", "<b>Debe</b>", "<b>Haber</b>", "<b>Fecha</b>"]
+  	  send_data(partida(id,"Partida contable", query, head), :filename => "Partida contable.pdf", :type => "application/pdf")
+  	elsif id.to_i > 0 && query == "diario"
+  	elsif id.to_i > 0 && query == "mayor"
+  	elsif id.to_i > 0 && query == "balance"
+  	  redirect_to action: 'index'
+  	end 
+  end
+  def partida(id, titulo, query, head)
+  	user = session[:user_nombre]
+  	
+      require "prawn/measurement_extensions"
+      require "prawn/table"
+
+      Prawn::Document.new(:page_size => "LETTER", :margin => [1.cm,1.cm,1.cm,1.cm], :page_layout => :portrait) do 
+        #Body#partida(1)
+        time = Time.new
+        bounding_box([0, 620], :width => 580) do #, :height => 680  # stroke_bounds
+          table = [head]
+          debe = 0
+          haber = 0
+          query.each do |data|
+          	if data.transaxDebeHaber
+          		debe+=data.transaxMonto
+          		tdebe = data.transaxMonto
+          		thaber = 0
+          	else
+          		haber+=data.transaxMonto
+          		thaber = data.transaxMonto
+          		tdebe = 0
+          	end
+            table = table + [[ data.transaxSecuencia, data.cuentaCodigo, data.cuentaNombre, tdebe, thaber, data.transaxFecha ]]
+          end
+          table = table + [[ "", "", "Total", debe, haber, "" ]]
+          table(table, :header => true, :width  => 570, :cell_style => { :inline_format => true }) do
+          end
+        end
+        
+        repeat :all do
+          #Header
+          bounding_box [bounds.left, bounds.top], :width  => bounds.width do
+            font "Helvetica"
+            image Rails.root.to_s+'/public/images/logo.png', :at => [0,0], :scale => 0.4 # :style => [:bold, :italic] }])
+            text " ::  Asociación Rural, Agua Salud y Medio Ambiente El Zapote - Platanares ::", :align => :center, :size => 20
+            text titulo, :align => :center, :size => 20
+            text " #{Prawn::Text::NBSP*19} Generado el: "+time.strftime("%Y-%m-%d %H:%M:%S").to_s, :align => :left
+            text " #{Prawn::Text::NBSP*19} Técnico: "+user, :align => :left
+            stroke_horizontal_rule
+          end
+          #Footer
+          bounding_box [bounds.left, bounds.bottom + 25], :width  => bounds.width do
+            font "Helvetica"
+            stroke_horizontal_rule
+            move_down(5)
+            number_pages "Pagina <page> de un total de <total>", { :align => :right }#:start_count_at => 5, :page_filter => lambda{ |pg| pg != 1 }, :at => [bounds.right - 50, 0], :size => 14}
+          end
+        end
+      end.render
   end
   
   private

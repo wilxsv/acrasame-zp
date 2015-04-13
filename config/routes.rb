@@ -3,13 +3,12 @@ Rails.application.routes.draw do
   resources :scr_bombeos
   
   get 'scr_lecturas/registro'
-  #get 'scr_usuarios/agregausuarios'
 
   resources :scr_cloracions
 
   resources :scr_det_contables
 
-  resources :scr_cuentuas, :scr_estados, :scr_cat_actividads #:scr_transaccions, :scr_area_trabajos, :scr_marca_producs
+  resources :scr_cuentuas, :scr_estados, :scr_cat_actividads #:scr_transaccions, :scr_area_trabajos, :scr_marca_producs get 'scr_usuarios/agregausuarios'
   resources :scr_rols, :scr_cargos, :scr_localidads, :scr_organizacions, :scr_usuarios, :scr_bancos, :scr_cat_organizacions#, :transacx
   resources :scr_empleados, :scr_periodo_representantes, :scr_representante_legals, :scr_usuario_rols, :scr_lecturas
   resources :scr_consumos, :scr_det_facturas, :scr_cobros, :scr_cat_cobros, :scr_cat_rep_legals, :scr_proveedors
@@ -38,6 +37,7 @@ Rails.application.routes.draw do
   post 'recibo/imprimir'
   post 'recibo/genera'
   get 'transaccion/index'
+  post 'transaccion/pdf'
   get 'transaccion/show'
   post 'transaccion/index'
   post 'transaccion/create'
