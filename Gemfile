@@ -50,4 +50,4 @@ gem 'time_difference', '~> 0.3.2'
 
 gem 'execjs'
 gem 'therubyracer'
-
+gem 'activerecord-session_store', github: 'rails/activerecord-session_store'

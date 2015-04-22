@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20150413201757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,15 +45,15 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "scr_bombeo", force: true do |t|
-    t.date     "fecha",                                 null: false
-    t.datetime "bombeo_inicio",                         null: false
-    t.datetime "bombeo_fin",                            null: false
-    t.float    "voltaje",                 default: 0.0, null: false
-    t.float    "amperaje",                default: 0.0, null: false
-    t.float    "presion",                 default: 0.0, null: false
-    t.float    "lectura",                 default: 0.0, null: false
-    t.float    "produccion",              default: 0.0, null: false
-    t.integer  "empleado_id",   limit: 8,               null: false
+    t.date    "fecha",                                 null: false
+    t.time    "bombeo_inicio",                         null: false
+    t.time    "bombeo_fin",                            null: false
+    t.float   "voltaje",                 default: 0.0, null: false
+    t.float   "amperaje",                default: 0.0, null: false
+    t.float   "presion",                 default: 0.0, null: false
+    t.float   "lectura",                 default: 0.0, null: false
+    t.float   "produccion",              default: 0.0, null: false
+    t.integer "empleado_id",   limit: 8,               null: false
   end
 
   create_table "scr_cargo", force: true do |t|
@@ -205,27 +205,8 @@ ActiveRecord::Schema.define(version: 0) do
   add_index "scr_det_factura", ["det_factur_numero"], name: "unique_comprobante", unique: true, using: :btree
   add_index "scr_det_factura", ["socio_id", "limite_pago"], name: "unique_factura_mes", unique: true, using: :btree
 
-  create_table "scr_empleado", force: true do |t|
-    t.string   "empleadoNombre",       limit: 150,                   null: false
-    t.string   "empleadoApellido",     limit: 150,                   null: false
-    t.integer  "empleadoTelefono",     limit: 8,                     null: false
-    t.integer  "empleadoCelular",      limit: 8
-    t.text     "empleadoDireccion",                                  null: false
-    t.integer  "empleadoDui",          limit: 8,                     null: false
-    t.integer  "empleadoIsss",         limit: 8,                     null: false
-    t.datetime "empleadoRegistro",                 default: "now()", null: false
-    t.date     "empleadoFechaIngreso",                               null: false
-    t.integer  "cargo_id",             limit: 8,                     null: false
-    t.text     "empleadoEmail",                                      null: false
-    t.integer  "empleadoNit",          limit: 8,                     null: false
-    t.integer  "localidad_id",         limit: 8,                     null: false
-    t.integer  "usuario_id",           limit: 8,   default: 1,       null: false
-  end
-
-  add_index "scr_empleado", ["empleadoDui"], name: "unique_dui_empleado", unique: true, using: :btree
-  add_index "scr_empleado", ["empleadoEmail"], name: "UN_empleado_email", unique: true, using: :btree
-  add_index "scr_empleado", ["empleadoIsss"], name: "unique_isss_empleado", unique: true, using: :btree
-  add_index "scr_empleado", ["empleadoNit"], name: "UN_empleado_nit", unique: true, using: :btree
+# Could not dump table "scr_empleado" because of following StandardError
+#   Unknown type 'dominio_email' for column 'empleadoEmail'
 
   create_table "scr_empleado_actividad", id: false, force: true do |t|
     t.integer "empleado_id",  limit: 8, null: false
@@ -359,18 +340,8 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer  "usuario_id",     limit: 8, null: false
   end
 
-  create_table "scr_representante_legal", force: true do |t|
-    t.string   "rLegalNombre",     limit: 150,                   null: false
-    t.string   "rLegalApellido",   limit: 150,                   null: false
-    t.integer  "rLegalTelefono",   limit: 8,                     null: false
-    t.integer  "rLegalCelular",    limit: 8
-    t.text     "rLegalDireccion",                                null: false
-    t.datetime "rLegalRegistro",               default: "now()", null: false
-    t.integer  "cat_rep_legal_id", limit: 8,                     null: false
-    t.text     "rLegalemail",                                    null: false
-  end
-
-  add_index "scr_representante_legal", ["rLegalemail"], name: "UN_rep_leg_email", unique: true, using: :btree
+# Could not dump table "scr_representante_legal" because of following StandardError
+#   Unknown type 'dominio_email' for column 'rLegalemail'
 
   create_table "scr_rol", force: true do |t|
     t.string "nombrerol",  limit: 75, null: false
@@ -407,33 +378,8 @@ ActiveRecord::Schema.define(version: 0) do
 
   add_index "scr_u_medida_produc", ["uMedidaProducNombre"], name: "UN_uMedidaNombre", unique: true, using: :btree
 
-  create_table "scr_usuario", force: true do |t|
-    t.string   "username",            limit: 50,                                                                           null: false
-    t.text     "password",                                                                                                 null: false
-    t.text     "detalleuuario"
-    t.datetime "ultimavisitausuario",                                                                                      null: false
-    t.text     "ipusuario",                                               default: "127.0.0.1",                            null: false
-    t.text     "salt",                                                                                                     null: false
-    t.string   "nombreusuario",       limit: 150,                                                                          null: false
-    t.string   "apellidousuario",     limit: 150,                                                                          null: false
-    t.integer  "telefonousuario",     limit: 8,                                                                            null: false
-    t.date     "nacimientousuario"
-    t.float    "latusuario",                                                                                               null: false
-    t.float    "lonusuario",                                                                                               null: false
-    t.text     "direccionusuario"
-    t.decimal  "sexousuario",                     precision: 1, scale: 0, default: 0,                                      null: false
-    t.datetime "registrousuario",                                                                                          null: false
-    t.text     "cuentausuario",                                           default: "<cuentas><anda>0000</anda></cuentas>", null: false
-    t.integer  "estado_id",           limit: 8,                                                                            null: false
-    t.integer  "localidad_id",        limit: 8,                                                                            null: false
-    t.text     "imagenusuario"
-    t.text     "contador",                                                default: "x",                                    null: false
-    t.text     "correousuario",                                           default: "@",                                    null: false
-  end
-
-  add_index "scr_usuario", ["estado_id"], name: "fki_PK_estado", using: :btree
-  add_index "scr_usuario", ["localidad_id"], name: "fki_localidad", using: :btree
-  add_index "scr_usuario", ["username"], name: "unique_login", unique: true, using: :btree
+# Could not dump table "scr_usuario" because of following StandardError
+#   Unknown type 'dominio_email' for column 'correousuario'
 
   create_table "scr_usuario_rol", id: false, force: true do |t|
     t.integer "usuario_id", limit: 8, null: false
@@ -441,5 +387,15 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   add_index "scr_usuario_rol", ["rol_id", "usuario_id"], name: "unique_permiso", unique: true, using: :btree
+
+  create_table "sessions", force: true do |t|
+    t.string   "session_id", null: false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
+  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
 
 end

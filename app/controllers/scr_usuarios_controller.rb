@@ -192,6 +192,6 @@ class ScrUsuariosController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def scr_usuario_params
       params[:salt] = Random.new_seed.to_s
-      params.require(:scr_usuario).permit(:username, :password, :correousuario, :detalleuuario, :ultimavisitausuario, :ipusuario, :salt, :nombreusuario, :apellidousuario, :telefonousuario, :nacimientousuario, :latusuario, :lonusuario, :direccionusuario, :sexousuario, :registrousuario, :cuentausuario, :estado_id, :localidad_id, :imagenusuario)
+      params.require(:scr_usuario).permit(:username, :password, :correousuario, :detalleuuario, :ultimavisitausuario, :ipusuario, :salt, :nombreusuario, :apellidousuario, :telefonousuario, :nacimientousuario, :latusuario, :lonusuario, :direccionusuario, :contador, :sexousuario, :registrousuario, :cuentausuario, :estado_id, :localidad_id, :imagenusuario)
     end
 end

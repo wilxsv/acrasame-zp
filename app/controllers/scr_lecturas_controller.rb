@@ -10,7 +10,7 @@ class ScrLecturasController < ApplicationController
     acceso
     @scr_lecturas = ScrLectura.all.order(fechaLectura: :desc)
     #@users = ScrUsuario.joins('JOIN scr_usuario_rol ON scr_usuario.id = scr_usuario_rol.usuario_id LEFT JOIN scr_lectura ON scr_usuario.id = scr_lectura.socio_id').where("date_part('month',scr_lectura.\"fechaLectura\") = '"+session[:mes].to_s+"")
-    @users = ScrUsuario.joins('JOIN scr_usuario_rol ON scr_usuario.id = scr_usuario_rol.usuario_id').where("scr_usuario_rol.rol_id = 1")
+    @users = ScrUsuario.joins('JOIN scr_usuario_rol ON scr_usuario.id = scr_usuario_rol.usuario_id').where("scr_usuario_rol.rol_id = 1 ")
     @scr_lectura = ScrLectura.new
     #Client.joins('LEFT OUTER JOIN addresses ON addresses.client_id = clients.id')
     #select * from scr_usuario as u join scr_usuario_rol as rr on u.id = rr.usuario_id join scr_rol as r on rr.rol_id = r.id 
