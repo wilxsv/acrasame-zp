@@ -1,5 +1,7 @@
 class TransaccionController < ApplicationController
   include AccesoHelpers
+  include ActionView::Helpers::NumberHelper
+  #include JobsHelper
   require 'date'
   @@QUERY
 
@@ -13,10 +15,13 @@ class TransaccionController < ApplicationController
     
     if params.has_key?(:transacx) #&& params['transacx']['transaxMonto'].is_a?(Numeric)
       monto = params['transacx']['transaxMonto']
+      monto = monto.to_f
+      monto = monto.round(2)
       cuenta = params['transacx']['cuenta']
       debe = params['transacx']['transaxDebeHaber']
       session[:fecha] = params['transacx']['transaxFecha']#Date.parse(params['transacx']['transaxFecha']).strftime("%Y-%d-%m")
       if monto.to_f > 0 and cuenta.to_f > 0 and debe.to_f >= 0
+        #monto = number_to_currency(monto.to_f, precision: 2)
         if session[:dato] != nil and session[:dato] != ""#transaxFecha
           @tmp = session[:dato]
           @tmp.push('<nodo><cuenta>'+cuenta.to_s+'</cuenta><monto>'+monto.to_s+'</monto><debe>'+debe.to_s+'</debe></nodo>')
@@ -137,11 +142,17 @@ class TransaccionController < ApplicationController
     end
     session[:html] += "<tr><td>"+cuenta.cuentaCodigo.to_s+"</td><td>"+cuenta.cuentaNombre
     if debe.to_i == 1
-      session[:html] += "</td><td>"+monto.to_s+"</td><td></td></tr>"
+      session[:html] += '</td><td><p align="right">'+monto.to_s+'</p></td><td></td></tr>'
       session[:debe] += monto.to_f
+      cantidad = session[:debe]
+      cantidad = cantidad.round(2)
+      session[:debe] = cantidad
     else
-      session[:html] += "</td><td></td><td>"+monto.to_s+"</td></tr>"
+      session[:html] += '</td><td></td><td><p align="right">'+monto.to_s+'</p></td></tr>'
       session[:haber] += monto.to_f
+      cantidad = session[:haber]
+      cantidad = cantidad.round(2)
+      session[:haber] = cantidad
     end
   end
 end

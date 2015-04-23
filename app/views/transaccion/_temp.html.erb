@@ -14,7 +14,7 @@
   <tbody>
    <% if session['html'] %>
     <%= session['html'].html_safe || "" %>
-   <tr><td colspan="2"></td><td><b><%= session['debe'] %></b></td><td><b><%= session['haber'] %></b></td></tr>
+   <tr><td colspan="2"></td><td><b> <p align="right"><%= session['debe'] %></p></b></td><td><b><p align="right"><%= session['haber'] %></p></b></td></tr>
    <tr><td>Fecha</td><td colspan="3"><%= session['fecha'] %></td></tr>
    <tr><td>Comentario</td><td colspan="3"><%= f.text_field :comentario %></td></tr>
    <% end %>
