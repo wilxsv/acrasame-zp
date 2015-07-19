@@ -7,10 +7,16 @@ class InformeController < ApplicationController
   end
   
   def balance
-    session[:roles] = "root contador administrador"
-    acceso
+   session[:roles] = "root contador administrador"
+   acceso
    fecha = ScrDetContable.where('"dConActivo" = ? ', 'TRUE')
    @ScrCuentua = ScrCuentua.where('"cuentaDebe" > ? OR "cuentaHaber" > ?', 0, 0).order('"cuentaCodigo"')
+   if params.has_key?(:transacx)
+     if params['transacx']['transaxFecha'] != nil
+       vfecha = params['transacx']['transaxFecha']
+       @ScrCuentua = ScrCuentua.parcial(0, 0, vfecha).order('"cuentaCodigo"')
+     end
+   end
   end
   
   def general

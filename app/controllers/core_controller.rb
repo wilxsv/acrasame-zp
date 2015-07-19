@@ -97,7 +97,7 @@ $BODY$
       elsif params['transacx']['cierre'] != nil
         #Se define el procedimiento para el cierre contable
         begin
-          @tmp = ScrTransaccion.connection.select_all("r")
+          @tmp = ScrTransaccion.connection.select_all('SELECT fcn_cierre_contable(0) AS "cierre";')
           session[:error] = '<div class="alert alert-success"><button class="close" data-dismiss="alert" type="button">×</button><strong>Exito! </strong> Cierre contable finalizado</div>'
         rescue
           session[:error] = '<div class="alert alert-error"><button class="close" data-dismiss="alert" type="button">×</button><strong>Error! </strong> Procedimiento ejecutado con errores</div>'
