@@ -4,6 +4,8 @@ class TransaccionController < ApplicationController
   #include JobsHelper
   require 'date'
   @@QUERY
+  @@FTRANX
+  @@CONCEPTO
 
   # POST /transaccion
   def index
@@ -72,7 +74,7 @@ class TransaccionController < ApplicationController
   	query = params['transacx']['query']
   	if id.to_i > 0 && query == "null"
   	  query = ScrTransaccion.partida(id)
-  	  head = [" <b>#</b> ", "<b>Cuenta</b>", "<b>Descripcion</b>", "<b>Debe</b>", "<b>Haber</b>", "<b>Fecha</b>"]
+  	  head = ["<b>Cuenta</b>", "<b>Descripcion</b>", "<b>Parcial</b>", "<b>Debe</b>", "<b>Haber</b>"]
   	  send_data(partida(id,"Partida contable", query, head), :filename => "Partida contable.pdf", :type => "application/pdf")
   	elsif id.to_i > 0 && query == "diario"
   	elsif id.to_i > 0 && query == "mayor"
@@ -89,7 +91,7 @@ class TransaccionController < ApplicationController
       Prawn::Document.new(:page_size => "LETTER", :margin => [1.cm,1.cm,1.cm,1.cm], :page_layout => :portrait) do 
         #Body#partida(1)
         time = Time.new
-        bounding_box([0, 620], :width => 580) do #, :height => 680  # stroke_bounds
+        bounding_box([0, 645], :width => 580) do #, :height => 680  # stroke_bounds
           table = [head]
           debe = 0
           haber = 0
@@ -103,10 +105,12 @@ class TransaccionController < ApplicationController
           		thaber = data.transaxMonto
           		tdebe = 0
           	end
-            table = table + [[ data.transaxSecuencia, data.cuentaCodigo, data.cuentaNombre, tdebe, thaber, data.transaxFecha ]]
+            table = table + [[ data.cuentaCodigo, data.cuentaNombre, (tdebe+thaber).round(2), tdebe.round(2), thaber.round(2) ]]
+            @@FTRANX = data.transaxFecha
+            @@CONCEPTO = data.comentario
           end
-          table = table + [[ "", "", "Total", debe, haber, "" ]]
-          table(table, :header => true, :width  => 570, :cell_style => { :inline_format => true }) do
+          table = table + [[ "", "Total", "", debe.round(2), haber.round(2) ]]
+          table(table, :header => true, :width  => 570, :cell_style => { :inline_format => true, :size => 10 }) do
           end
         end
         
@@ -115,18 +119,21 @@ class TransaccionController < ApplicationController
           bounding_box [bounds.left, bounds.top], :width  => bounds.width do
             font "Helvetica"
             image Rails.root.to_s+'/public/images/logo.png', :at => [0,0], :scale => 0.4 # :style => [:bold, :italic] }])
-            text " ::  Asociación Rural, Agua Salud y Medio Ambiente El Zapote - Platanares ::", :align => :center, :size => 20
-            text titulo, :align => :center, :size => 20
-            text " #{Prawn::Text::NBSP*19} Generado el: "+time.strftime("%Y-%m-%d %H:%M:%S").to_s, :align => :left
-            text " #{Prawn::Text::NBSP*19} Técnico: "+user, :align => :left
+            text " ::  Asociación Rural, Agua Salud y Medio Ambiente El Zapote - Platanares ::", :align => :center, :size => 18
+            text " #{Prawn::Text::NBSP*19} "+titulo+" [ #"+id.to_s+"] - Fecha: ["+@@FTRANX.to_s+"]", :align => :left, :size => 10
+            text " #{Prawn::Text::NBSP*19} Concepto: ["+@@CONCEPTO.to_s+"]", :align => :left, :size => 10
+            text " #{Prawn::Text::NBSP*19} Generado el: "+time.strftime("%Y-%m-%d %H:%M:%S").to_s, :align => :left, :size => 10
+            text " #{Prawn::Text::NBSP*19} Impreso por: "+user, :align => :left, :size => 10
             stroke_horizontal_rule
           end
           #Footer
           bounding_box [bounds.left, bounds.bottom + 25], :width  => bounds.width do
             font "Helvetica"
             stroke_horizontal_rule
+            text ""
+            text " #{Prawn::Text::NBSP*19} Impreso por: "+user, :align => :left, :size => 10
             move_down(5)
-            number_pages "Pagina <page> de un total de <total>", { :align => :right }#:start_count_at => 5, :page_filter => lambda{ |pg| pg != 1 }, :at => [bounds.right - 50, 0], :size => 14}
+            number_pages "Pagina <page> de un total de <total>", { :align => :right, :size => 10 }#:start_count_at => 5, :page_filter => lambda{ |pg| pg != 1 }, :at => [bounds.right - 50, 0], :size => 14}
           end
         end
       end.render

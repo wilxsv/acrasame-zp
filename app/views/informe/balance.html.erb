@@ -50,10 +50,10 @@
     <tr>
       <th>Cuenta</th>
       <th>Nombre</th>
-      <th><%= session[:debe] %></th>
-      <th><%= session[:haber] %></th>
-      <th><%= deudor %></th>
-      <th><%= acreedor %></th>
+      <th><%= session[:debe].round(2) %></th>
+      <th><%= session[:haber].round(2) %></th>
+      <th><%= deudor.round(2) %></th>
+      <th><%= acreedor.round(2) %></th>
     </tr>
   </tfoot>
 </table>
@@ -65,4 +65,4 @@
         <td><b><%= session[:debe] %></b></td>
         <td><b><%= session[:haber] %></b></td>
        </tr>
---> 
+-->

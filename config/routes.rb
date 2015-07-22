@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get 'estado/index'
   post 'libro/index'
   post 'libro/mayor'
+  post 'libro/pdf'
   get 'libro/mayor'
   get 'recibo/index'
   get 'recibo/imprimir'

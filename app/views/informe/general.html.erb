@@ -43,9 +43,9 @@
          when 1
           saldo_a += t.cuentaDebe - t.cuentaHaber
          when 2
-          saldo_p += t.cuentaDebe - t.cuentaHaber
+          saldo_p += t.cuentaHaber - t.cuentaDebe
          when 3
-          saldo_c += t.cuentaDebe - t.cuentaHaber
+          saldo_c += t.cuentaHaber - t.cuentaDebe
          else
         end
      %>
@@ -83,12 +83,12 @@
     </tr>
     <tr>
       <th></th>
-      <th>Activo = Pasivo + Capital ~ <%= saldo_a %> = <%= saldo_p %> + <%= saldo_c %></th>
+      <th>Activo = Pasivo + Capital ~ <%= saldo_a.round(2) %> = <%= saldo_p.round(2) %> + <%= saldo_c.round(2) %></th>
       <th></th>
     </tr>
   </tfoot>
 </table>
-<% if (saldo_a == saldo_p + saldo_c) %>
+<% if (saldo_a.round(2) == saldo_p.round(2) + saldo_c.round(2)) %>
  <div class="alert alert-success">
   <strong>Felicitaciones!</strong> El ejercicio se cumplio, puede revisar el estado de resultados
  </div>

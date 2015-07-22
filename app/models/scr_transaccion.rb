@@ -5,6 +5,6 @@ class ScrTransaccion < ActiveRecord::Base
   scope :partida, ->(idx) { 
   		joins("INNER JOIN scr_cuenta ON scr_cuenta.id = scr_transaccion.cuenta_id")
   		.where(['"transaxSecuencia"=?', idx])
-  		.select(:transaxSecuencia, :transaxMonto, :transaxDebeHaber, :transaxFecha, :'scr_cuenta."cuentaNombre"', :'scr_cuenta."cuentaCodigo"') 
+  		.select(:transaxSecuencia, :transaxMonto, :transaxDebeHaber, :transaxFecha, :'scr_cuenta."cuentaNombre"', :'scr_cuenta."cuentaCodigo"', :comentario) 
   }
 end
