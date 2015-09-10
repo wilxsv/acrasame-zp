@@ -30,10 +30,10 @@
          <% if scr_transaccion.transaxDebeHaber == TRUE %>
          <td><%= scr_transaccion.transaxMonto %></td>
          <td></td>
-         <% debe += scr_transaccion.transaxMonto %>
+         <% debe += scr_transaccion.transaxMonto.round(2) %>
          <% else %>
          <td></td>
-         <td><%= scr_transaccion.transaxMonto %></td>
+         <td><%= scr_transaccion.transaxMonto.round(2) %></td>
          <% haber += scr_transaccion.transaxMonto %>
          <% end %>
          <td><%= scr_transaccion.transaxFecha %></td>

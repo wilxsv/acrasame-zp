@@ -25,6 +25,17 @@ class ScrUsuariosController < ApplicationController
   def edit
   end
 
+  # POST /scr_usuarios/
+  def orden
+    if params.has_key?(:scr_usuario)
+		if params[:scr_usuario][:idorden].to_i > 0
+			user = ScrUsuario.find_by(id: params[:scr_usuario][:idorden])
+			user.update(orden: params[:scr_usuario][:orden])
+			redirect_to action: 'index'
+		end    
+    end
+  end
+
   # POST /scr_usuarios
   # POST /scr_usuarios.json
   def create

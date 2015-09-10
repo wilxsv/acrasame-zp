@@ -9,12 +9,12 @@ class InformeController < ApplicationController
   def balance
    session[:roles] = "root contador administrador"
    acceso
-   fecha = ScrDetContable.where('"dConActivo" = ? ', 'TRUE')
-   @ScrCuentua = ScrCuentua.where('"cuentaDebe" > ? OR "cuentaHaber" > ?', 0, 0).order('"cuentaCodigo"')
+   #fecha = ScrDetContable.where('"dConActivo" = ? ', 'TRUE')
+   @ScrCuentua = ScrCuentua.where('("cuentaDebe" + "cuentaHaber" > ?)', 0).order('CAST("cuentaCodigo" AS TEXT)')
    if params.has_key?(:transacx)
      if params['transacx']['transaxFecha'] != nil
        vfecha = params['transacx']['transaxFecha']
-       @ScrCuentua = ScrCuentua.parcial(0, 0, vfecha).order('"cuentaCodigo"')
+       @ScrCuentua = ScrCuentua.parcial(0, 0, vfecha).order('CAST("cuentaCodigo" AS TEXT)')
      end
    end
   end
@@ -25,8 +25,17 @@ class InformeController < ApplicationController
    @ScrGrupo = ScrCuentua.where('"cuentaDebe" > ? OR "cuentaHaber" > ? AND "cuentaCodigo" < ?', 0, 0, 4).order('"cuentaCodigo"')
    @ScrRubro = ScrCuentua.where('"cuentaDebe" > ? OR "cuentaHaber" > ? AND "cuentaCodigo" < ?', 0, 0, 100).order('"cuentaCodigo"')
    @ScrCuenta = ScrCuentua.where('"cuentaDebe" > ? OR "cuentaHaber" > ? AND "cuentaCodigo" < ?',0, 0, 1000).order('"cuentaCodigo"')
-   @ScrTodo = ScrCuentua.where('"cuentaDebe" > ? OR "cuentaHaber" > ? OR "cuentaCodigo" < ?',0, 0, 4).order('CAST("cuentaCodigo" AS TEXT)')
+   @ScrTodo = ScrCuentua.where('CAST("cuentaCodigo" AS TEXT) ~ \'^(1|2|3)\' AND ("cuentaDebe" + "cuentaHaber" > ?) OR "cuentaCodigo" < ?', 0, 4).order('CAST("cuentaCodigo" AS TEXT)')
   end
+  
+  def resultados
+    session[:roles] = "root contador administrador"
+    acceso
+   @ScrGrupo = ScrCuentua.where('"cuentaDebe" > ? OR "cuentaHaber" > ? AND "cuentaCodigo" < ?', 0, 0, 4).order('"cuentaCodigo"')
+   @ScrRubro = ScrCuentua.where('"cuentaDebe" > ? OR "cuentaHaber" > ? AND "cuentaCodigo" < ?', 0, 0, 100).order('"cuentaCodigo"')
+   @ScrCuenta = ScrCuentua.where('"cuentaDebe" > ? OR "cuentaHaber" > ? AND "cuentaCodigo" < ?',0, 0, 1000).order('"cuentaCodigo"')
+   @ScrTodo = ScrCuentua.where('CAST("cuentaCodigo" AS TEXT) ~ \'^(1|2|3)\' AND ("cuentaDebe" + "cuentaHaber" > ?) OR "cuentaCodigo" < ?', 0, 4).order('CAST("cuentaCodigo" AS TEXT)')
+   end
 
   def prefacturacion
     send_data(generate_pdf(), :filename => "Informe de pre-facturación.pdf", :type => "application/pdf")     

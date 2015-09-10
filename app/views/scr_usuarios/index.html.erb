@@ -7,7 +7,8 @@
       <th>Nombre</th>
       <th>Apellido</th>
       <th>Telefono</th>
-      <th>Fecha de registro</th>
+      <th>Contador</th>
+      <th>Orden</th>
       <th colspan="3">Operaciones</th>
     </tr>
   </thead>
@@ -17,7 +18,12 @@
         <td><%= scr_usuario.nombreusuario %></td>
         <td><%= scr_usuario.apellidousuario %></td>
         <td><%= scr_usuario.telefonousuario %></td>
-        <td><%= scr_usuario.registrousuario.to_s[0..9] %></td>
+        <td><%= scr_usuario.contador %></td>			
+        <td>
+		 <%= form_for :scr_usuario, :url => { :action => :orden } do |f| %>
+		  <%= f.text_field :orden, placeholder:scr_usuario.orden, class: 'input-mini' %>
+		  <%= f.text_field :idorden, value:scr_usuario.id, type:"hidden" %>
+		 <% end %></td>
         <td><%= link_to 'Ver', scr_usuario, class:"btn btn-mini btn-info" %></td>
         <td><%= link_to 'Editar', edit_scr_usuario_path(scr_usuario), class:"btn btn-mini btn-info" %></td>
         <td><%= link_to 'Eliminar', scr_usuario, method: :delete, data: { confirm: 'Confirmar operacion?' }, class:"btn btn-mini btn-danger" %></td>
@@ -29,7 +35,8 @@
     <th>Nombre</th>
     <th>Apellido</th>
     <th>Telefono</th>
-    <th>Fecha de registro</th>
+    <th>Contador</th>
+    <th>Orden</th>
     <th colspan="3">Operaciones</th>
    </tr>
   </tfoot>

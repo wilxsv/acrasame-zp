@@ -72,6 +72,6 @@ class ScrCuentuasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def scr_cuentua_params
-      params.require(:scr_cuentua).permit(:cuentaNombre, :cuentaRegistro, :cuentaDebe, :cuentaHaber, :cat_cuenta_id, :cuentaActivo, :cuentaCodigo, :cuentaDescripcion, :cuentaNegativa)
+      params.require(:scr_cuentua).permit(:cuentaNombre, :cuentaRegistro, :cuentaDebe, :cuentaHaber, :cat_cuenta_id, :cuentaActivo, :cuentaCodigo, :cuentaDescripcion, :cuentaNegativa, :cuentaResultado)
     end
 end

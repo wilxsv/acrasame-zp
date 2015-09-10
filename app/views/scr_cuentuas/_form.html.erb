@@ -31,6 +31,11 @@
     <%= f.label :Es_cuenta_negativa? %><br>
     <%= f.check_box :cuentaNegativa %>
   </div>
+  <div class="field">
+    <%= f.label :'Pertenece al estado de resultados' %><br>
+    <% options_for_select([['Ingreso por Ventas', 1], ['Costo de la mercadería vendida o de los servicios prestados', 2], ['Gastos de venta', 3], ['Gastos de administración', 4], ['Gastos financieros', 5], ['Productos financieros', 6], ['Impuesto a las ganancias', 7], ['', 8], ['', 9]]) %>
+    <%= f.select :cuentaResultado, options_for_select([['Ingreso por Ventas', 1], ['Costo de la mercadería vendida o de los servicios prestados', 2], ['Gastos de venta', 3], ['Gastos de administración', 4], ['Gastos financieros', 5], ['Productos financieros', 6], ['Impuesto a las ganancias', 7], ['', 8], ['', 9]]) %>
+  </div>
   <div class="actions">
     <%= f.submit "Crear cuenta", class:"btn btn-mini btn-info" %>
   </div>

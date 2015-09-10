@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :scr_rols, :scr_cargos, :scr_localidads, :scr_organizacions, :scr_usuarios, :scr_bancos, :scr_cat_organizacions#, :transacx
   resources :scr_empleados, :scr_periodo_representantes, :scr_representante_legals, :scr_usuario_rols, :scr_lecturas
   resources :scr_consumos, :scr_det_facturas, :scr_cobros, :scr_cat_cobros, :scr_cat_rep_legals, :scr_proveedors
+  #get 'scr_usuario/orden'
+  post 'scr_usuarios/orden'
   post 'scr_det_facturas/pagar'
   post 'scr_det_facturas/imprimir'
   post 'scr_det_facturas/facturacion'
@@ -21,6 +23,8 @@ Rails.application.routes.draw do
   get 'informe/index'
   get 'informe/balance'
   post 'informe/balance'
+  get 'informe/resultados'
+  post 'informe/resultados'
   post 'scr_lecturas/set'
   get 'informe/general'
   post 'informe/general'

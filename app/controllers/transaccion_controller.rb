@@ -109,31 +109,37 @@ class TransaccionController < ApplicationController
             @@FTRANX = data.transaxFecha
             @@CONCEPTO = data.comentario
           end
-          table = table + [[ "", "Total", "", debe.round(2), haber.round(2) ]]
+          table = table + [[ {:content=>"Total",:colspan=>3, :align=>:left}, debe.round(2), haber.round(2) ]]
+          table = table + [[ {:content=>"Concepto: ["+@@CONCEPTO.to_s+"]",:colspan=>5, :align=>:left} ]]
           table(table, :header => true, :width  => 570, :cell_style => { :inline_format => true, :size => 10 }) do
           end
+          
+          firmas = ScrRepresentanteLegal.firmaDocumento.limit(2)
+          firmas.each do |data|
+            text "\r\n", :align => :center, :size => 25
+            text "___________________________________________________________________________", :align => :center, :size => 5
+            text data.rLegalNombre+" "+data.rLegalNombre, :align => :center, :size => 10
+            text data.catRLegalNombre, :align => :center, :size => 7
+          end
+          #stroke_color 'FFFF00'
         end
         
-        repeat :all do
-          #Header
+        repeat :all do          #Header
           bounding_box [bounds.left, bounds.top], :width  => bounds.width do
             font "Helvetica"
             image Rails.root.to_s+'/public/images/logo.png', :at => [0,0], :scale => 0.4 # :style => [:bold, :italic] }])
             text " ::  Asociación Rural, Agua Salud y Medio Ambiente El Zapote - Platanares ::", :align => :center, :size => 18
-            text " #{Prawn::Text::NBSP*19} "+titulo+" [ #"+id.to_s+"] - Fecha: ["+@@FTRANX.to_s+"]", :align => :left, :size => 10
-            text " #{Prawn::Text::NBSP*19} Concepto: ["+@@CONCEPTO.to_s+"]", :align => :left, :size => 10
-            text " #{Prawn::Text::NBSP*19} Generado el: "+time.strftime("%Y-%m-%d %H:%M:%S").to_s, :align => :left, :size => 10
-            text " #{Prawn::Text::NBSP*19} Impreso por: "+user, :align => :left, :size => 10
+            text " #{Prawn::Text::NBSP*19} "+titulo+" [ "+id.to_s+"] Fecha de ingreso: ["+@@FTRANX.to_s+"]", :align => :left, :size => 10
             stroke_horizontal_rule
           end
           #Footer
           bounding_box [bounds.left, bounds.bottom + 25], :width  => bounds.width do
             font "Helvetica"
             stroke_horizontal_rule
-            text ""
-            text " #{Prawn::Text::NBSP*19} Impreso por: "+user, :align => :left, :size => 10
-            move_down(5)
-            number_pages "Pagina <page> de un total de <total>", { :align => :right, :size => 10 }#:start_count_at => 5, :page_filter => lambda{ |pg| pg != 1 }, :at => [bounds.right - 50, 0], :size => 14}
+            move_down(3)
+            text " Generado el: "+time.strftime("%Y-%m-%d %H:%M:%S").to_s, :align => :left, :size => 7
+            text " Impreso por: "+user, :align => :left, :size => 7
+            number_pages "\r\nPagina <page> de <total>", { :align => :right, :size => 7 }#:start_count_at => 5, :page_filter => lambda{ |pg| pg != 1 }, :at => [bounds.right - 50, 0], :size => 14}
           end
         end
       end.render
