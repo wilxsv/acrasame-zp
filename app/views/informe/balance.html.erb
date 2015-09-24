@@ -34,16 +34,20 @@
          <td><%= c.cuentaHaber %></td>
          <% if c.cuentaDebe - c.cuentaHaber >= 0 %>
           <td><%= c.cuentaDebe - c.cuentaHaber %></td>
-          <% deudor = deudor + c.cuentaDebe - c.cuentaHaber %>
+          <% if c.cuentaCodigo >= 1000 %>
+           <% deudor = deudor + c.cuentaDebe - c.cuentaHaber %>
+           <% session[:debe] += c.cuentaDebe %>
+          <% end %>
           <td></td>
          <% else %>
           <td></td>
           <td><%= c.cuentaHaber - c.cuentaDebe %></td>
-          <% acreedor = acreedor + c.cuentaHaber - c.cuentaDebe %>
+          <% if c.cuentaCodigo >= 1000 %>
+           <% acreedor = acreedor + c.cuentaHaber - c.cuentaDebe %>
+           <% session[:haber] += c.cuentaHaber %>
+          <% end %>
          <% end %>
         </tr>
-        <% session[:haber] += c.cuentaHaber %>
-        <% session[:debe] += c.cuentaDebe %>
        <% end %>
      </tbody>
   <tfoot>

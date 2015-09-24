@@ -26,8 +26,10 @@
           <td><%= c.cuentaDebe - c.cuentaHaber %></td>
          <% end %>
         </tr>
-        <% session[:haber] += c.cuentaHaber %>
-        <% session[:debe] += c.cuentaDebe %>
+        <% if c.cuentaCodigo >= 1000 %>
+         <% session[:haber] += c.cuentaHaber %>
+         <% session[:debe] += c.cuentaDebe %>
+        <% end %>
        <% end %>
      </tbody>
   <tfoot>
@@ -47,12 +49,3 @@
     </tr>
   </tfoot>
 </table>
-
-<%= render :partial => '/layouts/main/tablas' %>
-<!--       <tr>
-        <td></td>
-        <td></td>
-        <td><b><%= session[:debe] %></b></td>
-        <td><b><%= session[:haber] %></b></td>
-       </tr>
---> 

@@ -4,6 +4,7 @@
   <table cellpadding="0" cellspacing="0" border="0" class="datatable-2 table table-bordered table-striped	 display" width="100%">
    <thead>
     <tr>
+      <th>Impresion</th>
       <th>Nombre</th>
       <th>Apellido</th>
       <th>Telefono</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @scr_usuarios.each do |scr_usuario| %>
       <tr>
+        <td><%= scr_usuario.orden %></td>
         <td><%= scr_usuario.nombreusuario %></td>
         <td><%= scr_usuario.apellidousuario %></td>
         <td><%= scr_usuario.telefonousuario %></td>
@@ -32,6 +34,7 @@
   </tbody>
   <tfoot>
    <tr>
+    <th>Impresion</th>
     <th>Nombre</th>
     <th>Apellido</th>
     <th>Telefono</th>

@@ -63,6 +63,7 @@ class ScrUsuariosController < ApplicationController
     @scr_usuario.sexousuario	= 3
     @scr_usuario.estado_id = params[:scr_usuario][:estado_id]
     @scr_usuario.localidad_id	= params[:scr_usuario][:localidad_id]
+    @scr_usuario.orden	= params[:scr_usuario][:orden]
 #    uploaded_io = params[:scr_usuario][:imagenusuario]
 #    File.open(Rails.root.join('public', 'DzIBijcxalAbR85K6PSOxMNrsqfVl7B1', uploaded_io.original_filename), 'wb') do |file|
 #      file.write(uploaded_io.read)

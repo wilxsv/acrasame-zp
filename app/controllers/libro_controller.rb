@@ -4,14 +4,15 @@ class LibroController < ApplicationController
   def index
     session[:roles] = "root contador administrador"
     acceso
-    @scr_transaccions = ScrTransaccion.last(0)
+    @ScrCuentua = ScrTransaccion.last(0)
       @lo = 0
     if params.has_key?(:transacx) 
       @lo = 1
       fecha = params['transacx']['transaxFecha']
       @lo = params['transacx']['transaxFecha']
       if params['transacx']['transaxFecha'] != ""
-        @scr_transaccions = ScrTransaccion.where('"transaxFecha" = ?', fecha).order('"transaxSecuencia", "transaxRegistro"')
+        #@ScrCuentua = ScrTransaccion.where('"transaxFecha" = ?', fecha).order('"transaxSecuencia", "transaxRegistro"')
+        @ScrCuentua = ScrTransaccion.libroDiario(fecha)
       end
     end  
   end
@@ -19,6 +20,6 @@ class LibroController < ApplicationController
   def mayor
     session[:roles] = "root contador administrador"
     acceso
-    @ScrCuentua = ScrCuentua.where('"cuentaDebe" > ? OR "cuentaHaber" > ? ', 0, 0).order('"cuentaCodigo"')
+    @ScrCuentua = ScrCuentua.where('CAST("cuentaCodigo" AS TEXT) ~ \'^(1|2|3)\' AND ("cuentaDebe" + "cuentaHaber" > ?) OR "cuentaCodigo" < ?', 0, 4).order('CAST("cuentaCodigo" AS TEXT)')
   end
 end

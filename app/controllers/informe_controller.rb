@@ -31,10 +31,13 @@ class InformeController < ApplicationController
   def resultados
     session[:roles] = "root contador administrador"
     acceso
-   @ScrGrupo = ScrCuentua.where('"cuentaDebe" > ? OR "cuentaHaber" > ? AND "cuentaCodigo" < ?', 0, 0, 4).order('"cuentaCodigo"')
-   @ScrRubro = ScrCuentua.where('"cuentaDebe" > ? OR "cuentaHaber" > ? AND "cuentaCodigo" < ?', 0, 0, 100).order('"cuentaCodigo"')
-   @ScrCuenta = ScrCuentua.where('"cuentaDebe" > ? OR "cuentaHaber" > ? AND "cuentaCodigo" < ?',0, 0, 1000).order('"cuentaCodigo"')
-   @ScrTodo = ScrCuentua.where('CAST("cuentaCodigo" AS TEXT) ~ \'^(1|2|3)\' AND ("cuentaDebe" + "cuentaHaber" > ?) OR "cuentaCodigo" < ?', 0, 4).order('CAST("cuentaCodigo" AS TEXT)')
+   @ing_ventas = ScrCuentua.estadoResultado(1)
+   @cos_ventas = ScrCuentua.estadoResultado(2)
+   @gas_ventas = ScrCuentua.estadoResultado(3)
+   @gas_administracion = ScrCuentua.estadoResultado(4)
+   @gas_financieros = ScrCuentua.estadoResultado(5)
+   @ing_otros = ScrCuentua.estadoResultado(6)
+   @gas_impuestos = ScrCuentua.estadoResultado(7)
    end
 
   def prefacturacion

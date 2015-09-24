@@ -1,5 +1,5 @@
 <div class="module">
- <div class="module-head"><h3>Balance de comprobación.</h3></div>
+ <div class="module-head"><h3>Balance General.</h3></div>
  <div class="module-body table">
   <!-- Total de activos -->
   <!--<table cellpadding="0" cellspacing="0" border="0" class="datatable-2 table table-bordered table-striped	 display" width="100%">--> 
@@ -41,11 +41,11 @@
      <% number = number.initial %>
      <% case number.to_i
          when 1
-          (t.cuentaCodigo > 99 ? saldo_a += t.cuentaDebe - t.cuentaHaber : saldo_a += 0)
+          (t.cuentaCodigo > 999 ? saldo_a += t.cuentaDebe - t.cuentaHaber : saldo_a += 0)
          when 2
-          (t.cuentaCodigo > 99 ? saldo_p += t.cuentaHaber - t.cuentaDebe : saldo_p += 0)
+          (t.cuentaCodigo > 999 ? saldo_p += t.cuentaHaber - t.cuentaDebe : saldo_p += 0)
          when 3
-          (t.cuentaCodigo > 99 ? saldo_c += t.cuentaHaber - t.cuentaDebe : saldo_c += 0)
+          (t.cuentaCodigo > 999 ? saldo_c += t.cuentaHaber - t.cuentaDebe : saldo_c += 0)
          else
         end
      %>
