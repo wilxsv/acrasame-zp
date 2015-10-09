@@ -36,8 +36,9 @@ class CoreController < ApplicationController
   end
   
   def configure
-    session[:roles] = "contador administrador"
+    session[:roles] = "contador administrador root"
     acceso
+
     if params.has_key?(:transacx)
       if params['transacx']['cdebe'] != nil and params['transacx']['chaber'] != nil
         #Se define el procedimiento para cobros
@@ -109,6 +110,21 @@ $BODY$
           session[:error] = '<div class="alert alert-success"><button class="close" data-dismiss="alert" type="button">×</button><strong>Exito! </strong> Procedimiento ejecutado sin errores</div>'
         rescue
           session[:error] = '<div class="alert alert-error"><button class="close" data-dismiss="alert" type="button">×</button><strong>Error! </strong> Procedimiento ejecutado con errores</div>'
+        end
+      elsif params['transacx']['actual'] != nil and params['transacx']['actual'] == "vBHWMHC4MVtGnpSyJIsGypANFcKZZnruK/nsCFyDEyk="
+        #Se define el procedimiento para actualizaciones
+        begin
+          today = system( 'cd '+Rails.root.to_s+" && git pull" )
+          ppp = $?.exitstatus
+          if ppp == 0
+			session[:error] = '<div class="alert alert-success"><button class="close" data-dismiss="alert" type="button">×</button><strong>Exito! </strong> Procedimiento ejecutado sin errores [Reinicie su servicio para hacer efectivos los cambios]</div>'+$?.to_s
+		  else
+            session[:error] = '<div class="alert alert-error"><button class="close" data-dismiss="alert" type="button">×</button><strong>Error! </strong> Procedimiento ejecutado con errores</div>'+$?.to_s
+		  end
+        rescue
+          session[:error] = '<div class="alert alert-error"><button class="close" data-dismiss="alert" type="button">×</button><strong>Error! </strong> Procedimiento ejecutado con errores</div>'+$?.to_s
+        rescue SystemCallError
+			# could not chdir, no problem just returnend
         end
       else
         session[:error] = "no mando nada"

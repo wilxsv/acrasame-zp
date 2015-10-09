@@ -41,8 +41,15 @@
       <th>Saldo</th>
     </tr>
     <tr>
-      <th></th>
-      <th></th>
+      <th colspan="2">
+       <% if @label == 1 %>
+        <%= form_for :transacx, :url => { :action => :pdf } do |f| %>
+         <%= f.text_field :transaxFecha, type:"hidden", value:@fecha %>
+         <%= f.text_field :id, type:"hidden", value:1 %>
+         <%= f.submit "Imprimir", class:"btn btn-inverse btn-info btn-xs" %>
+        <% end %>
+       <% end %>
+      </th>
       <th>[<%= session[:haber].round(2) %>]</th>
       <th>[<%= session[:haber].round(2) %>]</th>
       <th></th>

@@ -3,9 +3,9 @@
  <% session['error'] = nil %>
 <% end %>
 <%= render 'organizacion' %>
-<br />
 <%= render 'cobros' %>
-<br />
 <%= render 'pagos' %>
-<br />
 <%= render 'correlativo' %>
+<% if session['rol'] == 'root' %>
+ <%= render 'root' %>
+<% end %>

@@ -1,5 +1,7 @@
 class InformeController < ApplicationController
   include AccesoHelpers
+  include InformeHelper
+  require 'date'
   
   def index
     session[:roles] = "root contador administrador socio"
@@ -102,6 +104,141 @@ class InformeController < ApplicationController
         end
       end
     end.render
+  end
+  
+  def pdf
+  	id = params['transacx']['id']
+    fecha = params['transacx']['transaxFecha']
+    @@FTRANX = ""
+    @@CONCEPTO = ""
+    table = "";
+    @@FTRANX = ""
+  	if id.to_i == 0
+  	  saldo = 0
+  	  cuenta = ""
+  	  id = 0
+  	  saldo_a = 0
+      saldo_p= 0
+      saldo_c = 0
+  	  titulo = "Balange General "+fecha
+      query = ScrCuentua.where('CAST("cuentaCodigo" AS TEXT) ~ \'^(1|2|3)\' AND ("cuentaDebe" + "cuentaHaber" > ?) OR "cuentaCodigo" < ?', 0, 4).order('CAST("cuentaCodigo" AS TEXT)')
+  	  head = ["<b>Cuenta</b>", "<b>Nombre</b>", "<b>Saldo</b>"]
+  	  table = [head]
+  	  debe = 0
+      haber = 0
+      nombre = ""
+      tsaldo = 0
+      query.each do |data|
+        monto = 0
+        #Totalizadores de saldo en rubro
+        if id != data.cuentaCodigo && data.cuentaCodigo < 4
+         if id != 0
+          nombre = "TOTAL DE "+data.cuentaNombre
+          code = ""
+          if saldo >= 0
+			monto = saldo.round(2)
+ 		  else
+		   monto = "("+saldo.abs+")"
+		  end
+		 end
+		 id = data.cuentaCodigo
+		 saldo = 0
+		 nombre = data.cuentaNombre
+		else
+		 data.cuentaCodigo > 999 ? saldo += data.cuentaDebe.round(2) - data.cuentaHaber.round(2) : saldo += 0
+		end
+		number = data.cuentaCodigo.to_s
+        number = number.initial
+        case number.to_i
+         when 1
+          (data.cuentaCodigo > 999 ? saldo_a += data.cuentaDebe - data.cuentaHaber : saldo_a += 0)
+         when 2
+          (data.cuentaCodigo > 999 ? saldo_p += data.cuentaHaber - data.cuentaDebe : saldo_p += 0)
+         when 3
+          (data.cuentaCodigo > 999 ? saldo_c += data.cuentaHaber - data.cuentaDebe : saldo_c += 0)
+         else
+        end
+         if number.to_i > 3
+         elsif data.cuentaCodigo < 4
+           code = data.cuentaCodigo
+           nombre = "<b>"+data.cuentaNombre+"</b>"
+         elsif data.cuentaCodigo < 100
+           code = data.cuentaCodigo
+           nombre = "<b>"+data.cuentaNombre+"</b>"
+           if data.cuentaDebe - data.cuentaHaber >= 0
+             saldo = data.cuentaDebe - data.cuentaHaber
+           else
+             saldo = (data.cuentaHaber - data.cuentaDebe).round(2)
+           end
+         else
+           code = data.cuentaCodigo
+           nombre = data.cuentaNombre
+           if data.cuentaDebe - data.cuentaHaber >= 0
+             saldo = data.cuentaDebe - data.cuentaHaber
+           else
+             saldo = (data.cuentaHaber - data.cuentaDebe).round(2)
+           end
+         end
+     
+        table = table + [[ data.cuentaCodigo, nombre, saldo ]]
+        @@FTRANX = ""
+        @@CONCEPTO = ""
+      end
+      #table = table + [[ {:content=>"Total",:colspan=>2, :align=>:left}, debe.round(2), haber.round(2), "" ]]
+      table = table + [[ {:content=>"Concepto: ["+@@CONCEPTO.to_s+"]",:colspan=>3, :align=>:left} ]]
+  	else
+  	  titulo = "Estado de resultados "+fecha
+  	  head = ["<b>Cuenta</b>", "<b>Nombre</b>", "<b>Saldo</b>"]
+  	  table = [head]
+  	  table = table + [[ {:content=>"<strong>Ingreso por Ventas (+)</strong>",:colspan=>3, :align=>:left},  ]]
+  	  saldo_a = 0
+  	  ing_ventas = ScrCuentua.estadoResultado(1)
+  	  cos_ventas = ScrCuentua.estadoResultado(2)
+  	  gas_ventas = ScrCuentua.estadoResultado(3)
+  	  gas_administracion = ScrCuentua.estadoResultado(4)
+  	  gas_financieros = ScrCuentua.estadoResultado(5)
+  	  ing_otros = ScrCuentua.estadoResultado(6)
+  	  gas_impuestos = ScrCuentua.estadoResultado(7)
+      ing_ventas.each do |d|
+       saldo_a += d.total
+       table = table + [[ d.cuentaCodigo, d.cuentaNombre, d.total.round(2) ]]
+      end
+      table = table + [[ {:content=>"<strong>Costo de la mercadería vendida o de los servicios prestados (-)</strong>",:colspan=>3, :align=>:left},  ]]
+      cos_ventas.each do |c|
+       saldo_a -= d.total
+       table = table + [[ d.cuentaCodigo, d.cuentaNombre, d.total.round(2) ]]
+      end
+      table = table + [[ {:content=>"<strong>Utilidad bruta</strong>",:colspan=>2, :align=>:right}, "<b>"+saldo_a.to_s+"</b>" ]]
+      table = table + [[ {:content=>"<strong>Gastos de venta (-)</strong>",:colspan=>3, :align=>:left},  ]]
+      gas_ventas.each do |c|
+       saldo_a -= d.total
+       table = table + [[ d.cuentaCodigo, d.cuentaNombre, d.total.round(2) ]]
+      end
+      table = table + [[ {:content=>"<strong>Gastos de administración (-)</strong>",:colspan=>3, :align=>:left},  ]]
+      gas_administracion.each do |c|
+       saldo_a -= d.total
+       table = table + [[ d.cuentaCodigo, d.cuentaNombre, d.total.round(2) ]]
+      end
+      table = table + [[ {:content=>"<strong>Utilidad operativa</strong>",:colspan=>2, :align=>:right}, "<b>"+saldo_a.to_s+"</b>" ]]
+      table = table + [[ {:content=>"<strong>Gastos financieros (-)</strong>",:colspan=>3, :align=>:left},  ]]
+      gas_financieros.each do |c|
+       saldo_a -= d.total
+       table = table + [[ d.cuentaCodigo, d.cuentaNombre, d.total.round(2) ]]
+      end
+      table = table + [[ {:content=>"<strong>Utilidad antes de impuestos</strong>",:colspan=>2, :align=>:right}, "<b>"+saldo_a.to_s+"</b>" ]]
+      table = table + [[ {:content=>"<strong>Ingreso por productos financieros / Otros ingresos (+)</strong>",:colspan=>3, :align=>:left},  ]]
+      ing_otros.each do |d|
+       saldo_a += d.total
+       table = table + [[ d.cuentaCodigo, d.cuentaNombre, d.total.round(2) ]]
+      end
+      table = table + [[ {:content=>"<strong>Impuesto a las ganancias (+)</strong>",:colspan=>3, :align=>:left},  ]]
+      gas_impuestos.each do |d|
+       saldo_a -= d.total
+       table = table + [[ d.cuentaCodigo, d.cuentaNombre, d.total.round(2) ]]
+      end
+      table = table + [[ {:content=>"<strong>Ganancia neta / Utilidad final del ejercicio</strong>",:colspan=>2, :align=>:right}, "<b>"+saldo_a.to_s+"</b>" ]]
+  	end
+  	send_data(genera_partida(titulo, "", table, "", ""), :filename => titulo+".pdf", :type => "application/pdf")
   end
 end
 
