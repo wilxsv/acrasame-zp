@@ -91,6 +91,7 @@ class TransaccionController < ApplicationController
 		end
         table = table + [[ data.cuentaCodigo, data.cuentaNombre, data.transaxMonto.round(2), tdebe, thaber ]]
         @@FTRANX = data.transaxFecha
+        @@FTRANX = @@FTRANX.to_s
         @@CONCEPTO = data.comentario
       end
       table = table + [[ {:content=>"Total",:colspan=>3, :align=>:left}, debe.round(2), haber.round(2) ]]
