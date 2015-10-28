@@ -17,8 +17,8 @@
      <tr>
       <td><%= c.cuentaCodigo %></td>
       <td><%= c.cuentaNombre %></td>
-      <td><%= c.total %></td>
-      <% saldo_a += c.total %>
+      <td><%= -c.total %></td>
+      <% saldo_a -= c.total %>
      </tr>
     <% end %>
     <tr><td></td><td><strong>Costo de la mercadería vendida o de los servicios prestados (-)</strong></td><td></td></tr>
