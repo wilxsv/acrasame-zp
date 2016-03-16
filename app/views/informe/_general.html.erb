@@ -19,7 +19,7 @@
    <% saldo_a = 0 %>
    <% saldo_p= 0 %>
    <% saldo_c = 0 %>
-   <% @ScrTodo.each do |t| %>
+   <% @ScrTodas.each do |t| %>
     <% if id != t.cuentaCodigo && t.cuentaCodigo < 4 %>
      <% if id != 0 %>
       <td></td>
@@ -27,7 +27,7 @@
       <% if saldo >= 0 %>
        <td><b><%= saldo %></b></td>
       <% else %>
-       <td><b>(<%= saldo.abs %>)</b></td>
+       <td><b><%= saldo.abs %></b></td>
       <% end %>
      <% end %>
      <% id = t.cuentaCodigo %>
@@ -49,6 +49,7 @@
          else
         end
      %>
+     <% monton = 0 %>
      <% if number.to_i > 3 %>
      <% elsif t.cuentaCodigo < 4 %>
       <td><b><%= t.cuentaCodigo %></b></td>
@@ -57,18 +58,32 @@
      <% elsif t.cuentaCodigo < 100 %>
       <td><b><%= t.cuentaCodigo %></b></td>
       <td><b><%= t.cuentaNombre %></b></td>
-      <% if t.cuentaDebe - t.cuentaHaber >= 0 %>
-       <td><b><%= t.cuentaDebe - t.cuentaHaber %></b></td>
+      <% case number.to_i
+         when 1
+          (monto = t.cuentaDebe - t.cuentaHaber )
+         else
+          (monto = t.cuentaHaber - t.cuentaDebe )
+        end
+      %>      
+      <% if monto >= 0 %>
+       <td><b><%= monto %></b></td>
       <% else %>
-       <td><b>(<%= t.cuentaHaber - t.cuentaDebe %>)</b></td>
+       <td><b>(<%= monto %>)</b></td>
       <% end %>
      <% else %>
       <td><%= t.cuentaCodigo %></td>
       <td><%= t.cuentaNombre %></td>
-      <% if t.cuentaDebe - t.cuentaHaber >= 0 %>
-       <td><%= t.cuentaDebe - t.cuentaHaber %></td>
+      <% case number.to_i
+         when 1
+          (monto = t.cuentaDebe - t.cuentaHaber )
+         else
+          (monto = t.cuentaHaber - t.cuentaDebe )
+        end
+      %>      
+      <% if monto >= 0 %>
+       <td><%= monto %></td>
       <% else %>
-       <td>(<%= t.cuentaHaber - t.cuentaDebe %>)</td>
+       <td>(<%= monto %>)</td>
       <% end %>
      <% end %>
     </tr>
