@@ -2,6 +2,30 @@ class ScrCuentua < ActiveRecord::Base
   self.table_name = "scr_cuenta"
   belongs_to :"scr_cuenta"
   
+  scope :general, ->(debe, haber) { 
+  		joins("INNER JOIN scr_transaccion ON scr_cuenta.id = scr_transaccion.cuenta_id")
+  		.select(:'scr_cuenta."cuentaNombre"', :'scr_cuenta."cuentaCodigo"', 
+				:'SUM(CASE WHEN scr_transaccion."transaxDebeHaber"=TRUE THEN scr_transaccion."transaxMonto"
+         WHEN scr_transaccion."transaxDebeHaber"=FALSE THEN 0
+       END) AS "cuentaDebe"',
+				:'SUM(CASE WHEN scr_transaccion."transaxDebeHaber"=FALSE THEN scr_transaccion."transaxMonto"
+         WHEN scr_transaccion."transaxDebeHaber"=TRUE THEN 0
+       END) AS "cuentaHaber"')
+		.group(:'scr_cuenta."cuentaCodigo"', :'scr_cuenta."cuentaNombre"')
+  }
+  
+  scope :balance, ->(debe, haber) { 
+  		joins("INNER JOIN scr_transaccion ON scr_cuenta.id = scr_transaccion.cuenta_id")
+  		.select(:'scr_cuenta."cuentaNombre"', :'scr_cuenta."cuentaCodigo"', 
+				:'SUM(CASE WHEN scr_transaccion."transaxDebeHaber"=TRUE THEN scr_transaccion."transaxMonto"
+         WHEN scr_transaccion."transaxDebeHaber"=FALSE THEN 0
+       END) AS "cuentaDebe"',
+				:'SUM(CASE WHEN scr_transaccion."transaxDebeHaber"=FALSE THEN scr_transaccion."transaxMonto"
+         WHEN scr_transaccion."transaxDebeHaber"=TRUE THEN 0
+       END) AS "cuentaHaber"')
+		.group(:'scr_cuenta."cuentaCodigo"', :'scr_cuenta."cuentaNombre"')
+  }
+  
   scope :parcial, ->(debe, haber, fecha) { 
   		joins("INNER JOIN scr_transaccion ON scr_cuenta.id = scr_transaccion.cuenta_id")
   		.where(['"transaxFecha"<=?', fecha])

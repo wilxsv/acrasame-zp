@@ -12,7 +12,8 @@ class InformeController < ApplicationController
    session[:roles] = "root contador administrador"
    acceso
    #fecha = ScrDetContable.where('"dConActivo" = ? ', 'TRUE')
-   @ScrCuentua = ScrCuentua.where('("cuentaDebe" + "cuentaHaber" > ?)', 0).order('CAST("cuentaCodigo" AS TEXT)')
+   #@ScrCuentua = ScrCuentua.where('("cuentaDebe" + "cuentaHaber" > ?)', 0).order('CAST("cuentaCodigo" AS TEXT)')
+   @ScrCuentua = ScrCuentua.balance(0, 0).order('CAST("cuentaCodigo" AS TEXT)')
    if params.has_key?(:transacx)
      if params['transacx']['transaxFecha'] != nil
        vfecha = params['transacx']['transaxFecha']

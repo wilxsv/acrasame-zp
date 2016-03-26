@@ -15,7 +15,21 @@
    <div class="control-group">
     <%= f.label :cuenta, class: "control-label" %>
     <div class="controls">
-     <%= f.select :cuenta, ScrCuentua.order('CAST("cuentaCodigo" AS TEXT)').all.collect { |p| [ p.cuentaCodigo.to_s+"-"+p.cuentaNombre, p.id ] }, include_blank: false %>
+     <% @c = ScrCuentua.order('CAST("cuentaCodigo" AS TEXT)').all
+       @list = ""
+       @c.each do |op|
+        if op.cuentaCodigo.to_s.length > 4
+           @list += '<option value="'+op.id.to_s+'">'+op.cuentaCodigo.to_s+'-'+op.cuentaNombre+'</option>'
+        else
+            @list += '<option disabled>'+op.cuentaCodigo.to_s+'-'+op.cuentaNombre+'</option>'
+        end
+       end
+     %>
+     <%= f.select "cuenta", @list.html_safe %>
+    
+    
+     <%= #f.select :cuenta, ScrCuentua.order('CAST("cuentaCodigo" AS TEXT)').all.collect { |p| [ p.cuentaCodigo.to_s+"-"+p.cuentaNombre, p.id ] }, include_blank: false 
+     %>
     </div>
    </div>
    <div class="control-group">

@@ -12,88 +12,31 @@
     </tr>
   </thead>
   <tbody>
-   <!-- inicio de secuencias -->
-   <% saldo = 0 %>
-   <% cuenta = "" %>
-   <% id = 0 %>
    <% saldo_a = 0 %>
    <% saldo_p= 0 %>
    <% saldo_c = 0 %>
-   <% @ScrTodas.each do |t| %>
-    <% if id != t.cuentaCodigo && t.cuentaCodigo < 4 %>
-     <% if id != 0 %>
-      <td></td>
-      <td><b>TOTAL DE <%= cuenta %></b></td>
-      <% if saldo >= 0 %>
-       <td><b><%= saldo %></b></td>
-      <% else %>
-       <td><b><%= saldo.abs %></b></td>
-      <% end %>
-     <% end %>
-     <% id = t.cuentaCodigo %>
-     <% saldo = 0 %>
-     <% cuenta = t.cuentaNombre %>
-    <% else %>
-     <% (t.cuentaCodigo > 99 ? saldo += t.cuentaDebe - t.cuentaHaber : saldo += 0) %>
-    <% end %>
+   <% @ScrTodo.each do |t| %>
     <tr>
      <% number = t.cuentaCodigo.to_s %>
-     <% number = number.initial %>
-     <% case number.to_i
-         when 1
-          (t.cuentaCodigo > 999 ? saldo_a += t.cuentaDebe - t.cuentaHaber : saldo_a += 0)
-         when 2
-          (t.cuentaCodigo > 999 ? saldo_p += t.cuentaHaber - t.cuentaDebe : saldo_p += 0)
-         when 3
-          (t.cuentaCodigo > 999 ? saldo_c += t.cuentaHaber - t.cuentaDebe : saldo_c += 0)
-         else
-        end
-     %>
-     <% monton = 0 %>
-     <% if number.to_i > 3 %>
-     <% elsif t.cuentaCodigo < 4 %>
-      <td><b><%= t.cuentaCodigo %></b></td>
-      <td><b><%= t.cuentaNombre %></b></td>
-      <td></td>
-     <% elsif t.cuentaCodigo < 100 %>
-      <td><b><%= t.cuentaCodigo %></b></td>
-      <td><b><%= t.cuentaNombre %></b></td>
-      <% case number.to_i
-         when 1
-          (monto = t.cuentaDebe - t.cuentaHaber )
-         else
-          (monto = t.cuentaHaber - t.cuentaDebe )
-        end
-      %>      
-      <% if monto >= 0 %>
-       <td><b><%= monto %></b></td>
-      <% else %>
-       <td><b>(<%= monto %>)</b></td>
-      <% end %>
+     <% if t.cuentaCodigo.to_s.length < 5 %>
+       <td><b><%= t.cuentaCodigo %></b></td>
+       <td><b><%= t.cuentaNombre %></b></td>
+       <% if t.cuentaCodigo.to_s.initial == 1 %>
+         <td><b><%= (t.cuentaDebe - t.cuentaHaber).round(2) %></b></td>
+       <% else %>
+         <td><b><%= (t.cuentaHaber - t.cuentaDebe).round(2) %></b></td>
+       <% end %>
      <% else %>
-      <td><%= t.cuentaCodigo %></td>
-      <td><%= t.cuentaNombre %></td>
-      <% case number.to_i
-         when 1
-          (monto = t.cuentaDebe - t.cuentaHaber )
-         else
-          (monto = t.cuentaHaber - t.cuentaDebe )
-        end
-      %>      
-      <% if monto >= 0 %>
-       <td><%= monto %></td>
-      <% else %>
-       <td>(<%= monto %>)</td>
-      <% end %>
+       <td><%= t.cuentaCodigo %></td>
+       <td><%= t.cuentaNombre %></td>
+       <% if t.cuentaCodigo.to_s.initial == 1 %>
+         <td><%= (t.cuentaDebe - t.cuentaHaber).round(2) %></td>
+       <% else %>
+         <td><%= (t.cuentaHaber - t.cuentaDebe).round(2) %></td>
+       <% end %>
      <% end %>
     </tr>
    <% end %>
-    <tr>
-     <td></td>
-     <td><b>TOTAL DE <%= cuenta %></b></td>
-     <td><b><%= saldo.abs %></b></td>
-    </tr>
-   <!-- fin secuencias -->
   </tbody>
   <tfoot>
     <tr>

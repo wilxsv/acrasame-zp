@@ -1,5 +1,5 @@
 <div class="module">
- <div class="module-head"><h3>Estado de resultados.</h3></div>
+ <div class="module-head"><h3>Estado de resultados [<%= Time.now.strftime("%F %T") %>]. </h3></div>
  <div class="module-body table">
   <table cellpadding="0" cellspacing="0" border="0" display" width="100%">
   <thead>
@@ -12,60 +12,60 @@
   <tbody>
    <!-- inicio de secuencias -->
    <% saldo_a = 0 %>
-    <tr><td></td><td><strong>Ingreso por Ventas (+)</strong></td><td></td></tr>
+    <tr><td></td><td><strong>Ingreso por Servicios de agua (+)</strong></td><td></td></tr>
     <% @ing_ventas.each do |c| %>
      <tr>
       <td><%= c.cuentaCodigo %></td>
       <td><%= c.cuentaNombre %></td>
-      <td><%= -c.total %></td>
+      <td><%= -c.total.round(2) %></td>
       <% saldo_a -= c.total %>
      </tr>
     <% end %>
-    <tr><td></td><td><strong>Costo de la mercadería vendida o de los servicios prestados (-)</strong></td><td></td></tr>
+    <tr><td></td><td><strong>Costo por servicios prestados (-)</strong></td><td></td></tr>
     <% @cos_ventas.each do |c| %>
      <tr>
       <td><%= c.cuentaCodigo %></td>
       <td><%= c.cuentaNombre %></td>
-      <td><%= c.total %></td>
+      <td><%= c.total.round(2) %></td>
       <% saldo_a -= c.total %>
      </tr>
     <% end %>
-    <tr><td></td><td><strong><p align="right">Utilidad bruta</p></strong></td><td><%= saldo_a %></td></tr>
-    <tr><td></td><td><strong>Gastos de venta (-)</strong></td><td></td></tr>
+    <tr><td></td><td><strong><p align="right">Utilidad bruta</p></strong></td><td><%= saldo_a.round(2) %></td></tr>
+    <tr><td></td><td><strong>Gasto por servicios prestados (-)</strong></td><td></td></tr>
     <% @gas_ventas.each do |c| %>
      <tr>
       <td><%= c.cuentaCodigo %></td>
       <td><%= c.cuentaNombre %></td>
-      <td><%= c.total %></td>
+      <td><%= c.total.round(2) %></td>
       <% saldo_a -= c.total %>
      </tr>
     <% end %>
-    <tr><td></td><td><strong>Gastos de administración (-)</strong></td><td></td></tr>
+    <tr><td></td><td><strong>Costo de administración (-)</strong></td><td></td></tr>
     <% @gas_administracion.each do |c| %>
      <tr>
       <td><%= c.cuentaCodigo %></td>
       <td><%= c.cuentaNombre %></td>
-      <td><%= c.total %></td>
+      <td><%= c.total.round(2) %></td>
       <% saldo_a -= c.total %>
      </tr>
     <% end %>
-    <tr><td></td><td><strong><p align="right">Utilidad operativa</p></strong></td><td><%= saldo_a %></td></tr>
+    <tr><td></td><td><strong><p align="right">Utilidad operativa</p></strong></td><td><%= saldo_a.round(2) %></td></tr>
     <tr><td></td><td><strong>Gastos financieros (-)</strong></td><td></td></tr>
     <% @gas_financieros.each do |c| %>
      <tr>
       <td><%= c.cuentaCodigo %></td>
       <td><%= c.cuentaNombre %></td>
-      <td><%= c.total %></td>
+      <td><%= c.total.round(2) %></td>
       <% saldo_a -= c.total %>
      </tr>
     <% end %>
-    <tr><td></td><td><strong><p align="right">Utilidad antes de impuestos</p></strong></td><td><%= saldo_a %></td></tr>
-    <tr><td></td><td><strong>Ingreso por productos financieros / Otros ingresos (+)</strong></td><td></td></tr>
+    <tr><td></td><td><strong><p align="right">Utilidad antes de impuestos</p></strong></td><td><%= saldo_a.round(2) %></td></tr>
+    <tr><td></td><td><strong>Otros ingresos / Ingreso por productos financieros (+)</strong></td><td></td></tr>
     <% @ing_otros.each do |c| %>
      <tr>
       <td><%= c.cuentaCodigo %></td>
       <td><%= c.cuentaNombre %></td>
-      <td><%= c.total %></td>
+      <td><%= c.total.round(2) %></td>
       <% saldo_a += c.total %>
      </tr>
     <% end %>
@@ -74,7 +74,7 @@
      <tr>
       <td><%= c.cuentaCodigo %></td>
       <td><%= c.cuentaNombre %></td>
-      <td><%= c.total %></td>
+      <td><%= c.total.round(2) %></td>
       <% saldo_a -= c.total %>
      </tr>
     <% end %>

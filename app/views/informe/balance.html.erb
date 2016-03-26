@@ -22,30 +22,30 @@
     </tr>
   </thead>
   <tbody>
-       <% session[:haber] = 0 %>
-       <% session[:debe] = 0 %>
+       <% debe = 0 %>
+       <% haber = 0 %>
        <% deudor = 0 %>
        <% acreedor = 0 %>
        <% @ScrCuentua.each do |c| %>
+        <%
+          if c.cuentaCodigo.to_s.length >= 4
+            debe += c.cuentaDebe
+            haber += c.cuentaHaber
+          end
+        %>
         <tr>
          <td><%= c.cuentaCodigo %></td>
          <td><%= c.cuentaNombre %></td>
          <td><%= c.cuentaDebe %></td>
          <td><%= c.cuentaHaber %></td>
          <% if c.cuentaDebe - c.cuentaHaber >= 0 %>
-          <td><%= c.cuentaDebe - c.cuentaHaber %></td>
-          <% if c.cuentaCodigo >= 1000 %>
-           <% deudor = deudor + c.cuentaDebe - c.cuentaHaber %>
-           <% session[:debe] += c.cuentaDebe %>
-          <% end %>
+          <td><%= (c.cuentaDebe - c.cuentaHaber).round(2) %></td>
+          <% deudor = deudor + c.cuentaDebe - c.cuentaHaber %>
           <td></td>
          <% else %>
           <td></td>
-          <td><%= c.cuentaHaber - c.cuentaDebe %></td>
-          <% if c.cuentaCodigo >= 1000 %>
-           <% acreedor = acreedor + c.cuentaHaber - c.cuentaDebe %>
-           <% session[:haber] += c.cuentaHaber %>
-          <% end %>
+          <td><%= (c.cuentaHaber - c.cuentaDebe).round(2) %></td>
+          <% acreedor = acreedor + c.cuentaHaber - c.cuentaDebe %>
          <% end %>
         </tr>
        <% end %>
@@ -54,19 +54,13 @@
     <tr>
       <th>Cuenta</th>
       <th>Nombre</th>
-      <th><%= session[:debe].round(2) %></th>
-      <th><%= session[:haber].round(2) %></th>
+      <th><%= debe.round(2) %></th>
+      <th><%= haber.round(2) %></th>
       <th><%= deudor.round(2) %></th>
       <th><%= acreedor.round(2) %></th>
     </tr>
   </tfoot>
 </table>
 
-<%= render :partial => '/layouts/main/tablas' %>
-<!--       <tr>
-        <td></td>
-        <td></td>
-        <td><b><%= session[:debe] %></b></td>
-        <td><b><%= session[:haber] %></b></td>
-       </tr>
--->
+<%= # render :partial => '/layouts/main/tablas' 
+%>
