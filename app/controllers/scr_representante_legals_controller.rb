@@ -5,7 +5,7 @@ class ScrRepresentanteLegalsController < ApplicationController
   # GET /scr_representante_legals
   # GET /scr_representante_legals.json
   def index
-    session[:roles] = "administrador"
+    session[:roles] = "root administrador"
     acceso
     @scr_representante_legals = ScrRepresentanteLegal.all
   end

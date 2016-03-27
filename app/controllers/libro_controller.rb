@@ -29,7 +29,9 @@ class LibroController < ApplicationController
     session[:roles] = "root contador administrador"
     acceso
     @label = 1
-    @ScrCuentua = ScrCuentua.where('CAST("cuentaCodigo" AS TEXT) ~ \'^(1|2|3)\' AND ("cuentaDebe" + "cuentaHaber" > ?) OR "cuentaCodigo" < ?', 0, 4).order('CAST("cuentaCodigo" AS TEXT)')
+    @ScrCuentua = ScrCuentua.where('("cuentaDebe" + "cuentaHaber" > ?) OR "cuentaCodigo" < ?', 0, 4).order('CAST("cuentaCodigo" AS TEXT)')
+    #@ScrCuentua = ScrCuentua.where('CAST("cuentaCodigo" AS TEXT) ~ \'^(1|2|3)\' AND ("cuentaDebe" + "cuentaHaber" > ?) OR "cuentaCodigo" < ?', 0, 4).order('CAST("cuentaCodigo" AS TEXT)')
+    #@ScrCuentua = ScrCuentua.general(0, 0).order('CAST("cuentaCodigo" AS TEXT)')
   end
   
   def pdf
@@ -64,7 +66,7 @@ class LibroController < ApplicationController
       table = table + [[ {:content=>"Concepto: ["+@@CONCEPTO.to_s+"]",:colspan=>5, :align=>:left} ]]
   	else
   	  titulo = "Libro Mayor "+fecha
-  	  query = ScrCuentua.where('CAST("cuentaCodigo" AS TEXT) ~ \'^(1|2|3)\' AND ("cuentaDebe" + "cuentaHaber" > ?) OR "cuentaCodigo" < ?', 0, 4).order('CAST("cuentaCodigo" AS TEXT)')
+  	  query = ScrCuentua.where('("cuentaDebe" + "cuentaHaber" > ?) OR "cuentaCodigo" < ?', 0, 4).order('CAST("cuentaCodigo" AS TEXT)')
   	  head = ["<b>Cuenta</b>", "<b>Nombre</b>", "<b>Debe</b>", "<b>Haber</b>", "<b>Saldo</b>"]
   	  table = [head]
   	  debe = 0
@@ -78,12 +80,21 @@ class LibroController < ApplicationController
         if data.cuentaHaber <= 0
           	thaber = ""
 		end
-		if data.cuentaDebe - data.cuentaHaber < 0 
-          saldo = "("+(data.cuentaHaber - data.cuentaDebe).round(2).to_s+")"
+		
+		if data.cuentaCodigo.to_s.initial == '2' or data.cuentaCodigo.to_s.initial == '3' or data.cuentaCodigo.to_s.initial == '5'
+		  if data.cuentaDebe - data.cuentaHaber < 0
+           saldo = (data.cuentaHaber - data.cuentaDebe).round(2).to_s
+          else
+           saldo = "("+(data.cuentaHaber - data.cuentaDebe).abs.round(2).to_s+")"
+          end
         else
-          saldo = (data.cuentaDebe - data.cuentaHaber).round(2)
+          if data.cuentaDebe - data.cuentaHaber < 0
+           saldo = "("+(data.cuentaDebe - data.cuentaHaber).abs.round(2).to_s+")"
+          else
+           saldo = (data.cuentaDebe - data.cuentaHaber).round(2)
+          end
         end
-        if data.cuentaCodigo >= 1000
+        if data.cuentaCodigo.to_s.length > 4
 		  debe+=data.cuentaDebe
 		  haber+=data.cuentaHaber
         end

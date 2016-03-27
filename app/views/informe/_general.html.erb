@@ -15,27 +15,52 @@
    <% saldo_a = 0 %>
    <% saldo_p= 0 %>
    <% saldo_c = 0 %>
-   <% @ScrTodo.each do |t| %>
+   <% @ScrTodas.each do |t| %>
     <tr>
      <% number = t.cuentaCodigo.to_s %>
      <% if t.cuentaCodigo.to_s.length < 5 %>
        <td><b><%= t.cuentaCodigo %></b></td>
        <td><b><%= t.cuentaNombre %></b></td>
-       <% if t.cuentaCodigo.to_s.initial == 1 %>
-         <td><b><%= (t.cuentaDebe - t.cuentaHaber).round(2) %></b></td>
+       <% if t.cuentaCodigo.to_s.initial == '2' or t.cuentaCodigo.to_s.initial == '3' or t.cuentaCodigo.to_s.initial == '5' %>
+        <% if t.cuentaDebe - t.cuentaHaber < 0 %>
+         <td><b><%= number_to_currency((t.cuentaDebe - t.cuentaHaber), unit: "$", separator: ".", delimiter: ",", format: "%u %n") %></b></td>
+        <% else %>
+         <td><b>(<%= number_to_currency((t.cuentaHaber - t.cuentaDebe), unit: "$", separator: ".", delimiter: ",", format: "%u %n") %>)</b></td>
+        <% end %>
        <% else %>
-         <td><b><%= (t.cuentaHaber - t.cuentaDebe).round(2) %></b></td>
+        <% if t.cuentaDebe - t.cuentaHaber < 0 %>
+         <td><b>(<%= number_to_currency((t.cuentaHaber - t.cuentaDebe), unit: "$", separator: ".", delimiter: ",", format: "%u %n") %>)</b></td>
+        <% else %>
+         <td><b><%= number_to_currency((t.cuentaDebe - t.cuentaHaber), unit: "$", separator: ".", delimiter: ",", format: "%u %n") %></b></td>
+        <% end %>
        <% end %>
      <% else %>
        <td><%= t.cuentaCodigo %></td>
        <td><%= t.cuentaNombre %></td>
-       <% if t.cuentaCodigo.to_s.initial == 1 %>
-         <td><%= (t.cuentaDebe - t.cuentaHaber).round(2) %></td>
+       <% if t.cuentaCodigo.to_s.initial == '2' or t.cuentaCodigo.to_s.initial == '3' or t.cuentaCodigo.to_s.initial == '5' %>
+        <% if t.cuentaDebe - t.cuentaHaber < 0 %>
+         <td><%= (t.cuentaDebe - t.cuentaHaber).abs.round(2) %></td>
+        <% else %>
+         <td>(<%= (t.cuentaHaber - t.cuentaDebe).abs.round(2) %>)</td>
+        <% end %>
        <% else %>
-         <td><%= (t.cuentaHaber - t.cuentaDebe).round(2) %></td>
+        <% if t.cuentaDebe - t.cuentaHaber < 0 %>
+         <td>(<%= (t.cuentaHaber - t.cuentaDebe).round(2) %>)</td>
+        <% else %>
+         <td><%= (t.cuentaDebe - t.cuentaHaber).round(2) %></td>
+        <% end %>
        <% end %>
      <% end %>
     </tr>
+    <% if t.cuentaCodigo.to_s.initial == '1' and t.cuentaCodigo.to_s.length > 4 %>
+     <% saldo_a += t.cuentaDebe - t.cuentaHaber %>
+    <% end %>
+    <% if t.cuentaCodigo.to_s.initial == '2' and t.cuentaCodigo.to_s.length > 4 %>
+     <% saldo_p += t.cuentaHaber - t.cuentaDebe %>
+    <% end %>
+    <% if t.cuentaCodigo.to_s.initial == '3' and t.cuentaCodigo.to_s.length > 4 %>
+     <% saldo_c += t.cuentaHaber - t.cuentaDebe %>
+    <% end %>
    <% end %>
   </tbody>
   <tfoot>
@@ -46,7 +71,7 @@
     </tr>
     <tr>
       <th></th>
-      <th>Activo = Pasivo + Capital ~ <%= saldo_a.round(2) %> = <%= saldo_p.round(2) %> + <%= saldo_c.round(2) %></th>
+      <th>Activo = Pasivo + Capital ~ <%= number_to_currency(saldo_a, unit: "$", separator: ".", delimiter: ",", format: "%u %n") %> = <%= saldo_p.round(2) %> + <%= saldo_c.round(2) %></th>
       <th></th>
     </tr>
   </tfoot>

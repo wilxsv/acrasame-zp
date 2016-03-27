@@ -12,24 +12,32 @@
     </tr>
   </thead>
   <tbody>
-       <% session[:haber] = 0 %>
-       <% session[:debe] = 0 %>
+       <% debe = 0 %>
+       <% haber = 0 %>
        <% @ScrCuentua.each do |c| %>
         <tr>
          <td><%= c.cuentaCodigo %></td>
          <td><%= c.cuentaNombre %></td>
-         <td><%= c.cuentaDebe %></td>
-         <td><%= c.cuentaHaber %></td>
-         <% if c.cuentaDebe - c.cuentaHaber < 0 %>
-          <td>(<%= c.cuentaHaber - c.cuentaDebe %>)</td>
+         <td><%= c.cuentaDebe.round(2) %></td>
+         <td><%= c.cuentaHaber.round(2) %></td>
+         <% if c.cuentaCodigo.to_s.length > 4 %>
+          <% debe += c.cuentaDebe %>
+          <% haber += c.cuentaHaber %>
+         <% end %>
+         <% if c.cuentaCodigo.to_s.initial == '2' or c.cuentaCodigo.to_s.initial == '3' or c.cuentaCodigo.to_s.initial == '5' %>
+          <% if c.cuentaDebe - c.cuentaHaber < 0 %>
+           <td><%= (c.cuentaDebe - c.cuentaHaber).abs.round(2) %></td>
+          <% else %>
+           <td>(<%= (c.cuentaHaber - c.cuentaDebe).abs.round(2) %>)</td>
+          <% end %>
          <% else %>
-          <td><%= c.cuentaDebe - c.cuentaHaber %></td>
+          <% if c.cuentaDebe - c.cuentaHaber < 0 %>
+           <td>(<%= (c.cuentaHaber - c.cuentaDebe).round(2) %>)</td>
+          <% else %>
+           <td><%= (c.cuentaDebe - c.cuentaHaber).round(2) %></td>
+          <% end %>
          <% end %>
         </tr>
-        <% if c.cuentaCodigo >= 1000 %>
-         <% session[:haber] += c.cuentaHaber %>
-         <% session[:debe] += c.cuentaDebe %>
-        <% end %>
        <% end %>
      </tbody>
   <tfoot>
@@ -50,8 +58,8 @@
         <% end %>
        <% end %>
       </th>
-      <th>[<%= session[:haber].round(2) %>]</th>
-      <th>[<%= session[:haber].round(2) %>]</th>
+      <th>[<%= debe.round(2) %>]</th>
+      <th>[<%= haber.round(2) %>]</th>
       <th></th>
     </tr>
   </tfoot>
