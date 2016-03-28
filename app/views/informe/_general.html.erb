@@ -1,5 +1,5 @@
 <div class="module">
- <div class="module-head"><h3>Balance General.</h3></div>
+ <div class="module-head"><h3>Balance General [<%= Time.now.strftime("%F %T") %>].</h3></div>
  <div class="module-body table">
   <!-- Total de activos -->
   <!--<table cellpadding="0" cellspacing="0" border="0" class="datatable-2 table table-bordered table-striped	 display" width="100%">--> 
@@ -23,9 +23,9 @@
        <td><b><%= t.cuentaNombre %></b></td>
        <% if t.cuentaCodigo.to_s.initial == '2' or t.cuentaCodigo.to_s.initial == '3' or t.cuentaCodigo.to_s.initial == '5' %>
         <% if t.cuentaDebe - t.cuentaHaber < 0 %>
-         <td><b><%= number_to_currency((t.cuentaDebe - t.cuentaHaber), unit: "$", separator: ".", delimiter: ",", format: "%u %n") %></b></td>
+         <td><b><%= number_to_currency((t.cuentaHaber - t.cuentaDebe), unit: "$", separator: ".", delimiter: ",", format: "%u %n") %></b></td>
         <% else %>
-         <td><b>(<%= number_to_currency((t.cuentaHaber - t.cuentaDebe), unit: "$", separator: ".", delimiter: ",", format: "%u %n") %>)</b></td>
+         <td><b>(<%= number_to_currency((t.cuentaDebe - t.cuentaHaber), unit: "$", separator: ".", delimiter: ",", format: "%u %n") %>)</b></td>
         <% end %>
        <% else %>
         <% if t.cuentaDebe - t.cuentaHaber < 0 %>
@@ -54,12 +54,10 @@
     </tr>
     <% if t.cuentaCodigo.to_s.initial == '1' and t.cuentaCodigo.to_s.length > 4 %>
      <% saldo_a += t.cuentaDebe - t.cuentaHaber %>
-    <% end %>
-    <% if t.cuentaCodigo.to_s.initial == '2' and t.cuentaCodigo.to_s.length > 4 %>
-     <% saldo_p += t.cuentaHaber - t.cuentaDebe %>
-    <% end %>
-    <% if t.cuentaCodigo.to_s.initial == '3' and t.cuentaCodigo.to_s.length > 4 %>
-     <% saldo_c += t.cuentaHaber - t.cuentaDebe %>
+    <% elsif t.cuentaCodigo.to_s.initial != '2' and t.cuentaCodigo.to_s.length > 4 %>
+     <% saldo_p += (t.cuentaHaber - t.cuentaDebe).abs %>
+    <% elsif t.cuentaCodigo.to_s.initial != '3' and t.cuentaCodigo.to_s.length > 4 %>
+     <% saldo_c += (t.cuentaHaber - t.cuentaDebe).abs %>
     <% end %>
    <% end %>
   </tbody>
@@ -71,18 +69,25 @@
     </tr>
     <tr>
       <th></th>
-      <th>Activo = Pasivo + Capital ~ <%= number_to_currency(saldo_a, unit: "$", separator: ".", delimiter: ",", format: "%u %n") %> = <%= saldo_p.round(2) %> + <%= saldo_c.round(2) %></th>
+      <th>Activo = Pasivo + Capital ~ <%= number_to_currency(saldo_a, unit: "$", separator: ".", delimiter: ",", format: "%u %n") %> = <%= number_to_currency(saldo_p, unit: "$", separator: ".", delimiter: ",", format: "%u %n") %> + <%= number_to_currency(saldo_c, unit: "$", separator: ".", delimiter: ",", format: "%u %n") %></th>
+      <th></th>
+    </tr>
+    <tr>
+      <th></th>
+      <th><%= number_to_currency(saldo_a, unit: "$", separator: ".", delimiter: ",", format: "%u %n") %> = <%= number_to_currency((saldo_p + saldo_c), unit: "$", separator: ".", delimiter: ",", format: "%u %n") %></th>
       <th></th>
     </tr>
   </tfoot>
 </table>
+<div class="alert alert-success">
+ <%= form_for :transacx, :url => { :action => :pdf } do |f| %>
+  <%= f.text_field :transaxFecha, type:"hidden", value:@fecha %>
+  <%= f.text_field :id, type:"hidden", value:0 %>
+  <%= f.submit "Imprimir", class:"btn btn-inverse btn-info btn-xs" %>
+ <% end %>
+</div>
 <% if (saldo_a.round(2) == saldo_p.round(2) + saldo_c.round(2)) %>
  <div class="alert alert-success">
-  <%= form_for :transacx, :url => { :action => :pdf } do |f| %>
-         <%= f.text_field :transaxFecha, type:"hidden", value:@fecha %>
-         <%= f.text_field :id, type:"hidden", value:0 %>
-         <%= f.submit "Imprimir", class:"btn btn-inverse btn-info btn-xs" %>
-  <% end %>
   <strong>Felicitaciones!</strong> El ejercicio se cumplio, puede revisar el estado de resultados, recuerde realizar los asientos de ajuste antes de elaborar el estado de resultados
  </div>
 <% else %>

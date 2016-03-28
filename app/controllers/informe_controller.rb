@@ -25,10 +25,10 @@ class InformeController < ApplicationController
   def general
     session[:roles] = "root contador administrador"
     acceso
-   @ScrGrupo = ScrCuentua.where('"cuentaDebe" > ? OR "cuentaHaber" > ? AND "cuentaCodigo" < ?', 0, 0, 4).order('"cuentaCodigo"')
-   @ScrRubro = ScrCuentua.where('"cuentaDebe" > ? OR "cuentaHaber" > ? AND "cuentaCodigo" < ?', 0, 0, 100).order('"cuentaCodigo"')
-   @ScrCuenta = ScrCuentua.where('"cuentaDebe" > ? OR "cuentaHaber" > ? AND "cuentaCodigo" < ?',0, 0, 1000).order('"cuentaCodigo"')
-   @ScrTodo = ScrCuentua.where('CAST("cuentaCodigo" AS TEXT) ~ \'^(1|2|3)\' AND ("cuentaDebe" + "cuentaHaber" > ?) OR "cuentaCodigo" < ?', 0, 4).order('CAST("cuentaCodigo" AS TEXT)')
+   #@ScrGrupo = ScrCuentua.where('"cuentaDebe" > ? OR "cuentaHaber" > ? AND "cuentaCodigo" < ?', 0, 0, 4).order('"cuentaCodigo"')
+   #@ScrRubro = ScrCuentua.where('"cuentaDebe" > ? OR "cuentaHaber" > ? AND "cuentaCodigo" < ?', 0, 0, 100).order('"cuentaCodigo"')
+   #@ScrCuenta = ScrCuentua.where('"cuentaDebe" > ? OR "cuentaHaber" > ? AND "cuentaCodigo" < ?',0, 0, 1000).order('"cuentaCodigo"')
+   #@ScrTodo = ScrCuentua.where('CAST("cuentaCodigo" AS TEXT) ~ \'^(1|2|3)\' AND ("cuentaDebe" + "cuentaHaber" > ?) OR "cuentaCodigo" < ?', 0, 4).order('CAST("cuentaCodigo" AS TEXT)')
    @ScrTodas = ScrCuentua.where('CAST("cuentaCodigo" AS TEXT) ~ \'^(1|2|3)\' AND ("cuentaDebe" + "cuentaHaber" > ?) OR "cuentaCodigo" < ?', 0, 4).order('CAST("cuentaCodigo" AS TEXT)')
   end
   
@@ -122,69 +122,36 @@ class InformeController < ApplicationController
   	  saldo_a = 0
       saldo_p= 0
       saldo_c = 0
-  	  titulo = "Balange General "+fecha
+  	  titulo = "Balange General "+fecha+ "  "+Time.now.strftime("%F %T")+"."
       query = ScrCuentua.where('CAST("cuentaCodigo" AS TEXT) ~ \'^(1|2|3)\' AND ("cuentaDebe" + "cuentaHaber" > ?) OR "cuentaCodigo" < ?', 0, 4).order('CAST("cuentaCodigo" AS TEXT)')
   	  head = ["<b>Cuenta</b>", "<b>Nombre</b>", "<b>Saldo</b>"]
   	  table = [head]
-  	  debe = 0
-      haber = 0
       nombre = ""
-      tsaldo = 0
+      code = ""
       query.each do |data|
-        monto = 0
-        #Totalizadores de saldo en rubro
-        if id != data.cuentaCodigo && data.cuentaCodigo < 4
-         if id != 0
-          nombre = "TOTAL DE "+data.cuentaNombre
-          code = ""
-          if saldo >= 0
-			monto = saldo.round(2)
- 		  else
-		   monto = "("+saldo.abs+")"
-		  end
-		 end
-		 id = data.cuentaCodigo
-		 saldo = 0
-		 nombre = data.cuentaNombre
-		else
-		 data.cuentaCodigo > 999 ? saldo += data.cuentaDebe.round(2) - data.cuentaHaber.round(2) : saldo += 0
-		end
-		number = data.cuentaCodigo.to_s
-        number = number.initial
-        case number.to_i
-         when 1
-          (data.cuentaCodigo > 999 ? saldo_a += data.cuentaDebe - data.cuentaHaber : saldo_a += 0)
-         when 2
-          (data.cuentaCodigo > 999 ? saldo_p += data.cuentaHaber - data.cuentaDebe : saldo_p += 0)
-         when 3
-          (data.cuentaCodigo > 999 ? saldo_c += data.cuentaHaber - data.cuentaDebe : saldo_c += 0)
-         else
+        code = data.cuentaCodigo
+        nombre = data.cuentaNombre
+        if data.cuentaCodigo.to_s.initial == '1' or data.cuentaCodigo.to_s.initial == '4'
+          if data.cuentaDebe - data.cuentaHaber < 0
+            saldo = "("+number_to_currency((data.cuentaDebe - data.cuentaHaber).abs, unit: "$", separator: ".", delimiter: ",", format: "%u %n")+")"
+          else
+            saldo = number_to_currency((data.cuentaDebe - data.cuentaHaber), unit: "$", separator: ".", delimiter: ",", format: "%u %n")
+          end
+        else
+          if data.cuentaDebe - data.cuentaHaber < 0
+            saldo = number_to_currency((data.cuentaDebe - data.cuentaHaber).abs, unit: "$", separator: ".", delimiter: ",", format: "%u %n")
+          else
+            saldo = "("+number_to_currency((data.cuentaDebe - data.cuentaHaber).abs, unit: "$", separator: ".", delimiter: ",", format: "%u %n")+")"
+          end
         end
-         if number.to_i > 3
-         elsif data.cuentaCodigo < 4
-           code = data.cuentaCodigo
-           nombre = "<b>"+data.cuentaNombre+"</b>"
-         elsif data.cuentaCodigo < 100
-           code = data.cuentaCodigo
-           nombre = "<b>"+data.cuentaNombre+"</b>"
-           if data.cuentaDebe - data.cuentaHaber >= 0
-             saldo = data.cuentaDebe - data.cuentaHaber
-           else
-             saldo = (data.cuentaHaber - data.cuentaDebe).round(2)
-           end
-         else
-           code = data.cuentaCodigo
-           nombre = data.cuentaNombre
-           if data.cuentaDebe - data.cuentaHaber >= 0
-             saldo = data.cuentaDebe - data.cuentaHaber
-           else
-             saldo = (data.cuentaHaber - data.cuentaDebe).round(2)
-           end
-         end
-     
-        table = table + [[ data.cuentaCodigo, nombre, saldo ]]
+        if data.cuentaCodigo.to_s.length <= 4
+          code = "<b>"+code.to_s+"</b>"
+          nombre = "<b>"+nombre+"</b>"
+          saldo = "<b>"+saldo+"</b>"
+        end
+        table = table + [[ code, nombre, saldo ]]
         @@FTRANX = ""
-        @@CONCEPTO = ""
+        @@CONCEPTO = "Balance general "+Time.now.strftime("%F %T")+"."
       end
       #table = table + [[ {:content=>"Total",:colspan=>2, :align=>:left}, debe.round(2), haber.round(2), "" ]]
       table = table + [[ {:content=>"Concepto: ["+@@CONCEPTO.to_s+"]",:colspan=>3, :align=>:left} ]]
